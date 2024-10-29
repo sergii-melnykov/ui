@@ -1,2 +1,2 @@
-export * from "./hook-form";
+export * from "./hook-forms";
 export * from "./editor";
