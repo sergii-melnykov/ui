@@ -4,14 +4,21 @@ import { useFormContext, Controller } from "react-hook-form";
 import FormHelperText from "@mui/material/FormHelperText";
 //
 import { Editor, EditorProps } from "../editor";
+import { Typography } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
 interface Props extends EditorProps {
   name: string;
+  label?: string;
 }
 
-export default function RHFEditor({ name, helperText, ...other }: Props) {
+export default function RHFEditor({
+  name,
+  label,
+  helperText,
+  ...other
+}: Props) {
   const {
     control,
     watch,
@@ -34,20 +41,23 @@ export default function RHFEditor({ name, helperText, ...other }: Props) {
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <Editor
-          id={name}
-          value={field.value}
-          onChange={field.onChange}
-          error={!!error}
-          helperText={
-            (!!error || helperText) && (
-              <FormHelperText error={!!error} sx={{ px: 2 }}>
-                {error ? error?.message : helperText}
-              </FormHelperText>
-            )
-          }
-          {...other}
-        />
+        <>
+          {label && <Typography variant="h4">{label}</Typography>}
+          <Editor
+            id={name}
+            value={field.value}
+            onChange={field.onChange}
+            error={!!error}
+            helperText={
+              (!!error || helperText) && (
+                <FormHelperText error={!!error} sx={{ px: 2 }}>
+                  {error ? error?.message : helperText}
+                </FormHelperText>
+              )
+            }
+            {...other}
+          />
+        </>
       )}
     />
   );
