@@ -21,42 +21,49 @@ const entries = [
 ];
 
 // Generate output and configurations for each entry
-const createConfig = (entry) => ({
-  input: entry,
-  output: [
-    {
-      file: `dist/${entry.replace("src/", "").replace(".ts", "")}/index.cjs.js`,
-      format: "cjs",
-      sourcemap: true,
-    },
-    {
-      file: `dist/${entry.replace("src/", "").replace(".ts", "")}/index.es.js`,
-      format: "es",
-      sourcemap: true,
-    },
-  ],
-  external,
-  plugins: [
-    resolve(),
-    commonjs(),
-    json(),
-    babel({
-      extensions: [".jsx", ".js", ".tsx", "ts"],
-      exclude: "node_modules/**",
-      presets: [["@babel/preset-react", { runtime: "automatic" }]],
-      babelHelpers: "bundled",
-    }),
-    strip({
-      directives: ["use client"],
-    }),
-    postcss(),
-    typescript({
-      tsconfig: "./tsconfig.json",
-      outDir: `dist/${entry.replace("src/", "").replace(".ts", "")}`,
-      declaration: true,
-      declarationDir: `dist/${entry.replace("src/", "").replace(".ts", "")}`,
-    }),
-  ],
-});
+const createConfig = (entry) => {
+  const outputDir =
+    entry === "src/index.ts"
+      ? "dist"
+      : `dist/${entry.replace("src/", "").replace("/index.ts", "")}`;
+
+  return {
+    input: entry,
+    output: [
+      {
+        file: `${outputDir}/index.cjs.js`,
+        format: "cjs",
+        sourcemap: true,
+      },
+      {
+        file: `${outputDir}/index.es.js`,
+        format: "es",
+        sourcemap: true,
+      },
+    ],
+    external,
+    plugins: [
+      resolve(),
+      commonjs(),
+      json(),
+      babel({
+        extensions: [".jsx", ".js", ".tsx", "ts"],
+        exclude: "node_modules/**",
+        presets: [["@babel/preset-react", { runtime: "automatic" }]],
+        babelHelpers: "bundled",
+      }),
+      strip({
+        directives: ["use client"],
+      }),
+      postcss(),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        outDir: outputDir,
+        declaration: true,
+        declarationDir: outputDir,
+      }),
+    ],
+  };
+};
 
 export default entries.map(createConfig);

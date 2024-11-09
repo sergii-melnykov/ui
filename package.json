@@ -8,6 +8,23 @@
   "files": [
     "/dist"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./example": {
+      "import": "./dist/example/index.es.js",
+      "require": "./dist/example/index.cjs.js",
+      "types": "./dist/example/index.d.ts"
+    },
+    "./hook-forms": {
+      "import": "./dist/hook-forms/index.es.js",
+      "require": "./dist/hook-forms/index.cjs.js",
+      "types": "./dist/hook-forms/index.d.ts"
+    }
+  },
   "scripts": {
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
     "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
@@ -20,9 +37,11 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@hookform/resolvers": "^3.9.1",
     "@mui/icons-material": "^6.1.5",
     "@mui/material": "^6.1.5",
-    "react-hook-form": "^7.51.3"
+    "react-hook-form": "^7.51.3",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
