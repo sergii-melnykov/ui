@@ -18,7 +18,6 @@ const entries = [
   "src/index.ts",
   "src/example/index.ts",
   "src/hook-forms/index.ts",
-  "src/mui/index.ts",
 ];
 
 // Generate output and configurations for each entry

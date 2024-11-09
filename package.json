@@ -19,11 +19,6 @@
       "require": "./dist/example/index.cjs.js",
       "types": "./dist/example/index.d.ts"
     },
-    "./mui": {
-      "import": "./dist/mui/index.es.js",
-      "require": "./dist/mui/index.cjs.js",
-      "types": "./dist/mui/index.d.ts"
-    },
     "./hook-forms": {
       "import": "./dist/hook-forms/index.es.js",
       "require": "./dist/hook-forms/index.cjs.js",
@@ -43,8 +38,6 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.9.1",
-    "@mui/icons-material": "^6.1.5",
-    "@mui/material": "^6.1.5",
     "react-hook-form": "^7.51.3",
     "yup": "^1.4.0"
   },
@@ -86,6 +79,8 @@
   },
   "peerDependencies": {
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "@mui/icons-material": "^6.1.5",
+    "@mui/material": "^6.1.5"
   }
 }
