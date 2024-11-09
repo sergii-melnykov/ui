@@ -19,6 +19,11 @@
       "require": "./dist/example/index.cjs.js",
       "types": "./dist/example/index.d.ts"
     },
+    "./mui": {
+      "import": "./dist/mui/index.es.js",
+      "require": "./dist/mui/index.cjs.js",
+      "types": "./dist/mui/index.d.ts"
+    },
     "./hook-forms": {
       "import": "./dist/hook-forms/index.es.js",
       "require": "./dist/hook-forms/index.cjs.js",
