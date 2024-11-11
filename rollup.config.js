@@ -25,6 +25,7 @@ const entries = [
 
 // Generate output and configurations for each entry
 const createConfig = (entry) => {
+  const rootDir = entry.replace("/index.ts", "");
   const outputDir =
     entry === "src/index.ts"
       ? "dist"
@@ -64,6 +65,7 @@ const createConfig = (entry) => {
         outDir: outputDir,
         declaration: true,
         declarationDir: outputDir,
+        rootDir: rootDir,
       }),
     ],
   };

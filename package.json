@@ -43,7 +43,8 @@
   "scripts": {
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
     "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
-    "build": "rollup -c",
+    "clean": "rimraf dist",
+    "build": "npm run clean && rollup -c",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
