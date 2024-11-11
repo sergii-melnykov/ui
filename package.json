@@ -14,10 +14,10 @@
       "require": "./dist/index.cjs.js",
       "types": "./dist/index.d.ts"
     },
-    "./example": {
-      "import": "./dist/example/index.es.js",
-      "require": "./dist/example/index.cjs.js",
-      "types": "./dist/example/index.d.ts"
+    "./hooks": {
+      "import": "./dist/hooks/index.es.js",
+      "require": "./dist/hooks/index.cjs.js",
+      "types": "./dist/hooks/index.d.ts"
     },
     "./hook-forms": {
       "import": "./dist/hook-forms/index.es.js",
@@ -36,7 +36,9 @@
   "license": "ISC",
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
+    "@reduxjs/toolkit": "^2.3.0",
     "react-hook-form": "^7.51.3",
+    "react-redux": "^9.1.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -76,11 +78,11 @@
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.5",
-    "@mui/material": "^6.1.5"
+    "@mui/material": "^6.1.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }

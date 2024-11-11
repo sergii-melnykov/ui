@@ -16,7 +16,7 @@ const external = [
 // Define the entry points
 const entries = [
   "src/index.ts",
-  "src/example/index.ts",
+  "src/hooks/index.ts",
   "src/hook-forms/index.ts",
 ];
 
