@@ -18,6 +18,8 @@ const entries = [
   "src/index.ts",
   "src/hooks/index.ts",
   "src/hook-forms/index.ts",
+  "src/redux/index.ts",
+  "src/redux-toolkit/index.ts",
 ];
 
 // Generate output and configurations for each entry

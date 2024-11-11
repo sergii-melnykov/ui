@@ -23,6 +23,16 @@
       "import": "./dist/hook-forms/index.es.js",
       "require": "./dist/hook-forms/index.cjs.js",
       "types": "./dist/hook-forms/index.d.ts"
+    },
+    "./redux": {
+      "import": "./dist/redux/index.es.js",
+      "require": "./dist/redux/index.cjs.js",
+      "types": "./dist/redux/index.d.ts"
+    },
+    "./redux-toolkit": {
+      "import": "./dist/redux-toolkit/index.es.js",
+      "require": "./dist/redux-toolkit/index.cjs.js",
+      "types": "./dist/redux-toolkit/index.d.ts"
     }
   },
   "scripts": {
