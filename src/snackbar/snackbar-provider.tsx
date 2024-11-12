@@ -3,20 +3,21 @@
 import { useRef } from "react";
 import {
   SnackbarProvider as NotistackProvider,
+  SnackbarProviderProps,
   closeSnackbar,
 } from "notistack";
 // @mui
 import IconButton from "@mui/material/IconButton";
-//
-import Iconify from "../iconify";
+import CloseIcon from "@mui/icons-material/Close";
 
 // ----------------------------------------------------------------------
 
 type Props = {
   children: React.ReactNode;
+  options?: SnackbarProviderProps;
 };
 
-export default function SnackbarProvider({ children }: Props) {
+export default function SnackbarProvider({ children, options }: Props) {
   const notistackRef = useRef<NotistackProvider>(null);
 
   return (
@@ -34,9 +35,10 @@ export default function SnackbarProvider({ children }: Props) {
           onClick={() => closeSnackbar(snackbarId)}
           sx={{ p: 0.5 }}
         >
-          <Iconify width={16} icon="mingcute:close-line" />
+          <CloseIcon width={16} />
         </IconButton>
       )}
+      {...options}
     >
       {children}
     </NotistackProvider>

@@ -8,38 +8,6 @@
   "files": [
     "/dist"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./components": {
-      "import": "./dist/components/index.es.js",
-      "require": "./dist/components/index.cjs.js",
-      "types": "./dist/components/index.d.ts"
-    },
-    "./hooks": {
-      "import": "./dist/hooks/index.es.js",
-      "require": "./dist/hooks/index.cjs.js",
-      "types": "./dist/hooks/index.d.ts"
-    },
-    "./hook-forms": {
-      "import": "./dist/hook-forms/index.es.js",
-      "require": "./dist/hook-forms/index.cjs.js",
-      "types": "./dist/hook-forms/index.d.ts"
-    },
-    "./redux": {
-      "import": "./dist/redux/index.es.js",
-      "require": "./dist/redux/index.cjs.js",
-      "types": "./dist/redux/index.d.ts"
-    },
-    "./redux-toolkit": {
-      "import": "./dist/redux-toolkit/index.es.js",
-      "require": "./dist/redux-toolkit/index.cjs.js",
-      "types": "./dist/redux-toolkit/index.d.ts"
-    }
-  },
   "scripts": {
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
     "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
@@ -102,5 +70,42 @@
     "rollup-plugin-strip": "^1.2.2",
     "storybook": "^8.0.9",
     "typescript": "^5.4.5"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.es.js",
+      "require": "./dist/components/index.cjs.js",
+      "types": "./dist/components/index.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.es.js",
+      "require": "./dist/hooks/index.cjs.js",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    "./hook-forms": {
+      "import": "./dist/hook-forms/index.es.js",
+      "require": "./dist/hook-forms/index.cjs.js",
+      "types": "./dist/hook-forms/index.d.ts"
+    },
+    "./redux": {
+      "import": "./dist/redux/index.es.js",
+      "require": "./dist/redux/index.cjs.js",
+      "types": "./dist/redux/index.d.ts"
+    },
+    "./redux-toolkit": {
+      "import": "./dist/redux-toolkit/index.es.js",
+      "require": "./dist/redux-toolkit/index.cjs.js",
+      "types": "./dist/redux-toolkit/index.d.ts"
+    },
+    "./snackbar": {
+      "import": "./dist/snackbar/index.es.js",
+      "require": "./dist/snackbar/index.cjs.js",
+      "types": "./dist/snackbar/index.d.ts"
+    }
   }
 }

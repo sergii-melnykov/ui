@@ -21,6 +21,7 @@ const entries = [
   "src/hook-forms/index.ts",
   "src/redux/index.ts",
   "src/redux-toolkit/index.ts",
+  "src/snackbar/index.ts",
 ];
 
 // Generate output and configurations for each entry
