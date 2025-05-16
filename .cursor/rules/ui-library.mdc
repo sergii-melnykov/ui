@@ -3,7 +3,6 @@ description:
 globs: */**
 alwaysApply: false
 ---
-
 # Cursor Rules for UI Library Project
 
 # Project Structure
@@ -108,6 +107,93 @@ Note: Templates and Pages are not part of the UI library as they are application
 - Use kebab-case for component file names and directories
 - Use PascalCase for component names in code
 
+# Accessibility Rules
+
+## Core Accessibility Requirements
+
+- All components MUST be fully accessible and follow WCAG 2.1 Level AA guidelines
+- Every component must be keyboard navigable and operable
+- All interactive elements must have proper focus management
+- All form controls must have associated labels
+- All images must have meaningful alt text
+- All color combinations must meet WCAG contrast requirements
+- All components must be screen reader friendly
+
+## ARIA Implementation
+
+- Use semantic HTML elements over ARIA when possible
+- When ARIA is needed:
+  - Use correct ARIA roles and attributes
+  - Ensure all required ARIA attributes are present
+  - Validate ARIA attribute values
+  - Test with screen readers
+- Common ARIA patterns:
+  - `aria-label` for elements without visible text
+  - `aria-labelledby` for elements with associated labels
+  - `aria-describedby` for additional descriptions
+  - `aria-expanded` for expandable elements
+  - `aria-controls` for elements that control others
+  - `aria-live` for dynamic content updates
+
+## Keyboard Navigation
+
+- All interactive elements must be focusable
+- Implement proper tab order
+- Support keyboard shortcuts where appropriate
+- Handle keyboard events (Enter, Space, Escape, etc.)
+- Provide visible focus indicators
+- Support arrow key navigation for complex components
+- Implement skip links for main content
+
+## Screen Reader Support
+
+- Use proper heading hierarchy (h1-h6)
+- Provide meaningful text alternatives
+- Use proper landmark roles
+- Implement proper live regions
+- Test with multiple screen readers
+- Ensure proper reading order
+- Provide proper announcements for dynamic content
+
+## Color and Contrast
+
+- Maintain minimum contrast ratio of 4.5:1 for normal text
+- Maintain minimum contrast ratio of 3:1 for large text
+- Don't rely solely on color to convey information
+- Support high contrast mode
+- Test with color blindness simulators
+- Provide alternative indicators for color-coded information
+
+## Form Accessibility
+
+- All form controls must have visible labels
+- Provide clear error messages
+- Support autocomplete where appropriate
+- Implement proper validation feedback
+- Use proper input types
+- Support required field indicators
+- Provide clear instructions
+
+## Testing Requirements
+
+- Test with keyboard navigation
+- Test with screen readers (NVDA, VoiceOver, JAWS)
+- Test with color contrast checkers
+- Test with accessibility testing tools (axe, Lighthouse)
+- Test with different zoom levels
+- Test with different text sizes
+- Test with different input methods
+
+## Documentation
+
+- Document all accessibility features
+- Provide usage examples
+- Document keyboard shortcuts
+- Document screen reader behavior
+- Document ARIA attributes
+- Document focus management
+- Document testing procedures
+
 # Styling Rules
 
 - Use Tailwind CSS for styling
@@ -118,6 +204,55 @@ Note: Templates and Pages are not part of the UI library as they are application
 - Follow shadcn/ui and Radix UI styling patterns
 - Use proper responsive design patterns
 - Use kebab-case for CSS module files and class names
+
+# Theming Rules
+
+## Theme Provider Requirements
+
+- Implement a global ThemeProvider component that wraps the entire application
+- Support multiple theme modes (light, dark, system)
+- Provide theme switching capabilities
+- Support custom theme overrides
+- Implement proper theme persistence
+- Support dynamic theme updates
+
+## Theme Structure
+
+- Define base theme tokens:
+  - Colors (primary, secondary, accent, background, text)
+  - Typography (font families, sizes, weights)
+  - Spacing (margins, padding, gaps)
+  - Border radius
+  - Shadows
+  - Transitions
+  - Z-index layers
+
+## Component Theming
+
+- All components must be theme-aware
+- Use theme tokens instead of hardcoded values
+- Support theme variants (e.g., primary, secondary, ghost)
+- Implement proper color mode transitions
+- Support RTL theme adjustments
+- Provide theme-aware animations
+
+## Theme Implementation
+
+- Use CSS variables for dynamic theme values
+- Implement proper theme context
+- Support theme inheritance
+- Provide theme utilities and hooks
+- Support theme composition
+- Implement proper theme type definitions
+
+## Theme Testing
+
+- Test all components in different themes
+- Verify theme switching behavior
+- Test theme persistence
+- Verify theme inheritance
+- Test theme composition
+- Verify theme-aware animations
 
 # Testing Rules
 
@@ -214,16 +349,6 @@ Note: Templates and Pages are not part of the UI library as they are application
 - Implement proper rate limiting
 - Use proper authentication
 - Use proper authorization
-
-# Accessibility Rules
-
-- Follow WCAG 2.1 guidelines
-- Implement proper ARIA attributes
-- Use proper semantic HTML
-- Implement proper keyboard navigation
-- Use proper focus management
-- Implement proper screen reader support
-- Use proper color contrast
 
 # Internationalization Rules
 
