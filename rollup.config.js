@@ -14,15 +14,7 @@ const external = [
 ];
 
 // Define the entry points
-const entries = [
-  "src/index.ts",
-  "src/components/index.ts",
-  "src/hooks/index.ts",
-  "src/hook-forms/index.ts",
-  "src/redux/index.ts",
-  "src/redux-toolkit/index.ts",
-  "src/snackbar/index.ts",
-];
+const entries = ["src/index.ts"];
 
 // Generate output and configurations for each entry
 const createConfig = (entry) => {
