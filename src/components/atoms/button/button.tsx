@@ -4,6 +4,15 @@ import { cva } from "class-variance-authority"
 import { cn } from "@/utils/cn"
 import { ButtonProps } from "./button.types"
 
+/**
+ * Button variant styles using class-variance-authority.
+ * Defines the visual styles for different button variants and sizes.
+ *
+ * @example
+ * ```tsx
+ * <Button variant="primary" size="lg">Click me</Button>
+ * ```
+ */
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
@@ -31,6 +40,29 @@ const buttonVariants = cva(
   }
 )
 
+/**
+ * A versatile button component that supports multiple variants, sizes, and can be rendered as a child component.
+ * Built on top of Radix UI's Slot primitive for maximum flexibility.
+ *
+ * @component
+ * @example
+ * ```tsx
+ * // Default button
+ * <Button>Click me</Button>
+ *
+ * // Destructive button with small size
+ * <Button variant="destructive" size="sm">Delete</Button>
+ *
+ * // As a link
+ * <Button variant="link" asChild>
+ *   <a href="/about">About</a>
+ * </Button>
+ * ```
+ *
+ * @param {ButtonProps} props - The component props
+ * @param {React.Ref<HTMLButtonElement>} ref - Forwarded ref
+ * @returns {JSX.Element} A button element
+ */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
