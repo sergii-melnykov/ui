@@ -311,3 +311,164 @@ Note: Templates and Pages are not part of the UI library as they are application
 - Use proper pluralization
 - Use proper RTL support
 - Use kebab-case for translation files and keys
+
+# shadcn/ui Rules
+
+## Component Integration
+
+- Use shadcn/ui as the primary component library foundation
+- Install components using the CLI: `npx shadcn-ui@latest add [component-name]`
+- Keep components in sync with the latest shadcn/ui version
+- Customize components through the `components.json` configuration
+- Follow the shadcn/ui component structure:
+  - `components/ui/` - Base shadcn components
+  - `components/custom/` - Extended/customized components
+
+## Component Customization
+
+- Extend shadcn components through composition rather than direct modification
+- Use the `cn()` utility for conditional class merging
+- Maintain consistent prop patterns across custom components
+- Document any deviations from standard shadcn patterns
+- Use the `asChild` pattern for polymorphic components
+- Implement proper TypeScript types for all customizations
+
+## Theme Configuration
+
+### Base Setup
+
+- Use the `tailwind.config.js` for theme configuration
+- Define color palette in `tailwind.config.js`:
+  ```js
+  theme: {
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        // ... other color definitions
+      }
+    }
+  }
+  ```
+
+### CSS Variables
+
+- Define CSS variables in `globals.css`:
+  ```css
+  @layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
+      /* ... other variables */
+    }
+ 
+    .dark {
+      --background: 222.2 84% 4.9%;
+      --foreground: 210 40% 98%;
+      /* ... dark mode variables */
+    }
+  }
+  ```
+
+## Theme Switching
+
+### Implementation
+
+- Use `next-themes` for theme management
+- Implement theme provider in root layout:
+  ```tsx
+  import { ThemeProvider } from "next-themes"
+  
+  export default function RootLayout({ children }) {
+    return (
+      <html lang="en" suppressHydrationWarning>
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    )
+  }
+  ```
+
+### Theme Switching Component
+
+- Create a reusable theme toggle component:
+  ```tsx
+  import { useTheme } from "next-themes"
+  import { Button } from "@/components/ui/button"
+  import { Moon, Sun } from "lucide-react"
+  
+  export function ThemeToggle() {
+    const { theme, setTheme } = useTheme()
+  
+    return (
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      >
+        <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+        <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        <span className="sr-only">Toggle theme</span>
+      </Button>
+    )
+  }
+  ```
+
+## Best Practices
+
+### Component Usage
+
+- Use shadcn components as building blocks
+- Maintain consistent spacing using the theme's spacing scale
+- Use semantic color tokens instead of direct color values
+- Implement proper dark mode support for all custom components
+- Use the `cn()` utility for conditional styling
+- Follow the shadcn component API patterns
+
+### Theme Customization
+
+- Extend the theme through `tailwind.config.js`
+- Use CSS variables for dynamic theming
+- Maintain consistent naming conventions
+- Document all custom theme extensions
+- Test components in both light and dark modes
+- Ensure proper contrast ratios in both themes
+
+### Performance
+
+- Use CSS variables for theme switching
+- Implement proper transition animations
+- Avoid theme-dependent layout shifts
+- Use proper color contrast in both themes
+- Optimize theme switching performance
+- Implement proper hydration handling
+
+### Accessibility
+
+- Ensure proper color contrast in both themes
+- Maintain consistent focus indicators
+- Test with screen readers in both themes
+- Implement proper ARIA attributes
+- Support system theme preferences
+- Provide manual theme override options
