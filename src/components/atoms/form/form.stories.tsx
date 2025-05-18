@@ -23,7 +23,7 @@ interface FormValues {
 }
 
 const FormExample = () => {
-  const form = useForm<FormValues>({
+  const methods = useForm<FormValues>({
     defaultValues: {
       username: "",
       email: "",
@@ -36,10 +36,10 @@ const FormExample = () => {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+    <Form methods={methods} onSubmit={methods.handleSubmit(onSubmit)}>
+      <div className="space-y-6">
         <FormField
-          control={form.control}
+          control={methods.control}
           name="username"
           rules={{ required: "Username is required" }}
           render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
@@ -54,7 +54,7 @@ const FormExample = () => {
           )}
         />
         <FormField
-          control={form.control}
+          control={methods.control}
           name="email"
           rules={{
             required: "Email is required",
@@ -75,7 +75,7 @@ const FormExample = () => {
           )}
         />
         <FormField
-          control={form.control}
+          control={methods.control}
           name="password"
           rules={{
             required: "Password is required",
@@ -96,7 +96,7 @@ const FormExample = () => {
           )}
         />
         <Button type="submit">Submit</Button>
-      </form>
+      </div>
     </Form>
   )
 }

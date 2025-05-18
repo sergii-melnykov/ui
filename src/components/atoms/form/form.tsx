@@ -7,7 +7,8 @@ import {
   useFormContext,
   type ControllerProps,
   type FieldPath,
-  type FieldValues
+  type FieldValues,
+  type UseFormReturn
 } from "react-hook-form"
 
 import { cn } from "@/utils/index"
@@ -21,14 +22,21 @@ import type {
   FormDescriptionProps,
   FormMessageProps,
   FormFieldContextValue,
-  FormItemContextValue
+  FormItemContextValue,
+  FormProviderProps
 } from "./form.types"
 
 /**
  * Form component that provides form context to all child components.
  * Built on top of react-hook-form's FormProvider.
  */
-const Form = FormProvider
+const Form = ({ children, methods, onSubmit }: FormProviderProps) => {
+  return (
+    <FormProvider {...methods}>
+      <form onSubmit={onSubmit}>{children}</form>
+    </FormProvider>
+  )
+}
 
 const FormFieldContext = React.createContext<FormFieldContextValue>({} as FormFieldContextValue)
 

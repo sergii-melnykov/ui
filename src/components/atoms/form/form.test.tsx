@@ -11,30 +11,28 @@ interface FormValues {
 
 describe("Form", () => {
   const TestForm = () => {
-    const form = useForm<FormValues>({
+    const methods = useForm<FormValues>({
       defaultValues: {
         username: ""
       }
     })
 
     return (
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => {})}>
-          <FormField
-            control={form.control}
-            name="username"
-            render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormDescription>Enter your username</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </form>
+      <Form methods={methods} onSubmit={methods.handleSubmit(() => {})}>
+        <FormField
+          control={methods.control}
+          name="username"
+          render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormDescription>Enter your username</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
       </Form>
     )
   }
@@ -49,30 +47,28 @@ describe("Form", () => {
   it("handles form submission", async () => {
     const onSubmit = jest.fn()
     const TestFormWithSubmit = () => {
-      const form = useForm<FormValues>({
+      const methods = useForm<FormValues>({
         defaultValues: {
           username: ""
         }
       })
 
       return (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <button type="submit">Submit</button>
-          </form>
+        <Form methods={methods} onSubmit={methods.handleSubmit(onSubmit)}>
+          <FormField
+            control={methods.control}
+            name="username"
+            render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <button type="submit">Submit</button>
         </Form>
       )
     }
@@ -87,31 +83,29 @@ describe("Form", () => {
 
   it("displays error message when validation fails", async () => {
     const TestFormWithValidation = () => {
-      const form = useForm<FormValues>({
+      const methods = useForm<FormValues>({
         defaultValues: {
           username: ""
         }
       })
 
       return (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(() => {})}>
-            <FormField
-              control={form.control}
-              name="username"
-              rules={{ required: "Username is required" }}
-              render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <button type="submit">Submit</button>
-          </form>
+        <Form methods={methods} onSubmit={methods.handleSubmit(() => {})}>
+          <FormField
+            control={methods.control}
+            name="username"
+            rules={{ required: "Username is required" }}
+            render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <button type="submit">Submit</button>
         </Form>
       )
     }
@@ -125,30 +119,28 @@ describe("Form", () => {
 
   it("handles form field context correctly", () => {
     const TestFormWithContext = () => {
-      const form = useForm<FormValues>({
+      const methods = useForm<FormValues>({
         defaultValues: {
           username: ""
         }
       })
 
       return (
-        <Form {...form}>
-          <form>
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormDescription>Enter your username</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </form>
+        <Form methods={methods}>
+          <FormField
+            control={methods.control}
+            name="username"
+            render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormDescription>Enter your username</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </Form>
       )
     }

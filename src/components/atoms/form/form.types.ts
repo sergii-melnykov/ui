@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
-import { ControllerProps, FieldPath, FieldValues } from "react-hook-form"
+import { ControllerProps, FieldPath, FieldValues, UseFormReturn } from "react-hook-form"
 
 /**
  * Props interface for the Form component.
@@ -78,4 +78,22 @@ export type FormFieldContextValue<
  */
 export type FormItemContextValue = {
   id: string
+}
+
+/**
+ * Props interface for the FormProvider component.
+ */
+export interface FormProviderProps {
+  /**
+   * The form children
+   */
+  children: React.ReactNode
+  /**
+   * The form methods from react-hook-form
+   */
+  methods: UseFormReturn<any>
+  /**
+   * Optional form submission handler
+   */
+  onSubmit?: VoidFunction
 }
