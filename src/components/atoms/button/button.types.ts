@@ -2,9 +2,6 @@ import * as React from "react"
 import { VariantProps } from "class-variance-authority"
 import { buttonVariants } from "./button"
 
-export type ButtonVariant = "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
-export type ButtonSize = "default" | "sm" | "lg" | "icon"
-
 /**
  * Props interface for the Button component.
  * Extends the native button HTML attributes and adds support for variants and asChild prop.
@@ -28,8 +25,6 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
-  variant?: ButtonVariant
-  size?: ButtonSize
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
   loading?: boolean
