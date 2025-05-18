@@ -3,34 +3,33 @@ import { cva } from "class-variance-authority"
 import { cn } from "@/utils/cn"
 import { TextFieldProps } from "./text-field.types"
 import { Loader2 } from "lucide-react"
+import { Input } from "@/components/ui/input"
 
 /**
  * Text field variant styles using class-variance-authority.
  * Defines the visual styles for different text field variants and sizes.
  */
-const textFieldVariants = cva(
-  "flex w-full items-center rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        default: "border-input",
-        error: "border-destructive focus-visible:ring-destructive"
-      },
-      size: {
-        default: "h-10 px-3",
-        sm: "h-8 px-2 text-xs",
-        lg: "h-12 px-4 text-base"
-      }
+const textFieldVariants = cva("w-full", {
+  variants: {
+    variant: {
+      default: "",
+      error: "border-destructive focus-visible:ring-destructive"
     },
-    defaultVariants: {
-      variant: "default",
-      size: "default"
+    size: {
+      default: "h-10",
+      sm: "h-8 text-xs",
+      lg: "h-12 text-base"
     }
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "default"
   }
-)
+})
 
 /**
  * A versatile text field component that supports multiple variants, sizes, and icons.
+ * Built on top of shadcn/ui's Input component.
  *
  * @component
  * @example
@@ -84,7 +83,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
               {startIcon}
             </div>
           )}
-          <input
+          <Input
             id={id}
             className={cn(
               textFieldVariants({ variant: error ? "error" : variant, size, className }),
