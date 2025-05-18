@@ -198,6 +198,7 @@ Note: Templates and Pages are not part of the UI library as they are application
 
 - Use Tailwind CSS for styling
 - Follow BEM naming convention for custom CSS
+- use rem instead px if needed
 - Use CSS modules for component-specific styles if needed
 - Implement dark mode support
 - Use CSS variables for theming

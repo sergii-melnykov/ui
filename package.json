@@ -20,7 +20,8 @@
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "serve-storybook": "npx serve storybook-static"
   },
   "peerDependencies": {
     "next": "^14.1.0",

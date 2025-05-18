@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { Button } from "./button"
+import { Loader2 } from "lucide-react"
 
 describe("Button", () => {
   it("renders correctly", () => {
@@ -69,5 +70,74 @@ describe("Button", () => {
     )
     expect(screen.getByRole("link")).toBeInTheDocument()
     expect(screen.getByRole("link")).toHaveAttribute("href", "/")
+  })
+
+  it("renders start icon correctly", () => {
+    const StartIcon = () => <span data-testid="start-icon">★</span>
+    render(<Button startIcon={<StartIcon />}>With Start Icon</Button>)
+
+    expect(screen.getByTestId("start-icon")).toBeInTheDocument()
+    expect(screen.getByRole("button")).toHaveTextContent("With Start Icon")
+  })
+
+  it("renders end icon correctly", () => {
+    const EndIcon = () => <span data-testid="end-icon">★</span>
+    render(<Button endIcon={<EndIcon />}>With End Icon</Button>)
+
+    expect(screen.getByTestId("end-icon")).toBeInTheDocument()
+    expect(screen.getByRole("button")).toHaveTextContent("With End Icon")
+  })
+
+  it("renders both start and end icons correctly", () => {
+    const StartIcon = () => <span data-testid="start-icon">★</span>
+    const EndIcon = () => <span data-testid="end-icon">★</span>
+
+    render(
+      <Button startIcon={<StartIcon />} endIcon={<EndIcon />}>
+        With Both Icons
+      </Button>
+    )
+
+    expect(screen.getByTestId("start-icon")).toBeInTheDocument()
+    expect(screen.getByTestId("end-icon")).toBeInTheDocument()
+    expect(screen.getByRole("button")).toHaveTextContent("With Both Icons")
+  })
+
+  it("shows loading state correctly", () => {
+    render(<Button loading>Loading</Button>)
+
+    const button = screen.getByRole("button")
+    const spinner = screen.getByRole("status")
+
+    expect(button).toBeDisabled()
+    expect(button).toHaveTextContent("Loading")
+    expect(spinner).toHaveAttribute("aria-label", "Loading")
+  })
+
+  it("hides icons when in loading state", () => {
+    const StartIcon = () => <span data-testid="start-icon">★</span>
+    const EndIcon = () => <span data-testid="end-icon">★</span>
+
+    render(
+      <Button startIcon={<StartIcon />} endIcon={<EndIcon />} loading>
+        Loading
+      </Button>
+    )
+
+    expect(screen.queryByTestId("start-icon")).not.toBeInTheDocument()
+    expect(screen.queryByTestId("end-icon")).not.toBeInTheDocument()
+    expect(screen.getByRole("status")).toHaveAttribute("aria-label", "Loading")
+  })
+
+  it("prevents click events when loading", async () => {
+    const handleClick = jest.fn()
+    render(
+      <Button onClick={handleClick} loading>
+        Loading
+      </Button>
+    )
+
+    await userEvent.click(screen.getByRole("button"))
+    expect(handleClick).not.toHaveBeenCalled()
   })
 })

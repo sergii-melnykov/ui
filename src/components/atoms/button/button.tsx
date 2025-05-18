@@ -3,6 +3,7 @@ import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority"
 import { cn } from "@/utils/cn"
 import { ButtonProps } from "./button.types"
+import { Loader2 } from "lucide-react"
 
 /**
  * Button variant styles using class-variance-authority.
@@ -57,6 +58,13 @@ const buttonVariants = cva(
  * <Button variant="link" asChild>
  *   <a href="/about">About</a>
  * </Button>
+ *
+ * // With icons
+ * <Button startIcon={<Icon />}>With Start Icon</Button>
+ * <Button endIcon={<Icon />}>With End Icon</Button>
+ *
+ * // Loading state
+ * <Button loading>Loading</Button>
  * ```
  *
  * @param {ButtonProps} props - The component props
@@ -64,10 +72,50 @@ const buttonVariants = cva(
  * @returns {JSX.Element} A button element
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      startIcon,
+      endIcon,
+      loading = false,
+      disabled,
+      children,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : "button"
+
+    if (asChild) {
+      return (
+        <Comp
+          className={cn(buttonVariants({ variant, size, className }))}
+          ref={ref}
+          disabled={disabled || loading}
+          {...props}
+        >
+          {children}
+        </Comp>
+      )
+    }
+
     return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+      <Comp
+        className={cn(buttonVariants({ variant, size, className }))}
+        ref={ref}
+        disabled={disabled || loading}
+        {...props}
+      >
+        {loading && (
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" role="status" aria-label="Loading" />
+        )}
+        {!loading && startIcon && <span className="mr-2">{startIcon}</span>}
+        {children}
+        {!loading && endIcon && <span className="ml-2">{endIcon}</span>}
+      </Comp>
     )
   }
 )
