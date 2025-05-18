@@ -14,9 +14,15 @@ import { buttonVariants } from "./button"
  * @property {string} [variant] - The visual style variant of the button.
  * @property {string} [size] - The size variant of the button.
  * @property {string} [className] - Additional CSS classes to apply to the button.
+ * @property {React.ReactNode} [startIcon] - Icon to display before the button text.
+ * @property {React.ReactNode} [endIcon] - Icon to display after the button text.
+ * @property {boolean} [loading] - Whether the button is in a loading state.
  */
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  startIcon?: React.ReactNode
+  endIcon?: React.ReactNode
+  loading?: boolean
 }
