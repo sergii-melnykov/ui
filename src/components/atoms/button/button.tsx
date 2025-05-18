@@ -8,6 +8,7 @@ import { Loader2 } from "lucide-react"
 /**
  * Button variant styles using class-variance-authority.
  * Defines the visual styles for different button variants and sizes.
+ * Follows WCAG 2.1 Level AA guidelines for accessibility.
  *
  * @example
  * ```tsx
@@ -15,7 +16,7 @@ import { Loader2 } from "lucide-react"
  * ```
  */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -44,6 +45,7 @@ const buttonVariants = cva(
 /**
  * A versatile button component that supports multiple variants, sizes, and can be rendered as a child component.
  * Built on top of Radix UI's Slot primitive for maximum flexibility.
+ * Implements proper accessibility features and follows WCAG 2.1 Level AA guidelines.
  *
  * @component
  * @example
@@ -83,18 +85,35 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       loading = false,
       disabled,
       children,
+      type = "button",
+      "aria-label": ariaLabel,
       ...props
     },
     ref
   ) => {
     const Comp = asChild ? Slot : "button"
+    const isDisabled = disabled || loading
+    const buttonAriaLabel = ariaLabel || (typeof children === "string" ? children : undefined)
+
+    // Handle keyboard interaction
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault()
+        if (!isDisabled && props.onClick) {
+          props.onClick(event as unknown as React.MouseEvent<HTMLButtonElement>)
+        }
+      }
+    }
 
     if (asChild) {
       return (
         <Comp
           className={cn(buttonVariants({ variant, size, className }))}
           ref={ref}
-          disabled={disabled || loading}
+          disabled={isDisabled}
+          type={type}
+          aria-label={buttonAriaLabel}
+          aria-disabled={isDisabled}
           {...props}
         >
           {children}
@@ -106,15 +125,32 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        disabled={disabled || loading}
+        disabled={isDisabled}
+        type={type}
+        aria-label={buttonAriaLabel}
+        aria-disabled={isDisabled}
+        onKeyDown={handleKeyDown}
         {...props}
       >
         {loading && (
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" role="status" aria-label="Loading" />
+          <Loader2
+            className="mr-2 h-4 w-4 animate-spin"
+            role="status"
+            aria-label="Loading"
+            aria-hidden="true"
+          />
         )}
-        {!loading && startIcon && <span className="mr-2">{startIcon}</span>}
+        {!loading && startIcon && (
+          <span className="mr-2" aria-hidden="true">
+            {startIcon}
+          </span>
+        )}
         {children}
-        {!loading && endIcon && <span className="ml-2">{endIcon}</span>}
+        {!loading && endIcon && (
+          <span className="ml-2" aria-hidden="true">
+            {endIcon}
+          </span>
+        )}
       </Comp>
     )
   }

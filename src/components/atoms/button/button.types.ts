@@ -5,6 +5,7 @@ import { buttonVariants } from "./button"
 /**
  * Props interface for the Button component.
  * Extends the native button HTML attributes and adds support for variants and asChild prop.
+ * Implements proper accessibility features and follows WCAG 2.1 Level AA guidelines.
  *
  * @interface ButtonProps
  * @extends {React.ButtonHTMLAttributes<HTMLButtonElement>}
@@ -17,6 +18,8 @@ import { buttonVariants } from "./button"
  * @property {React.ReactNode} [startIcon] - Icon to display before the button text.
  * @property {React.ReactNode} [endIcon] - Icon to display after the button text.
  * @property {boolean} [loading] - Whether the button is in a loading state.
+ * @property {string} [type] - The type of button (button, submit, reset). Defaults to "button".
+ * @property {string} [aria-label] - Accessible label for the button. Falls back to button text if not provided.
  */
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -25,4 +28,6 @@ export interface ButtonProps
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
   loading?: boolean
+  type?: "button" | "submit" | "reset"
+  "aria-label"?: string
 }
