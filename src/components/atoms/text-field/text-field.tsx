@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority"
 import { cn } from "@/utils/cn"
 import { TextFieldProps } from "./text-field.types"
 import { Loader2 } from "lucide-react"
-import { Input } from "@/components/ui/input"
+import { Input } from "../input"
 
 /**
  * Text field variant styles using class-variance-authority.

@@ -1,8 +1,8 @@
 // Export atoms
-export * from './atoms';
+export * from "./atoms"
 
 // Export molecules
-export * from './molecules';
+export * from "./molecules"
 
 // Export organisms
-export * from './organisms'; 
+export * from "./organisms"
