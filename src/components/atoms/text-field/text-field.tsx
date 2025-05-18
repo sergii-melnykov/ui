@@ -4,6 +4,7 @@ import { cn } from "@/utils/cn"
 import { TextFieldProps } from "./text-field.types"
 import { Loader2 } from "lucide-react"
 import { Input } from "../input"
+import { Label } from "../label"
 
 /**
  * Text field variant styles using class-variance-authority.
@@ -69,14 +70,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 
     return (
       <div className="w-full space-y-2">
-        {label && (
-          <label
-            htmlFor={id}
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            {label}
-          </label>
-        )}
+        {label && <Label htmlFor={id}>{label}</Label>}
         <div className="relative">
           {startIcon && (
             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">

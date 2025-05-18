@@ -8,9 +8,8 @@ describe("Avatar", () => {
         <AvatarImage src="/test.jpg" alt="Test avatar" />
       </Avatar>
     )
-    const image = screen.getByRole("img")
+    const image = screen.getByAltText("Test avatar")
     expect(image).toHaveAttribute("src", "/test.jpg")
-    expect(image).toHaveAttribute("alt", "Test avatar")
   })
 
   it("renders avatar with fallback", () => {
@@ -28,7 +27,7 @@ describe("Avatar", () => {
         <AvatarFallback>JD</AvatarFallback>
       </Avatar>
     )
-    const avatar = screen.getByRole("img", { hidden: true })
-    expect(avatar.parentElement).toHaveClass("custom-class")
+    const avatar = screen.getByText("JD").closest("span")
+    expect(avatar).toHaveClass("custom-class")
   })
 })
