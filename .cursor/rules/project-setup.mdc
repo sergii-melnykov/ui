@@ -323,7 +323,7 @@ Note: Templates and Pages are not part of the UI library as they are application
 - Customize components through the `components.json` configuration
 - Follow the shadcn/ui component structure:
   - `components/ui/` - Base shadcn components
-  - `components/custom/` - Extended/customized components
+- import { cn } from "@/utils"
 
 ## Component Customization
 
