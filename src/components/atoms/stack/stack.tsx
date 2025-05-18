@@ -31,6 +31,11 @@
  *   <div>Center</div>
  *   <div>Right</div>
  * </Stack>
+ *
+ * // Stack with custom dimensions
+ * <Stack width="100%" height="200px">
+ *   <div>Full width, fixed height stack</div>
+ * </Stack>
  * ```
  */
 import * as React from "react"
@@ -94,6 +99,20 @@ export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default undefined
    */
   align?: "start" | "end" | "center" | "stretch" | "baseline"
+  /**
+   * The width of the stack container.
+   * Can be any valid CSS width value (e.g., "100%", "200px", "50vw").
+   *
+   * @default undefined
+   */
+  width?: string
+  /**
+   * The height of the stack container.
+   * Can be any valid CSS height value (e.g., "100%", "200px", "50vh").
+   *
+   * @default undefined
+   */
+  height?: string
 }
 
 const Stack = React.forwardRef<HTMLDivElement, StackProps>(
@@ -106,6 +125,9 @@ const Stack = React.forwardRef<HTMLDivElement, StackProps>(
       center = false,
       justify,
       align,
+      width,
+      height,
+      style,
       ...props
     },
     ref
@@ -150,6 +172,11 @@ const Stack = React.forwardRef<HTMLDivElement, StackProps>(
           },
           className
         )}
+        style={{
+          width,
+          height,
+          ...style
+        }}
         {...props}
       />
     )

@@ -2,6 +2,9 @@ import * as React from "react"
 import { VariantProps } from "class-variance-authority"
 import { buttonVariants } from "./button"
 
+export type ButtonVariant = "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
+export type ButtonSize = "default" | "sm" | "lg" | "icon"
+
 /**
  * Props interface for the Button component.
  * Extends the native button HTML attributes and adds support for variants and asChild prop.
@@ -12,8 +15,8 @@ import { buttonVariants } from "./button"
  * @extends {VariantProps<typeof buttonVariants>}
  *
  * @property {boolean} [asChild] - When true, renders the button as a child component using Radix UI's Slot.
- * @property {string} [variant] - The visual style variant of the button.
- * @property {string} [size] - The size variant of the button.
+ * @property {ButtonVariant} [variant] - The visual style variant of the button.
+ * @property {ButtonSize} [size] - The size variant of the button.
  * @property {string} [className] - Additional CSS classes to apply to the button.
  * @property {React.ReactNode} [startIcon] - Icon to display before the button text.
  * @property {React.ReactNode} [endIcon] - Icon to display after the button text.
@@ -25,6 +28,8 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  variant?: ButtonVariant
+  size?: ButtonSize
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
   loading?: boolean

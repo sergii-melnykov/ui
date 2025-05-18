@@ -13,6 +13,10 @@
  *
  * // With custom className
  * <Box className="bg-primary text-white p-4">Styled content</Box>
+ *
+ * // With custom dimensions
+ * <Box width="100px" height="200px">Fixed size content</Box>
+ * <Box width="50%" height="auto">Responsive content</Box>
  * ```
  */
 import * as React from "react"
@@ -29,6 +33,8 @@ type BoxComponent =
   | "footer"
   | "nav"
 
+type DimensionValue = string | number
+
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The HTML element to render the Box as.
@@ -37,11 +43,29 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default "div"
    */
   as?: BoxComponent
+
+  /**
+   * The width of the Box component.
+   * Can be a number (interpreted as pixels) or a string (e.g., "100%", "50px", "10rem").
+   */
+  width?: DimensionValue
+
+  /**
+   * The height of the Box component.
+   * Can be a number (interpreted as pixels) or a string (e.g., "100%", "50px", "10rem").
+   */
+  height?: DimensionValue
 }
 
 const Box = React.forwardRef<HTMLDivElement, BoxProps>(
-  ({ as: Component = "div", className, ...props }, ref) => {
-    return <Component ref={ref} className={cn(className)} {...props} />
+  ({ as: Component = "div", className, width, height, style, ...props }, ref) => {
+    const dimensionStyles = {
+      width: typeof width === "number" ? `${width}px` : width,
+      height: typeof height === "number" ? `${height}px` : height,
+      ...style
+    }
+
+    return <Component ref={ref} className={cn(className)} style={dimensionStyles} {...props} />
   }
 )
 
