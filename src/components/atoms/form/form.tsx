@@ -3,7 +3,6 @@ import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import {
   Controller,
-  FormProvider,
   useFormContext,
   type ControllerProps,
   type FieldPath,
@@ -26,11 +25,13 @@ import type {
   FormProviderProps
 } from "./form.types"
 
+const FormContext = React.createContext<UseFormReturn | null>(null)
+
 /**
  * Form component that provides form context to all child components.
- * Built on top of react-hook-form's FormProvider.
+ * Built on top of react-hook-form's useFormContext.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-form--docs
+ * @url https://segiimelnykov.github.io/ui/?path=/docs-atoms-form--docs
  *
  * @example
  * ```tsx
@@ -44,9 +45,9 @@ import type {
  */
 const Form = ({ children, methods, onSubmit }: FormProviderProps) => {
   return (
-    <FormProvider {...methods}>
+    <FormContext.Provider value={methods}>
       <form onSubmit={onSubmit}>{children}</form>
-    </FormProvider>
+    </FormContext.Provider>
   )
 }
 
@@ -76,8 +77,13 @@ const FormField = <
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
   const itemContext = React.useContext(FormItemContext)
-  const { getFieldState, formState } = useFormContext()
+  const formContext = React.useContext(FormContext)
 
+  if (!formContext) {
+    throw new Error("useFormField should be used within <Form>")
+  }
+
+  const { getFieldState, formState } = formContext
   const fieldState = getFieldState(fieldContext.name, formState)
 
   if (!fieldContext) {
