@@ -104,5 +104,6 @@
     "url": "https://github.com/SegiiMelnykov/ui/issues"
   },
   "homepage": "https://github.com/SegiiMelnykov/ui#readme",
-  "description": "A modern UI library for Next.js applications"
+  "description": "A modern UI library for Next.js applications",
+  "storybook": "https://segiimelnykov.github.io/ui"
 }

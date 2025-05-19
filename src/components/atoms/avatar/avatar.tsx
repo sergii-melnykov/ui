@@ -7,6 +7,8 @@ import type { AvatarProps, AvatarImageProps, AvatarFallbackProps } from "./avata
  * Avatar component that displays a user's profile picture or fallback.
  * Built on top of Radix UI's Avatar primitive.
  *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-avatar--docs
+ *
  * @example
  * ```tsx
  * <Avatar>
