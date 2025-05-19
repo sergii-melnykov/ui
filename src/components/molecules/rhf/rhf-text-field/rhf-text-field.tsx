@@ -12,7 +12,8 @@ import {
   FormItem,
   FormMessage,
   FormLabel,
-  FormDescription
+  FormDescription,
+  FormField
 } from "@/components/atoms/form"
 import { cn } from "@/utils/cn"
 import { type RHFTextFieldProps } from "./rhf-text-field.types"
@@ -25,21 +26,12 @@ import { type RHFTextFieldProps } from "./rhf-text-field.types"
  *
  * @url https://segiimelnykov.github.io/ui/?path=/docs/molecules-rhf-text-field--docs
  *
- * @example
+ * * @example
  * ```tsx
- * <RHFTextField
- *   name="email"
- *   label="Email"
- *   type="email"
- *   required
- *   rules={{
- *     required: "Email is required",
- *     pattern: {
- *       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
- *       message: "Invalid email address"
- *     }
- *   }}
- * />
+ * <Form>
+ *   <RHFTextField name="name" label="Name" />
+ *   <RHFTextField name="email" label="Email" />
+ * </Form>
  * ```
  */
 export function RHFTextField<
@@ -64,7 +56,7 @@ export function RHFTextField<
   const { control } = useFormContext<TFieldValues>()
 
   return (
-    <Controller
+    <FormField
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (

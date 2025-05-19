@@ -29,9 +29,9 @@ const meta: Meta<typeof RHFTextField> = {
 
       return (
         <FormProvider {...methods}>
-          <div className="w-[350px]">
+          <form className="w-[350px]">
             <Story />
-          </div>
+          </form>
         </FormProvider>
       )
     }

@@ -11,7 +11,11 @@ const FormWrapper = ({
   defaultValues?: FieldValues
 }) => {
   const methods = useForm({ defaultValues })
-  return <FormProvider {...methods}>{children}</FormProvider>
+  return (
+    <FormProvider {...methods}>
+      <form>{children}</form>
+    </FormProvider>
+  )
 }
 
 const meta: Meta<typeof RHFTextarea> = {

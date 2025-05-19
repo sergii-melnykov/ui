@@ -1,12 +1,13 @@
 import * as React from "react"
-import { useFormContext, Controller, type FieldValues, type FieldPath } from "react-hook-form"
+import { useFormContext, type FieldValues, type FieldPath } from "react-hook-form"
 import { Textarea } from "@/components/atoms/textarea"
 import {
   FormControl,
   FormItem,
   FormMessage,
   FormLabel,
-  FormDescription
+  FormDescription,
+  FormField
 } from "@/components/atoms/form"
 import { cn } from "@/utils/cn"
 import { type RHFTextareaProps } from "./rhf-textarea.types"
@@ -21,18 +22,9 @@ import { type RHFTextareaProps } from "./rhf-textarea.types"
  *
  * @example
  * ```tsx
- * <RHFTextarea
- *   name="description"
- *   label="Description"
- *   required
- *   rules={{
- *     required: "Description is required",
- *     minLength: {
- *       value: 10,
- *       message: "Description must be at least 10 characters"
- *     }
- *   }}
- * />
+ * <Form>
+ *   <RHFTextarea name="description" label="Description" />
+ * </Form>
  * ```
  */
 export function RHFTextarea<
@@ -57,7 +49,7 @@ export function RHFTextarea<
   const { control } = useFormContext<TFieldValues>()
 
   return (
-    <Controller
+    <FormField
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
