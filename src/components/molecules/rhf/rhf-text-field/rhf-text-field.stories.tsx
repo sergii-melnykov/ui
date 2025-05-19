@@ -3,6 +3,7 @@ import { RHFTextField } from "./rhf-text-field"
 import { FormProvider, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
+import { Button } from "@/components/atoms"
 
 const meta: Meta<typeof RHFTextField> = {
   title: "Molecules/RHF/RHFTextField",
@@ -27,10 +28,15 @@ const meta: Meta<typeof RHFTextField> = {
         }
       })
 
+      const onSubmit = (data: any) => {
+        console.log(data)
+      }
+
       return (
         <FormProvider {...methods}>
-          <form className="w-[350px]">
+          <form className="w-[350px] flex flex-col gap-4" onSubmit={methods.handleSubmit(onSubmit)}>
             <Story />
+            <Button type="submit">Submit</Button>
           </form>
         </FormProvider>
       )
@@ -120,9 +126,9 @@ export const WithError: Story = {
     placeholder: "This will show an error"
   },
   play: async ({ canvasElement }) => {
-    const form = canvasElement.querySelector("form")
-    if (form) {
-      form.dispatchEvent(new Event("submit"))
+    const button = canvasElement.querySelector("submit")
+    if (button) {
+      button.dispatchEvent(new Event("click"))
     }
   }
 }

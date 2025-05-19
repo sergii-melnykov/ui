@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { FormProvider, useForm, type FieldValues } from "react-hook-form"
 import { RHFTextarea } from "./rhf-textarea"
+import { Button } from "@/components/atoms"
 
 // Wrapper component to provide form context
 const FormWrapper = ({
@@ -11,9 +12,15 @@ const FormWrapper = ({
   defaultValues?: FieldValues
 }) => {
   const methods = useForm({ defaultValues })
+  const onSubmit = (data: FieldValues) => {
+    console.log(data)
+  }
   return (
     <FormProvider {...methods}>
-      <form>{children}</form>
+      <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+        {children}
+        <Button type="submit">Submit</Button>
+      </form>
     </FormProvider>
   )
 }
