@@ -20,6 +20,13 @@ export interface PageLoaderProps {
   color?: "primary" | "secondary" | "accent" | "muted" | "destructive" | string
 }
 
+/**
+ * PageLoader component for displaying a loading indicator.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-page-loader--docs
+ *
+ */
+
 export function PageLoader({
   className,
   size = "default",

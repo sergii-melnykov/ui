@@ -3,6 +3,19 @@ import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
 import { cn } from "@/utils"
 
+/**
+ * Dialog component for creating accessible dialogs with overlay and content.
+ * Built on top of Radix UI's Dialog primitive.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-dialog--docs
+ *
+ * @example
+ * ```tsx
+ * <Dialog>
+ *   <DialogTrigger>Open Dialog</DialogTrigger>
+ *   <DialogContent>Dialog Content</DialogContent>
+ * </Dialog>
+ */
 const Dialog = DialogPrimitive.Root
 
 const DialogTrigger = DialogPrimitive.Trigger

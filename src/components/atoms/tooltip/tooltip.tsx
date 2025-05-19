@@ -3,6 +3,22 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 
 import { cn } from "@/utils/index"
 
+/**
+ * TooltipProvider component for creating accessible tooltips.
+ * Built on top of Radix UI's Tooltip primitive.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-tooltip--docs
+ *
+ * @example
+ * ```tsx
+ * <TooltipProvider>
+ *   <Tooltip>
+ *     <TooltipTrigger>Hover me</TooltipTrigger>
+ *     <TooltipContent>Tooltip content</TooltipContent>
+ *   </Tooltip>
+ * </TooltipProvider>
+ * ```
+ */
 const TooltipProvider = TooltipPrimitive.Provider
 
 const Tooltip = TooltipPrimitive.Root

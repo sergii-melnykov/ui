@@ -38,6 +38,13 @@ export interface TypographyProps
   as?: React.ElementType
 }
 
+/**
+ * Typography component for creating accessible text elements.
+ * Built on top of shadcn/ui's Typography component.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-typography--docs
+ *
+ */
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
   ({ className, variant, align, as: Component = "p", ...props }, ref) => {
     return (

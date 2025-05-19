@@ -29,6 +29,18 @@ import type {
 /**
  * Form component that provides form context to all child components.
  * Built on top of react-hook-form's FormProvider.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-form--docs
+ *
+ * @example
+ * ```tsx
+ * <Form>
+ *   <FormField>
+ *     <FormItem>
+ *       <FormLabel>Name</FormLabel>
+ *     </FormItem>
+ *   </FormField>
+ * </Form>
  */
 const Form = ({ children, methods, onSubmit }: FormProviderProps) => {
   return (

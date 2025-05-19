@@ -2,6 +2,8 @@
  * Card is a flexible container component that can be used to group related content and actions.
  * It provides a consistent visual style with a subtle border, shadow, and rounded corners.
  *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/molecules-card--docs
+ *
  * @example
  * ```tsx
  * // Basic card

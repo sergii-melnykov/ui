@@ -5,6 +5,24 @@ import { Check, ChevronRight, Circle } from "lucide-react"
 import { dropdownMenuTriggerStyle } from "./dropdown-menu.variants"
 import { cn } from "@/utils"
 
+/**
+ * DropdownMenu component for creating accessible dropdown menus.
+ * Built on top of Radix UI's DropdownMenu primitive.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/organisms-dropdown-menu--docs
+ *
+ * @example
+ * ```tsx
+ * <DropdownMenu>
+ *   <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
+ *   <DropdownMenuContent>
+ *     <DropdownMenuItem>Item 1</DropdownMenuItem>
+ *     <DropdownMenuItem>Item 2</DropdownMenuItem>
+ *     <DropdownMenuItem>Item 3</DropdownMenuItem>
+ *   </DropdownMenuContent>
+ * </DropdownMenu>
+ * ```
+ */
 const DropdownMenu = DropdownMenuPrimitive.Root
 
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger

@@ -17,6 +17,8 @@ import { type RHFTextareaProps } from "./rhf-textarea.types"
  * A textarea component that integrates with React Hook Form.
  * Provides form validation, error handling, and accessibility features.
  *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/molecules-rhf-textarea--docs
+ *
  * @example
  * ```tsx
  * <RHFTextarea

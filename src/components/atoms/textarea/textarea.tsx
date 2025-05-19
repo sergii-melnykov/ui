@@ -2,6 +2,17 @@ import * as React from "react"
 import { cn } from "@/utils/index"
 import { TextareaProps } from "./textarea.types"
 
+/**
+ * Textarea component for creating accessible text areas.
+ * Built on top of shadcn/ui's Textarea component.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-textarea--docs
+ *
+ * @example
+ * ```tsx
+ * <Textarea placeholder="Enter text" />
+ * ```
+ */
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, autoResize = false, ...props }, ref) => {
     const internalRef = React.useRef<HTMLTextAreaElement>(null)

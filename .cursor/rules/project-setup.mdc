@@ -187,7 +187,21 @@ Note: Templates and Pages are not part of the UI library as they are application
 ## Documentation
 
 - Document all accessibility features
-- Add link to a component using this host: https://segiimelnykov.github.io/ui
+- Add link to a component using this hosting https://segiimelnykov.github.io/ui like:
+/**
+ * Avatar component that displays a user's profile picture or fallback.
+ * Built on top of Radix UI's Avatar primitive.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-avatar--docs
+ *
+ * @example
+ * ```tsx
+ * <Avatar>
+ *   <AvatarImage src="/path/to/image.jpg" alt="User avatar" />
+ *   <AvatarFallback>JD</AvatarFallback>
+ * </Avatar>
+ * ```
+ */
 - Provide usage examples
 - Document keyboard shortcuts
 - Document screen reader behavior

@@ -7,6 +7,8 @@ import type { BadgeProps } from "./badge.types"
  * Badge component for displaying status, counts, or labels.
  * Supports various variants, sizes, and optional icons.
  *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-badge--docs
+ *
  * @example
  * ```tsx
  * <Badge variant="success">Active</Badge>

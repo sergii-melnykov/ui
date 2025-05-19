@@ -3,6 +3,8 @@
  * It's a polymorphic component that can render as different HTML elements while maintaining
  * consistent styling and behavior.
  *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-box--docs
+ *
  * @example
  * ```tsx
  * // Basic usage

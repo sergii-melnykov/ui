@@ -155,6 +155,31 @@ const SidebarProvider = React.forwardRef<
 )
 SidebarProvider.displayName = "SidebarProvider"
 
+/**
+ * A flexible sidebar component that supports various layouts and configurations.
+ * The sidebar can be positioned on either side of the screen and supports different
+ * visual styles and collapse behaviors.
+ *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/organisms-sidebar--docs
+ *
+ * @example
+ * ```tsx
+ * <Sidebar>
+ *   <SidebarHeader>
+ *     <SidebarTitle>Dashboard</SidebarTitle>
+ *   </SidebarHeader>
+ *   <SidebarContent>
+ *     <SidebarMenu>
+ *       <SidebarMenuItem icon={<HomeIcon />}>Home</SidebarMenuItem>
+ *       <SidebarMenuItem icon={<SettingsIcon />}>Settings</SidebarMenuItem>
+ *     </SidebarMenu>
+ *   </SidebarContent>
+ *   <SidebarFooter>
+ *     <SidebarTrigger />
+ *   </SidebarFooter>
+ * </Sidebar>
+ * ```
+ */
 const Sidebar = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {

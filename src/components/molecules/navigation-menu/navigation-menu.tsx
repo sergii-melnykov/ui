@@ -18,6 +18,8 @@ import type {
  * NavigationMenu component for creating accessible navigation menus with dropdowns.
  * Built on top of Radix UI's NavigationMenu primitive.
  *
+ * @url https://segiimelnykov.github.io/ui/?path=/docs/molecules-navigation-menu--docs
+ *
  * @example
  * ```tsx
  * <NavigationMenu>
