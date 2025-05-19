@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { useForm, type ControllerRenderProps } from "react-hook-form"
 import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "."
-import { Input } from "../input"
-import { Button } from "../button"
+import { Button, Input } from "@/components/atoms"
 
 const meta: Meta<typeof Form> = {
   title: "Atoms/Form",
@@ -36,8 +35,8 @@ const FormExample = () => {
   }
 
   return (
-    <Form methods={methods} onSubmit={methods.handleSubmit(onSubmit)}>
-      <div className="space-y-6">
+    <Form {...methods}>
+      <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
         <FormField
           control={methods.control}
           name="username"
@@ -96,7 +95,7 @@ const FormExample = () => {
           )}
         />
         <Button type="submit">Submit</Button>
-      </div>
+      </form>
     </Form>
   )
 }

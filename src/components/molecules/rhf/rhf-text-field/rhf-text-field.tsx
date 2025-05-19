@@ -8,7 +8,7 @@ import {
   FormLabel,
   FormDescription,
   FormField
-} from "@/components/atoms/form"
+} from "@/components/molecules/rhf/form"
 import { cn } from "@/utils/cn"
 import { type RHFTextFieldProps } from "./rhf-text-field.types"
 
