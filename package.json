@@ -12,19 +12,19 @@
       "require": "./dist/index.js"
     },
     "./atoms": {
-      "types": "./dist/atoms.d.ts",
-      "import": "./dist/atoms.mjs",
-      "require": "./dist/atoms.js"
+      "types": "./dist/components/atoms.d.ts",
+      "import": "./dist/components/atoms.mjs",
+      "require": "./dist/components/atoms.js"
     },
     "./molecules": {
-      "types": "./dist/molecules.d.ts",
-      "import": "./dist/molecules.mjs",
-      "require": "./dist/molecules.js"
+      "types": "./dist/components/molecules.d.ts",
+      "import": "./dist/components/molecules.mjs",
+      "require": "./dist/components/molecules.js"
     },
     "./organisms": {
-      "types": "./dist/organisms.d.ts",
-      "import": "./dist/organisms.mjs",
-      "require": "./dist/organisms.js"
+      "types": "./dist/components/organisms.d.ts",
+      "import": "./dist/components/organisms.mjs",
+      "require": "./dist/components/organisms.js"
     },
     "./hooks": {
       "types": "./dist/hooks.d.ts",

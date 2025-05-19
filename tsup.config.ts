@@ -2,6 +2,7 @@ import { defineConfig } from "tsup"
 
 export default defineConfig({
   entry: [
+    "src/index.ts",
     "src/components/atoms/index.ts",
     "src/components/molecules/index.ts",
     "src/components/organisms/index.ts",
