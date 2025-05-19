@@ -21,6 +21,7 @@
     "func-names": "off",
     "react/no-this-in-sfc": "off",
     "no-case-declarations": "off",
+    "arrow-body-style": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
