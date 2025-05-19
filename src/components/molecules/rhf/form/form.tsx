@@ -5,25 +5,17 @@ import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import {
   Controller,
+  FormProvider,
   useFormContext,
   type ControllerProps,
   type FieldPath,
-  type FieldValues,
-  type UseFormReturn
+  type FieldValues
 } from "react-hook-form"
 
 import { cn } from "@/utils/cn"
 import { Label } from "@/components/atoms/label"
 
-type FormProps<T extends FieldValues> = {
-  form: UseFormReturn<T>
-  children: React.ReactNode
-  onSubmit?: (data: T) => void
-}
-
-const Form = <T extends FieldValues>({ form, children, onSubmit }: FormProps<T>) => {
-  return <form onSubmit={form.handleSubmit(onSubmit || (() => {}))}>{children}</form>
-}
+const Form = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
