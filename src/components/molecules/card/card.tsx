@@ -2,7 +2,14 @@
  * Card is a flexible container component that can be used to group related content and actions.
  * It provides a consistent visual style with a subtle border, shadow, and rounded corners.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/molecules-card--docs
+ */
+import * as React from "react"
+import { cn } from "@/utils"
+
+/**
+ * The main card container component.
+ * Provides the base styling for the card including border, shadow, and rounded corners.
+ * * @url https://segiimelnykov.github.io/ui/?path=/docs/molecules-card--docs
  *
  * @example
  * ```tsx
@@ -30,13 +37,6 @@
  *   </CardContent>
  * </Card>
  * ```
- */
-import * as React from "react"
-import { cn } from "@/utils"
-
-/**
- * The main card container component.
- * Provides the base styling for the card including border, shadow, and rounded corners.
  */
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
