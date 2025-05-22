@@ -1,15 +1,20 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { defineConfig } from "tsup"
 
 export default defineConfig({
-  entry: [
-    "src/index.ts",
-    "src/components/atoms/index.ts",
-    "src/components/molecules/index.ts",
-    "src/components/organisms/index.ts",
-    "src/hooks/index.ts",
-    "src/utils/index.ts",
-    "src/types/index.ts"
-  ],
+  entry: {
+    // Main entry point for components
+    index: "src/index.ts",
+    // Separate bundle for hooks
+    hooks: "src/hooks/index.ts",
+    // Separate bundles for atomic design components
+    atoms: "src/components/atoms/index.ts",
+    molecules: "src/components/molecules/index.ts",
+    organisms: "src/components/organisms/index.ts",
+    // Utilities and types
+    utils: "src/utils/index.ts",
+    types: "src/types/index.ts"
+  },
   format: ["cjs", "esm"],
   dts: true,
   splitting: true,
@@ -18,5 +23,11 @@ export default defineConfig({
   external: ["react", "react-dom", "next"],
   treeshake: true,
   minify: true,
-  injectStyle: false
+  injectStyle: false,
+  // Ensure proper code splitting
+  outExtension({ format }) {
+    return {
+      js: `.${format}.js`
+    }
+  }
 })

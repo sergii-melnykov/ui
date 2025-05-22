@@ -2,14 +2,39 @@
   "name": "@me1a/ui",
   "version": "2.1.2",
   "private": false,
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./atoms": {
+      "types": "./dist/atoms.d.ts",
+      "import": "./dist/atoms.esm.js",
+      "require": "./dist/atoms.cjs.js"
+    },
+    "./molecules": {
+      "types": "./dist/molecules.d.ts",
+      "import": "./dist/molecules.esm.js",
+      "require": "./dist/molecules.cjs.js"
+    },
+    "./organisms": {
+      "types": "./dist/organisms.d.ts",
+      "import": "./dist/organisms.esm.js",
+      "require": "./dist/organisms.cjs.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks.d.ts",
+      "import": "./dist/hooks.esm.js",
+      "require": "./dist/hooks.cjs.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/utils.esm.js",
+      "require": "./dist/utils.cjs.js"
     }
   },
   "sideEffects": false,
@@ -98,7 +123,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.511.0",
-    "vaul": "^1.1.2"
+    "vaul": "^1.1.2",
+    "vite": "^6.3.5"
   },
   "publishConfig": {
     "access": "public"
