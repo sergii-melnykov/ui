@@ -23,7 +23,7 @@ export interface PageLoaderProps {
 /**
  * PageLoader component for displaying a loading indicator.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-page-loader--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-page-loader--docs
  *
  */
 

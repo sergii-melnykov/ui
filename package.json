@@ -131,14 +131,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SegiiMelnykov/ui.git"
+    "url": "git+https://github.com/sergii-melnykov/ui.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SegiiMelnykov/ui/issues"
+    "url": "https://github.com/sergii-melnykov/ui/issues"
   },
-  "homepage": "https://github.com/SegiiMelnykov/ui#readme",
+  "homepage": "https://github.com/sergii-melnykov/ui#readme",
   "description": "A modern UI library for Next.js applications",
-  "storybook": "https://segiimelnykov.github.io/ui"
+  "storybook": "https://sergii-melnykov.github.io/ui"
 }

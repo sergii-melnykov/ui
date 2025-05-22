@@ -11,7 +11,7 @@ import { cn } from "@/utils/index"
  * Sheet component for creating accessible sheets with overlay and content.
  * Built on top of Radix UI's Sheet primitive.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-sheet--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-sheet--docs
  *
  * @example
  * ```tsx

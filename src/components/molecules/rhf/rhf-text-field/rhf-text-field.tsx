@@ -18,7 +18,7 @@ import { type RHFTextFieldProps } from "./rhf-text-field.types"
  * A text field component that integrates with React Hook Form.
  * Provides form validation, error handling, and accessibility features.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/molecules-rhf-rhftextfield--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/molecules-rhf-rhftextfield--docs
  *
  * * @example
  * ```tsx

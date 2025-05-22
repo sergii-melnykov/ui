@@ -9,7 +9,7 @@ import { cn } from "@/utils"
 /**
  * The main card container component.
  * Provides the base styling for the card including border, shadow, and rounded corners.
- * * @url https://segiimelnykov.github.io/ui/?path=/docs/molecules-card--docs
+ * * @url https://sergii-melnykov.github.io/ui/?path=/docs/molecules-card--docs
  *
  * @example
  * ```tsx

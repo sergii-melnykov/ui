@@ -2,7 +2,7 @@
  * Toast component for displaying temporary notifications.
  * Built on top of Radix UI's Toast primitive.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-toast--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-toast--docs
  *
  * @example
  * ```tsx

@@ -2,7 +2,7 @@
  * Container is a layout component that provides a centered, max-width wrapper for content.
  * It's designed to create consistent horizontal padding and maximum widths across different screen sizes.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-container--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-container--docs
  *
  * @example
  * ```tsx

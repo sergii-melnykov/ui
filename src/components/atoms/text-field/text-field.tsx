@@ -32,7 +32,7 @@ const textFieldVariants = cva("w-full", {
  * A versatile text field component that supports multiple variants, sizes, and icons.
  * Built on top of shadcn/ui's Input component.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-text-field--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-text-field--docs
  *
  * @component
  * @example

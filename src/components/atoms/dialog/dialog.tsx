@@ -7,7 +7,7 @@ import { cn } from "@/utils"
  * Dialog component for creating accessible dialogs with overlay and content.
  * Built on top of Radix UI's Dialog primitive.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-dialog--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-dialog--docs
  *
  * @example
  * ```tsx

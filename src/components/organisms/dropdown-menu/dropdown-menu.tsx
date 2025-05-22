@@ -9,7 +9,7 @@ import { cn } from "@/utils"
  * DropdownMenu component for creating accessible dropdown menus.
  * Built on top of Radix UI's DropdownMenu primitive.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/organisms-dropdown-menu--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/organisms-dropdown-menu--docs
  *
  * @example
  * ```tsx

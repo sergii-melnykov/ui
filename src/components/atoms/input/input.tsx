@@ -6,7 +6,7 @@ import { cn } from "@/utils/cn"
  * Input component for creating accessible input fields.
  * Built on top of shadcn/ui's Input component.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-input--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-input--docs
  *
  */
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(

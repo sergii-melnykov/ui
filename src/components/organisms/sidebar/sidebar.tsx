@@ -160,7 +160,7 @@ SidebarProvider.displayName = "SidebarProvider"
  * The sidebar can be positioned on either side of the screen and supports different
  * visual styles and collapse behaviors.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/organisms-sidebar--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/organisms-sidebar--docs
  *
  * @example
  * ```tsx

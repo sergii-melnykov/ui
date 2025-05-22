@@ -7,7 +7,7 @@ import { cn } from "@/utils/index"
  * TooltipProvider component for creating accessible tooltips.
  * Built on top of Radix UI's Tooltip primitive.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-tooltip--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-tooltip--docs
  *
  * @example
  * ```tsx

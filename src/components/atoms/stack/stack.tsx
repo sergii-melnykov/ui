@@ -3,7 +3,7 @@
  * with consistent spacing between items. It's built on top of Flexbox and provides
  * a simple way to create consistent layouts.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-stack--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-stack--docs
  *
  * @example
  * ```tsx

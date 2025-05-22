@@ -2,7 +2,7 @@
  * Toaster component for managing and displaying toast notifications.
  * Built on top of the Toast primitive components.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-toaster--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-toaster--docs
  *
  * @example
  * ```tsx

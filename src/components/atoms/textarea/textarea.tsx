@@ -6,7 +6,7 @@ import { TextareaProps } from "./textarea.types"
  * Textarea component for creating accessible text areas.
  * Built on top of shadcn/ui's Textarea component.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-textarea--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-textarea--docs
  *
  * @example
  * ```tsx

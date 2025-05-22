@@ -4,7 +4,7 @@ import { cn } from "@/utils/index"
  * Skeleton component for creating a loading state.
  * Built on top of shadcn/ui's Skeleton component.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-skeleton--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-skeleton--docs
  *
  * @example
  * ```tsx

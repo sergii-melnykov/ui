@@ -2,7 +2,7 @@
  * Drawer is a slide-out panel component that appears from the bottom of the screen.
  * It's built on top of Vaul and provides a smooth, accessible drawer experience.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/organisms-drawer--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/organisms-drawer--docs
  *
  * @example
  * ```tsx

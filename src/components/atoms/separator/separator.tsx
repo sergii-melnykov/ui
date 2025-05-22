@@ -7,7 +7,7 @@ import { cn } from "@/utils/index"
  * Separator component for creating horizontal or vertical dividers.
  * Built on top of Radix UI's Separator primitive.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-separator--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-separator--docs
  *
  */
 const Separator = React.forwardRef<

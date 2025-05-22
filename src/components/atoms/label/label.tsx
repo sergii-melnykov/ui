@@ -16,7 +16,7 @@ export interface LabelProps
  * Label component for creating accessible labels.
  * Built on top of Radix UI's Label primitive.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-label--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-label--docs
  *
  */
 const Label = React.forwardRef<React.ElementRef<typeof LabelPrimitive.Root>, LabelProps>(

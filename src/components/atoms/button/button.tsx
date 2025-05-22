@@ -47,7 +47,7 @@ const buttonVariants = cva(
  * Built on top of Radix UI's Slot primitive for maximum flexibility.
  * Implements proper accessibility features and follows WCAG 2.1 Level AA guidelines.
  *
- * @url https://segiimelnykov.github.io/ui/?path=/docs/atoms-button--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-button--docs
  *
  * @component
  * @example
