@@ -10,6 +10,8 @@ export default defineConfig({
     // Separate bundles for atomic design components
     atoms: "src/components/atoms/index.ts",
     molecules: "src/components/molecules/index.ts",
+    // Separate bundle for rhf components
+    rhf: "src/components/rhf/index.ts",
     organisms: "src/components/organisms/index.ts",
     // Utilities and types
     utils: "src/utils/index.ts",

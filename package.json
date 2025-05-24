@@ -21,6 +21,11 @@
       "import": "./dist/molecules.esm.js",
       "require": "./dist/molecules.cjs.js"
     },
+    "./rhf": {
+      "types": "./dist/rhf.d.ts",
+      "import": "./dist/rhf.esm.js",
+      "require": "./dist/rhf.cjs.js"
+    },
     "./organisms": {
       "types": "./dist/organisms.d.ts",
       "import": "./dist/organisms.esm.js",
