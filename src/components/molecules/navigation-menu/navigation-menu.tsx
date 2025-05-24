@@ -21,7 +21,7 @@ import type {
  * @url https://sergii-melnykov.github.io/ui/?path=/docs/molecules-navigation-menu--docs
  *
  * @example
- * ```tsx
+ * ```
  * <NavigationMenu>
  *   <NavigationMenuList>
  *     <NavigationMenuItem>

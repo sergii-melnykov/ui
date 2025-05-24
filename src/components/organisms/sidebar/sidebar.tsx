@@ -318,6 +318,7 @@ const SidebarRail = React.forwardRef<HTMLButtonElement, React.ComponentProps<"bu
     const { toggleSidebar } = useSidebar()
 
     return (
+      // eslint-disable-next-line react/button-has-type
       <button
         ref={ref}
         data-sidebar="rail"
