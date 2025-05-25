@@ -4,7 +4,7 @@ import { Button, Input } from "@/components/atoms"
 import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "."
 
 const meta: Meta<typeof Form> = {
-  title: "Atoms/Form",
+  title: "RHF/Form",
   component: Form,
   parameters: {
     layout: "centered"

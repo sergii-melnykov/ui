@@ -26,7 +26,7 @@ const FormWrapper = ({
 }
 
 const meta: Meta<typeof RHFTextarea> = {
-  title: "Molecules/RHF/RHFTextarea",
+  title: "RHF/RHFTextarea",
   component: RHFTextarea,
   decorators: [
     (Story) => (

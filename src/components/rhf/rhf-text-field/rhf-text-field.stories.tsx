@@ -6,7 +6,7 @@ import { Button } from "@/components/atoms"
 import { RHFTextField } from "./rhf-text-field"
 
 const meta: Meta<typeof RHFTextField> = {
-  title: "Molecules/RHF/RHFTextField",
+  title: "RHF/RHFTextField",
   component: RHFTextField,
   parameters: {
     layout: "centered"
