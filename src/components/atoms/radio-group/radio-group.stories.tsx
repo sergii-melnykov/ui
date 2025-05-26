@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { RadioGroup, RadioGroupItem } from "@/components/atoms/radio-group"
 import { Button } from "@/components/atoms/button"
 import React from "react"
+import { RadioItemLabel, RadioItemContainer } from "./radio-group"
 
 const meta: Meta<typeof RadioGroup> = {
   title: "Atoms/RadioGroup",
@@ -32,18 +33,18 @@ export const Default: Story = {
   },
   render: (args) => (
     <RadioGroup {...args}>
-      <div className="flex items-center space-x-2">
+      <RadioItemContainer>
         <RadioGroupItem value="option-1" id="option-1" />
-        <label htmlFor="option-1">Option 1</label>
-      </div>
-      <div className="flex items-center space-x-2">
+        <RadioItemLabel htmlFor="option-1">Option 1</RadioItemLabel>
+      </RadioItemContainer>
+      <RadioItemContainer>
         <RadioGroupItem value="option-2" id="option-2" />
-        <label htmlFor="option-2">Option 2</label>
-      </div>
-      <div className="flex items-center space-x-2">
+        <RadioItemLabel htmlFor="option-2">Option 2</RadioItemLabel>
+      </RadioItemContainer>
+      <RadioItemContainer>
         <RadioGroupItem value="option-3" id="option-3" />
-        <label htmlFor="option-3">Option 3</label>
-      </div>
+        <RadioItemLabel htmlFor="option-3">Option 3</RadioItemLabel>
+      </RadioItemContainer>
     </RadioGroup>
   )
 }
@@ -54,14 +55,14 @@ export const Disabled: Story = {
   },
   render: (args) => (
     <RadioGroup {...args}>
-      <div className="flex items-center space-x-2">
+      <RadioItemContainer>
         <RadioGroupItem value="option-1" id="option-1" />
-        <label htmlFor="option-1">Option 1</label>
-      </div>
-      <div className="flex items-center space-x-2">
+        <RadioItemLabel htmlFor="option-1">Option 1</RadioItemLabel>
+      </RadioItemContainer>
+      <RadioItemContainer>
         <RadioGroupItem value="option-2" id="option-2" disabled />
-        <label htmlFor="option-2">Option 2 (Disabled)</label>
-      </div>
+        <RadioItemLabel htmlFor="option-2">Option 2 (Disabled)</RadioItemLabel>
+      </RadioItemContainer>
     </RadioGroup>
   )
 }
