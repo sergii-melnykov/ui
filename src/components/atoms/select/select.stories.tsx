@@ -1,15 +1,55 @@
+import * as React from "react"
+import { useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { User, Mail, Settings } from "lucide-react"
-import SearchableSelect from "./select"
+import { Select } from "./select"
+
+// Wrapper component to demonstrate state management
+const SelectWrapper = ({ value, ...props }: React.ComponentProps<typeof Select>) => {
+  const [selectedValue, setSelectedValue] = useState<string>(value || "")
+
+  return (
+    <div className="flex flex-col gap-4">
+      <Select {...props} value={selectedValue} onChange={setSelectedValue} />
+      <div className="text-sm text-muted-foreground">Selected value: {selectedValue || "None"}</div>
+    </div>
+  )
+}
 
 const meta = {
   title: "Atoms/Select",
-  component: SearchableSelect,
+  component: SelectWrapper,
   parameters: {
     layout: "centered",
     docs: {
       description: {
-        component: "A searchable select component that provides a searchable dropdown select input."
+        component: `
+A searchable select component that provides a searchable dropdown select input.
+Built on top of Radix UI's Select primitive.
+
+## Features
+- Searchable dropdown with single selection
+- Support for icons (start and end)
+- Keyboard navigation
+- Screen reader support
+- Error states and validation
+- Helper text and labels
+- Disabled states
+- Full width support
+
+## Accessibility
+- Keyboard navigation (Arrow keys, Enter, Space, Escape)
+- ARIA attributes for screen readers
+- Focus management
+- Error announcements
+- Required field indicators
+
+## State Management
+The component is wrapped in a state management example that shows:
+- Current selected value
+- State updates on selection
+- Controlled component behavior
+`
       }
     }
   },
@@ -56,10 +96,10 @@ const meta = {
       description: "Helper text to display below the select"
     }
   }
-} satisfies Meta<typeof SearchableSelect>
+} satisfies Meta<typeof SelectWrapper>
 
 export default meta
-type Story = StoryObj<typeof SearchableSelect>
+type Story = StoryObj<typeof SelectWrapper>
 
 const defaultOptions = [
   { id: "1", label: "Option 1" },

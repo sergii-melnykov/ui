@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ChevronDown } from "lucide-react"
+import { Check, ChevronDown, X } from "lucide-react"
 
 import { cn } from "@/utils"
 
@@ -17,7 +17,7 @@ import {
 } from "../command"
 import { Typography } from "../typography"
 
-export type SelectOption = {
+export type MultiSelectOption = {
   id: string
   label: string
   startIcon?: React.ReactNode
@@ -26,15 +26,15 @@ export type SelectOption = {
   disabled?: boolean
 }
 
-export type SearchableSelectProps = {
+export type MultiSelectProps = {
   /** Whether the select should take up the full width of its container */
   fullWidth?: boolean
   /** Array of options to display in the select */
-  options: SelectOption[]
-  /** Currently selected value */
-  value: string
-  /** Callback fired when the value changes */
-  onChange: (value: string) => void
+  options: MultiSelectOption[]
+  /** Currently selected values */
+  value: string[]
+  /** Callback fired when the values change */
+  onChange: (value: string[]) => void
   /** Placeholder text to show when no value is selected */
   placeholder?: string
   /** Whether the select is disabled */
@@ -53,33 +53,37 @@ export type SearchableSelectProps = {
   label?: string
   /** Helper text to display below the select */
   helperText?: string
+  /** Maximum number of selections allowed */
+  maxSelections?: number
+  /** Whether to show the select all option */
+  showSelectAll?: boolean
 }
 
 /**
- * SearchableSelect component that provides a searchable dropdown select input.
+ * MultiSelect component that provides a searchable dropdown select input with multiple selection.
  * Built on top of Radix UI's Select primitive.
  *
- * @url https://sergii-melnykov.github.io/ui/?path=/docs-atoms-select--docs
+ * @url https://sergii-melnykov.github.io/ui/?path=/docs-atoms-multiselect--docs
  *
  * @example
  * ```tsx
- * <SearchableSelect
+ * <MultiSelect
  *   options={[
  *     { id: "1", label: "Option 1" },
  *     { id: "2", label: "Option 2" }
  *   ]}
- *   value="1"
+ *   value={["1"]}
  *   onChange={setValue}
- *   label="Select an option"
- *   required
+ *   label="Select options"
+ *   showSelectAll
  * />
  * ```
  */
-export function Select({
+export function MultiSelect({
   options,
   value,
   onChange,
-  placeholder = "Select an option",
+  placeholder = "Select options",
   disabled,
   required,
   error,
@@ -88,10 +92,37 @@ export function Select({
   id,
   name,
   label,
-  helperText
-}: SearchableSelectProps) {
+  helperText,
+  maxSelections,
+  showSelectAll
+}: MultiSelectProps) {
   const [open, setOpen] = React.useState(false)
-  const selectedOption = options.find((option) => option.id === value)
+  const selectedOptions = options.filter((option) => value.includes(option.id))
+
+  const handleSelect = (optionId: string) => {
+    if (value.includes(optionId)) {
+      onChange(value.filter((selectedId) => selectedId !== optionId))
+    } else {
+      if (maxSelections && value.length >= maxSelections) {
+        return
+      }
+      onChange([...value, optionId])
+    }
+  }
+
+  const handleSelectAll = () => {
+    const enabledOptions = options.filter((option) => !option.disabled)
+    if (value.length === enabledOptions.length) {
+      onChange([])
+    } else {
+      onChange(enabledOptions.map((option) => option.id))
+    }
+  }
+
+  const handleRemove = (optionId: string, e: React.MouseEvent) => {
+    e.stopPropagation()
+    onChange(value.filter((selectedId) => selectedId !== optionId))
+  }
 
   return (
     <div className={cn("flex flex-col gap-1.5", fullWidth && "w-full")}>
@@ -122,14 +153,34 @@ export function Select({
             id={id}
             name={name}
             className={cn(
-              "w-[13rem] justify-between",
-              !value && "text-muted-foreground",
+              "w-[13rem] justify-between min-h-[2.5rem] h-auto",
+              !value.length && "text-muted-foreground",
               fullWidth && "w-full",
               error && "border-destructive focus-visible:ring-destructive",
               className
             )}
           >
-            {selectedOption ? selectedOption.label : placeholder}
+            <div className="flex flex-wrap gap-1">
+              {selectedOptions.length > 0 ? (
+                selectedOptions.map((option) => (
+                  <div
+                    key={option.id}
+                    className="flex items-center gap-1 bg-secondary text-secondary-foreground px-2 py-0.5 rounded-md text-sm"
+                  >
+                    <span>{option.label}</span>
+                    <button
+                      type="button"
+                      onClick={(e) => handleRemove(option.id, e)}
+                      className="hover:bg-secondary-foreground/20 rounded-sm"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <span>{placeholder}</span>
+              )}
+            </div>
             <ChevronDown className={cn("opacity-50", open && "rotate-180")} />
           </Button>
         </PopoverTrigger>
@@ -146,25 +197,39 @@ export function Select({
             <CommandList className="max-h-[12rem] overflow-y-auto">
               <CommandEmpty>No items found.</CommandEmpty>
               <CommandGroup>
+                {showSelectAll && (
+                  <CommandItem
+                    onSelect={handleSelectAll}
+                    className="flex items-center gap-2 cursor-pointer my-1"
+                  >
+                    <div className="flex h-4 w-4 items-center justify-center rounded border border-primary">
+                      {value.length === options.filter((o) => !o.disabled).length && (
+                        <Check className="h-3 w-3" />
+                      )}
+                    </div>
+                    <Typography variant="small">Select All</Typography>
+                  </CommandItem>
+                )}
                 {options.map((option) => (
                   <CommandItem
-                    value={option.label}
+                    value={option.id}
                     key={option.id}
-                    onSelect={() => {
-                      onChange(option.id)
-                      setOpen(false)
-                    }}
+                    onSelect={() => handleSelect(option.id)}
                     disabled={option.disabled}
                     className={cn(
                       "flex items-center justify-between cursor-pointer my-1",
-                      value === option.id && "bg-accent text-accent-foreground",
                       option.disabled && "opacity-50 cursor-not-allowed",
                       option.className
                     )}
                   >
-                    <div className="flex items-center gap-1">
-                      {option.startIcon && option.startIcon}
-                      <Typography variant="small">{option.label}</Typography>
+                    <div className="flex items-center gap-2">
+                      <div className="flex h-4 w-4 items-center justify-center rounded border border-primary">
+                        {value.includes(option.id) && <Check className="h-3 w-3" />}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        {option.startIcon && option.startIcon}
+                        <Typography variant="small">{option.label}</Typography>
+                      </div>
                     </div>
                     {option.endIcon && <div className="ml-2">{option.endIcon}</div>}
                   </CommandItem>
