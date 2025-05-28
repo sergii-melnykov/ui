@@ -1,84 +1,36 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue
-} from "./select"
+import { Banana, Apple, Check } from "lucide-react"
+import SearchableSelect from "./select"
 
-const meta: Meta<typeof Select> = {
+const meta: Meta<typeof SearchableSelect> = {
   title: "Atoms/Select",
-  component: Select,
-  tags: ["autodocs"],
-  argTypes: {
-    defaultValue: {
-      control: "text"
-    },
-    value: {
-      control: "text"
-    },
-    onValueChange: {
-      action: "value changed"
-    }
-  }
+  component: SearchableSelect,
+  parameters: {
+    layout: "centered"
+  },
+  tags: ["autodocs"]
 }
 
 export default meta
-type Story = StoryObj<typeof Select>
+type Story = StoryObj<typeof SearchableSelect>
 
 export const Default: Story = {
-  render: (args) => (
-    <Select {...args}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="orange">Orange</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  )
-}
-
-export const WithDefaultValue: Story = {
-  render: (args) => (
-    <Select defaultValue="banana" {...args}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="orange">Orange</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  )
-}
-
-export const Disabled: Story = {
-  render: (args) => (
-    <Select disabled {...args}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="orange">Orange</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+  render: () => (
+    <div className="w-[200px]">
+      <SearchableSelect
+        fullWidth
+        options={[
+          { id: "1", label: "Apple", startIcon: <Apple />, endIcon: <Check /> },
+          { id: "2", label: "Banana", startIcon: <Banana />, endIcon: <Check /> },
+          { id: "3", label: "Orange", startIcon: <Banana />, endIcon: <Check /> },
+          { id: "4", label: "Pear", startIcon: <Apple />, endIcon: <Check /> },
+          { id: "5", label: "Pineapple", startIcon: <Banana /> },
+          { id: "6", label: "Strawberry", startIcon: <Apple />, endIcon: <Check /> },
+          { id: "7", label: "Watermelon", startIcon: <Banana />, endIcon: <Check /> }
+        ]}
+        value="3"
+        onChange={() => {}}
+      />
+    </div>
   )
 }

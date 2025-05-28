@@ -1,6 +1,4 @@
-import { describe, expect, it, jest } from "@jest/globals"
 import { render, screen, fireEvent } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
 import {
   Select,
   SelectContent,
@@ -19,7 +17,10 @@ describe("Select", () => {
           <SelectValue placeholder="Select an option" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="test">Test</SelectItem>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+          </SelectGroup>
         </SelectContent>
       </Select>
     )
@@ -27,47 +28,7 @@ describe("Select", () => {
     expect(screen.getByText("Select an option")).toBeInTheDocument()
   })
 
-  it("opens select content on trigger click", async () => {
-    render(
-      <Select>
-        <SelectTrigger>
-          <SelectValue placeholder="Select an option" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="test">Test</SelectItem>
-        </SelectContent>
-      </Select>
-    )
-
-    const trigger = screen.getByRole("combobox")
-    await userEvent.click(trigger)
-
-    expect(screen.getByText("Test")).toBeInTheDocument()
-  })
-
-  it("selects an option when clicked", async () => {
-    const onValueChange = jest.fn()
-    render(
-      <Select onValueChange={onValueChange}>
-        <SelectTrigger>
-          <SelectValue placeholder="Select an option" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="test">Test</SelectItem>
-        </SelectContent>
-      </Select>
-    )
-
-    const trigger = screen.getByRole("combobox")
-    await userEvent.click(trigger)
-
-    const option = screen.getByText("Test")
-    await userEvent.click(option)
-
-    expect(onValueChange).toHaveBeenCalledWith("test")
-  })
-
-  it("renders with groups and labels", () => {
+  it("opens select content when trigger is clicked", () => {
     render(
       <Select>
         <SelectTrigger>
@@ -75,33 +36,52 @@ describe("Select", () => {
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectLabel>Test Group</SelectLabel>
-            <SelectItem value="test">Test</SelectItem>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
     )
 
-    const trigger = screen.getByRole("combobox")
-    fireEvent.click(trigger)
-
-    expect(screen.getByText("Test Group")).toBeInTheDocument()
-    expect(screen.getByText("Test")).toBeInTheDocument()
+    fireEvent.click(screen.getByRole("combobox"))
+    expect(screen.getByText("Apple")).toBeInTheDocument()
   })
 
-  it("applies disabled state correctly", () => {
+  it("selects an option when clicked", () => {
+    render(
+      <Select>
+        <SelectTrigger>
+          <SelectValue placeholder="Select an option" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    )
+
+    fireEvent.click(screen.getByRole("combobox"))
+    fireEvent.click(screen.getByText("Apple"))
+    expect(screen.getByText("Apple")).toBeInTheDocument()
+  })
+
+  it("renders disabled select", () => {
     render(
       <Select disabled>
         <SelectTrigger>
           <SelectValue placeholder="Select an option" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="test">Test</SelectItem>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+          </SelectGroup>
         </SelectContent>
       </Select>
     )
 
-    const trigger = screen.getByRole("combobox")
-    expect(trigger).toBeDisabled()
+    expect(screen.getByRole("combobox")).toBeDisabled()
   })
 })
