@@ -63,14 +63,13 @@ export type SelectProps = {
  *
  * @example
  * ```tsx
- * <SearchableSelect
+ * <Select
  *   options={[
  *     { id: "1", label: "Option 1" },
  *     { id: "2", label: "Option 2" }
  *   ]}
  *   value="1"
  *   onChange={setValue}
- *   label="Select an option"
  *   required
  * />
  * ```
@@ -101,7 +100,6 @@ export function Select({
             role="combobox"
             aria-expanded={open}
             aria-controls={id ? `${id}-content` : undefined}
-            aria-label={placeholder}
             aria-required={required}
             aria-invalid={!!error}
             disabled={disabled}

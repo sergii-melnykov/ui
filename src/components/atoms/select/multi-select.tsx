@@ -75,7 +75,6 @@ export type MultiSelectProps = {
  *   ]}
  *   value={["1"]}
  *   onChange={setValue}
- *   label="Select options"
  *   showSelectAll
  * />
  * ```
