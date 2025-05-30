@@ -11,7 +11,7 @@ import {
   FormDescription,
   FormField
 } from "@/components/rhf/form"
-import { type RHFMultiSelectProps } from "./rhf-select.types"
+import { type RHFMultiSelectProps } from "./rhf-multi-select.types"
 
 // ----------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ import { type RHFMultiSelectProps } from "./rhf-select.types"
  *       { id: "us", label: "United States" },
  *       { id: "ca", label: "Canada" }
  *     ]}
- *     maxItems={3}
+ *
  *   />
  * </Form>
  * ```

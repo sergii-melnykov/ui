@@ -153,13 +153,12 @@ export function MultiSelect({
                     className="flex items-center gap-1 bg-secondary text-secondary-foreground px-2 py-0.5 rounded-md text-sm"
                   >
                     <span>{option.label}</span>
-                    <button
-                      type="button"
+                    <span
                       onClick={(e) => handleRemove(option.id, e)}
                       className="hover:bg-secondary-foreground/20 rounded-sm"
                     >
                       <X className="h-3 w-3" />
-                    </button>
+                    </span>
                   </div>
                 ))
               ) : (

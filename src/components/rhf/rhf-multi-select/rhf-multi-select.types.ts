@@ -1,12 +1,15 @@
 import { type FieldValues, type FieldPath } from "react-hook-form"
-import { type SelectOption as BaseSelectOption, SelectProps } from "@/components/atoms/select"
+import {
+  type MultiSelectOption as BaseMultiSelectOption,
+  MultiSelectProps
+} from "@/components/atoms/select"
 
-export type SelectOption = BaseSelectOption
+export type MultiSelectOption = BaseMultiSelectOption
 
-export interface RHFSelectProps<
+export interface RHFMultiSelectProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
-> extends Omit<SelectProps, "name" | "value" | "onChange"> {
+> extends Omit<MultiSelectProps, "name" | "value" | "onChange"> {
   /** The name of the field in the form */
   name: TName
   /** Optional label for the field */
