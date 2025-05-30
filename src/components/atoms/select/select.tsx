@@ -26,15 +26,19 @@ export type SelectOption = {
   disabled?: boolean
 }
 
-export type SearchableSelectProps = {
+export type SelectProps = {
+  /** Whether the select is searchable */
+  searchable?: boolean
   /** Whether the select should take up the full width of its container */
   fullWidth?: boolean
-  /** Array of options to display in the select */
-  options: SelectOption[]
   /** Currently selected value */
   value: string
+  /** Array of options to display in the select */
+  options: SelectOption[]
   /** Callback fired when the value changes */
   onChange: (value: string) => void
+  /** Render a custom CommandList for the select, if not provided, the select will render a default CommandList with the options */
+  renderCommandList?: (options: SelectOption[]) => React.ReactNode
   /** Placeholder text to show when no value is selected */
   placeholder?: string
   /** Whether the select is disabled */
@@ -47,12 +51,6 @@ export type SearchableSelectProps = {
   className?: string
   /** ID for the select element */
   id?: string
-  /** Name for the select element */
-  name?: string
-  /** Label for the select element */
-  label?: string
-  /** Helper text to display below the select */
-  helperText?: string
 }
 
 /**
@@ -85,29 +83,15 @@ export function Select({
   error,
   className,
   fullWidth,
+  searchable,
   id,
-  name,
-  label,
-  helperText
-}: SearchableSelectProps) {
+  renderCommandList
+}: SelectProps) {
   const [open, setOpen] = React.useState(false)
-  const selectedOption = options.find((option) => option.id === value)
+  const selectedOption = options?.find((option) => option.id === value)
 
   return (
-    <div className={cn("flex flex-col gap-1.5", fullWidth && "w-full")}>
-      {label && (
-        <Typography
-          variant="small"
-          className={cn(
-            "font-medium",
-            error && "text-destructive",
-            disabled && "text-muted-foreground"
-          )}
-        >
-          {label}
-          {required && <span className="text-destructive ml-1">*</span>}
-        </Typography>
-      )}
+    <div className={cn(fullWidth && "w-full")}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -115,12 +99,10 @@ export function Select({
             role="combobox"
             aria-expanded={open}
             aria-controls={id ? `${id}-content` : undefined}
-            aria-label={label || placeholder}
+            aria-label={placeholder}
             aria-required={required}
             aria-invalid={!!error}
             disabled={disabled}
-            id={id}
-            name={name}
             className={cn(
               "w-[13rem] justify-between",
               !value && "text-muted-foreground",
@@ -134,7 +116,6 @@ export function Select({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          id={id ? `${id}-content` : undefined}
           className={cn(
             "w-[13rem] p-0 rounded-md border bg-popover text-popover-foreground shadow-md",
             fullWidth && "w-full"
@@ -142,46 +123,44 @@ export function Select({
           align="start"
         >
           <Command>
-            <CommandInput placeholder="Search..." className="h-9" />
+            {searchable && (
+              <CommandInput placeholder="Search..." className="h-9" disabled={disabled} />
+            )}
             <CommandList className="max-h-[12rem] overflow-y-auto">
               <CommandEmpty>No items found.</CommandEmpty>
-              <CommandGroup>
-                {options.map((option) => (
-                  <CommandItem
-                    value={option.label}
-                    key={option.id}
-                    onSelect={() => {
-                      onChange(option.id)
-                      setOpen(false)
-                    }}
-                    disabled={option.disabled}
-                    className={cn(
-                      "flex items-center justify-between cursor-pointer my-1",
-                      value === option.id && "bg-accent text-accent-foreground",
-                      option.disabled && "opacity-50 cursor-not-allowed",
-                      option.className
-                    )}
-                  >
-                    <div className="flex items-center gap-1">
-                      {option.startIcon && option.startIcon}
-                      <Typography variant="small">{option.label}</Typography>
-                    </div>
-                    {option.endIcon && <div className="ml-2">{option.endIcon}</div>}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
+              {renderCommandList ? (
+                renderCommandList(options)
+              ) : (
+                <CommandGroup>
+                  {options?.map((option) => (
+                    <CommandItem
+                      value={option.label}
+                      key={option.id}
+                      onSelect={() => {
+                        onChange(option.id)
+                        setOpen(false)
+                      }}
+                      disabled={option.disabled}
+                      className={cn(
+                        "flex items-center justify-between cursor-pointer my-1",
+                        value === option.id && "bg-accent text-accent-foreground",
+                        option.disabled && "opacity-50 cursor-not-allowed",
+                        option.className
+                      )}
+                    >
+                      <div className="flex items-center gap-1">
+                        {option.startIcon && option.startIcon}
+                        <Typography variant="small">{option.label}</Typography>
+                      </div>
+                      {option.endIcon && <div className="ml-2">{option.endIcon}</div>}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              )}
             </CommandList>
           </Command>
         </PopoverContent>
       </Popover>
-      {(error || helperText) && (
-        <Typography
-          variant="small"
-          className={cn("text-sm", error ? "text-destructive" : "text-muted-foreground")}
-        >
-          {error || helperText}
-        </Typography>
-      )}
     </div>
   )
 }

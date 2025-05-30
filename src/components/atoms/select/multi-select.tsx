@@ -27,6 +27,8 @@ export type MultiSelectOption = {
 }
 
 export type MultiSelectProps = {
+  /** Whether the select is searchable */
+  searchable?: boolean
   /** Whether the select should take up the full width of its container */
   fullWidth?: boolean
   /** Array of options to display in the select */
@@ -89,6 +91,7 @@ export function MultiSelect({
   error,
   className,
   fullWidth,
+  searchable,
   id,
   name,
   label,
@@ -193,7 +196,9 @@ export function MultiSelect({
           align="start"
         >
           <Command>
-            <CommandInput placeholder="Search..." className="h-9" />
+            {searchable && (
+              <CommandInput placeholder="Search..." className="h-9" disabled={disabled} />
+            )}
             <CommandList className="max-h-[12rem] overflow-y-auto">
               <CommandEmpty>No items found.</CommandEmpty>
               <CommandGroup>
