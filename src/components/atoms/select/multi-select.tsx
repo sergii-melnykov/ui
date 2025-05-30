@@ -13,7 +13,8 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-  CommandList
+  CommandList,
+  CommandSeparator
 } from "../command"
 import { Typography } from "../typography"
 
@@ -36,7 +37,11 @@ export type MultiSelectProps = {
   /** Currently selected values */
   value: string[]
   /** Callback fired when the values change */
+  // eslint-disable-next-line no-unused-vars
   onChange: (value: string[]) => void
+  /** Render a custom CommandList for the select, if not provided, the select will render a default CommandList with the options */
+  // eslint-disable-next-line no-unused-vars
+  renderCommandList?: (options: MultiSelectOption[]) => React.ReactNode
   /** Placeholder text to show when no value is selected */
   placeholder?: string
   /** Whether the select is disabled */
@@ -49,12 +54,6 @@ export type MultiSelectProps = {
   className?: string
   /** ID for the select element */
   id?: string
-  /** Name for the select element */
-  name?: string
-  /** Label for the select element */
-  label?: string
-  /** Helper text to display below the select */
-  helperText?: string
   /** Maximum number of selections allowed */
   maxSelections?: number
   /** Whether to show the select all option */
@@ -93,11 +92,9 @@ export function MultiSelect({
   fullWidth,
   searchable,
   id,
-  name,
-  label,
-  helperText,
   maxSelections,
-  showSelectAll
+  showSelectAll,
+  renderCommandList
 }: MultiSelectProps) {
   const [open, setOpen] = React.useState(false)
   const selectedOptions = options.filter((option) => value.includes(option.id))
@@ -128,20 +125,7 @@ export function MultiSelect({
   }
 
   return (
-    <div className={cn("flex flex-col gap-1.5", fullWidth && "w-full")}>
-      {label && (
-        <Typography
-          variant="small"
-          className={cn(
-            "font-medium",
-            error && "text-destructive",
-            disabled && "text-muted-foreground"
-          )}
-        >
-          {label}
-          {required && <span className="text-destructive ml-1">*</span>}
-        </Typography>
-      )}
+    <div className={cn(fullWidth && "w-full")}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -149,12 +133,11 @@ export function MultiSelect({
             role="combobox"
             aria-expanded={open}
             aria-controls={id ? `${id}-content` : undefined}
-            aria-label={label || placeholder}
+            aria-label={placeholder}
             aria-required={required}
             aria-invalid={!!error}
             disabled={disabled}
             id={id}
-            name={name}
             className={cn(
               "w-[13rem] justify-between min-h-[2.5rem] h-auto",
               !value.length && "text-muted-foreground",
@@ -215,43 +198,42 @@ export function MultiSelect({
                     <Typography variant="small">Select All</Typography>
                   </CommandItem>
                 )}
-                {options.map((option) => (
-                  <CommandItem
-                    value={option.id}
-                    key={option.id}
-                    onSelect={() => handleSelect(option.id)}
-                    disabled={option.disabled}
-                    className={cn(
-                      "flex items-center justify-between cursor-pointer my-1",
-                      option.disabled && "opacity-50 cursor-not-allowed",
-                      option.className
-                    )}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-4 w-4 items-center justify-center rounded border border-primary">
-                        {value.includes(option.id) && <Check className="h-3 w-3" />}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        {option.startIcon && option.startIcon}
-                        <Typography variant="small">{option.label}</Typography>
-                      </div>
-                    </div>
-                    {option.endIcon && <div className="ml-2">{option.endIcon}</div>}
-                  </CommandItem>
-                ))}
+                <CommandSeparator />
               </CommandGroup>
+              {renderCommandList ? (
+                renderCommandList(options)
+              ) : (
+                <CommandGroup>
+                  {options.map((option) => (
+                    <CommandItem
+                      value={option.id}
+                      key={option.id}
+                      onSelect={() => handleSelect(option.id)}
+                      disabled={option.disabled}
+                      className={cn(
+                        "flex items-center justify-between cursor-pointer my-1",
+                        option.disabled && "opacity-50 cursor-not-allowed",
+                        option.className
+                      )}
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-4 w-4 items-center justify-center rounded border border-primary">
+                          {value.includes(option.id) && <Check className="h-3 w-3" />}
+                        </div>
+                        <div className="flex items-center gap-1">
+                          {option.startIcon && option.startIcon}
+                          <Typography variant="small">{option.label}</Typography>
+                        </div>
+                      </div>
+                      {option.endIcon && <div className="ml-2">{option.endIcon}</div>}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              )}
             </CommandList>
           </Command>
         </PopoverContent>
       </Popover>
-      {(error || helperText) && (
-        <Typography
-          variant="small"
-          className={cn("text-sm", error ? "text-destructive" : "text-muted-foreground")}
-        >
-          {error || helperText}
-        </Typography>
-      )}
     </div>
   )
 }

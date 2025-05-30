@@ -91,14 +91,7 @@ The component is wrapped in a state management example that shows:
       control: "boolean",
       description: "Whether the select should take up the full width of its container"
     },
-    label: {
-      control: "text",
-      description: "Label for the select element"
-    },
-    helperText: {
-      control: "text",
-      description: "Helper text to display below the select"
-    },
+
     maxSelections: {
       control: "number",
       description: "Maximum number of selections allowed"
@@ -121,34 +114,34 @@ const defaultOptions = [
 ]
 
 const optionsWithIcons = [
-  { id: "1", label: "User Profile", startIcon: <User className="h-4 w-4" /> },
-  { id: "2", label: "Email Settings", startIcon: <Mail className="h-4 w-4" /> },
-  { id: "3", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
-  { id: "4", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
-  { id: "5", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
+  { id: "4", label: "User Profile", startIcon: <User className="h-4 w-4" /> },
+  { id: "5", label: "Email Settings", startIcon: <Mail className="h-4 w-4" /> },
   { id: "6", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
   { id: "7", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
   { id: "8", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
   { id: "9", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
-  { id: "10", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> }
+  { id: "10", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
+  { id: "11", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
+  { id: "12", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> },
+  { id: "13", label: "System Settings", startIcon: <Settings className="h-4 w-4" /> }
 ]
 
 const optionsWithDisabled = [
-  { id: "1", label: "Option 1" },
-  { id: "2", label: "Option 2", disabled: true },
-  { id: "3", label: "Option 3" }
+  { id: "14", label: "Option 1" },
+  { id: "15", label: "Option 2", disabled: true },
+  { id: "16", label: "Option 3" }
 ]
 
 const optionsWithEndIcons = [
-  { id: "1", label: "Premium", endIcon: <Star className="h-4 w-4 text-yellow-500" /> },
-  { id: "2", label: "Featured", endIcon: <Tag className="h-4 w-4 text-blue-500" /> },
-  { id: "3", label: "Enterprise", endIcon: <Building className="h-4 w-4 text-purple-500" /> }
+  { id: "17", label: "Premium", endIcon: <Star className="h-4 w-4 text-yellow-500" /> },
+  { id: "18", label: "Featured", endIcon: <Tag className="h-4 w-4 text-blue-500" /> },
+  { id: "19", label: "Enterprise", endIcon: <Building className="h-4 w-4 text-purple-500" /> }
 ]
 
 const longOptions = [
-  { id: "1", label: "Very long option text that might wrap to multiple lines" },
-  { id: "2", label: "Another long option with lots of text to demonstrate wrapping behavior" },
-  { id: "3", label: "Short option" }
+  { id: "20", label: "Very long option text that might wrap to multiple lines" },
+  { id: "21", label: "Another long option with lots of text to demonstrate wrapping behavior" },
+  { id: "22", label: "Short option" }
 ]
 
 // Stories
@@ -156,8 +149,7 @@ export const Default: Story = {
   args: {
     options: defaultOptions,
     value: [],
-    placeholder: "Select options",
-    label: "Select Options"
+    placeholder: "Select options"
   }
 }
 
@@ -165,8 +157,7 @@ export const WithValue: Story = {
   args: {
     options: defaultOptions,
     value: ["1", "2"],
-    placeholder: "Select options",
-    label: "Select Options"
+    placeholder: "Select options"
   }
 }
 
@@ -174,8 +165,7 @@ export const WithIcons: Story = {
   args: {
     options: optionsWithIcons,
     value: [],
-    placeholder: "Select options",
-    label: "Select Options"
+    placeholder: "Select options"
   }
 }
 
@@ -183,8 +173,7 @@ export const WithEndIcons: Story = {
   args: {
     options: optionsWithEndIcons,
     value: [],
-    placeholder: "Select options",
-    label: "Select Options"
+    placeholder: "Select options"
   }
 }
 
@@ -192,8 +181,7 @@ export const WithDisabled: Story = {
   args: {
     options: optionsWithDisabled,
     value: [],
-    placeholder: "Select options",
-    label: "Select Options"
+    placeholder: "Select options"
   }
 }
 
@@ -202,7 +190,7 @@ export const Required: Story = {
     options: defaultOptions,
     value: [],
     placeholder: "Select options",
-    label: "Select Options",
+
     required: true
   }
 }
@@ -212,7 +200,7 @@ export const WithError: Story = {
     options: defaultOptions,
     value: [],
     placeholder: "Select options",
-    label: "Select Options",
+
     error: "This field is required"
   }
 }
@@ -221,9 +209,7 @@ export const WithHelperText: Story = {
   args: {
     options: defaultOptions,
     value: [],
-    placeholder: "Select options",
-    label: "Select Options",
-    helperText: "Please select one or more options"
+    placeholder: "Select options"
   }
 }
 
@@ -232,7 +218,7 @@ export const Disabled: Story = {
     options: defaultOptions,
     value: [],
     placeholder: "Select options",
-    label: "Select Options",
+
     disabled: true
   }
 }
@@ -242,7 +228,7 @@ export const FullWidth: Story = {
     options: defaultOptions,
     value: [],
     placeholder: "Select options",
-    label: "Select Options",
+
     fullWidth: true
   },
   parameters: {
@@ -255,9 +241,8 @@ export const WithMaxSelections: Story = {
     options: defaultOptions,
     value: [],
     placeholder: "Select options",
-    label: "Select Options",
-    maxSelections: 2,
-    helperText: "You can select up to 2 options"
+
+    maxSelections: 2
   }
 }
 
@@ -266,7 +251,7 @@ export const WithSelectAll: Story = {
     options: defaultOptions,
     value: [],
     placeholder: "Select options",
-    label: "Select Options",
+
     showSelectAll: true
   }
 }
@@ -276,7 +261,7 @@ export const LongOptions: Story = {
     options: longOptions,
     value: [],
     placeholder: "Select options",
-    label: "Select Options",
+
     fullWidth: true
   },
   parameters: {
@@ -287,12 +272,10 @@ export const LongOptions: Story = {
 export const ComplexExample: Story = {
   args: {
     options: [...optionsWithIcons, ...optionsWithEndIcons, ...optionsWithDisabled],
-    value: ["1", "2"],
+    value: ["14", "15"],
     placeholder: "Select options",
-    label: "Select Options",
     showSelectAll: true,
     maxSelections: 4,
-    helperText: "You can select up to 4 options",
     fullWidth: true
   },
   parameters: {

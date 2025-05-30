@@ -86,14 +86,6 @@ The component is wrapped in a state management example that shows:
     fullWidth: {
       control: "boolean",
       description: "Whether the select should take up the full width of its container"
-    },
-    label: {
-      control: "text",
-      description: "Label for the select element"
-    },
-    helperText: {
-      control: "text",
-      description: "Helper text to display below the select"
     }
   }
 } satisfies Meta<typeof SelectWrapper>
@@ -128,8 +120,7 @@ export const Default: Story = {
   args: {
     options: defaultOptions,
     value: "",
-    placeholder: "Select an option",
-    label: "Select Option"
+    placeholder: "Select an option"
   }
 }
 
@@ -137,8 +128,7 @@ export const WithValue: Story = {
   args: {
     options: defaultOptions,
     value: "1",
-    placeholder: "Select an option",
-    label: "Select Option"
+    placeholder: "Select an option"
   }
 }
 
@@ -146,8 +136,7 @@ export const WithIcons: Story = {
   args: {
     options: optionsWithIcons,
     value: "",
-    placeholder: "Select an option",
-    label: "Select Option"
+    placeholder: "Select an option"
   }
 }
 
@@ -155,8 +144,7 @@ export const WithDisabled: Story = {
   args: {
     options: optionsWithDisabled,
     value: "",
-    placeholder: "Select an option",
-    label: "Select Option"
+    placeholder: "Select an option"
   }
 }
 
@@ -165,7 +153,7 @@ export const Required: Story = {
     options: defaultOptions,
     value: "",
     placeholder: "Select an option",
-    label: "Select Option",
+
     required: true
   }
 }
@@ -175,7 +163,7 @@ export const WithError: Story = {
     options: defaultOptions,
     value: "",
     placeholder: "Select an option",
-    label: "Select Option",
+
     error: "This field is required"
   }
 }
@@ -184,9 +172,7 @@ export const WithHelperText: Story = {
   args: {
     options: defaultOptions,
     value: "",
-    placeholder: "Select an option",
-    label: "Select Option",
-    helperText: "Please select an option from the list"
+    placeholder: "Select an option"
   }
 }
 
@@ -195,7 +181,7 @@ export const Disabled: Story = {
     options: defaultOptions,
     value: "",
     placeholder: "Select an option",
-    label: "Select Option",
+
     disabled: true
   }
 }
@@ -205,7 +191,7 @@ export const FullWidth: Story = {
     options: defaultOptions,
     value: "",
     placeholder: "Select an option",
-    label: "Select Option",
+
     fullWidth: true
   },
   parameters: {

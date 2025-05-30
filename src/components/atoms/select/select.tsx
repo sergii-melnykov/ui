@@ -36,8 +36,10 @@ export type SelectProps = {
   /** Array of options to display in the select */
   options: SelectOption[]
   /** Callback fired when the value changes */
+  // eslint-disable-next-line no-unused-vars
   onChange: (value: string) => void
   /** Render a custom CommandList for the select, if not provided, the select will render a default CommandList with the options */
+  // eslint-disable-next-line no-unused-vars
   renderCommandList?: (options: SelectOption[]) => React.ReactNode
   /** Placeholder text to show when no value is selected */
   placeholder?: string
