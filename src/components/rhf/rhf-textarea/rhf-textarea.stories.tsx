@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import { FormProvider, useForm, type FieldValues } from "react-hook-form"
 import { Button } from "@/components/atoms/button"
 import { RHFTextarea } from "./rhf-textarea"

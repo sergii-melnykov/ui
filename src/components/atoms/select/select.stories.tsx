@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useState } from "react"
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import { User, Mail, Settings } from "lucide-react"
 import { Select } from "./select"
 

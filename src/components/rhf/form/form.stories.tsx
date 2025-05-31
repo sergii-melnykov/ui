@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import { useForm, type ControllerRenderProps } from "react-hook-form"
 import { Button, Input } from "@/components/atoms"
 import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "."

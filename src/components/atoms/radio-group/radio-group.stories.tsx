@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import { RadioGroup, RadioGroupItem } from "@/components/atoms/radio-group"
 import { Button } from "@/components/atoms/button"
 import React from "react"

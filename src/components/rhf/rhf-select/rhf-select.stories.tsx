@@ -1,12 +1,12 @@
 import * as React from "react"
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import { User, Mail, Settings } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 import { Form } from "@/components/rhf/form"
-import { RHFSelect } from "./rhf-select"
 import { Button } from "@/components/atoms"
+import { RHFSelect } from "./rhf-select"
 
 // Form wrapper component to demonstrate form integration
 const FormWrapper = ({ children }: { children: React.ReactNode }) => {
