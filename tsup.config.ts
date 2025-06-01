@@ -64,18 +64,21 @@ async function generatePackageExports() {
 
 export default defineConfig(async () => {
   const entries = await getComponentEntries()
-  console.log("entries", entries)
 
   return {
     entry: entries,
     format: ["cjs", "esm"],
-    dts: true,
+    dts: {
+      resolve: true,
+      entry: entries
+    },
     splitting: true,
-    sourcemap: true,
     clean: true,
-    external: ["react", "react-dom", "next"],
-    treeshake: true,
+    external: ["react", "react-dom", "next", "react-hook-form", "lucide-react"],
     minify: true,
+    bundle: true,
+    sourcemap: "inline",
+    treeshake: true,
     injectStyle: false,
     // Ensure proper code splitting
     outExtension({ format }) {
