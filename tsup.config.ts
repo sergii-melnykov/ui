@@ -47,6 +47,7 @@ async function generatePackageExports() {
   // Generate exports for each entry
   const exports: Record<string, Record<string, string>> = {}
 
+  // Main entry point
   exports[`.`] = {
     types: `./dist/index.d.ts`,
     import: `./dist/index.mjs`,
@@ -72,14 +73,15 @@ const entries = await getComponentEntries()
 const config: Options = {
   format: ["cjs", "esm"],
   dts: true,
-  splitting: true,
-  clean: true,
   external: externalDependencies,
   minify: true,
-  bundle: true,
+  bundle: false,
   sourcemap: true,
   treeshake: true,
-  injectStyle: false
+  injectStyle: false,
+  outExtension({ format }) {
+    return { js: format === "esm" ? ".mjs" : ".js" }
+  }
 }
 
 const entriesConfig: Options[] = Object.entries(entries).map(([key, value]) => ({
