@@ -1,5 +1,5 @@
 import { glob } from "glob"
-import { defineConfig } from "tsup"
+import { defineConfig, Options } from "tsup"
 import path from "path"
 import fs from "fs"
 
@@ -62,35 +62,34 @@ async function generatePackageExports() {
 }
 
 const externalDependencies = Object.keys(packageJson.peerDependencies)
+const entries = await getComponentEntries()
 
-export default defineConfig(async () => {
-  const entries = await getComponentEntries()
-  console.log("entries", entries)
+const config: Options = {
+  format: ["cjs", "esm"],
+  dts: true,
+  splitting: true,
+  clean: true,
+  external: externalDependencies,
+  minify: true,
+  bundle: true,
+  sourcemap: true,
+  treeshake: true,
+  injectStyle: false
+}
 
-  return {
-    entry: entries,
-    format: ["cjs", "esm"],
-    dts: {
-      resolve: false,
-      entry: entries
-    },
-    splitting: true,
-    clean: true,
-    external: externalDependencies,
-    minify: true,
-    bundle: true,
-    sourcemap: "inline",
-    treeshake: true,
-    injectStyle: false,
-    // Ensure proper code splitting
-    outExtension({ format }) {
-      return {
-        js: `.${format}.js`
-      }
-    },
-    // Add post-build hook
+const entriesConfig: Options[] = Object.entries(entries).map(([key, value]) => ({
+  entry: { [key]: value },
+  ...config
+}))
+
+export default defineConfig([
+  ...entriesConfig,
+  {
+    entry: { index: "src/index.ts" },
+    ...config,
+    // Add post-build hook to generate package.json exports
     async onSuccess() {
       await generatePackageExports()
     }
   }
-})
+])

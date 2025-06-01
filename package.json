@@ -46,21 +46,6 @@
       "import": "./dist/rhf.esm.js",
       "require": "./dist/rhf.cjs.js"
     },
-    "./molecules/tabs": {
-      "types": "./dist/molecules/tabs.d.ts",
-      "import": "./dist/molecules/tabs.esm.js",
-      "require": "./dist/molecules/tabs.cjs.js"
-    },
-    "./molecules/navigation-menu": {
-      "types": "./dist/molecules/navigation-menu.d.ts",
-      "import": "./dist/molecules/navigation-menu.esm.js",
-      "require": "./dist/molecules/navigation-menu.cjs.js"
-    },
-    "./molecules/card": {
-      "types": "./dist/molecules/card.d.ts",
-      "import": "./dist/molecules/card.esm.js",
-      "require": "./dist/molecules/card.cjs.js"
-    },
     "./atoms/typography": {
       "types": "./dist/atoms/typography.d.ts",
       "import": "./dist/atoms/typography.esm.js",
@@ -210,6 +195,21 @@
       "types": "./dist/atoms/accordion.d.ts",
       "import": "./dist/atoms/accordion.esm.js",
       "require": "./dist/atoms/accordion.cjs.js"
+    },
+    "./molecules/tabs": {
+      "types": "./dist/molecules/tabs.d.ts",
+      "import": "./dist/molecules/tabs.esm.js",
+      "require": "./dist/molecules/tabs.cjs.js"
+    },
+    "./molecules/navigation-menu": {
+      "types": "./dist/molecules/navigation-menu.d.ts",
+      "import": "./dist/molecules/navigation-menu.esm.js",
+      "require": "./dist/molecules/navigation-menu.cjs.js"
+    },
+    "./molecules/card": {
+      "types": "./dist/molecules/card.d.ts",
+      "import": "./dist/molecules/card.esm.js",
+      "require": "./dist/molecules/card.cjs.js"
     },
     "./organisms/sidebar": {
       "types": "./dist/organisms/sidebar.d.ts",
