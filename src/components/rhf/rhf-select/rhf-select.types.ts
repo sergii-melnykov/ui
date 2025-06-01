@@ -1,7 +1,7 @@
 import { type FieldValues, type FieldPath } from "react-hook-form"
 import { type SelectOption as BaseSelectOption, SelectProps } from "@/components/atoms/select"
 
-export type SelectOption = BaseSelectOption
+export type RHFSelectOption = BaseSelectOption
 
 export interface RHFSelectProps<
   TFieldValues extends FieldValues = FieldValues,

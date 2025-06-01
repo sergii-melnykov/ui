@@ -1,8 +1,9 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { defineConfig } from "tsup"
 import { glob } from "glob"
+import { defineConfig } from "tsup"
 import path from "path"
 import fs from "fs"
+
+const packageJson = JSON.parse(fs.readFileSync("package.json", "utf-8"))
 
 // Function to get all component entry points
 async function getComponentEntries() {
@@ -11,12 +12,11 @@ async function getComponentEntries() {
     index: "src/index.ts",
     hooks: "src/hooks/index.ts",
     utils: "src/utils/index.ts",
-    types: "src/types/index.ts",
-    rhf: "src/components/rhf/index.ts"
+    types: "src/types/index.ts"
   }
 
   // Get all component directories
-  const componentDirs = ["atoms", "molecules", "organisms"]
+  const componentDirs = ["atoms", "molecules", "organisms", "rhf"]
 
   // Process each component directory
   await Promise.all(
@@ -44,7 +44,6 @@ async function getComponentEntries() {
 // Function to generate package.json exports
 async function generatePackageExports() {
   const entries = await getComponentEntries()
-  const packageJson = JSON.parse(fs.readFileSync("package.json", "utf-8"))
 
   // Generate exports for each entry
   const exports: Record<string, Record<string, string>> = {}
@@ -62,19 +61,19 @@ async function generatePackageExports() {
   fs.writeFileSync("package.json", JSON.stringify(packageJson, null, 2))
 }
 
+const externalDependencies = Object.keys(packageJson.peerDependencies)
+
 export default defineConfig(async () => {
   const entries = await getComponentEntries()
+  console.log("entries", entries)
 
   return {
     entry: entries,
     format: ["cjs", "esm"],
-    dts: {
-      resolve: true,
-      entry: entries
-    },
+    dts: true,
     splitting: true,
     clean: true,
-    external: ["react", "react-dom", "next", "react-hook-form", "lucide-react"],
+    external: externalDependencies,
     minify: true,
     bundle: true,
     sourcemap: "inline",

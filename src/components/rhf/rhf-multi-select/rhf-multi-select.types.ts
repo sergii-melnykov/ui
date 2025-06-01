@@ -4,7 +4,7 @@ import {
   MultiSelectProps
 } from "@/components/atoms/select"
 
-export type MultiSelectOption = BaseMultiSelectOption
+export type RHFMultiSelectOption = BaseMultiSelectOption
 
 export interface RHFMultiSelectProps<
   TFieldValues extends FieldValues = FieldValues,

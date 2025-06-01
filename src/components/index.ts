@@ -6,3 +6,6 @@ export * from "./molecules"
 
 // Export organisms
 export * from "./organisms"
+
+// Export rhf
+export * from "./rhf"

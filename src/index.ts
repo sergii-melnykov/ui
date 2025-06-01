@@ -1,7 +1,8 @@
 // Re-export components
-export * from "./components/atoms"
-export * from "./components/molecules"
-export * from "./components/organisms"
+export * from "./components"
+
+// Re-export types
+// export * from "./types"
 
 // Re-export hooks separately
 export * from "./hooks"
