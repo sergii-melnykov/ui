@@ -9,7 +9,6 @@ const packageJson = JSON.parse(fs.readFileSync("package.json", "utf-8"))
 async function getComponentEntries() {
   const entries: Record<string, string> = {
     // Main entry points
-    index: "src/index.ts",
     hooks: "src/hooks/index.ts",
     utils: "src/utils/index.ts",
     types: "src/types/index.ts"
@@ -48,11 +47,17 @@ async function generatePackageExports() {
   // Generate exports for each entry
   const exports: Record<string, Record<string, string>> = {}
 
+  exports[`.`] = {
+    types: `./dist/index.d.ts`,
+    import: `./dist/index.mjs`,
+    require: `./dist/index.js`
+  }
+
   Object.keys(entries).forEach((key) => {
     exports[`./${key}`] = {
       types: `./dist/${key}.d.ts`,
-      import: `./dist/${key}.esm.js`,
-      require: `./dist/${key}.cjs.js`
+      import: `./dist/${key}.mjs`,
+      require: `./dist/${key}.js`
     }
   })
 
