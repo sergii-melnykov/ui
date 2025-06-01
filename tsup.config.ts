@@ -70,7 +70,10 @@ export default defineConfig(async () => {
   return {
     entry: entries,
     format: ["cjs", "esm"],
-    dts: true,
+    dts: {
+      resolve: false,
+      entry: entries
+    },
     splitting: true,
     clean: true,
     external: externalDependencies,
