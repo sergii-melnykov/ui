@@ -37,13 +37,13 @@
       "types": "./dist/tooltip/index.d.mts",
       "import": "./dist/tooltip/index.mjs"
     },
-    "./toaster": {
-      "types": "./dist/toaster/index.d.mts",
-      "import": "./dist/toaster/index.mjs"
-    },
     "./toast": {
       "types": "./dist/toast/index.d.mts",
       "import": "./dist/toast/index.mjs"
+    },
+    "./toaster": {
+      "types": "./dist/toaster/index.d.mts",
+      "import": "./dist/toaster/index.mjs"
     },
     "./textarea": {
       "types": "./dist/textarea/index.d.mts",
@@ -176,6 +176,10 @@
     "./rhf-textarea": {
       "types": "./dist/rhf-textarea/index.d.mts",
       "import": "./dist/rhf-textarea/index.mjs"
+    },
+    "./rhf-text-field": {
+      "types": "./dist/rhf-text-field/index.d.mts",
+      "import": "./dist/rhf-text-field/index.mjs"
     },
     "./rhf-switch": {
       "types": "./dist/rhf-switch/index.d.mts",
