@@ -5,24 +5,42 @@ import fs from "fs"
 
 const packageJson = JSON.parse(fs.readFileSync("package.json", "utf-8"))
 
+type Entries = Record<
+  string,
+  {
+    alias: string
+    src: string
+    bundle: boolean
+  }
+>
+
 // Function to get all component entry points
 async function getComponentEntries() {
-  const entries: Record<string, string> = {
+  const entries: Entries = {
     // Main entry points
-    hooks: "src/hooks/index.ts",
-    utils: "src/utils/index.ts",
-    types: "src/types/index.ts"
+    hooks: {
+      alias: "hooks",
+      src: "src/hooks/index.ts",
+      bundle: true
+    },
+    utils: {
+      alias: "utils",
+      src: "src/utils/index.ts",
+      bundle: true
+    },
+    types: {
+      alias: "types",
+      src: "src/types/index.ts",
+      bundle: true
+    }
   }
 
-  // Get all component directories
+  // Get all component directories (excluding hooks, utils, and types)
   const componentDirs = ["atoms", "molecules", "organisms", "rhf"]
 
   // Process each component directory
   await Promise.all(
     componentDirs.map(async (dir) => {
-      // Add the main index for backward compatibility
-      entries[dir] = `src/components/${dir}/index.ts`
-
       // Get all component directories
       const components = await glob(`src/components/${dir}/*/index.ts`, {
         ignore: ["**/node_modules/**"],
@@ -31,8 +49,13 @@ async function getComponentEntries() {
 
       // Add individual component entries
       components.forEach((component) => {
-        const componentName = path.basename(path.dirname(component))
-        entries[`${dir}/${componentName}`] = component
+        const componentName = path.basename(path.dirname(component.replace("src/components", "")))
+        // Use the full path structure for the entry key
+        entries[`${dir}/${componentName}`] = {
+          alias: `${componentName}`,
+          src: component,
+          bundle: true
+        }
       })
     })
   )
@@ -40,25 +63,24 @@ async function getComponentEntries() {
   return entries
 }
 
+const entries = await getComponentEntries()
+console.log("entries", entries)
+
 // Function to generate package.json exports
 async function generatePackageExports() {
-  const entries = await getComponentEntries()
-
   // Generate exports for each entry
   const exports: Record<string, Record<string, string>> = {}
 
   // Main entry point
   exports[`.`] = {
-    types: `./dist/index.d.ts`,
-    import: `./dist/index.mjs`,
-    require: `./dist/index.js`
+    types: `./dist/index.d.mts`,
+    import: `./dist/index.mjs`
   }
 
-  Object.keys(entries).forEach((key) => {
-    exports[`./${key}`] = {
-      types: `./dist/${key}.d.ts`,
-      import: `./dist/${key}.mjs`,
-      require: `./dist/${key}.js`
+  Object.values(entries).forEach((value) => {
+    exports[`./${value.alias}`] = {
+      types: `./dist/${value.alias}/index.d.mts`,
+      import: `./dist/${value.alias}/index.mjs`
     }
   })
 
@@ -68,10 +90,9 @@ async function generatePackageExports() {
 }
 
 const externalDependencies = Object.keys(packageJson.peerDependencies)
-const entries = await getComponentEntries()
 
 const config: Options = {
-  format: ["cjs", "esm"],
+  format: ["esm"],
   dts: true,
   external: externalDependencies,
   minify: true,
@@ -79,15 +100,24 @@ const config: Options = {
   sourcemap: true,
   treeshake: true,
   injectStyle: false,
-  outExtension({ format }) {
-    return { js: format === "esm" ? ".mjs" : ".js" }
-  }
+  splitting: true
 }
 
-const entriesConfig: Options[] = Object.entries(entries).map(([key, value]) => ({
-  entry: { [key]: value },
-  ...config
-}))
+const entriesConfig: Options[] = Object.entries(entries).map(([key, value]) => {
+  return {
+    ...config,
+    entry: {
+      [`${value.alias}/index`]: value.src
+    },
+    ...(value.bundle
+      ? { bundle: true }
+      : {
+          async onSuccess() {
+            console.log("onSuccess", key, value)
+          }
+        })
+  }
+})
 
 export default defineConfig([
   ...entriesConfig,
@@ -97,6 +127,11 @@ export default defineConfig([
     // Add post-build hook to generate package.json exports
     async onSuccess() {
       await generatePackageExports()
+      // Lazy proxy-based export reexport all entries from the main index.mjs
+      const reexport = Object.values(entries)
+        .map((value) => `export * from "./${value.alias}/index.mjs"`)
+        .join("\n")
+      fs.writeFileSync("dist/index.mjs", reexport)
     }
   }
 ])

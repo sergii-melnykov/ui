@@ -1,7 +1,7 @@
 import { cn } from "@/utils"
 import { Loader2 } from "lucide-react"
 
-export interface PageLoaderProps {
+export type PageLoaderProps = {
   /**
    * Optional className to extend the component's styles
    */

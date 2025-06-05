@@ -5,6 +5,14 @@
  */
 import * as React from "react"
 import { cn } from "@/utils"
+import {
+  CardProps,
+  CardHeaderProps,
+  CardTitleProps,
+  CardDescriptionProps,
+  CardContentProps,
+  CardFooterProps
+} from "./card.types"
 
 /**
  * The main card container component.
@@ -38,15 +46,13 @@ import { cn } from "@/utils"
  * </Card>
  * ```
  */
-const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)}
-      {...props}
-    />
-  )
-)
+const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("rounded-lg border bg-card text-card-foreground shadow-sm", className)}
+    {...props}
+  />
+))
 Card.displayName = "Card"
 
 /**
@@ -54,7 +60,7 @@ Card.displayName = "Card"
  * Typically contains the card title and description.
  * Includes padding and spacing for consistent layout.
  */
-const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={cn("flex flex-col space-y-1.5 p-6", className)} {...props} />
   )
@@ -66,13 +72,15 @@ CardHeader.displayName = "CardHeader"
  * Should be used within CardHeader.
  * Provides consistent typography styling for card titles.
  */
-const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => (
+const CardTitle = React.forwardRef<HTMLParagraphElement, CardTitleProps>(
+  ({ className, children, ...props }, ref) => (
     <h3
       ref={ref}
       className={cn("text-2xl font-semibold leading-none tracking-tight", className)}
       {...props}
-    />
+    >
+      {children}
+    </h3>
   )
 )
 CardTitle.displayName = "CardTitle"
@@ -82,19 +90,18 @@ CardTitle.displayName = "CardTitle"
  * Should be used within CardHeader.
  * Provides consistent typography styling for card descriptions.
  */
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
-))
+const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionProps>(
+  ({ className, ...props }, ref) => (
+    <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
+  )
+)
 CardDescription.displayName = "CardDescription"
 
 /**
  * Main content section of the card.
  * Includes padding and removes top padding to maintain consistent spacing with the header.
  */
-const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
   )
@@ -106,7 +113,7 @@ CardContent.displayName = "CardContent"
  * Typically contains action buttons or additional information.
  * Includes padding and removes top padding to maintain consistent spacing with the content.
  */
-const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={cn("flex items-center p-6 pt-0", className)} {...props} />
   )

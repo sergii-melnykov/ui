@@ -1,3 +1,4 @@
+import React from "react"
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { VariantProps } from "class-variance-authority"
 import { navigationMenuTriggerStyle } from "./navigation-menu.variants"

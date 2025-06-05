@@ -2,269 +2,208 @@
   "name": "@me1a/ui",
   "version": "2.2.2",
   "private": false,
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.esm.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*/index.d.mts"
+      ]
+    }
+  },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     },
     "./hooks": {
-      "types": "./dist/hooks.d.ts",
-      "import": "./dist/hooks.mjs",
-      "require": "./dist/hooks.js"
+      "types": "./dist/hooks/index.d.mts",
+      "import": "./dist/hooks/index.mjs"
     },
     "./utils": {
-      "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.mjs",
-      "require": "./dist/utils.js"
+      "types": "./dist/utils/index.d.mts",
+      "import": "./dist/utils/index.mjs"
     },
     "./types": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/types.mjs",
-      "require": "./dist/types.js"
+      "types": "./dist/types/index.d.mts",
+      "import": "./dist/types/index.mjs"
     },
-    "./atoms": {
-      "types": "./dist/atoms.d.ts",
-      "import": "./dist/atoms.mjs",
-      "require": "./dist/atoms.js"
+    "./typography": {
+      "types": "./dist/typography/index.d.mts",
+      "import": "./dist/typography/index.mjs"
     },
-    "./molecules": {
-      "types": "./dist/molecules.d.ts",
-      "import": "./dist/molecules.mjs",
-      "require": "./dist/molecules.js"
+    "./tooltip": {
+      "types": "./dist/tooltip/index.d.mts",
+      "import": "./dist/tooltip/index.mjs"
     },
-    "./organisms": {
-      "types": "./dist/organisms.d.ts",
-      "import": "./dist/organisms.mjs",
-      "require": "./dist/organisms.js"
+    "./toaster": {
+      "types": "./dist/toaster/index.d.mts",
+      "import": "./dist/toaster/index.mjs"
     },
-    "./rhf": {
-      "types": "./dist/rhf.d.ts",
-      "import": "./dist/rhf.mjs",
-      "require": "./dist/rhf.js"
+    "./toast": {
+      "types": "./dist/toast/index.d.mts",
+      "import": "./dist/toast/index.mjs"
     },
-    "./atoms/typography": {
-      "types": "./dist/atoms/typography.d.ts",
-      "import": "./dist/atoms/typography.mjs",
-      "require": "./dist/atoms/typography.js"
+    "./textarea": {
+      "types": "./dist/textarea/index.d.mts",
+      "import": "./dist/textarea/index.mjs"
     },
-    "./atoms/tooltip": {
-      "types": "./dist/atoms/tooltip.d.ts",
-      "import": "./dist/atoms/tooltip.mjs",
-      "require": "./dist/atoms/tooltip.js"
+    "./text-field": {
+      "types": "./dist/text-field/index.d.mts",
+      "import": "./dist/text-field/index.mjs"
     },
-    "./atoms/toaster": {
-      "types": "./dist/atoms/toaster.d.ts",
-      "import": "./dist/atoms/toaster.mjs",
-      "require": "./dist/atoms/toaster.js"
+    "./table": {
+      "types": "./dist/table/index.d.mts",
+      "import": "./dist/table/index.mjs"
     },
-    "./atoms/toast": {
-      "types": "./dist/atoms/toast.d.ts",
-      "import": "./dist/atoms/toast.mjs",
-      "require": "./dist/atoms/toast.js"
+    "./switch": {
+      "types": "./dist/switch/index.d.mts",
+      "import": "./dist/switch/index.mjs"
     },
-    "./atoms/textarea": {
-      "types": "./dist/atoms/textarea.d.ts",
-      "import": "./dist/atoms/textarea.mjs",
-      "require": "./dist/atoms/textarea.js"
+    "./stack": {
+      "types": "./dist/stack/index.d.mts",
+      "import": "./dist/stack/index.mjs"
     },
-    "./atoms/text-field": {
-      "types": "./dist/atoms/text-field.d.ts",
-      "import": "./dist/atoms/text-field.mjs",
-      "require": "./dist/atoms/text-field.js"
+    "./skeleton": {
+      "types": "./dist/skeleton/index.d.mts",
+      "import": "./dist/skeleton/index.mjs"
     },
-    "./atoms/table": {
-      "types": "./dist/atoms/table.d.ts",
-      "import": "./dist/atoms/table.mjs",
-      "require": "./dist/atoms/table.js"
+    "./sheet": {
+      "types": "./dist/sheet/index.d.mts",
+      "import": "./dist/sheet/index.mjs"
     },
-    "./atoms/switch": {
-      "types": "./dist/atoms/switch.d.ts",
-      "import": "./dist/atoms/switch.mjs",
-      "require": "./dist/atoms/switch.js"
+    "./separator": {
+      "types": "./dist/separator/index.d.mts",
+      "import": "./dist/separator/index.mjs"
     },
-    "./atoms/stack": {
-      "types": "./dist/atoms/stack.d.ts",
-      "import": "./dist/atoms/stack.mjs",
-      "require": "./dist/atoms/stack.js"
+    "./resizable": {
+      "types": "./dist/resizable/index.d.mts",
+      "import": "./dist/resizable/index.mjs"
     },
-    "./atoms/skeleton": {
-      "types": "./dist/atoms/skeleton.d.ts",
-      "import": "./dist/atoms/skeleton.mjs",
-      "require": "./dist/atoms/skeleton.js"
+    "./radio-group": {
+      "types": "./dist/radio-group/index.d.mts",
+      "import": "./dist/radio-group/index.mjs"
     },
-    "./atoms/sheet": {
-      "types": "./dist/atoms/sheet.d.ts",
-      "import": "./dist/atoms/sheet.mjs",
-      "require": "./dist/atoms/sheet.js"
+    "./popover": {
+      "types": "./dist/popover/index.d.mts",
+      "import": "./dist/popover/index.mjs"
     },
-    "./atoms/separator": {
-      "types": "./dist/atoms/separator.d.ts",
-      "import": "./dist/atoms/separator.mjs",
-      "require": "./dist/atoms/separator.js"
+    "./pagination": {
+      "types": "./dist/pagination/index.d.mts",
+      "import": "./dist/pagination/index.mjs"
     },
-    "./atoms/resizable": {
-      "types": "./dist/atoms/resizable.d.ts",
-      "import": "./dist/atoms/resizable.mjs",
-      "require": "./dist/atoms/resizable.js"
+    "./page-loader": {
+      "types": "./dist/page-loader/index.d.mts",
+      "import": "./dist/page-loader/index.mjs"
     },
-    "./atoms/radio-group": {
-      "types": "./dist/atoms/radio-group.d.ts",
-      "import": "./dist/atoms/radio-group.mjs",
-      "require": "./dist/atoms/radio-group.js"
+    "./input": {
+      "types": "./dist/input/index.d.mts",
+      "import": "./dist/input/index.mjs"
     },
-    "./atoms/popover": {
-      "types": "./dist/atoms/popover.d.ts",
-      "import": "./dist/atoms/popover.mjs",
-      "require": "./dist/atoms/popover.js"
+    "./label": {
+      "types": "./dist/label/index.d.mts",
+      "import": "./dist/label/index.mjs"
     },
-    "./atoms/pagination": {
-      "types": "./dist/atoms/pagination.d.ts",
-      "import": "./dist/atoms/pagination.mjs",
-      "require": "./dist/atoms/pagination.js"
+    "./dialog": {
+      "types": "./dist/dialog/index.d.mts",
+      "import": "./dist/dialog/index.mjs"
     },
-    "./atoms/page-loader": {
-      "types": "./dist/atoms/page-loader.d.ts",
-      "import": "./dist/atoms/page-loader.mjs",
-      "require": "./dist/atoms/page-loader.js"
+    "./container": {
+      "types": "./dist/container/index.d.mts",
+      "import": "./dist/container/index.mjs"
     },
-    "./atoms/label": {
-      "types": "./dist/atoms/label.d.ts",
-      "import": "./dist/atoms/label.mjs",
-      "require": "./dist/atoms/label.js"
+    "./command": {
+      "types": "./dist/command/index.d.mts",
+      "import": "./dist/command/index.mjs"
     },
-    "./atoms/input": {
-      "types": "./dist/atoms/input.d.ts",
-      "import": "./dist/atoms/input.mjs",
-      "require": "./dist/atoms/input.js"
+    "./collapsible": {
+      "types": "./dist/collapsible/index.d.mts",
+      "import": "./dist/collapsible/index.mjs"
     },
-    "./atoms/dialog": {
-      "types": "./dist/atoms/dialog.d.ts",
-      "import": "./dist/atoms/dialog.mjs",
-      "require": "./dist/atoms/dialog.js"
+    "./checkbox": {
+      "types": "./dist/checkbox/index.d.mts",
+      "import": "./dist/checkbox/index.mjs"
     },
-    "./atoms/container": {
-      "types": "./dist/atoms/container.d.ts",
-      "import": "./dist/atoms/container.mjs",
-      "require": "./dist/atoms/container.js"
+    "./button": {
+      "types": "./dist/button/index.d.mts",
+      "import": "./dist/button/index.mjs"
     },
-    "./atoms/command": {
-      "types": "./dist/atoms/command.d.ts",
-      "import": "./dist/atoms/command.mjs",
-      "require": "./dist/atoms/command.js"
+    "./breadcrumb": {
+      "types": "./dist/breadcrumb/index.d.mts",
+      "import": "./dist/breadcrumb/index.mjs"
     },
-    "./atoms/collapsible": {
-      "types": "./dist/atoms/collapsible.d.ts",
-      "import": "./dist/atoms/collapsible.mjs",
-      "require": "./dist/atoms/collapsible.js"
+    "./box": {
+      "types": "./dist/box/index.d.mts",
+      "import": "./dist/box/index.mjs"
     },
-    "./atoms/checkbox": {
-      "types": "./dist/atoms/checkbox.d.ts",
-      "import": "./dist/atoms/checkbox.mjs",
-      "require": "./dist/atoms/checkbox.js"
+    "./badge": {
+      "types": "./dist/badge/index.d.mts",
+      "import": "./dist/badge/index.mjs"
     },
-    "./atoms/button": {
-      "types": "./dist/atoms/button.d.ts",
-      "import": "./dist/atoms/button.mjs",
-      "require": "./dist/atoms/button.js"
+    "./avatar": {
+      "types": "./dist/avatar/index.d.mts",
+      "import": "./dist/avatar/index.mjs"
     },
-    "./atoms/breadcrumb": {
-      "types": "./dist/atoms/breadcrumb.d.ts",
-      "import": "./dist/atoms/breadcrumb.mjs",
-      "require": "./dist/atoms/breadcrumb.js"
+    "./accordion": {
+      "types": "./dist/accordion/index.d.mts",
+      "import": "./dist/accordion/index.mjs"
     },
-    "./atoms/box": {
-      "types": "./dist/atoms/box.d.ts",
-      "import": "./dist/atoms/box.mjs",
-      "require": "./dist/atoms/box.js"
+    "./tabs": {
+      "types": "./dist/tabs/index.d.mts",
+      "import": "./dist/tabs/index.mjs"
     },
-    "./atoms/badge": {
-      "types": "./dist/atoms/badge.d.ts",
-      "import": "./dist/atoms/badge.mjs",
-      "require": "./dist/atoms/badge.js"
+    "./navigation-menu": {
+      "types": "./dist/navigation-menu/index.d.mts",
+      "import": "./dist/navigation-menu/index.mjs"
     },
-    "./atoms/avatar": {
-      "types": "./dist/atoms/avatar.d.ts",
-      "import": "./dist/atoms/avatar.mjs",
-      "require": "./dist/atoms/avatar.js"
+    "./card": {
+      "types": "./dist/card/index.d.mts",
+      "import": "./dist/card/index.mjs"
     },
-    "./atoms/accordion": {
-      "types": "./dist/atoms/accordion.d.ts",
-      "import": "./dist/atoms/accordion.mjs",
-      "require": "./dist/atoms/accordion.js"
+    "./sidebar": {
+      "types": "./dist/sidebar/index.d.mts",
+      "import": "./dist/sidebar/index.mjs"
     },
-    "./molecules/tabs": {
-      "types": "./dist/molecules/tabs.d.ts",
-      "import": "./dist/molecules/tabs.mjs",
-      "require": "./dist/molecules/tabs.js"
+    "./dropdown-menu": {
+      "types": "./dist/dropdown-menu/index.d.mts",
+      "import": "./dist/dropdown-menu/index.mjs"
     },
-    "./molecules/navigation-menu": {
-      "types": "./dist/molecules/navigation-menu.d.ts",
-      "import": "./dist/molecules/navigation-menu.mjs",
-      "require": "./dist/molecules/navigation-menu.js"
+    "./drawer": {
+      "types": "./dist/drawer/index.d.mts",
+      "import": "./dist/drawer/index.mjs"
     },
-    "./molecules/card": {
-      "types": "./dist/molecules/card.d.ts",
-      "import": "./dist/molecules/card.mjs",
-      "require": "./dist/molecules/card.js"
+    "./rhf-textarea": {
+      "types": "./dist/rhf-textarea/index.d.mts",
+      "import": "./dist/rhf-textarea/index.mjs"
     },
-    "./organisms/sidebar": {
-      "types": "./dist/organisms/sidebar.d.ts",
-      "import": "./dist/organisms/sidebar.mjs",
-      "require": "./dist/organisms/sidebar.js"
+    "./rhf-switch": {
+      "types": "./dist/rhf-switch/index.d.mts",
+      "import": "./dist/rhf-switch/index.mjs"
     },
-    "./organisms/dropdown-menu": {
-      "types": "./dist/organisms/dropdown-menu.d.ts",
-      "import": "./dist/organisms/dropdown-menu.mjs",
-      "require": "./dist/organisms/dropdown-menu.js"
+    "./rhf-select": {
+      "types": "./dist/rhf-select/index.d.mts",
+      "import": "./dist/rhf-select/index.mjs"
     },
-    "./organisms/drawer": {
-      "types": "./dist/organisms/drawer.d.ts",
-      "import": "./dist/organisms/drawer.mjs",
-      "require": "./dist/organisms/drawer.js"
+    "./rhf-radio-group": {
+      "types": "./dist/rhf-radio-group/index.d.mts",
+      "import": "./dist/rhf-radio-group/index.mjs"
     },
-    "./rhf/rhf-textarea": {
-      "types": "./dist/rhf/rhf-textarea.d.ts",
-      "import": "./dist/rhf/rhf-textarea.mjs",
-      "require": "./dist/rhf/rhf-textarea.js"
+    "./rhf-radio-button-group": {
+      "types": "./dist/rhf-radio-button-group/index.d.mts",
+      "import": "./dist/rhf-radio-button-group/index.mjs"
     },
-    "./rhf/rhf-switch": {
-      "types": "./dist/rhf/rhf-switch.d.ts",
-      "import": "./dist/rhf/rhf-switch.mjs",
-      "require": "./dist/rhf/rhf-switch.js"
+    "./rhf-multi-select": {
+      "types": "./dist/rhf-multi-select/index.d.mts",
+      "import": "./dist/rhf-multi-select/index.mjs"
     },
-    "./rhf/rhf-select": {
-      "types": "./dist/rhf/rhf-select.d.ts",
-      "import": "./dist/rhf/rhf-select.mjs",
-      "require": "./dist/rhf/rhf-select.js"
+    "./rhf-checkbox": {
+      "types": "./dist/rhf-checkbox/index.d.mts",
+      "import": "./dist/rhf-checkbox/index.mjs"
     },
-    "./rhf/rhf-radio-group": {
-      "types": "./dist/rhf/rhf-radio-group.d.ts",
-      "import": "./dist/rhf/rhf-radio-group.mjs",
-      "require": "./dist/rhf/rhf-radio-group.js"
-    },
-    "./rhf/rhf-radio-button-group": {
-      "types": "./dist/rhf/rhf-radio-button-group.d.ts",
-      "import": "./dist/rhf/rhf-radio-button-group.mjs",
-      "require": "./dist/rhf/rhf-radio-button-group.js"
-    },
-    "./rhf/rhf-multi-select": {
-      "types": "./dist/rhf/rhf-multi-select.d.ts",
-      "import": "./dist/rhf/rhf-multi-select.mjs",
-      "require": "./dist/rhf/rhf-multi-select.js"
-    },
-    "./rhf/rhf-checkbox": {
-      "types": "./dist/rhf/rhf-checkbox.d.ts",
-      "import": "./dist/rhf/rhf-checkbox.mjs",
-      "require": "./dist/rhf/rhf-checkbox.js"
-    },
-    "./rhf/form": {
-      "types": "./dist/rhf/form.d.ts",
-      "import": "./dist/rhf/form.mjs",
-      "require": "./dist/rhf/form.js"
+    "./form": {
+      "types": "./dist/form/index.d.mts",
+      "import": "./dist/form/index.mjs"
     }
   },
   "sideEffects": false,
