@@ -97,13 +97,13 @@
       "types": "./dist/page-loader/index.d.mts",
       "import": "./dist/page-loader/index.mjs"
     },
-    "./input": {
-      "types": "./dist/input/index.d.mts",
-      "import": "./dist/input/index.mjs"
-    },
     "./label": {
       "types": "./dist/label/index.d.mts",
       "import": "./dist/label/index.mjs"
+    },
+    "./input": {
+      "types": "./dist/input/index.d.mts",
+      "import": "./dist/input/index.mjs"
     },
     "./dialog": {
       "types": "./dist/dialog/index.d.mts",
@@ -255,6 +255,7 @@
     "@vitejs/plugin-react": "^4.4.1",
     "autoprefixer": "^10.4.21",
     "babel-jest": "^29.7.0",
+    "babel-plugin-transform-imports": "^2.0.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^14.1.0",

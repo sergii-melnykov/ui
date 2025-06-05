@@ -3,5 +3,17 @@
     "@babel/preset-env",
     ["@babel/preset-react", { "runtime": "automatic" }],
     "@babel/preset-typescript"
+  ],
+  "plugins": [
+    [
+      "transform-imports",
+      {
+        "@me1a/ui": {
+          "transform": "@me1a/ui/${member}",
+          "preventFullImport": true,
+          "skipDefaultConversion": true
+        }
+      }
+    ]
   ]
 }
