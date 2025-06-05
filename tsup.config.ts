@@ -1,7 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { glob } from "glob"
 import { defineConfig, Options } from "tsup"
 import path from "path"
 import fs from "fs"
+import { preserveUseClientPlugin } from "./plugins/preserve-use-client"
 
 const packageJson = JSON.parse(fs.readFileSync("package.json", "utf-8"))
 
@@ -64,7 +66,6 @@ async function getComponentEntries() {
 }
 
 const entries = await getComponentEntries()
-console.log("entries", entries)
 
 // Function to generate package.json exports
 async function generatePackageExports() {
@@ -96,11 +97,12 @@ const config: Options = {
   dts: true,
   external: externalDependencies,
   minify: true,
-  bundle: false,
+  bundle: true,
   sourcemap: true,
-  treeshake: true,
+  treeshake: false, // it removes directives
   injectStyle: false,
-  splitting: true
+  splitting: true,
+  esbuildPlugins: [preserveUseClientPlugin()]
 }
 
 const entriesConfig: Options[] = Object.entries(entries).map(([key, value]) => {
@@ -109,13 +111,7 @@ const entriesConfig: Options[] = Object.entries(entries).map(([key, value]) => {
     entry: {
       [`${value.alias}/index`]: value.src
     },
-    ...(value.bundle
-      ? { bundle: true }
-      : {
-          async onSuccess() {
-            console.log("onSuccess", key, value)
-          }
-        })
+    bundle: value.bundle
   }
 })
 

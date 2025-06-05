@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { useFormContext, type FieldValues, type FieldPath } from "react-hook-form"
 import { Select } from "@/components/atoms/select"
