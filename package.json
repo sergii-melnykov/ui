@@ -1,6 +1,6 @@
 {
   "name": "@me1a/ui",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "private": false,
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
