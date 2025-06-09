@@ -37,13 +37,13 @@
       "types": "./dist/tooltip/index.d.mts",
       "import": "./dist/tooltip/index.mjs"
     },
-    "./toast": {
-      "types": "./dist/toast/index.d.mts",
-      "import": "./dist/toast/index.mjs"
-    },
     "./toaster": {
       "types": "./dist/toaster/index.d.mts",
       "import": "./dist/toaster/index.mjs"
+    },
+    "./toast": {
+      "types": "./dist/toast/index.d.mts",
+      "import": "./dist/toast/index.mjs"
     },
     "./textarea": {
       "types": "./dist/textarea/index.d.mts",
@@ -77,6 +77,10 @@
       "types": "./dist/separator/index.d.mts",
       "import": "./dist/separator/index.mjs"
     },
+    "./scroll-area": {
+      "types": "./dist/scroll-area/index.d.mts",
+      "import": "./dist/scroll-area/index.mjs"
+    },
     "./resizable": {
       "types": "./dist/resizable/index.d.mts",
       "import": "./dist/resizable/index.mjs"
@@ -104,6 +108,10 @@
     "./input": {
       "types": "./dist/input/index.d.mts",
       "import": "./dist/input/index.mjs"
+    },
+    "./dnd-input": {
+      "types": "./dist/dnd-input/index.d.mts",
+      "import": "./dist/dnd-input/index.mjs"
     },
     "./dialog": {
       "types": "./dist/dialog/index.d.mts",
@@ -200,6 +208,10 @@
     "./rhf-multi-select": {
       "types": "./dist/rhf-multi-select/index.d.mts",
       "import": "./dist/rhf-multi-select/index.mjs"
+    },
+    "./rhf-dnd-input": {
+      "types": "./dist/rhf-dnd-input/index.d.mts",
+      "import": "./dist/rhf-dnd-input/index.mjs"
     },
     "./rhf-checkbox": {
       "types": "./dist/rhf-checkbox/index.d.mts",
