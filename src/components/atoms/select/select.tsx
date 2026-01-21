@@ -17,8 +17,8 @@ import {
 } from "../command"
 import { Typography } from "../typography"
 
-export type SelectOption = {
-  id: string
+export type SelectOption<T extends string | number = string | number> = {
+  id: T
   label: string
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode
@@ -26,21 +26,21 @@ export type SelectOption = {
   disabled?: boolean
 }
 
-export type SelectProps = {
+export type SelectProps<T extends string | number = string | number> = {
   /** Whether the select is searchable */
   searchable?: boolean
   /** Whether the select should take up the full width of its container */
   fullWidth?: boolean
   /** Currently selected value */
-  value: string
+  value: T
   /** Array of options to display in the select */
-  options: SelectOption[]
+  options: SelectOption<T>[]
   /** Callback fired when the value changes */
   // eslint-disable-next-line no-unused-vars
-  onChange: (value: string) => void
+  onChange: (value: T) => void
   /** Render a custom CommandList for the select, if not provided, the select will render a default CommandList with the options */
   // eslint-disable-next-line no-unused-vars
-  renderCommandList?: (options: SelectOption[]) => React.ReactNode
+  renderCommandList?: (options: SelectOption<T>[]) => React.ReactNode
   /** Placeholder text to show when no value is selected */
   placeholder?: string
   /** Whether the select is disabled */
@@ -74,7 +74,7 @@ export type SelectProps = {
  * />
  * ```
  */
-export function Select({
+export function Select<T extends string | number = string | number>({
   options,
   value,
   onChange,
@@ -87,15 +87,24 @@ export function Select({
   searchable,
   id,
   renderCommandList
-}: SelectProps) {
+}: SelectProps<T>) {
   const [open, setOpen] = React.useState(false)
+  const [triggerWidth, setTriggerWidth] = React.useState<number | undefined>(undefined)
+  const triggerRef = React.useRef<HTMLButtonElement>(null)
   const selectedOption = options?.find((option) => option.id === value)
+
+  React.useEffect(() => {
+    if (triggerRef.current) {
+      setTriggerWidth(triggerRef.current.offsetWidth)
+    }
+  }, [])
 
   return (
     <div className={cn(fullWidth && "w-full")}>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
+            ref={triggerRef}
             variant="outline"
             role="combobox"
             aria-expanded={open}
@@ -117,9 +126,10 @@ export function Select({
         </PopoverTrigger>
         <PopoverContent
           className={cn(
-            "w-[13rem] p-0 rounded-md border bg-popover text-popover-foreground shadow-md",
+            "p-0 rounded-md border bg-popover text-popover-foreground shadow-md",
             fullWidth && "w-full"
           )}
+          style={{ width: triggerWidth }}
           align="start"
         >
           <Command>
