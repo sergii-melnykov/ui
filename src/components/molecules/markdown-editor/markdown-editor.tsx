@@ -39,6 +39,10 @@ export function MarkdownEditor({
         )
       },
       handleKeyDown: (view, event) => {
+        if (event.key === "Enter" && !event.shiftKey) {
+          onKeyDown?.(event)
+          return true
+        }
         onKeyDown?.(event)
         return false
       }
