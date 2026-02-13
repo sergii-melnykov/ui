@@ -10,7 +10,9 @@ export function MarkdownEditor({
   onChange,
   className,
   placeholder,
-  disabled
+  disabled,
+  onKeyDown,
+  autoFocus
 }: MarkdownEditorProps) {
   const editor = useEditor({
     extensions: [
@@ -21,6 +23,7 @@ export function MarkdownEditor({
     ],
     content: value,
     editable: !disabled,
+    autofocus: autoFocus,
     onUpdate: ({ editor: e }) => {
       onChange?.((e.storage as any).markdown.getMarkdown())
     },
@@ -30,6 +33,10 @@ export function MarkdownEditor({
           "prose prose-sm dark:prose-invert max-w-none w-full min-h-[60px] rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
           className
         )
+      },
+      handleKeyDown: (view, event) => {
+        onKeyDown?.(event)
+        return false
       }
     }
   })
@@ -40,6 +47,10 @@ export function MarkdownEditor({
       editor.commands.setContent(value)
     }
   }, [value, editor])
+
+  useEffect(() => {
+    editor?.setEditable(!disabled)
+  }, [editor, disabled])
 
   if (!editor) {
     return null

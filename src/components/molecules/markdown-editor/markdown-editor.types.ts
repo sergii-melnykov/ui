@@ -20,4 +20,12 @@ export interface MarkdownEditorProps {
    * whether the editor is disabled
    */
   disabled?: boolean
+  /**
+   * callback when key is pressed
+   */
+  onKeyDown?: (event: KeyboardEvent) => void
+  /**
+   * whether to focus the editor on mount
+   */
+  autoFocus?: boolean
 }
