@@ -1,9 +1,10 @@
 import { useEditor, EditorContent } from "@tiptap/react"
 import Placeholder from "@tiptap/extension-placeholder"
+import StarterKit from "@tiptap/starter-kit"
+import { Markdown } from "tiptap-markdown"
 import { useEffect } from "react"
 import { cn } from "@/utils"
 import { MarkdownEditorProps } from "./markdown-editor.types"
-import { extensions } from "./extensions"
 
 export function MarkdownEditor({
   value,
@@ -16,7 +17,8 @@ export function MarkdownEditor({
 }: MarkdownEditorProps) {
   const editor = useEditor({
     extensions: [
-      ...extensions,
+      StarterKit,
+      Markdown,
       Placeholder.configure({
         placeholder: placeholder ?? "Write something..."
       })
