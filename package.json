@@ -220,6 +220,10 @@
     "./form": {
       "types": "./dist/form/index.d.mts",
       "import": "./dist/form/index.mjs"
+    },
+    "./markdown-editor": {
+      "types": "./dist/markdown-editor/index.d.mts",
+      "import": "./dist/markdown-editor/index.mjs"
     }
   },
   "sideEffects": false,
@@ -314,13 +318,18 @@
     "@radix-ui/react-tabs": "^1.1.12",
     "@radix-ui/react-toast": "^1.2.13",
     "@radix-ui/react-tooltip": "^1.2.6",
+    "@tailwindcss/typography": "^0.5.19",
     "@tanstack/react-table": "^8.21.3",
+    "@tiptap/extension-placeholder": "^3.19.0",
+    "@tiptap/react": "^3.19.0",
+    "@tiptap/starter-kit": "^3.19.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
     "lucide-react": "^0.511.0",
     "react-dropzone": "^14.3.8",
     "react-resizable-panels": "^3.0.2",
+    "tiptap-markdown": "^0.9.0",
     "vaul": "^1.1.2",
     "vite": "^6.3.5"
   },
