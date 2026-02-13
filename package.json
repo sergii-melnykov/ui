@@ -29,17 +29,13 @@
       "types": "./dist/types/index.d.mts",
       "import": "./dist/types/index.mjs"
     },
-    "./tooltip": {
-      "types": "./dist/tooltip/index.d.mts",
-      "import": "./dist/tooltip/index.mjs"
-    },
     "./typography": {
       "types": "./dist/typography/index.d.mts",
       "import": "./dist/typography/index.mjs"
     },
-    "./toaster": {
-      "types": "./dist/toaster/index.d.mts",
-      "import": "./dist/toaster/index.mjs"
+    "./tooltip": {
+      "types": "./dist/tooltip/index.d.mts",
+      "import": "./dist/tooltip/index.mjs"
     },
     "./toast": {
       "types": "./dist/toast/index.d.mts",
@@ -49,25 +45,29 @@
       "types": "./dist/textarea/index.d.mts",
       "import": "./dist/textarea/index.mjs"
     },
+    "./toaster": {
+      "types": "./dist/toaster/index.d.mts",
+      "import": "./dist/toaster/index.mjs"
+    },
     "./text-field": {
       "types": "./dist/text-field/index.d.mts",
       "import": "./dist/text-field/index.mjs"
-    },
-    "./table": {
-      "types": "./dist/table/index.d.mts",
-      "import": "./dist/table/index.mjs"
     },
     "./switch": {
       "types": "./dist/switch/index.d.mts",
       "import": "./dist/switch/index.mjs"
     },
-    "./skeleton": {
-      "types": "./dist/skeleton/index.d.mts",
-      "import": "./dist/skeleton/index.mjs"
+    "./table": {
+      "types": "./dist/table/index.d.mts",
+      "import": "./dist/table/index.mjs"
     },
     "./stack": {
       "types": "./dist/stack/index.d.mts",
       "import": "./dist/stack/index.mjs"
+    },
+    "./skeleton": {
+      "types": "./dist/skeleton/index.d.mts",
+      "import": "./dist/skeleton/index.mjs"
     },
     "./sheet": {
       "types": "./dist/sheet/index.d.mts",
@@ -76,6 +76,10 @@
     "./separator": {
       "types": "./dist/separator/index.d.mts",
       "import": "./dist/separator/index.mjs"
+    },
+    "./select": {
+      "types": "./dist/select/index.d.mts",
+      "import": "./dist/select/index.mjs"
     },
     "./scroll-area": {
       "types": "./dist/scroll-area/index.d.mts",
@@ -173,25 +177,13 @@
       "types": "./dist/card/index.d.mts",
       "import": "./dist/card/index.mjs"
     },
-    "./sidebar": {
-      "types": "./dist/sidebar/index.d.mts",
-      "import": "./dist/sidebar/index.mjs"
-    },
-    "./dropdown-menu": {
-      "types": "./dist/dropdown-menu/index.d.mts",
-      "import": "./dist/dropdown-menu/index.mjs"
-    },
-    "./drawer": {
-      "types": "./dist/drawer/index.d.mts",
-      "import": "./dist/drawer/index.mjs"
+    "./rhf-text-field": {
+      "types": "./dist/rhf-text-field/index.d.mts",
+      "import": "./dist/rhf-text-field/index.mjs"
     },
     "./rhf-textarea": {
       "types": "./dist/rhf-textarea/index.d.mts",
       "import": "./dist/rhf-textarea/index.mjs"
-    },
-    "./rhf-text-field": {
-      "types": "./dist/rhf-text-field/index.d.mts",
-      "import": "./dist/rhf-text-field/index.mjs"
     },
     "./rhf-switch": {
       "types": "./dist/rhf-switch/index.d.mts",
@@ -224,6 +216,18 @@
     "./form": {
       "types": "./dist/form/index.d.mts",
       "import": "./dist/form/index.mjs"
+    },
+    "./sidebar": {
+      "types": "./dist/sidebar/index.d.mts",
+      "import": "./dist/sidebar/index.mjs"
+    },
+    "./dropdown-menu": {
+      "types": "./dist/dropdown-menu/index.d.mts",
+      "import": "./dist/dropdown-menu/index.mjs"
+    },
+    "./drawer": {
+      "types": "./dist/drawer/index.d.mts",
+      "import": "./dist/drawer/index.mjs"
     }
   },
   "sideEffects": false,
