@@ -13,7 +13,8 @@ export function MarkdownEditor({
   placeholder,
   disabled,
   onKeyDown,
-  autoFocus
+  autoFocus,
+  immediatelyRender
 }: MarkdownEditorProps) {
   const editor = useEditor({
     extensions: [
@@ -26,6 +27,7 @@ export function MarkdownEditor({
     content: value,
     editable: !disabled,
     autofocus: autoFocus,
+    immediatelyRender: immediatelyRender || false,
     onUpdate: ({ editor: e }) => {
       onChange?.((e.storage as any).markdown.getMarkdown())
     },

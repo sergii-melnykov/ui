@@ -28,4 +28,8 @@ export interface MarkdownEditorProps {
    * whether to focus the editor on mount
    */
   autoFocus?: boolean
+  /**
+   * whether to immediately render the editor
+   */
+  immediatelyRender?: boolean
 }
