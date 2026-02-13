@@ -29,13 +29,13 @@
       "types": "./dist/types/index.d.mts",
       "import": "./dist/types/index.mjs"
     },
-    "./typography": {
-      "types": "./dist/typography/index.d.mts",
-      "import": "./dist/typography/index.mjs"
-    },
     "./tooltip": {
       "types": "./dist/tooltip/index.d.mts",
       "import": "./dist/tooltip/index.mjs"
+    },
+    "./typography": {
+      "types": "./dist/typography/index.d.mts",
+      "import": "./dist/typography/index.mjs"
     },
     "./toaster": {
       "types": "./dist/toaster/index.d.mts",
@@ -61,13 +61,13 @@
       "types": "./dist/switch/index.d.mts",
       "import": "./dist/switch/index.mjs"
     },
-    "./stack": {
-      "types": "./dist/stack/index.d.mts",
-      "import": "./dist/stack/index.mjs"
-    },
     "./skeleton": {
       "types": "./dist/skeleton/index.d.mts",
       "import": "./dist/skeleton/index.mjs"
+    },
+    "./stack": {
+      "types": "./dist/stack/index.d.mts",
+      "import": "./dist/stack/index.mjs"
     },
     "./sheet": {
       "types": "./dist/sheet/index.d.mts",
@@ -165,6 +165,10 @@
       "types": "./dist/navigation-menu/index.d.mts",
       "import": "./dist/navigation-menu/index.mjs"
     },
+    "./markdown-editor": {
+      "types": "./dist/markdown-editor/index.d.mts",
+      "import": "./dist/markdown-editor/index.mjs"
+    },
     "./card": {
       "types": "./dist/card/index.d.mts",
       "import": "./dist/card/index.mjs"
@@ -220,10 +224,6 @@
     "./form": {
       "types": "./dist/form/index.d.mts",
       "import": "./dist/form/index.mjs"
-    },
-    "./markdown-editor": {
-      "types": "./dist/markdown-editor/index.d.mts",
-      "import": "./dist/markdown-editor/index.mjs"
     }
   },
   "sideEffects": false,

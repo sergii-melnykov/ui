@@ -3,3 +3,4 @@
 export * from "./card/card"
 export * from "./navigation-menu"
 export * from "./tabs"
+export * from "./markdown-editor"
