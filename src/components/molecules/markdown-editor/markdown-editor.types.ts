@@ -32,4 +32,12 @@ export interface MarkdownEditorProps {
    * whether to immediately render the editor
    */
   immediatelyRender?: boolean
+  /**
+   * callback when editor loses focus
+   */
+  onBlur?: (event: FocusEvent) => void
+  /**
+   * callback when editor gains focus
+   */
+  onFocus?: (event: FocusEvent) => void
 }
