@@ -10,13 +10,11 @@
     "noEmit": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
-    "ignoreDeprecations": "6.0",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "tsBuildInfoFile": "./node_modules/.cache/.tsbuildinfo",
-    "baseUrl": ".",
+    "tsBuildInfoFile": "./node_modules/.cache/.tsbuildinfo-native",
     "paths": {
       "@/*": ["./src/*"]
     }
