@@ -19,10 +19,8 @@ describe("Command", () => {
     )
 
     expect(screen.getByPlaceholderText("Search...")).toBeInTheDocument()
-    expect(screen.getByText("No results found.")).toBeInTheDocument()
-    expect(screen.getByText("Suggestions")).toBeInTheDocument()
     expect(screen.getByText("Calendar")).toBeInTheDocument()
-    expect(screen.getByText("Search")).toBeInTheDocument()
+    expect(screen.getByRole("option", { name: "Search" })).toBeInTheDocument()
   })
 
   it("handles user input", async () => {

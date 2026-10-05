@@ -17,13 +17,23 @@
     "tsBuildInfoFile": "./node_modules/.cache/.tsbuildinfo-native",
     "paths": {
       "@/*": ["./src/*"]
-    },
+    }
   },
   "include": ["src"],
   "exclude": [
     "node_modules",
     "dist",
+    "storybook-static",
+    "build",
+    "out",
+    ".next",
+    ".turbo",
+    "coverage",
     "plugins",
+    "scripts",
+    ".agents",
+    "docs",
+    "tokens",
     "**/*.stories.tsx",
     "**/*.stories.ts",
     "**/*.test.ts",

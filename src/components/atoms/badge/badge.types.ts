@@ -3,8 +3,7 @@ import { VariantProps } from "class-variance-authority"
 import { badgeVariants } from "./badge.variants"
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof badgeVariants> {
   /**
    * The content to display inside the badge
    */

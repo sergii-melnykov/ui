@@ -39,8 +39,9 @@ export type AccordionProps = AccordionSingleProps | AccordionMultipleProps
 /**
  * Props for an individual accordion item
  */
-export interface AccordionItemProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {
+export interface AccordionItemProps extends React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Item
+> {
   /** The value of the accordion item */
   value: string
 }
@@ -48,8 +49,9 @@ export interface AccordionItemProps
 /**
  * Props for the accordion trigger button
  */
-export interface AccordionTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> {
+export interface AccordionTriggerProps extends React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Trigger
+> {
   /** The content of the accordion trigger */
   children: React.ReactNode
 }
@@ -57,8 +59,9 @@ export interface AccordionTriggerProps
 /**
  * Props for the accordion content panel
  */
-export interface AccordionContentProps
-  extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content> {
+export interface AccordionContentProps extends React.ComponentPropsWithoutRef<
+  typeof AccordionPrimitive.Content
+> {
   /** The content of the accordion panel */
   children: React.ReactNode
 }

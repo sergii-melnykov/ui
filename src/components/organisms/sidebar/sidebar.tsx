@@ -79,8 +79,8 @@ const SidebarProvider = React.forwardRef<
     const [_open, _setOpen] = React.useState(defaultOpen)
     const open = openProp ?? _open
     const setOpen = React.useCallback(
-      (value: boolean | ((value: boolean) => boolean)) => {
-        const openState = typeof value === "function" ? value(open) : value
+      (nextValue: boolean | ((current: boolean) => boolean)) => {
+        const openState = typeof nextValue === "function" ? nextValue(open) : nextValue
         if (setOpenProp) {
           setOpenProp(openState)
         } else {
@@ -95,7 +95,7 @@ const SidebarProvider = React.forwardRef<
 
     // Helper to toggle the sidebar.
     const toggleSidebar = React.useCallback(() => {
-      return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
+      return isMobile ? setOpenMobile((isOpen) => !isOpen) : setOpen((isOpen) => !isOpen)
     }, [isMobile, setOpen, setOpenMobile])
 
     // Adds a keyboard shortcut to toggle the sidebar.
@@ -588,11 +588,12 @@ const SidebarMenuButton = React.forwardRef<
       return button
     }
 
-    if (typeof tooltip === "string") {
-      tooltip = {
-        children: tooltip
-      }
-    }
+    const tooltipContent =
+      typeof tooltip === "string"
+        ? {
+            children: tooltip
+          }
+        : tooltip
 
     return (
       <Tooltip>
@@ -601,7 +602,7 @@ const SidebarMenuButton = React.forwardRef<
           side="right"
           align="center"
           hidden={state !== "collapsed" || isMobile}
-          {...tooltip}
+          {...tooltipContent}
         />
       </Tooltip>
     )

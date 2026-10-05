@@ -21,7 +21,8 @@ import { textFieldVariants } from "./text-field"
  * @property {string} [helperText] - Helper text to display below the text field.
  */
 export interface TextFieldProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+  extends
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
     VariantProps<typeof textFieldVariants> {
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode

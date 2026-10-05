@@ -35,8 +35,9 @@ export interface TabsListProps extends React.ComponentPropsWithoutRef<typeof Tab
   className?: string
 }
 
-export interface TabsTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> {
+export interface TabsTriggerProps extends React.ComponentPropsWithoutRef<
+  typeof TabsPrimitive.Trigger
+> {
   /**
    * Additional CSS class names to apply to the tab trigger.
    */
@@ -53,8 +54,10 @@ export interface TabsTriggerProps
   disabled?: boolean
 }
 
-export interface TabsContentProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>, "forceMount"> {
+export interface TabsContentProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>,
+  "forceMount"
+> {
   /**
    * Additional CSS class names to apply to the tab content.
    */

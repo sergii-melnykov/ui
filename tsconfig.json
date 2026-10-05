@@ -26,7 +26,17 @@
   "exclude": [
     "node_modules",
     "dist",
+    "storybook-static",
+    "build",
+    "out",
+    ".next",
+    ".turbo",
+    "coverage",
     "plugins",
+    "scripts",
+    ".agents",
+    "docs",
+    "tokens",
     "**/*.stories.tsx",
     "**/*.stories.ts"
   ]

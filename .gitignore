@@ -1,6 +1,10 @@
 node_modules
 dist
-
+.turbo
+coverage
+build
+out
+.next
 
 #storybook build directory
 storybook-static

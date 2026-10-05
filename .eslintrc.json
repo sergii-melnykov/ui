@@ -1,12 +1,22 @@
 {
   "extends": ["airbnb", "next", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "rules": {
-    //We can specify more rules that we need here
     "prettier/prettier": ["error"],
+    "no-undef": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "import/prefer-default-export": "off",
     "no-nested-ternary": "off",
@@ -28,6 +38,41 @@
       "error",
       "ignorePackages",
       { "js": "never", "jsx": "never", "ts": "never", "tsx": "never" }
-    ]
-  }
+    ],
+    "import/no-cycle": "off",
+    "react/jsx-no-constructed-context-values": "off",
+    "no-use-before-define": ["error", { "functions": false, "classes": true, "variables": false }]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx", "src/test/**/*.ts"],
+      "env": {
+        "jest": true
+      },
+      "globals": {
+        "vi": "readonly"
+      },
+      "rules": {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": [
+              "**/*.test.ts",
+              "**/*.test.tsx",
+              "src/test/**",
+              "vite.config.ts",
+              ".storybook/**"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["src/test/setup.ts"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "class-methods-use-this": "off"
+      }
+    }
+  ]
 }

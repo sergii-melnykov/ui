@@ -44,7 +44,7 @@ describe("NavigationMenu", () => {
     )
 
     const trigger = screen.getByText("Custom Trigger")
-    expect(trigger.parentElement).toHaveClass("custom-class")
+    expect(trigger).toHaveClass("custom-class")
   })
 
   it("renders navigation menu with link", () => {
@@ -96,8 +96,8 @@ describe("NavigationMenu", () => {
     )
 
     const trigger = screen.getByText("Mobile Menu")
-    expect(trigger.parentElement).toHaveClass("w-full")
-    expect(trigger.parentElement).toHaveClass("justify-between")
-    expect(trigger.parentElement).toHaveClass("border-b")
+    expect(trigger).toHaveClass("w-full")
+    expect(trigger).toHaveClass("justify-between")
+    expect(trigger).toHaveClass("border-b")
   })
 })

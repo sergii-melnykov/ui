@@ -35,11 +35,11 @@ export function RHFSwitch<
   name,
   label,
   description,
-  className,
+  className: _className,
   warningText,
   required,
   disabled,
-  readOnly,
+  readOnly: _readOnly,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
   ...other

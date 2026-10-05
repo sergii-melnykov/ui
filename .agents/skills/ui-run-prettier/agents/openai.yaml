@@ -1,0 +1,3 @@
+interface:
+  display_name: "Run prettier"
+  short_description: "Format with Prettier and verify check"

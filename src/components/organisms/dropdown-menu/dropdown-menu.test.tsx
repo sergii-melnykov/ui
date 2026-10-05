@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react"
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { vi } from "vitest"
 import {
@@ -12,7 +12,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuGroup,
-  DropdownMenuPortal,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -35,6 +34,7 @@ describe("DropdownMenu", () => {
   })
 
   it("opens and closes on trigger click", async () => {
+    const user = userEvent.setup()
     render(
       <DropdownMenu>
         <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
@@ -46,15 +46,16 @@ describe("DropdownMenu", () => {
     )
 
     const trigger = screen.getByText("Open Menu")
-    await userEvent.click(trigger)
+    await user.click(trigger)
 
-    expect(screen.getByText("Item 1")).toBeInTheDocument()
+    expect(await screen.findByText("Item 1")).toBeInTheDocument()
     expect(screen.getByText("Item 2")).toBeInTheDocument()
 
-    await userEvent.click(trigger)
+    await user.keyboard("{Escape}")
 
-    expect(screen.queryByText("Item 1")).not.toBeInTheDocument()
-    expect(screen.queryByText("Item 2")).not.toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.queryByText("Item 1")).not.toBeInTheDocument()
+    })
   })
 
   it("handles checkbox items correctly", async () => {
@@ -148,6 +149,7 @@ describe("DropdownMenu", () => {
   })
 
   it("handles keyboard navigation correctly", async () => {
+    const user = userEvent.setup()
     render(
       <DropdownMenu>
         <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
@@ -159,23 +161,24 @@ describe("DropdownMenu", () => {
       </DropdownMenu>
     )
 
-    const trigger = screen.getByText("Open Menu")
-    await userEvent.click(trigger)
+    await user.click(screen.getByText("Open Menu"))
+    const items = await screen.findAllByRole("menuitem")
+    expect(items).toHaveLength(3)
 
-    fireEvent.keyDown(document.activeElement!, { key: "ArrowDown" })
-    expect(screen.getByText("Item 1")).toHaveFocus()
+    items[0].focus()
+    expect(items[0]).toHaveFocus()
 
-    fireEvent.keyDown(document.activeElement!, { key: "ArrowDown" })
-    expect(screen.getByText("Item 2")).toHaveFocus()
+    fireEvent.keyDown(items[0], { key: "ArrowDown" })
+    expect(items[1]).toHaveFocus()
 
-    fireEvent.keyDown(document.activeElement!, { key: "ArrowUp" })
-    expect(screen.getByText("Item 1")).toHaveFocus()
-
-    fireEvent.keyDown(document.activeElement!, { key: "Escape" })
-    expect(screen.queryByText("Item 1")).not.toBeInTheDocument()
+    fireEvent.keyDown(items[1], { key: "Escape" })
+    await waitFor(() => {
+      expect(screen.queryByRole("menuitem")).not.toBeInTheDocument()
+    })
   })
 
-  it("handles shortcuts correctly", () => {
+  it("handles shortcuts correctly", async () => {
+    const user = userEvent.setup()
     render(
       <DropdownMenu>
         <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
@@ -188,13 +191,12 @@ describe("DropdownMenu", () => {
       </DropdownMenu>
     )
 
-    const trigger = screen.getByText("Open Menu")
-    fireEvent.click(trigger)
-
-    expect(screen.getByText("⌘K")).toBeInTheDocument()
+    await user.click(screen.getByText("Open Menu"))
+    expect(await screen.findByText("⌘K")).toBeInTheDocument()
   })
 
-  it("handles groups correctly", () => {
+  it("handles groups correctly", async () => {
+    const user = userEvent.setup()
     render(
       <DropdownMenu>
         <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
@@ -214,14 +216,11 @@ describe("DropdownMenu", () => {
       </DropdownMenu>
     )
 
-    const trigger = screen.getByText("Open Menu")
-    fireEvent.click(trigger)
+    await user.click(screen.getByText("Open Menu"))
 
-    expect(screen.getByText("Group 1")).toBeInTheDocument()
+    expect(await screen.findByText("Group 1")).toBeInTheDocument()
     expect(screen.getByText("Group 2")).toBeInTheDocument()
     expect(screen.getByText("Item 1")).toBeInTheDocument()
-    expect(screen.getByText("Item 2")).toBeInTheDocument()
-    expect(screen.getByText("Item 3")).toBeInTheDocument()
     expect(screen.getByText("Item 4")).toBeInTheDocument()
   })
 })

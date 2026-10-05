@@ -1,8 +1,8 @@
 import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/utils/cn"
-import { TextFieldProps } from "./text-field.types"
 import { Loader2 } from "lucide-react"
+import { TextFieldProps } from "./text-field.types"
 import { Input } from "../input"
 import { Label } from "../label"
 

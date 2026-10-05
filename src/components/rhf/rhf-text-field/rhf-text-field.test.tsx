@@ -13,6 +13,7 @@ const TestWrapper = ({ children }: { children: React.ReactNode }) => {
 
   const methods = useForm({
     resolver: zodResolver(schema),
+    mode: "onBlur",
     defaultValues: {
       text: "",
       email: "",

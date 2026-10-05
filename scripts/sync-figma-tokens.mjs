@@ -57,8 +57,7 @@ const LEGACY_KEY_ALIASES = {
   "sidebar-background": "sidebar"
 }
 
-const HSL_TRIPLET =
-  /^(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)%\s+(\d+(?:\.\d+)?)%$/
+const HSL_TRIPLET = /^(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)%\s+(\d+(?:\.\d+)?)%$/
 
 function formatOklch(color) {
   if (!color || color.mode !== "oklch") {
@@ -67,9 +66,7 @@ function formatOklch(color) {
   const l = Math.round(color.l * 1000) / 1000
   const c = Math.round((color.c ?? 0) * 1000) / 1000
   const h =
-    color.h === undefined || Number.isNaN(color.h)
-      ? "none"
-      : String(Math.round(color.h * 10) / 10)
+    color.h === undefined || Number.isNaN(color.h) ? "none" : String(Math.round(color.h * 10) / 10)
   return `oklch(${l} ${c} ${h})`
 }
 
@@ -104,9 +101,7 @@ function cssValueForToken(key, value) {
     }
     return formatOklch(toOklch(parsed))
   }
-  throw new Error(
-    `Unsupported value for ${key}: ${value} (expected oklch(...), hex, or H S% L%)`
-  )
+  throw new Error(`Unsupported value for ${key}: ${value} (expected oklch(...), hex, or H S% L%)`)
 }
 
 function validateModes(light, dark) {
@@ -125,14 +120,13 @@ function validateModes(light, dark) {
 
 function blockForSelector(selector, values) {
   const normalized = normalizeModeValues(values)
-  const keys =
-    selector === ".dark"
-      ? TOKEN_ORDER.filter((key) => key !== "radius")
-      : TOKEN_ORDER
-  const lines = keys.filter((key) => key in normalized).map((key) => {
-    const cssVal = cssValueForToken(key, normalized[key])
-    return `    --${key}: ${cssVal};`
-  })
+  const keys = selector === ".dark" ? TOKEN_ORDER.filter((key) => key !== "radius") : TOKEN_ORDER
+  const lines = keys
+    .filter((key) => key in normalized)
+    .map((key) => {
+      const cssVal = cssValueForToken(key, normalized[key])
+      return `    --${key}: ${cssVal};`
+    })
   return `  ${selector} {\n${lines.join("\n")}\n  }`
 }
 
@@ -181,9 +175,7 @@ export function syncTokensToCss({ dryRun = false } = {}) {
     return next !== css
   }
   fs.writeFileSync(cssPath, next)
-  console.log(
-    `Updated ${path.relative(root, cssPath)} from ${path.relative(root, tokensPath)}`
-  )
+  console.log(`Updated ${path.relative(root, cssPath)} from ${path.relative(root, tokensPath)}`)
 }
 
 const isMain = process.argv[1] === fileURLToPath(import.meta.url)

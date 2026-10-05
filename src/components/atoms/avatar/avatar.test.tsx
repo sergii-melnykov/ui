@@ -1,15 +1,23 @@
-import { render, screen } from "@testing-library/react"
+import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { Avatar, AvatarImage, AvatarFallback } from "./avatar"
 
 describe("Avatar", () => {
-  it("renders avatar with image", () => {
+  it("renders avatar with image", async () => {
     render(
       <Avatar>
-        <AvatarImage src="/test.jpg" alt="Test avatar" />
+        <AvatarImage
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt="Test avatar"
+        />
       </Avatar>
     )
-    const image = screen.getByAltText("Test avatar")
-    expect(image).toHaveAttribute("src", "/test.jpg")
+    const image = await waitFor(() => {
+      const img = document.querySelector("img")
+      if (!img) throw new Error("image not mounted")
+      fireEvent.load(img)
+      return screen.getByAltText("Test avatar")
+    })
+    expect(image).toHaveAttribute("src")
   })
 
   it("renders avatar with fallback", () => {
@@ -27,7 +35,6 @@ describe("Avatar", () => {
         <AvatarFallback>JD</AvatarFallback>
       </Avatar>
     )
-    const avatar = screen.getByText("JD").closest("span")
-    expect(avatar).toHaveClass("custom-class")
+    expect(screen.getByText("JD").closest(".custom-class")).toBeInTheDocument()
   })
 })

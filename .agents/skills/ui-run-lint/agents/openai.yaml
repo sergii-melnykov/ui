@@ -1,0 +1,3 @@
+interface:
+  display_name: "Run lint"
+  short_description: "ESLint check and fix for the UI repo"

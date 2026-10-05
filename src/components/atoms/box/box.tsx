@@ -25,15 +25,7 @@ import * as React from "react"
 import { cn } from "@/utils"
 
 type BoxComponent =
-  | "div"
-  | "span"
-  | "section"
-  | "article"
-  | "main"
-  | "aside"
-  | "header"
-  | "footer"
-  | "nav"
+  "div" | "span" | "section" | "article" | "main" | "aside" | "header" | "footer" | "nav"
 
 type DimensionValue = string | number
 

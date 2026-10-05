@@ -1,0 +1,3 @@
+interface:
+  display_name: "Run typecheck"
+  short_description: "TypeScript and native typecheck"

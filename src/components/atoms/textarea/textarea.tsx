@@ -15,10 +15,23 @@ import { TextareaProps } from "./textarea.types"
  */
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, autoResize = false, ...props }, ref) => {
-    const internalRef = React.useRef<HTMLTextAreaElement>(null)
+    const internalRef = React.useRef<HTMLTextAreaElement | null>(null)
+
+    const setTextareaRef = React.useCallback(
+      (node: HTMLTextAreaElement | null) => {
+        internalRef.current = node
+        if (typeof ref === "function") {
+          ref(node)
+        } else if (ref) {
+          // eslint-disable-next-line no-param-reassign -- compose forwarded ref
+          ref.current = node
+        }
+      },
+      [ref]
+    )
 
     React.useEffect(() => {
-      if (!autoResize || !internalRef.current) return
+      if (!autoResize || !internalRef.current) return undefined
 
       const textarea = internalRef.current
       const resizeTextarea = () => {
@@ -38,7 +51,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           "flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
           className
         )}
-        ref={ref}
+        ref={setTextareaRef}
         {...props}
       />
     )

@@ -1,3 +1,33 @@
-.next
-node_modules
-dist
+# Dependencies
+node_modules/
+
+# Build & generated output
+dist/
+storybook-static/
+build/
+out/
+.next/
+.turbo/
+coverage/
+
+# Cache & metadata
+*.tsbuildinfo
+.cache/
+
+# Environment & logs
+.env
+.env.*
+*.log
+*storybook.log
+
+# Lockfiles (avoid noisy reformats)
+package-lock.json
+
+# Agent skills, docs, and synced design tokens
+.agents/
+docs/
+tokens/
+
+# Non-format targets
+verify_exports.py
+**/*.html

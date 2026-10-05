@@ -4,7 +4,7 @@ import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "./collapsib
 describe("Collapsible", () => {
   it("renders correctly", () => {
     render(
-      <Collapsible>
+      <Collapsible defaultOpen>
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
         <CollapsibleContent>Content</CollapsibleContent>
       </Collapsible>
@@ -16,7 +16,7 @@ describe("Collapsible", () => {
 
   it("toggles content visibility when trigger is clicked", () => {
     render(
-      <Collapsible>
+      <Collapsible defaultOpen>
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
         <CollapsibleContent>Content</CollapsibleContent>
       </Collapsible>
@@ -34,7 +34,7 @@ describe("Collapsible", () => {
 
   it("applies custom className", () => {
     render(
-      <Collapsible>
+      <Collapsible defaultOpen>
         <CollapsibleTrigger className="custom-trigger">Toggle</CollapsibleTrigger>
         <CollapsibleContent className="custom-content">Content</CollapsibleContent>
       </Collapsible>

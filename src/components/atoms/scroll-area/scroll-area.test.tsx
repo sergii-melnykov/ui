@@ -26,6 +26,6 @@ describe("ScrollArea", () => {
         <div>Test Content</div>
       </ScrollArea>
     )
-    expect(container.querySelector('[data-orientation="vertical"]')).toBeInTheDocument()
+    expect(container.querySelector("[data-radix-scroll-area-viewport]")).toBeInTheDocument()
   })
 })

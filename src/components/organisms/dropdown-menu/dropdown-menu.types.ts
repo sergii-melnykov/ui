@@ -1,4 +1,3 @@
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { type VariantProps } from "class-variance-authority"
 import { dropdownMenuTriggerStyle } from "./dropdown-menu.variants"
 
@@ -28,8 +27,7 @@ export interface DropdownMenuProps {
 }
 
 export interface DropdownMenuTriggerProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    DropdownMenuTriggerVariants {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, DropdownMenuTriggerVariants {
   /**
    * The content of the trigger
    */

@@ -135,12 +135,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading && (
-          <Loader2
-            className="mr-2 h-4 w-4 animate-spin"
-            role="status"
-            aria-label="Loading"
-            aria-hidden="true"
-          />
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" role="status" aria-label="Loading" />
         )}
         {!loading && startIcon && (
           <span className="mr-2" aria-hidden="true">

@@ -22,8 +22,7 @@ import { buttonVariants } from "./button"
  * @property {string} [aria-label] - Accessible label for the button. Falls back to button text if not provided.
  */
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   asChild?: boolean
   startIcon?: React.ReactNode
   endIcon?: React.ReactNode

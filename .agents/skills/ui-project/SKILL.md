@@ -190,7 +190,29 @@ npm run format       # prettier --check
 4. **Respect atomic design boundaries.** Don't import organisms into atoms, or rhf into organisms.
 5. **One component per directory** with the standard file structure (tsx, types.ts, test.tsx, stories.tsx, index.ts).
 6. **No raw color values.** Always use semantic Tailwind tokens or CSS variables.
-7. **Run `npm run typecheck` and `npm run test`** before considering a task complete, when modifying existing components.
+7. **Run `npm run typecheck`** (and lint/format as needed) before considering a task complete. **Vitest is paused** during the per-component redesign — do not block work on `*.test.tsx` until a component is redesigned and tests are rewritten.
+
+### Tests (paused during redesign)
+
+Existing `*.test.tsx` files may be out of date. CI and the agent stop-hook verify chain **do not run `npm test`** until coverage is restored component-by-component. Use Storybook for visual checks; run `npm test` locally only when working on a redesigned component’s tests.
+
+## Project agents (invokable)
+
+These agents live under `.agents/skills/ui-*` with `disable-model-invocation: true` — pick them from the Cursor agent list when you want an explicit workflow. They load the skills below as needed.
+
+| Agent | Use when |
+| ----- | -------- |
+| **Create component** (`ui-create-component`) | Adding or scaffolding a component (shadcn + atomic folder layout) |
+| **Create story** (`ui-create-story`) | Adding or updating `*.stories.tsx` |
+| **Create tests** (`ui-create-tests`) | Adding or updating `*.test.tsx` |
+| **Run lint** (`ui-run-lint`) | ESLint only |
+| **Run prettier** (`ui-run-prettier`) | Format fix + check |
+| **Run typecheck** (`ui-run-typecheck`) | `tsc` + native typecheck |
+| **Run tests** (`ui-run-tests`) | Vitest |
+
+For day-to-day chat, skills such as `shadcn`, `storybook`, and `react-testing` still auto-trigger from descriptions. Use agents when the task should follow one fixed playbook end-to-end.
+
+A **`stop` hook** (`.cursor/hooks.json`) may append a follow-up to run lint, format check, and typecheck after an agent turn — see hook script for the exact command order (tests omitted while redesign is in progress).
 
 ## Related Skills
 

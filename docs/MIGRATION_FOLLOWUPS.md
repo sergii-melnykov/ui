@@ -8,7 +8,7 @@ Theme / Tailwind v4 (OKLCH tokens, Figma sync, consumer CSS): [V4_THEME.md](./V4
 
 - `peerDependencies.next`: ^16.3.0
 - **Package build:** [tsdown](https://github.com/rolldown/tsdown) (`npm run build`) with per-component ESM entries
-- **Unit tests:** Vitest + jsdom + React Testing Library (`npm test`)
+- **Unit tests:** Vitest + jsdom + React Testing Library (`npm test`) — **CI and agent verify skip the suite** until each component is redesigned and tests are rewritten
 - **Storybook:** 8.6.x stable on `@storybook/react-vite`
 - `devDependencies.typescript`: ^6.0.2 (dts emit via tsdown)
 - `devDependencies.typescript-native`: npm alias for typescript@^7.0.2

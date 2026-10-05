@@ -13,6 +13,7 @@ const TestWrapper = ({ children }: { children: React.ReactNode }) => {
 
   const methods = useForm({
     resolver: zodResolver(schema),
+    mode: "onBlur",
     defaultValues: {
       terms: false
     }
@@ -87,6 +88,7 @@ describe("RHFCheckbox", () => {
     const checkbox = screen.getByRole("checkbox")
     fireEvent.click(checkbox)
     fireEvent.click(checkbox) // Uncheck to trigger validation
+    fireEvent.blur(checkbox)
     expect(await screen.findByText("You must accept the terms and conditions")).toBeInTheDocument()
   })
 

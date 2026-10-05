@@ -2,8 +2,8 @@ import { render, screen, fireEvent } from "@testing-library/react"
 import { FormProvider, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { RHFRadioGroup } from "./rhf-radio-group"
 import { RadioGroupItem } from "@/components/atoms/radio-group"
+import { RHFRadioGroup } from "./rhf-radio-group"
 
 const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   const schema = z.object({
@@ -12,6 +12,7 @@ const TestWrapper = ({ children }: { children: React.ReactNode }) => {
 
   const methods = useForm({
     resolver: zodResolver(schema),
+    mode: "onBlur",
     defaultValues: {
       preference: ""
     }
@@ -86,8 +87,9 @@ describe("RHFRadioGroup", () => {
         </RHFRadioGroup>
       </TestWrapper>
     )
-    const radioGroup = screen.getByRole("radiogroup")
-    expect(radioGroup).toBeDisabled()
+    screen.getAllByRole("radio").forEach((radio) => {
+      expect(radio).toBeDisabled()
+    })
   })
 
   it("handles radio selection", () => {
@@ -99,7 +101,7 @@ describe("RHFRadioGroup", () => {
         </RHFRadioGroup>
       </TestWrapper>
     )
-    const option1 = screen.getByLabelText("Option 1")
+    const [option1] = screen.getAllByRole("radio")
     fireEvent.click(option1)
     expect(option1).toBeChecked()
   })
@@ -113,8 +115,9 @@ describe("RHFRadioGroup", () => {
         </RHFRadioGroup>
       </TestWrapper>
     )
-    const submitButton = screen.getByRole("button", { name: /submit/i })
-    fireEvent.click(submitButton)
+    const [option1] = screen.getAllByRole("radio")
+    fireEvent.focus(option1)
+    fireEvent.blur(option1)
     expect(await screen.findByText("Please select an option")).toBeInTheDocument()
   })
 

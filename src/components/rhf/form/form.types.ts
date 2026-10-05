@@ -37,8 +37,9 @@ export interface FormItemProps extends React.HTMLAttributes<HTMLDivElement> {}
  * Props interface for the FormLabel component.
  * Extends Radix UI Label props.
  */
-export interface FormLabelProps
-  extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {}
+export interface FormLabelProps extends React.ComponentPropsWithoutRef<
+  typeof LabelPrimitive.Root
+> {}
 
 /**
  * Props interface for the FormControl component.

@@ -6,10 +6,8 @@ import { navigationMenuTriggerStyle } from "./navigation-menu.variants"
 import type {
   NavigationMenuProps,
   NavigationMenuListProps,
-  NavigationMenuItemProps,
   NavigationMenuTriggerProps,
   NavigationMenuContentProps,
-  NavigationMenuLinkProps,
   NavigationMenuViewportProps,
   NavigationMenuIndicatorProps
 } from "./navigation-menu.types"

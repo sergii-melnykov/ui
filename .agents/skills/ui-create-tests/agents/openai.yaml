@@ -1,0 +1,3 @@
+interface:
+  display_name: "Create tests"
+  short_description: "Add or update Vitest tests for a component"

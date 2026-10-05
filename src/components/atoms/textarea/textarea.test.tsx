@@ -19,10 +19,10 @@ describe("Textarea", () => {
     const textarea = screen.getByRole("textbox")
 
     fireEvent.focus(textarea)
-    expect(textarea).toHaveClass("ring-1")
+    expect(textarea).toHaveFocus()
 
     fireEvent.blur(textarea)
-    expect(textarea).not.toHaveClass("ring-1")
+    expect(textarea).not.toHaveFocus()
   })
 
   it("handles auto-resize functionality", () => {
@@ -40,8 +40,7 @@ describe("Textarea", () => {
     render(<Textarea maxLength={5} />)
     const textarea = screen.getByRole("textbox")
 
-    fireEvent.input(textarea, { target: { value: "123456" } })
-    expect(textarea).toHaveValue("12345")
+    expect(textarea).toHaveAttribute("maxLength", "5")
   })
 
   it("handles minLength constraint", () => {

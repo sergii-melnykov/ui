@@ -48,7 +48,7 @@ describe("RHFTextarea", () => {
   })
 
   it("trims value on blur", () => {
-    const { container } = render(
+    render(
       <FormWrapper>
         <RHFTextarea name="test" label="Test Label" />
       </FormWrapper>

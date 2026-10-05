@@ -13,6 +13,7 @@ const TestWrapper = ({ children }: { children: React.ReactNode }) => {
 
   const methods = useForm({
     resolver: zodResolver(schema),
+    mode: "onBlur",
     defaultValues: {
       notifications: false
     }
@@ -95,6 +96,7 @@ describe("RHFSwitch", () => {
     const switchElement = screen.getByRole("switch")
     fireEvent.click(switchElement)
     fireEvent.click(switchElement) // Toggle off to trigger validation
+    fireEvent.blur(switchElement)
     expect(await screen.findByText("You must enable notifications")).toBeInTheDocument()
   })
 
