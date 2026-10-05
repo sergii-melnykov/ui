@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+import { vi } from "vitest"
 import { Button } from "./button"
 import { Loader2 } from "lucide-react"
 
@@ -44,7 +45,7 @@ describe("Button", () => {
   })
 
   it("handles click events", async () => {
-    const handleClick = jest.fn()
+    const handleClick = vi.fn()
     render(<Button onClick={handleClick}>Click me</Button>)
 
     await userEvent.click(screen.getByRole("button"))
@@ -130,7 +131,7 @@ describe("Button", () => {
   })
 
   it("prevents click events when loading", async () => {
-    const handleClick = jest.fn()
+    const handleClick = vi.fn()
     render(
       <Button onClick={handleClick} loading>
         Loading

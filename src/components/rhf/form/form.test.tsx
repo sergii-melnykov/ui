@@ -1,6 +1,7 @@
 import * as React from "react"
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+import { vi } from "vitest"
 import { useForm, type ControllerRenderProps } from "react-hook-form"
 import { Input } from "@/components/atoms"
 import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from "."
@@ -18,21 +19,23 @@ describe("Form", () => {
     })
 
     return (
-      <Form methods={methods} onSubmit={methods.handleSubmit(() => {})}>
-        <FormField
-          control={methods.control}
-          name="username"
-          render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormDescription>Enter your username</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <Form {...methods}>
+        <form onSubmit={methods.handleSubmit(() => {})}>
+          <FormField
+            control={methods.control}
+            name="username"
+            render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input {...field} />
+                </FormControl>
+                <FormDescription>Enter your username</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </form>
       </Form>
     )
   }
@@ -45,7 +48,7 @@ describe("Form", () => {
   })
 
   it("handles form submission", async () => {
-    const onSubmit = jest.fn()
+    const onSubmit = vi.fn()
     const TestFormWithSubmit = () => {
       const methods = useForm<FormValues>({
         defaultValues: {
@@ -54,21 +57,23 @@ describe("Form", () => {
       })
 
       return (
-        <Form methods={methods} onSubmit={methods.handleSubmit(onSubmit)}>
-          <FormField
-            control={methods.control}
-            name="username"
-            render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <button type="submit">Submit</button>
+        <Form {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <FormField
+              control={methods.control}
+              name="username"
+              render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <button type="submit">Submit</button>
+          </form>
         </Form>
       )
     }
@@ -90,22 +95,24 @@ describe("Form", () => {
       })
 
       return (
-        <Form methods={methods} onSubmit={methods.handleSubmit(() => {})}>
-          <FormField
-            control={methods.control}
-            name="username"
-            rules={{ required: "Username is required" }}
-            render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
-              <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <button type="submit">Submit</button>
+        <Form {...methods}>
+          <form onSubmit={methods.handleSubmit(() => {})}>
+            <FormField
+              control={methods.control}
+              name="username"
+              rules={{ required: "Username is required" }}
+              render={({ field }: { field: ControllerRenderProps<FormValues, "username"> }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <button type="submit">Submit</button>
+          </form>
         </Form>
       )
     }
@@ -126,7 +133,7 @@ describe("Form", () => {
       })
 
       return (
-        <Form methods={methods}>
+        <Form {...methods}>
           <FormField
             control={methods.control}
             name="username"

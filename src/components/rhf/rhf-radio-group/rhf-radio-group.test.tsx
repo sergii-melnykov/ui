@@ -25,8 +25,8 @@ describe("RHFRadioGroup", () => {
     render(
       <TestWrapper>
         <RHFRadioGroup name="preference" label="Select your preference">
-          <RadioGroupItem value="option1" label="Option 1" />
-          <RadioGroupItem value="option2" label="Option 2" />
+          <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+          <RadioGroupItem value="option2">Option 2</RadioGroupItem>
         </RHFRadioGroup>
       </TestWrapper>
     )
@@ -41,8 +41,8 @@ describe("RHFRadioGroup", () => {
           label="Select your preference"
           description="Choose your preferred option"
         >
-          <RadioGroupItem value="option1" label="Option 1" />
-          <RadioGroupItem value="option2" label="Option 2" />
+          <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+          <RadioGroupItem value="option2">Option 2</RadioGroupItem>
         </RHFRadioGroup>
       </TestWrapper>
     )
@@ -57,8 +57,8 @@ describe("RHFRadioGroup", () => {
           label="Select your preference"
           warningText="Important notice"
         >
-          <RadioGroupItem value="option1" label="Option 1" />
-          <RadioGroupItem value="option2" label="Option 2" />
+          <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+          <RadioGroupItem value="option2">Option 2</RadioGroupItem>
         </RHFRadioGroup>
       </TestWrapper>
     )
@@ -69,8 +69,8 @@ describe("RHFRadioGroup", () => {
     render(
       <TestWrapper>
         <RHFRadioGroup name="preference" label="Select your preference" required>
-          <RadioGroupItem value="option1" label="Option 1" />
-          <RadioGroupItem value="option2" label="Option 2" />
+          <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+          <RadioGroupItem value="option2">Option 2</RadioGroupItem>
         </RHFRadioGroup>
       </TestWrapper>
     )
@@ -81,8 +81,8 @@ describe("RHFRadioGroup", () => {
     render(
       <TestWrapper>
         <RHFRadioGroup name="preference" label="Select your preference" disabled>
-          <RadioGroupItem value="option1" label="Option 1" />
-          <RadioGroupItem value="option2" label="Option 2" />
+          <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+          <RadioGroupItem value="option2">Option 2</RadioGroupItem>
         </RHFRadioGroup>
       </TestWrapper>
     )
@@ -94,8 +94,8 @@ describe("RHFRadioGroup", () => {
     render(
       <TestWrapper>
         <RHFRadioGroup name="preference" label="Select your preference">
-          <RadioGroupItem value="option1" label="Option 1" />
-          <RadioGroupItem value="option2" label="Option 2" />
+          <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+          <RadioGroupItem value="option2">Option 2</RadioGroupItem>
         </RHFRadioGroup>
       </TestWrapper>
     )
@@ -108,8 +108,8 @@ describe("RHFRadioGroup", () => {
     render(
       <TestWrapper>
         <RHFRadioGroup name="preference" label="Select your preference" required>
-          <RadioGroupItem value="option1" label="Option 1" />
-          <RadioGroupItem value="option2" label="Option 2" />
+          <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+          <RadioGroupItem value="option2">Option 2</RadioGroupItem>
         </RHFRadioGroup>
       </TestWrapper>
     )
@@ -127,8 +127,8 @@ describe("RHFRadioGroup", () => {
           aria-label="Custom Label"
           aria-describedby="custom-desc"
         >
-          <RadioGroupItem value="option1" label="Option 1" />
-          <RadioGroupItem value="option2" label="Option 2" />
+          <RadioGroupItem value="option1">Option 1</RadioGroupItem>
+          <RadioGroupItem value="option2">Option 2</RadioGroupItem>
         </RHFRadioGroup>
       </TestWrapper>
     )

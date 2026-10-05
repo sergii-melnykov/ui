@@ -28,12 +28,16 @@ This skill describes the `@me1a/ui` library project — a Next.js UI component l
 
 | If the user asks about...                                                                                                            | Load this skill first         | Why                                                                                                |
 | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------- | -------------------------------------------------------------------------------------------------- |
-| Adding/installing components, CLI commands, styling with Tailwind, component composition, presets, theming, icons                    | `shadcn`                      | The shadcn skill has all CLI commands, critical styling rules, component docs, and project context |
+| Adding/installing components, CLI commands, component composition, presets, theming, icons, shadcn styling in this design system     | `shadcn`                      | The shadcn skill has all CLI commands, critical styling rules, component docs, and project context |
+| `*.test.tsx`, Vitest, React Testing Library, mocking, accessibility in unit tests                                                      | `react-testing`               | Behavior-focused RTL patterns with Vitest (this repo's test runner)                                |
+| `*.stories.tsx`, Storybook, CSF 3, argTypes, decorators, `.storybook/` config                                                        | `storybook`                   | CSF 3.0 stories and Storybook configuration aligned with this project                              |
+| Tailwind v4 utilities, `@theme`, v3→v4 migration, config edge cases (then shadcn for semantic tokens)                                  | `tailwind-4-docs`             | Official Tailwind v4 doc snapshot and migration guidance; see also `docs/V4_THEME.md`              |
 | Building forms, form validation, react-hook-form patterns, performance optimization for forms, useForm, useFieldArray, useController | `react-hook-form`             | Comprehensive 45-rule guide for RHF v7+                                                            |
 | Next.js file conventions, RSC boundaries, async APIs, metadata, error handling, route handlers                                       | `next-best-practices`         | Next.js 15+ best practices including async APIs and RSC                                            |
 | Next.js 16 cache components, PPR, `use cache` directive, cacheLife, cacheTag                                                         | `next-cache-components`       | Cache Components and Partial Prerendering                                                          |
 | Component architecture, compound components, React 19 APIs, refactoring boolean props                                                | `vercel-composition-patterns` | Composition patterns for flexible component APIs                                                   |
 | React/Next.js performance, bundle optimization, re-render optimization, server-side performance, waterfall elimination               | `vercel-react-best-practices` | 70 performance rules from Vercel Engineering                                                       |
+| Verifying UI in the browser, Storybook interactions, DOM/layout checks, visual parity after Figma                                    | `vercel-react-best-practices` | Built-in browser MCP workflow (`rules/browser-built-in-dom.md`)                                    |
 | Creating or modifying skills in this project                                                                                         | `skill-creator`               | Skill creation and iteration workflow                                                              |
 
 ### How to Route
@@ -41,7 +45,7 @@ This skill describes the `@me1a/ui` library project — a Next.js UI component l
 1. **Identify the user's primary concern** from the matrix above.
 2. **Load the corresponding skill** by reading its `SKILL.md`.
 3. **Follow that skill's instructions** to complete the task.
-4. **If the task spans multiple concerns** (e.g., "add a form with validation and style it"), load `shadcn` first for the component setup, then `react-hook-form` for the form wiring.
+4. **If the task spans multiple concerns** (e.g., "add a component with stories and tests"), load `shadcn` first, then `storybook` and `react-testing` as needed; for forms add `react-hook-form`.
 
 ---
 
@@ -70,10 +74,11 @@ This skill describes the `@me1a/ui` library project — a Next.js UI component l
 | **Next.js 15+**        | Framework peer dependency                        | `next-best-practices`, `next-cache-components`               |
 | **React 19**           | UI library peer dependency                       | `vercel-react-best-practices`, `vercel-composition-patterns` |
 | **shadcn/ui**          | Component system (radix primitives + Tailwind)   | `shadcn`                                                     |
-| **Tailwind CSS v3**    | Utility-first CSS (v3 with `tailwind.config.js`) | `shadcn` (via rules/styling.md)                              |
+| **Tailwind CSS v4**    | Utility-first CSS (`globals.css` + `@theme inline`) | `tailwind-4-docs`, `shadcn` (rules/styling.md), `docs/V4_THEME.md` |
 | **react-hook-form v7** | Form state management and validation             | `react-hook-form`                                            |
 | **Zod**                | Schema validation for forms                      | `react-hook-form` (via validation patterns)                  |
-| **Storybook**          | Component documentation and testing              | none needed                                                  |
+| **Vitest + RTL**       | Unit tests colocated as `*.test.tsx`             | `react-testing`                                              |
+| **Storybook 9**        | CSF 3 stories and component docs                 | `storybook`                                                  |
 | **TypeScript**         | Typed components                                 | none needed                                                  |
 
 ### Component Organization (Atomic Design)
@@ -100,15 +105,16 @@ Every component follows this convention:
 component-name/
 ├── component-name.tsx         → Component implementation
 ├── component-name.types.ts    → TypeScript props/type definitions
-├── component-name.test.tsx    → Jest unit tests
+├── component-name.test.tsx    → Vitest unit tests
 ├── component-name.stories.tsx → Storybook stories
 └── index.ts                   → Public re-exports
 ```
 
 ### Styling Conventions
 
-- **Tailwind CSS v3** with `tailwind.config.js` (NOT v4 with `@theme`).
-- **CSS variables** defined in `src/styles/globals.css` for the design token system.
+- **Tailwind CSS v4** with `@import "tailwindcss"`, `@custom-variant dark`, `@theme inline`, and a slim `tailwind.config.js` (content + container only).
+- **OKLCH CSS variables** in `src/styles/globals.css` (`:root` / `.dark`); Figma snapshot in `tokens/figma-mode.json`, applied via `npm run sync:tokens`; see `docs/V4_THEME.md`.
+- Sidebar surface token: `--sidebar` (not `--sidebar-background`).
 - **`cn()` utility** from `src/utils/cn.ts` for conditional class merging (wraps `clsx` + `tailwind-merge`).
 - **Semantic color tokens** (`bg-primary`, `text-muted-foreground`) — never raw colors like `bg-blue-500`.
 - **For full styling rules**, load the `shadcn` skill and see `rules/styling.md`.
@@ -127,7 +133,7 @@ From `package.json`:
 ```bash
 npm run build        # tsup — bundle the library
 npm run dev          # tsup --watch — dev mode
-npm run test         # jest — run unit tests
+npm run test         # vitest — run unit tests
 npm run storybook    # Storybook dev server on port 6006
 npm run lint         # ESLint with max-warnings 0
 npm run typecheck    # tsc --noEmit
@@ -144,6 +150,7 @@ npm run format       # prettier --check
 2. Run `npx shadcn@latest search` to find if it exists in a registry.
 3. Run `npx shadcn@latest add <component>` to install it.
 4. Follow the shadcn skill's workflow for post-install review.
+5. Load `storybook` and `react-testing` when adding or updating `*.stories.tsx` and `*.test.tsx`.
 
 ### Building a Form
 
@@ -156,14 +163,16 @@ npm run format       # prettier --check
 
 1. Load the `shadcn` skill.
 2. Run `npx shadcn@latest docs <component>` and fetch the docs to verify correct API usage.
-3. Check `test.tsx` files for test patterns.
+3. Load `react-testing` and check `test.tsx` files for test patterns.
 4. Run `npm run test` to see if existing tests pass.
+5. For visual or interaction bugs, load `vercel-react-best-practices` and verify in Cursor's built-in browser against Storybook (`npm run storybook` → `http://localhost:6006`): snapshot, reproduce, screenshot.
 
 ### Styling Changes
 
-1. Load the `shadcn` skill — it contains all Tailwind/styling rules.
-2. Check `rules/styling.md` for semantic colors, spacing conventions, and dark mode.
-3. Edit `src/styles/globals.css` for CSS variable changes (never create new CSS files).
+1. Load the `shadcn` skill — it contains project Tailwind/styling rules.
+2. For Tailwind v4 utilities, `@theme`, or migration questions, load `tailwind-4-docs` and `docs/V4_THEME.md`.
+3. Check `rules/styling.md` for semantic colors, spacing conventions, and dark mode.
+4. Edit `src/styles/globals.css` for CSS variable changes (never create new CSS files).
 
 ### Performance Optimization
 
@@ -186,6 +195,9 @@ npm run format       # prettier --check
 ## Related Skills
 
 - **[shadcn](./shadcn/SKILL.md)** — Component management, CLI, styling rules, composition. **Always load this first.**
+- **[storybook](./storybook/SKILL.md)** — CSF 3 stories, Storybook config, decorators and parameters.
+- **[react-testing](./react-testing/SKILL.md)** — Vitest + React Testing Library component tests.
+- **[tailwind-4-docs](./tailwind-4-docs/SKILL.md)** — Tailwind CSS v4 documentation and migration reference.
 - **[react-hook-form](./react-hook-form/SKILL.md)** — Form performance, validation, subscription patterns.
 - **[next-best-practices](./next-best-practices/SKILL.md)** — Next.js file conventions, RSC, async APIs, metadata.
 - **[next-cache-components](./next-cache-components/SKILL.md)** — Next.js 16 cache components, PPR, `use cache`.

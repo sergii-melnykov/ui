@@ -17,16 +17,16 @@
     "tsBuildInfoFile": "./node_modules/.cache/.tsbuildinfo-native",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
   },
   "include": ["src"],
   "exclude": [
     "node_modules",
     "dist",
     "plugins",
-    "**/*.test.ts",
-    "**/*.test.tsx",
     "**/*.stories.tsx",
-    "**/*.stories.ts"
+    "**/*.stories.ts",
+    "**/*.test.ts",
+    "**/*.test.tsx"
   ]
 }

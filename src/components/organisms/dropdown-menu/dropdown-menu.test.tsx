@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
+import { vi } from "vitest"
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -57,7 +58,7 @@ describe("DropdownMenu", () => {
   })
 
   it("handles checkbox items correctly", async () => {
-    const handleCheckedChange = jest.fn()
+    const handleCheckedChange = vi.fn()
 
     render(
       <DropdownMenu>
@@ -80,7 +81,7 @@ describe("DropdownMenu", () => {
   })
 
   it("handles radio items correctly", async () => {
-    const handleValueChange = jest.fn()
+    const handleValueChange = vi.fn()
 
     render(
       <DropdownMenu>
