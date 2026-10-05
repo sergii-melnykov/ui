@@ -1,3 +1,3 @@
 interface:
   display_name: "Create tests"
-  short_description: "Add or update Vitest tests for a component"
+  short_description: "Vitest tests — fix lint in tests, not eslint/prettier config"

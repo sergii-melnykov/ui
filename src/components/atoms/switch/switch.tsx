@@ -17,7 +17,7 @@ import { SwitchProps } from "./switch.types"
  * <Switch disabled />
  * ```
  */
-const Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, SwitchProps>(
+const Switch = React.forwardRef<React.ComponentRef<typeof SwitchPrimitives.Root>, SwitchProps>(
   ({ className, ...props }, ref) => (
     <SwitchPrimitives.Root
       className={cn(

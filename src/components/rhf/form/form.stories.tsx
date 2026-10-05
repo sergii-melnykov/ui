@@ -36,7 +36,12 @@ const FormExample = () => {
 
   return (
     <Form {...methods}>
-      <form className="space-y-6" onSubmit={methods.handleSubmit(onSubmit)}>
+      <form
+        className="space-y-6"
+        onSubmit={(event) => {
+          void methods.handleSubmit(onSubmit)(event)
+        }}
+      >
         <FormField
           control={methods.control}
           name="username"
@@ -68,7 +73,7 @@ const FormExample = () => {
               <FormControl>
                 <Input {...field} type="email" />
               </FormControl>
-              <FormDescription>We'll never share your email with anyone else.</FormDescription>
+              <FormDescription>We&apos;ll never share your email with anyone else.</FormDescription>
               <FormMessage />
             </FormItem>
           )}

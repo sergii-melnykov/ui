@@ -10,15 +10,17 @@ import {
   TableCaption
 } from "@/components/atoms/table"
 import {
-  useReactTable,
-  getCoreRowModel,
-  getSortedRowModel,
-  getPaginationRowModel,
-  getFilteredRowModel,
+  useTable,
   flexRender,
   createColumnHelper,
-  type SortingState
+  tableOptions,
+  stockFeatures,
+  createCoreRowModel,
+  createSortedRowModel,
+  createPaginatedRowModel,
+  createFilteredRowModel
 } from "@tanstack/react-table"
+import type { SortingState } from "@tanstack/table-core"
 import { useState } from "react"
 
 const meta: Meta<typeof Table> = {
@@ -160,7 +162,7 @@ const StatusBadge = ({ status }: { status: string }) => (
 
 const ProgressBar = ({ value }: { value: number }) => (
   <div className="w-full bg-gray-200 rounded-full h-2.5">
-    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${value}%` }} />
+    <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${String(value)}%` }} />
   </div>
 )
 
@@ -169,56 +171,65 @@ const columnHelper = createColumnHelper<Person>()
 const columns = [
   columnHelper.accessor("firstName", {
     header: "First Name",
-    cell: (info) => info.getValue()
+    cell: (info) => String(info.getValue())
   }),
   columnHelper.accessor("lastName", {
     header: "Last Name",
-    cell: (info) => info.getValue()
+    cell: (info) => String(info.getValue())
   }),
   columnHelper.accessor("age", {
     header: "Age",
-    cell: (info) => info.getValue()
+    cell: (info) => String(info.getValue())
   }),
   columnHelper.accessor("visits", {
     header: "Visits",
-    cell: (info) => info.getValue()
+    cell: (info) => String(info.getValue())
   }),
   columnHelper.accessor("status", {
     header: "Status",
-    cell: (info) => <StatusBadge status={info.getValue()} />
+    cell: (info) => <StatusBadge status={String(info.getValue())} />
   }),
   columnHelper.accessor("progress", {
     header: "Progress",
-    cell: (info) => <ProgressBar value={info.getValue()} />
+    cell: (info) => <ProgressBar value={Number(info.getValue())} />
   })
 ]
 
+/* TanStack Table v9: useTable instance types are not resolved in the ESLint TS program. */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument, @typescript-eslint/restrict-plus-operands */
 const TanStackTableDemo = () => {
   const [sorting, setSorting] = useState<SortingState>([])
   const [globalFilter, setGlobalFilter] = useState("")
 
-  const table = useReactTable({
-    data,
-    columns,
-    state: {
-      sorting,
-      globalFilter
-    },
-    onSortingChange: setSorting,
-    onGlobalFilterChange: setGlobalFilter,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getFilteredRowModel: getFilteredRowModel()
-  })
+  const table = useTable<Person>(
+    tableOptions({
+      features: stockFeatures,
+      data,
+      columns,
+      state: {
+        sorting,
+        globalFilter
+      },
+      onSortingChange: setSorting,
+      onGlobalFilterChange: setGlobalFilter,
+      rowModels: {
+        core: createCoreRowModel(),
+        sorted: createSortedRowModel(),
+        paginated: createPaginatedRowModel(),
+        filtered: createFilteredRowModel()
+      }
+    })
+  )
 
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
         <input
           type="text"
-          value={globalFilter ?? ""}
-          onChange={(e) => setGlobalFilter(e.target.value)}
+          value={globalFilter}
+          onChange={(e) => {
+            setGlobalFilter(e.target.value)
+          }}
           className="px-3 py-2 border rounded-md"
           placeholder="Search all columns..."
         />
@@ -260,7 +271,9 @@ const TanStackTableDemo = () => {
           <button
             type="button"
             className="px-3 py-1 border rounded-md"
-            onClick={() => table.setPageIndex(0)}
+            onClick={() => {
+              table.setPageIndex(0)
+            }}
             disabled={!table.getCanPreviousPage()}
           >
             {"<<"}
@@ -268,7 +281,9 @@ const TanStackTableDemo = () => {
           <button
             type="button"
             className="px-3 py-1 border rounded-md"
-            onClick={() => table.previousPage()}
+            onClick={() => {
+              table.previousPage()
+            }}
             disabled={!table.getCanPreviousPage()}
           >
             {"<"}
@@ -276,7 +291,9 @@ const TanStackTableDemo = () => {
           <button
             type="button"
             className="px-3 py-1 border rounded-md"
-            onClick={() => table.nextPage()}
+            onClick={() => {
+              table.nextPage()
+            }}
             disabled={!table.getCanNextPage()}
           >
             {">"}
@@ -284,7 +301,9 @@ const TanStackTableDemo = () => {
           <button
             type="button"
             className="px-3 py-1 border rounded-md"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+            onClick={() => {
+              table.setPageIndex(table.getPageCount() - 1)
+            }}
             disabled={!table.getCanNextPage()}
           >
             {">>"}
@@ -293,7 +312,7 @@ const TanStackTableDemo = () => {
         <span className="flex items-center gap-1">
           <div>Page</div>
           <strong>
-            {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+            {String(table.getState().pagination.pageIndex + 1)} of {String(table.getPageCount())}
           </strong>
         </span>
         <select
@@ -313,6 +332,7 @@ const TanStackTableDemo = () => {
     </div>
   )
 }
+/* eslint-enable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-argument, @typescript-eslint/restrict-plus-operands */
 
 export const WithTanStackTable: Story = {
   render: () => <TanStackTableDemo />

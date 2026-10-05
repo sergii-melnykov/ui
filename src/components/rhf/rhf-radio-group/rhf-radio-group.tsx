@@ -16,6 +16,7 @@ import {
   FormDescription,
   FormField
 } from "@/components/rhf/form"
+import { cn } from "@/utils/cn"
 import {
   RHFRadioGroupOption,
   type RHFRadioGroupProps,
@@ -60,11 +61,11 @@ export function RHFRadioGroup<
   name,
   label,
   description,
-  className: _className,
+  className,
   warningText,
   required,
   disabled,
-  readOnly: _readOnly,
+  readOnly,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
   children,
@@ -78,7 +79,7 @@ export function RHFRadioGroup<
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <FormItem className="space-y-3">
+        <FormItem className={cn("space-y-3", className)}>
           {label && (
             <FormLabel>
               {label}
@@ -89,7 +90,7 @@ export function RHFRadioGroup<
             <RadioGroup
               onValueChange={field.onChange}
               defaultValue={field.value}
-              disabled={disabled}
+              disabled={disabled ?? readOnly}
               aria-label={ariaLabel}
               aria-describedby={ariaDescribedby}
               aria-invalid={!!error}

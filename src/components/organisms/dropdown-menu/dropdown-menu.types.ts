@@ -161,7 +161,7 @@ export interface DropdownMenuLabelProps extends React.HTMLAttributes<HTMLDivElem
   inset?: boolean
 }
 
-export interface DropdownMenuSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DropdownMenuSeparatorProps = React.HTMLAttributes<HTMLDivElement>
 
 export interface DropdownMenuShortcutProps extends React.HTMLAttributes<HTMLSpanElement> {
   /**

@@ -17,7 +17,7 @@ import type { AvatarProps, AvatarImageProps, AvatarFallbackProps } from "./avata
  * </Avatar>
  * ```
  */
-const Avatar = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Root>, AvatarProps>(
+const Avatar = React.forwardRef<React.ComponentRef<typeof AvatarPrimitive.Root>, AvatarProps>(
   ({ className, ...props }, ref) => (
     <AvatarPrimitive.Root
       ref={ref}
@@ -33,7 +33,7 @@ Avatar.displayName = AvatarPrimitive.Root.displayName
  * Falls back to AvatarFallback if the image fails to load.
  */
 const AvatarImage = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Image>,
+  React.ComponentRef<typeof AvatarPrimitive.Image>,
   AvatarImageProps
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
@@ -49,7 +49,7 @@ AvatarImage.displayName = AvatarPrimitive.Image.displayName
  * Typically shows the user's initials or a placeholder icon.
  */
 const AvatarFallback = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Fallback>,
+  React.ComponentRef<typeof AvatarPrimitive.Fallback>,
   AvatarFallbackProps
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Fallback

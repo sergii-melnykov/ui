@@ -1,55 +1,31 @@
 import * as React from "react"
 
 /**
- * Props interface for the Card component.
- * Extends the native div HTML attributes and adds support for custom styling.
- *
- * @interface CardProps
- * @extends {React.HTMLAttributes<HTMLDivElement>}
+ * Props for the Card component (native div HTML attributes).
  */
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type CardProps = React.HTMLAttributes<HTMLDivElement>
 
 /**
- * Props interface for the CardHeader component.
- * Extends the native div HTML attributes and adds support for custom styling.
- *
- * @interface CardHeaderProps
- * @extends {React.HTMLAttributes<HTMLDivElement>}
+ * Props for the CardHeader component.
  */
-export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type CardHeaderProps = React.HTMLAttributes<HTMLDivElement>
 
 /**
- * Props interface for the CardTitle component.
- * Extends the native heading HTML attributes and adds support for custom styling.
- *
- * @interface CardTitleProps
- * @extends {React.HTMLAttributes<HTMLHeadingElement>}
+ * Props for the CardTitle component.
  */
-export interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
+export type CardTitleProps = React.HTMLAttributes<HTMLHeadingElement>
 
 /**
- * Props interface for the CardDescription component.
- * Extends the native paragraph HTML attributes and adds support for custom styling.
- *
- * @interface CardDescriptionProps
- * @extends {React.HTMLAttributes<HTMLParagraphElement>}
+ * Props for the CardDescription component.
  */
-export interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+export type CardDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>
 
 /**
- * Props interface for the CardContent component.
- * Extends the native div HTML attributes and adds support for custom styling.
- *
- * @interface CardContentProps
- * @extends {React.HTMLAttributes<HTMLDivElement>}
+ * Props for the CardContent component.
  */
-export interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type CardContentProps = React.HTMLAttributes<HTMLDivElement>
 
 /**
- * Props interface for the CardFooter component.
- * Extends the native div HTML attributes and adds support for custom styling.
- *
- * @interface CardFooterProps
- * @extends {React.HTMLAttributes<HTMLDivElement>}
+ * Props for the CardFooter component.
  */
-export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type CardFooterProps = React.HTMLAttributes<HTMLDivElement>

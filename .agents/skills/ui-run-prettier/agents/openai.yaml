@@ -1,3 +1,3 @@
 interface:
   display_name: "Run prettier"
-  short_description: "Format with Prettier and verify check"
+  short_description: "Format sources with Prettier — never rewrite prettier config or ignores"

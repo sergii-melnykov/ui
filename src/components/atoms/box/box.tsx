@@ -54,8 +54,8 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
 const Box = React.forwardRef<HTMLDivElement, BoxProps>(
   ({ as: Component = "div", className, width, height, style, ...props }, ref) => {
     const dimensionStyles = {
-      width: typeof width === "number" ? `${width}px` : width,
-      height: typeof height === "number" ? `${height}px` : height,
+      width: typeof width === "number" ? `${String(width)}px` : width,
+      height: typeof height === "number" ? `${String(height)}px` : height,
       ...style
     }
 

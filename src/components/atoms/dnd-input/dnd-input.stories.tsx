@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import { DndInput } from "./dnd-input"
 import { UploadIcon } from "lucide-react"
 
@@ -62,7 +62,9 @@ type Story = StoryObj<typeof DndInput>
 
 export const Default: Story = {
   args: {
-    onDrop: (files: File[]) => alert(`Dropped: ${files.map((f) => f.name).join(", ")}`),
+    onDrop: (files: File[]) => {
+      alert(`Dropped: ${files.map((f) => f.name).join(", ")}`)
+    },
     multiple: false
   },
   render: (args) => <DndInput {...args} />,
@@ -77,7 +79,9 @@ export const Default: Story = {
 
 export const WithFileTypeRestriction: Story = {
   args: {
-    onDrop: (files: File[]) => alert(`Accepted: ${files.map((f) => f.name).join(", ")}`),
+    onDrop: (files: File[]) => {
+      alert(`Accepted: ${files.map((f) => f.name).join(", ")}`)
+    },
     accept: {
       "image/*": [".png", ".jpg", ".jpeg", ".gif"],
       "application/pdf": [".pdf"]
@@ -97,7 +101,9 @@ export const WithFileTypeRestriction: Story = {
 
 export const WithCustomContent: Story = {
   args: {
-    onDrop: (files: File[]) => alert(`Dropped: ${files.map((f) => f.name).join(", ")}`),
+    onDrop: (files: File[]) => {
+      alert(`Dropped: ${files.map((f) => f.name).join(", ")}`)
+    },
     className: "bg-gray-50 hover:bg-gray-100"
   },
   render: (args) => (
@@ -135,7 +141,7 @@ export const WithErrorHandling: Story = {
         <DndInput
           {...args}
           onDrop={(files, fileRejections) => {
-            if (fileRejections && fileRejections.length > 0) {
+            if (fileRejections.length > 0) {
               const errors = fileRejections.map((rejection) => {
                 if (rejection.errors[0].code === "file-too-large") {
                   return "File is too large (max 5MB)"
@@ -170,7 +176,9 @@ export const WithErrorHandling: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
-    onDrop: (files: File[]) => alert(`Dropped: ${files.map((f) => f.name).join(", ")}`)
+    onDrop: (files: File[]) => {
+      alert(`Dropped: ${files.map((f) => f.name).join(", ")}`)
+    }
   },
   render: (args) => <DndInput {...args} />,
   parameters: {

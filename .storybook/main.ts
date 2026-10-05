@@ -12,9 +12,14 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {}
   },
-  async viteFinal(config) {
+  viteFinal(config) {
     return {
       ...config,
+      build: {
+        ...config.build,
+        // Storybook bundles the full design system; avoid noisy agent/CI warnings.
+        chunkSizeWarningLimit: 3000
+      },
       css: {
         ...config.css,
         postcss: "./postcss.config.mjs"

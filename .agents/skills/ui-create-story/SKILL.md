@@ -29,3 +29,4 @@ disable-model-invocation: true
 
 - Optional: `npm run build-storybook` if meta/global decorators changed.
 - Suggest **Create tests** if the component has no `*.test.tsx` yet.
+- If lint/format fail on stories, fix story/source only — do not rewrite ESLint/Prettier config or ignores (`ui-project` → Lint & Prettier tooling).

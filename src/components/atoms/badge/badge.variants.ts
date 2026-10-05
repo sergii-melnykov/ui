@@ -27,3 +27,6 @@ export const badgeVariants = cva(
     }
   }
 )
+
+export type BadgeVariant = NonNullable<Parameters<typeof badgeVariants>[0]>["variant"]
+export type BadgeSize = NonNullable<Parameters<typeof badgeVariants>[0]>["size"]

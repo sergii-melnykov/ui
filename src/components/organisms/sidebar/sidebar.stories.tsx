@@ -6,7 +6,6 @@ import {
   FileText,
   MessageSquare,
   Bell,
-  Search,
   Plus,
   ChevronDown
 } from "lucide-react"
@@ -16,8 +15,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
   SidebarInput,

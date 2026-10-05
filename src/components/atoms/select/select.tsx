@@ -36,10 +36,10 @@ export type SelectProps<T extends string | number = string | number> = {
   /** Array of options to display in the select */
   options: SelectOption<T>[]
   /** Callback fired when the value changes */
-  // eslint-disable-next-line no-unused-vars
+
   onChange: (value: T) => void
   /** Render a custom CommandList for the select, if not provided, the select will render a default CommandList with the options */
-  // eslint-disable-next-line no-unused-vars
+
   renderCommandList?: (options: SelectOption<T>[]) => React.ReactNode
   /** Placeholder text to show when no value is selected */
   placeholder?: string
@@ -91,7 +91,7 @@ export function Select<T extends string | number = string | number>({
   const [open, setOpen] = React.useState(false)
   const [triggerWidth, setTriggerWidth] = React.useState<number | undefined>(undefined)
   const triggerRef = React.useRef<HTMLButtonElement>(null)
-  const selectedOption = options?.find((option) => option.id === value)
+  const selectedOption = options.find((option) => option.id === value)
 
   React.useEffect(() => {
     if (triggerRef.current) {
@@ -142,7 +142,7 @@ export function Select<T extends string | number = string | number>({
                 renderCommandList(options)
               ) : (
                 <CommandGroup>
-                  {options?.map((option) => (
+                  {options.map((option) => (
                     <CommandItem
                       value={option.label}
                       key={option.id}

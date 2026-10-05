@@ -12,6 +12,7 @@ import {
   FormDescription,
   FormField
 } from "@/components/rhf/form"
+import { cn } from "@/utils/cn"
 import { type RHFRadioButtonGroupProps } from "./rhf-radio-button-group.types"
 
 // ----------------------------------------------------------------------
@@ -44,11 +45,11 @@ export function RHFRadioButtonGroup<
   name,
   label,
   description,
-  className: _className,
+  className,
   warningText,
   required,
   disabled,
-  readOnly: _readOnly,
+  readOnly,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
   options,
@@ -61,7 +62,7 @@ export function RHFRadioButtonGroup<
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <FormItem className="space-y-3">
+        <FormItem className={cn("space-y-3", className)}>
           {label && (
             <FormLabel>
               {label}
@@ -72,7 +73,7 @@ export function RHFRadioButtonGroup<
             <RadioGroup
               onValueChange={field.onChange}
               defaultValue={field.value}
-              disabled={disabled}
+              disabled={disabled ?? readOnly}
               aria-label={ariaLabel}
               aria-describedby={ariaDescribedby}
               aria-invalid={!!error}
@@ -85,10 +86,12 @@ export function RHFRadioButtonGroup<
                   key={option.id}
                   size={option.size ?? "sm"}
                   variant={field.value === option.id ? "default" : "secondary"}
-                  onClick={() => field.onChange(option.id)}
+                  onClick={() => {
+                    field.onChange(option.id)
+                  }}
                   role="radio"
                   aria-checked={field.value === option.id}
-                  disabled={disabled}
+                  disabled={disabled ?? readOnly}
                 >
                   {option.label}
                 </Button>

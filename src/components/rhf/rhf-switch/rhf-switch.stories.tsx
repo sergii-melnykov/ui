@@ -14,7 +14,7 @@ const meta: Meta<typeof RHFSwitch> = {
   decorators: [
     (Story) => {
       const schema = z.object({
-        notifications: z.boolean().refine((val) => val === true, {
+        notifications: z.boolean().refine((val) => val, {
           message: "You must enable notifications"
         })
       })
@@ -26,13 +26,20 @@ const meta: Meta<typeof RHFSwitch> = {
         }
       })
 
-      const onSubmit = (data: any) => {
+      type FormValues = z.infer<typeof schema>
+
+      const onSubmit = (data: FormValues) => {
         console.log(data)
       }
 
       return (
         <FormProvider {...methods}>
-          <form className="w-[350px] flex flex-col gap-4" onSubmit={methods.handleSubmit(onSubmit)}>
+          <form
+            className="w-[350px] flex flex-col gap-4"
+            onSubmit={(event) => {
+              void methods.handleSubmit(onSubmit)(event)
+            }}
+          >
             <Story />
             <Button type="submit">Submit</Button>
           </form>

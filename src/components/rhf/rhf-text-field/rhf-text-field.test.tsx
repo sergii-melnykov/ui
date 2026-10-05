@@ -7,7 +7,7 @@ import { RHFTextField } from "./rhf-text-field"
 const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   const schema = z.object({
     text: z.string().min(1, "Text is required"),
-    email: z.string().email("Invalid email address"),
+    email: z.email("Invalid email address"),
     number: z.number().min(1, "Number must be greater than 0")
   })
 

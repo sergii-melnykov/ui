@@ -6,7 +6,7 @@ import { RHFCheckbox } from "./rhf-checkbox"
 
 const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   const schema = z.object({
-    terms: z.boolean().refine((val) => val === true, {
+    terms: z.boolean().refine((val) => val, {
       message: "You must accept the terms and conditions"
     })
   })

@@ -32,6 +32,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Format
+        run: npm run format
+
       - name: Typecheck (TypeScript 6)
         run: npm run typecheck
 

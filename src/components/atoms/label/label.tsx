@@ -20,7 +20,7 @@ export interface LabelProps
  * @url https://sergii-melnykov.github.io/ui/?path=/docs/atoms-label--docs
  *
  */
-const Label = React.forwardRef<React.ElementRef<typeof LabelPrimitive.Root>, LabelProps>(
+const Label = React.forwardRef<React.ComponentRef<typeof LabelPrimitive.Root>, LabelProps>(
   ({ className, ...props }, ref) => (
     <LabelPrimitive.Root ref={ref} className={cn(labelVariants(), className)} {...props} />
   )

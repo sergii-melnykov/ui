@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "tsBuildInfoFile": "./node_modules/.cache/.tsbuildinfo",
+    "tsBuildInfoFile": "./.cache/.tsbuildinfo",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

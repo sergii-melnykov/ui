@@ -17,7 +17,7 @@ export type PageLoaderProps = {
   /**
    * Optional color of the loader (default: "primary")
    */
-  color?: "primary" | "secondary" | "accent" | "muted" | "destructive" | string
+  color?: "primary" | "secondary" | "accent" | "muted" | "destructive" | `#${string}`
 }
 
 /**
@@ -47,7 +47,8 @@ export function PageLoader({
     destructive: "text-destructive"
   }
 
-  const loaderColor = colorClasses[color as keyof typeof colorClasses] || `text-[${color}]`
+  const loaderColor =
+    color in colorClasses ? colorClasses[color as keyof typeof colorClasses] : `text-[${color}]`
 
   return (
     <div

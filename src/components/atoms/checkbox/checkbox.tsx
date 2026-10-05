@@ -17,7 +17,7 @@ import { Check } from "lucide-react"
 import { cn } from "@/utils/index"
 import type { CheckboxProps } from "./checkbox.types"
 
-const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, CheckboxProps>(
+const Checkbox = React.forwardRef<React.ComponentRef<typeof CheckboxPrimitive.Root>, CheckboxProps>(
   ({ className, ...props }, ref) => (
     <CheckboxPrimitive.Root
       ref={ref}

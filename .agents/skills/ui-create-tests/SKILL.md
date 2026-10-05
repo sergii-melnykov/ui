@@ -29,3 +29,4 @@ disable-model-invocation: true
 
 - Trivial “renders without crashing” only tests.
 - Snapshot-only tests unless requested.
+- Rewriting `eslint.config.mjs`, `tsconfig.eslint.json`, or Prettier config/ignore files to silence test lint — fix tests or ask the user (`ui-project` → Lint & Prettier tooling).

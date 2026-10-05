@@ -11,6 +11,7 @@ import {
   FormDescription,
   FormField
 } from "@/components/rhf/form"
+import { cn } from "@/utils/cn"
 import { type RHFSwitchProps } from "./rhf-switch.types"
 
 // ----------------------------------------------------------------------
@@ -35,11 +36,11 @@ export function RHFSwitch<
   name,
   label,
   description,
-  className: _className,
+  className,
   warningText,
   required,
   disabled,
-  readOnly: _readOnly,
+  readOnly,
   "aria-label": ariaLabel,
   "aria-describedby": ariaDescribedby,
   ...other
@@ -51,12 +52,12 @@ export function RHFSwitch<
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => (
-        <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+        <FormItem className={cn("flex flex-row items-start space-x-3 space-y-0", className)}>
           <FormControl>
             <Switch
               checked={field.value}
               onCheckedChange={field.onChange}
-              disabled={disabled}
+              disabled={disabled ?? readOnly}
               aria-label={ariaLabel}
               aria-describedby={ariaDescribedby}
               aria-invalid={!!error}

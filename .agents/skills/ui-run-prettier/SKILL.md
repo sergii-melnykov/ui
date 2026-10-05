@@ -2,7 +2,8 @@
 name: ui-run-prettier
 description: |
   Run Prettier for @me1a/ui — format:fix then format check. Use when the user picks Run prettier
-  or asks to format/fix formatting in the repo.
+  or asks to format/fix formatting in the repo. Never rewrite .prettierrc, .prettierignore, or
+  change ignore-path/npm scripts unless the user explicitly asks to change Prettier setup.
 disable-model-invocation: true
 ---
 
@@ -25,4 +26,5 @@ npm run format       # prettier --check . --ignore-path .gitignore
 
 ## Notes
 
+- **Do not modify Prettier tooling:** `.prettierrc`, `.prettierignore`. Run Prettier on source files; do not relax ignores or options to make check pass.
 - CI does not currently run Prettier; local check still keeps the tree consistent before PR.

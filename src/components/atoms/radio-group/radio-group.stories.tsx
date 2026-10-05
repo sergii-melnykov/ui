@@ -83,7 +83,9 @@ const RadioGroupButtonStyle = ({ defaultValue }: RadioGroupButtonStyleProps) => 
       <Button
         size="sm"
         variant={value === "option-1" ? "default" : "secondary"}
-        onClick={() => setValue("option-1")}
+        onClick={() => {
+          setValue("option-1")
+        }}
         role="radio"
         aria-checked={value === "option-1"}
       >
@@ -92,7 +94,9 @@ const RadioGroupButtonStyle = ({ defaultValue }: RadioGroupButtonStyleProps) => 
       <Button
         size="sm"
         variant={value === "option-2" ? "default" : "secondary"}
-        onClick={() => setValue("option-2")}
+        onClick={() => {
+          setValue("option-2")
+        }}
         role="radio"
         aria-checked={value === "option-2"}
       >
@@ -101,7 +105,9 @@ const RadioGroupButtonStyle = ({ defaultValue }: RadioGroupButtonStyleProps) => 
       <Button
         size="sm"
         variant={value === "option-3" ? "default" : "secondary"}
-        onClick={() => setValue("option-3")}
+        onClick={() => {
+          setValue("option-3")
+        }}
         role="radio"
         aria-checked={value === "option-3"}
       >

@@ -1,5 +1,5 @@
 import * as React from "react"
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react-vite"
 import { RhfDndInput } from "./rhf-dnd-input"
 import { Form } from "../form"
 import { useForm } from "react-hook-form"
@@ -35,19 +35,32 @@ export default meta
 
 type Story = StoryObj<typeof RhfDndInput>
 
+const filesFormSchema = z.object({
+  files: z.array(z.instanceof(File)).min(1, "Please upload at least one file")
+})
+
+type FilesFormValues = z.infer<typeof filesFormSchema>
+
 // Form wrapper component for stories
-const FormWrapper = ({ children, onSubmit = console.log }) => {
-  const form = useForm({
-    resolver: zodResolver(
-      z.object({
-        files: z.array(z.instanceof(File)).min(1, "Please upload at least one file")
-      })
-    )
+const FormWrapper = ({
+  children,
+  onSubmit = console.log
+}: {
+  children: React.ReactNode
+  onSubmit?: (data: FilesFormValues) => void
+}) => {
+  const form = useForm<FilesFormValues>({
+    resolver: zodResolver(filesFormSchema)
   })
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form
+        onSubmit={(event) => {
+          void form.handleSubmit(onSubmit)(event)
+        }}
+        className="space-y-4"
+      >
         {children}
         <button
           type="submit"
@@ -180,7 +193,7 @@ export const WithCustomValidation: Story = {
         }}
         maxSize={2 * 1024 * 1024} // 2MB
         rules={{
-          validate: (files) => {
+          validate: (files: File[] | undefined) => {
             if (!files || files.length === 0) return "Please upload at least one file"
             if (files.some((file) => file.size > 2 * 1024 * 1024)) {
               return "All files must be less than 2MB"

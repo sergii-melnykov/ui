@@ -37,10 +37,10 @@ export type MultiSelectProps = {
   /** Currently selected values */
   value: string[]
   /** Callback fired when the values change */
-  // eslint-disable-next-line no-unused-vars
+
   onChange: (value: string[]) => void
   /** Render a custom CommandList for the select, if not provided, the select will render a default CommandList with the options */
-  // eslint-disable-next-line no-unused-vars
+
   renderCommandList?: (options: MultiSelectOption[]) => React.ReactNode
   /** Placeholder text to show when no value is selected */
   placeholder?: string
@@ -154,7 +154,9 @@ export function MultiSelect({
                   >
                     <span>{option.label}</span>
                     <span
-                      onClick={(e) => handleRemove(option.id, e)}
+                      onClick={(e) => {
+                        handleRemove(option.id, e)
+                      }}
                       className="hover:bg-secondary-foreground/20 rounded-sm"
                     >
                       <X className="h-3 w-3" />
@@ -206,7 +208,9 @@ export function MultiSelect({
                     <CommandItem
                       value={option.id}
                       key={option.id}
-                      onSelect={() => handleSelect(option.id)}
+                      onSelect={() => {
+                        handleSelect(option.id)
+                      }}
                       disabled={option.disabled}
                       className={cn(
                         "flex items-center justify-between cursor-pointer my-1",

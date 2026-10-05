@@ -1,8 +1,9 @@
 ---
 name: ui-run-lint
 description: |
-  Run ESLint for @me1a/ui (npm run lint) and fix issues. Use when the user picks Run lint
-  or asks to lint the project or fix ESLint errors.
+  Run ESLint for @me1a/ui (npm run lint) and fix issues in source files. Use when the user picks Run lint
+  or asks to lint the project or fix ESLint errors. Never rewrite eslint.config.mjs, tsconfig.eslint.json,
+  or .eslintignore unless the user explicitly asks to change ESLint setup.
 disable-model-invocation: true
 ---
 
@@ -26,5 +27,6 @@ npm run lint
 
 ## Notes
 
-- Do not disable rules broadly without user approval.
+- **Do not modify ESLint tooling:** `eslint.config.mjs`, `tsconfig.eslint.json`, `.eslintignore`. Fix code under lint scope instead.
+- Do not disable rules broadly in config or add repo-wide eslint-disable comments without user approval.
 - CI runs the same command in [`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml).

@@ -9,7 +9,8 @@ description: |
   and all shadcn/ui-related tasks. Also triggers on: "add a component", "fix styling",
   "create a form", "build a page layout", "update the theme", "change the preset",
   "optimize form performance", "debug a rendering issue", "refactor a component",
-  "add validation", "work with server actions".
+  "add validation", "work with server actions". Agents must not rewrite ESLint/Prettier config or
+  ignore files when fixing lint/format unless the user explicitly requests tooling changes.
 ---
 
 # @me1a/ui Project — Skill Router & Conventions
@@ -182,6 +183,22 @@ npm run format       # prettier --check
 
 ---
 
+## Lint & Prettier tooling (do not rewrite)
+
+When fixing lint or format failures — or when running **Run lint** / **Run prettier** agents — **change application source only**. Do **not** edit ESLint or Prettier configuration or ignore files unless the user **explicitly** asks to change tooling setup.
+
+**Protected paths (hands off by default):**
+
+- [`eslint.config.mjs`](../../../eslint.config.mjs)
+- [`tsconfig.eslint.json`](../../../tsconfig.eslint.json) (typed ESLint program only)
+- `.eslintignore` (if present)
+- [`.prettierrc`](../../../.prettierrc)
+- [`.prettierignore`](../../../.prettierignore)
+
+Fix violations in `src/`, stories, tests, and other linted sources. If a rule blocks progress, report it and ask the user — do not weaken config, add broad disables, or delete ignore entries without approval.
+
+---
+
 ## Critical Project Rules
 
 1. **Always load `shadcn` skill before working with any component.** It provides CLI commands, styling rules, and composition patterns that are essential for this project.
@@ -191,6 +208,7 @@ npm run format       # prettier --check
 5. **One component per directory** with the standard file structure (tsx, types.ts, test.tsx, stories.tsx, index.ts).
 6. **No raw color values.** Always use semantic Tailwind tokens or CSS variables.
 7. **Run `npm run typecheck`** (and lint/format as needed) before considering a task complete. **Vitest is paused** during the per-component redesign — do not block work on `*.test.tsx` until a component is redesigned and tests are rewritten.
+8. **Do not rewrite lint or Prettier configs or ignore files** — see [Lint & Prettier tooling](#lint--prettier-tooling-do-not-rewrite) above.
 
 ### Tests (paused during redesign)
 

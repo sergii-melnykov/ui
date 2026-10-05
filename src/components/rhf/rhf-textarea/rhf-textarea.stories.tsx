@@ -17,7 +17,12 @@ const FormWrapper = ({
   }
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+      <form
+        onSubmit={(event) => {
+          void methods.handleSubmit(onSubmit)(event)
+        }}
+        className="flex flex-col gap-4"
+      >
         {children}
         <Button type="submit">Submit</Button>
       </form>

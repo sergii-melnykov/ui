@@ -23,7 +23,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         if (typeof ref === "function") {
           ref(node)
         } else if (ref) {
-          // eslint-disable-next-line no-param-reassign -- compose forwarded ref
           ref.current = node
         }
       },
@@ -36,13 +35,15 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       const textarea = internalRef.current
       const resizeTextarea = () => {
         textarea.style.height = "auto"
-        textarea.style.height = `${textarea.scrollHeight}px`
+        textarea.style.height = `${String(textarea.scrollHeight)}px`
       }
 
       textarea.addEventListener("input", resizeTextarea)
       resizeTextarea() // Initial resize
 
-      return () => textarea.removeEventListener("input", resizeTextarea)
+      return () => {
+        textarea.removeEventListener("input", resizeTextarea)
+      }
     }, [autoResize])
 
     return (

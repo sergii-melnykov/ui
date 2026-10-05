@@ -29,12 +29,19 @@ const meta = {
           countries: []
         }
       })
-      const onSubmit = (data: any) => {
+      type FormValues = z.infer<typeof schema>
+
+      const onSubmit = (data: FormValues) => {
         console.log(data)
       }
       return (
         <Form {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+          <form
+            onSubmit={(event) => {
+              void methods.handleSubmit(onSubmit)(event)
+            }}
+            className="flex flex-col gap-4"
+          >
             <Story />
             <Button type="submit">Submit</Button>
           </form>

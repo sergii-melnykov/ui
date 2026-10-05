@@ -6,7 +6,7 @@ import { MultiSelect } from "./multi-select"
 
 // Wrapper component to demonstrate state management
 const MultiSelectWrapper = ({ value, ...props }: React.ComponentProps<typeof MultiSelect>) => {
-  const [selectedValues, setSelectedValues] = useState<string[]>(value || [])
+  const [selectedValues, setSelectedValues] = useState<string[]>(value)
 
   return (
     <div className="flex flex-col gap-4">

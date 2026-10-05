@@ -10,16 +10,19 @@
     "noEmit": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
+    "ignoreDeprecations": "6.0",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "tsBuildInfoFile": "./.cache/.tsbuildinfo-native",
+    "tsBuildInfoFile": "./.cache/.tsbuildinfo-eslint",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["vitest/globals"]
   },
-  "include": ["src"],
+  "include": ["src/**/*", ".storybook/**/*.ts", ".storybook/**/*.tsx"],
   "exclude": [
     "node_modules",
     "dist",
@@ -33,10 +36,6 @@
     "scripts",
     ".agents",
     "docs",
-    "tokens",
-    "**/*.stories.tsx",
-    "**/*.stories.ts",
-    "**/*.test.ts",
-    "**/*.test.tsx"
+    "tokens"
   ]
 }

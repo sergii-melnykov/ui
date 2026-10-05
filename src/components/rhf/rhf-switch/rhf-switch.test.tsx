@@ -6,7 +6,7 @@ import { RHFSwitch } from "./rhf-switch"
 
 const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   const schema = z.object({
-    notifications: z.boolean().refine((val) => val === true, {
+    notifications: z.boolean().refine((val) => val, {
       message: "You must enable notifications"
     })
   })

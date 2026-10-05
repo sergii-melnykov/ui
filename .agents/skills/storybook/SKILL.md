@@ -8,7 +8,7 @@ description: |
 
 # Storybook — @me1a/ui
 
-Storybook 8 with `@storybook/react-vite`. Stories are colocated with components as `component-name.stories.tsx`.
+Storybook 10 with `@storybook/react-vite`. Stories are colocated with components as `component-name.stories.tsx`.
 
 ## Canonical example
 
@@ -54,6 +54,7 @@ npm run build-storybook    # static build (CI uses this)
 3. Do not duplicate full component implementations in stories — compose the real export.
 4. For form/RHF components, wrap with minimal providers only if the component requires context (check sibling stories in `rhf/`).
 5. After adding stories, run `npm run build-storybook` if you changed meta/parameters that affect the docs build.
+6. When ESLint flags story files, fix the story/source — do not edit `eslint.config.mjs`, `tsconfig.eslint.json`, or ignore files (see **`ui-project`** → Lint & Prettier tooling).
 
 ## Config
 

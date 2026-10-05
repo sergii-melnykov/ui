@@ -15,7 +15,7 @@ const meta: Meta<typeof RHFTextField> = {
     (Story) => {
       const schema = z.object({
         text: z.string().min(1, "Text is required"),
-        email: z.string().email("Invalid email address"),
+        email: z.email("Invalid email address"),
         number: z.number().min(1, "Number must be greater than 0")
       })
 
@@ -28,13 +28,20 @@ const meta: Meta<typeof RHFTextField> = {
         }
       })
 
-      const onSubmit = (data: any) => {
+      type FormValues = z.infer<typeof schema>
+
+      const onSubmit = (data: FormValues) => {
         console.log(data)
       }
 
       return (
         <FormProvider {...methods}>
-          <form className="w-[350px] flex flex-col gap-4" onSubmit={methods.handleSubmit(onSubmit)}>
+          <form
+            className="w-[350px] flex flex-col gap-4"
+            onSubmit={(event) => {
+              void methods.handleSubmit(onSubmit)(event)
+            }}
+          >
             <Story />
             <Button type="submit">Submit</Button>
           </form>
@@ -125,7 +132,7 @@ export const WithError: Story = {
     label: "Field with Error",
     placeholder: "This will show an error"
   },
-  play: async ({ canvasElement }) => {
+  play: ({ canvasElement }) => {
     const button = canvasElement.querySelector("submit")
     if (button) {
       button.dispatchEvent(new Event("click"))

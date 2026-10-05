@@ -1,3 +1,3 @@
 interface:
   display_name: "Run lint"
-  short_description: "ESLint check and fix for the UI repo"
+  short_description: "ESLint check and fix source only — never rewrite eslint config or ignores"

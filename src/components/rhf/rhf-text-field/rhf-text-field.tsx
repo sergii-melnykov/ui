@@ -76,9 +76,11 @@ export function RHFTextField<
                 }
               }}
               onBlur={(e) => {
-                // trim if a string
-                if (type !== "number" && typeof field.value === "string") {
-                  field.onChange(field.value.trim())
+                if (type !== "number") {
+                  const rawValue: unknown = field.value
+                  if (typeof rawValue === "string") {
+                    field.onChange(rawValue.trim())
+                  }
                 }
                 field.onBlur() // pass to react-hook-form
                 onBlur?.(e) // pass to wrapper

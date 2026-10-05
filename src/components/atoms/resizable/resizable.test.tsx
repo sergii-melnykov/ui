@@ -5,7 +5,7 @@ import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from "./resizabl
 describe("Resizable", () => {
   it("renders ResizablePanelGroup with children", () => {
     render(
-      <ResizablePanelGroup direction="horizontal">
+      <ResizablePanelGroup orientation="horizontal">
         <ResizablePanel defaultSize={20}>
           <div>Panel 1</div>
         </ResizablePanel>
@@ -22,7 +22,7 @@ describe("Resizable", () => {
 
   it("renders ResizableHandle with handle when withHandle is true", () => {
     render(
-      <ResizablePanelGroup direction="horizontal">
+      <ResizablePanelGroup orientation="horizontal">
         <ResizablePanel defaultSize={20}>
           <div>Panel 1</div>
         </ResizablePanel>

@@ -26,3 +26,4 @@ npm run typecheck:fast  # native tsc --noEmit -p tsconfig.native.json
 ## Notes
 
 - Prefer proper types over `@ts-expect-error` unless unavoidable and documented.
+- **`tsconfig.eslint.json` is for ESLint only** — do not edit it for typecheck fixes; it is lint tooling (`ui-project` → Lint & Prettier tooling).

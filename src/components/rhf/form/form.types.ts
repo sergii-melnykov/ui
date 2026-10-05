@@ -22,36 +22,22 @@ export interface FormProps<TFieldValues extends FieldValues = FieldValues> {
  * Props interface for the FormField component.
  * Extends react-hook-form's Controller props.
  */
-export interface FormFieldProps<
+export type FormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
-> extends ControllerProps<TFieldValues, TName> {}
+> = ControllerProps<TFieldValues, TName>
 
-/**
- * Props interface for the FormItem component.
- * Extends HTML div attributes.
- */
-export interface FormItemProps extends React.HTMLAttributes<HTMLDivElement> {}
+/** Props for the FormItem component. */
+export type FormItemProps = React.HTMLAttributes<HTMLDivElement>
 
-/**
- * Props interface for the FormLabel component.
- * Extends Radix UI Label props.
- */
-export interface FormLabelProps extends React.ComponentPropsWithoutRef<
-  typeof LabelPrimitive.Root
-> {}
+/** Props for the FormLabel component. */
+export type FormLabelProps = React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
 
-/**
- * Props interface for the FormControl component.
- * Extends Radix UI Slot props.
- */
-export interface FormControlProps extends React.ComponentPropsWithoutRef<typeof Slot> {}
+/** Props for the FormControl component. */
+export type FormControlProps = React.ComponentPropsWithoutRef<typeof Slot>
 
-/**
- * Props interface for the FormDescription component.
- * Extends HTML paragraph attributes.
- */
-export interface FormDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+/** Props for the FormDescription component. */
+export type FormDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>
 
 /**
  * Props interface for the FormMessage component.
@@ -92,7 +78,7 @@ export interface FormProviderProps {
   /**
    * The form methods from react-hook-form
    */
-  methods: UseFormReturn<any>
+  methods: UseFormReturn
   /**
    * Optional form submission handler
    */

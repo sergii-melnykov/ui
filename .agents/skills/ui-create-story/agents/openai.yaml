@@ -1,3 +1,3 @@
 interface:
   display_name: "Create story"
-  short_description: "Add or update Storybook stories for a component"
+  short_description: "Storybook stories — fix lint in stories, not eslint/prettier config"

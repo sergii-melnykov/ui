@@ -37,3 +37,4 @@ disable-model-invocation: true
 
 - Run **Run typecheck** or `npm run typecheck` if types/export surface changed materially.
 - Remind: full verify runs on agent stop via project hook (lint, format, typecheck, test).
+- If lint/format fail, fix component code only — never rewrite ESLint/Prettier config or ignore files (`ui-project` → Lint & Prettier tooling).

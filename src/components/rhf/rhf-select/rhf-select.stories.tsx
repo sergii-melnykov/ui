@@ -31,7 +31,12 @@ const FormWrapper = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4">
+      <form
+        onSubmit={(event) => {
+          void form.handleSubmit(onSubmit)(event)
+        }}
+        className="flex flex-col gap-4"
+      >
         {children}
         <Button type="submit">Submit</Button>
       </form>

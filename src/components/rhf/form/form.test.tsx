@@ -20,7 +20,11 @@ describe("Form", () => {
 
     return (
       <Form {...methods}>
-        <form onSubmit={methods.handleSubmit(() => {})}>
+        <form
+          onSubmit={(event) => {
+            void methods.handleSubmit(() => {})(event)
+          }}
+        >
           <FormField
             control={methods.control}
             name="username"
@@ -58,7 +62,11 @@ describe("Form", () => {
 
       return (
         <Form {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <form
+            onSubmit={(event) => {
+              void methods.handleSubmit(onSubmit)(event)
+            }}
+          >
             <FormField
               control={methods.control}
               name="username"
@@ -96,7 +104,11 @@ describe("Form", () => {
 
       return (
         <Form {...methods}>
-          <form onSubmit={methods.handleSubmit(() => {})}>
+          <form
+            onSubmit={(event) => {
+              void methods.handleSubmit(() => {})(event)
+            }}
+          >
             <FormField
               control={methods.control}
               name="username"
