@@ -1,10 +1,26 @@
 {
   "version": 1,
   "hooks": {
+    "beforeShellExecution": [
+      {
+        "command": ".cursor/hooks/before-shell-guard.sh"
+      }
+    ],
+    "afterShellExecution": [
+      {
+        "command": ".cursor/hooks/after-shell-audit.sh"
+      }
+    ],
     "stop": [
       {
-        "command": ".cursor/hooks/stop-verify-followup.sh",
-        "loop_limit": 1
+        "command": ".cursor/hooks/cleanup-orphan-shells.sh",
+        "timeout": 15
+      }
+    ],
+    "sessionEnd": [
+      {
+        "command": ".cursor/hooks/cleanup-orphan-shells.sh",
+        "timeout": 15
       }
     ]
   }

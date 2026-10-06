@@ -3,3 +3,4 @@
 export * from "./drawer"
 export * from "./sidebar"
 export * from "./dropdown-menu"
+export * from "./menubar"

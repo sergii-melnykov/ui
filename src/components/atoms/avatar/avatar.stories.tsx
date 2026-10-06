@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+
+import { AvatarDesignSpec } from "./avatar-design-spec"
 import { Avatar, AvatarImage, AvatarFallback } from "./avatar"
 
 const meta: Meta<typeof Avatar> = {
@@ -15,6 +17,14 @@ const meta: Meta<typeof Avatar> = {
 
 export default meta
 type Story = StoryObj<typeof Avatar>
+
+export const DesignSpec: Story = {
+  render: () => <AvatarDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: { disable: true }
+  }
+}
 
 export const Default: Story = {
   render: (args) => (

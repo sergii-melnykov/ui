@@ -1,16 +1,38 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
-import { Button } from "../button"
-import { Popover, PopoverContent, PopoverTrigger } from "./popover"
+import { Button } from "@/components/atoms/button/button"
+import { Input } from "@/components/atoms/input/input"
+import { Label } from "@/components/atoms/label/label"
+
+import { PopoverDesignSpec } from "./popover-design-spec"
+import {
+  Popover,
+  PopoverContent,
+  PopoverDescription,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger
+} from "./popover"
 
 const meta: Meta<typeof Popover> = {
   title: "Atoms/Popover",
   component: Popover,
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  parameters: { layout: "centered" }
 }
 
 export default meta
 type Story = StoryObj<typeof Popover>
+
+export const DesignSpec: Story = {
+  render: () => <PopoverDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
 
 export const Default: Story = {
   render: () => (
@@ -18,37 +40,68 @@ export const Default: Story = {
       <PopoverTrigger asChild>
         <Button variant="outline">Open popover</Button>
       </PopoverTrigger>
-      <PopoverContent className="w-80">
-        <div className="grid gap-4">
-          <div className="space-y-2">
-            <h4 className="font-medium leading-none">Dimensions</h4>
-            <p className="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
+      <PopoverContent className="w-64">
+        <div className="flex flex-col gap-2.5">
+          <PopoverHeader>
+            <PopoverTitle>Dimensions</PopoverTitle>
+            <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
+          </PopoverHeader>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-2">
+              <Label htmlFor="popover-width">Width</Label>
+              <Input id="popover-width" defaultValue="100%" className="h-8 flex-1" />
+            </div>
+            <div className="flex items-center gap-2">
+              <Label htmlFor="popover-height">Height</Label>
+              <Input id="popover-height" defaultValue="25px" className="h-8 flex-1" />
+            </div>
           </div>
-          <form className="grid gap-2">
-            <div className="grid grid-cols-3 items-center gap-4">
-              <label htmlFor="width" className="text-sm font-medium">
-                Width
-              </label>
-              <input
-                id="width"
-                name="width"
-                defaultValue="100%"
-                className="col-span-2 h-8 rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background"
-              />
-            </div>
-            <div className="grid grid-cols-3 items-center gap-4">
-              <label htmlFor="height" className="text-sm font-medium">
-                Height
-              </label>
-              <input
-                id="height"
-                name="height"
-                defaultValue="25px"
-                className="col-span-2 h-8 rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background"
-              />
-            </div>
-          </form>
         </div>
+      </PopoverContent>
+    </Popover>
+  )
+}
+
+export const AlignStart: Story = {
+  render: () => (
+    <Popover defaultOpen>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm">
+          Start
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent align="start" className="w-40">
+        <p className="text-sm">Aligned to start</p>
+      </PopoverContent>
+    </Popover>
+  )
+}
+
+export const AlignCenter: Story = {
+  render: () => (
+    <Popover defaultOpen>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm">
+          Center
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent align="center" className="w-40">
+        <p className="text-sm">Aligned to center</p>
+      </PopoverContent>
+    </Popover>
+  )
+}
+
+export const AlignEnd: Story = {
+  render: () => (
+    <Popover defaultOpen>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm">
+          End
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent align="end" className="w-40">
+        <p className="text-sm">Aligned to end</p>
       </PopoverContent>
     </Popover>
   )

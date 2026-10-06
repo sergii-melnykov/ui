@@ -30,3 +30,4 @@ npm run lint
 - **Do not modify ESLint tooling:** `eslint.config.mjs`, `tsconfig.eslint.json`, `.eslintignore`. Fix code under lint scope instead.
 - Do not disable rules broadly in config or add repo-wide eslint-disable comments without user approval.
 - CI runs the same command in [`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml).
+- **Shell (required):** Run `npm run lint` in the **foreground** with **no pipes** (`| tail`, `| head`, etc.) and **no** trailing `&` / `nohup`. Project Cursor hooks block piped/background lint so processes are not orphaned when an agent stops.

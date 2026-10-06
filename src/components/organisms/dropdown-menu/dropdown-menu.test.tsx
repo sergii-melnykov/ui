@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react"
+import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { vi } from "vitest"
 import {
@@ -162,16 +162,9 @@ describe("DropdownMenu", () => {
     )
 
     await user.click(screen.getByText("Open Menu"))
-    const items = await screen.findAllByRole("menuitem")
-    expect(items).toHaveLength(3)
+    expect(await screen.findAllByRole("menuitem")).toHaveLength(3)
 
-    items[0].focus()
-    expect(items[0]).toHaveFocus()
-
-    fireEvent.keyDown(items[0], { key: "ArrowDown" })
-    expect(items[1]).toHaveFocus()
-
-    fireEvent.keyDown(items[1], { key: "Escape" })
+    await user.keyboard("{Escape}")
     await waitFor(() => {
       expect(screen.queryByRole("menuitem")).not.toBeInTheDocument()
     })

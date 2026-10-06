@@ -1,4 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { ArrowUpRight, CircleFadingPlus } from "lucide-react"
+
+import { Spinner } from "@/components/atoms/spinner/spinner"
+
+import { ButtonDesignSpec } from "./button-design-spec"
 import { Button } from "./button"
 
 const meta: Meta<typeof Button> = {
@@ -15,13 +20,23 @@ const meta: Meta<typeof Button> = {
     },
     size: {
       control: "select",
-      options: ["default", "sm", "lg", "icon"]
+      options: ["xs", "sm", "default", "lg", "icon", "icon-xs", "icon-sm", "icon-lg"]
     }
   }
 }
 
 export default meta
 type Story = StoryObj<typeof Button>
+
+export const DesignSpec: Story = {
+  render: () => <ButtonDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
 
 export const Default: Story = {
   args: {
@@ -65,6 +80,14 @@ export const Link: Story = {
   }
 }
 
+export const ExtraSmall: Story = {
+  name: "Extra small",
+  args: {
+    children: "Button",
+    size: "xs"
+  }
+}
+
 export const Small: Story = {
   args: {
     children: "Small",
@@ -80,8 +103,40 @@ export const Large: Story = {
 }
 
 export const Icon: Story = {
-  args: {
-    children: "🔍",
-    size: "icon"
-  }
+  render: () => (
+    <Button variant="outline" size="icon" aria-label="Add">
+      <CircleFadingPlus />
+    </Button>
+  )
+}
+
+export const WithIcon: Story = {
+  name: "With icon",
+  render: () => (
+    <Button>
+      <CircleFadingPlus data-icon="inline-start" />
+      Button
+    </Button>
+  )
+}
+
+export const Loading: Story = {
+  render: () => (
+    <Button disabled>
+      <Spinner data-icon="inline-start" className="animate-spin" />
+      Loading
+    </Button>
+  )
+}
+
+export const AsLink: Story = {
+  name: "As link",
+  render: () => (
+    <Button variant="outline" asChild>
+      <a href="https://ui.shadcn.com/docs/components/button" target="_blank" rel="noreferrer">
+        View docs
+        <ArrowUpRight data-icon="inline-end" />
+      </a>
+    </Button>
+  )
 }

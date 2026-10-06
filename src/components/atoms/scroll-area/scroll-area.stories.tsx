@@ -1,6 +1,7 @@
-import * as React from "react"
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { ScrollArea } from "./scroll-area"
+
+import { ScrollAreaDesignSpec } from "./scroll-area-design-spec"
+import { ScrollArea, ScrollBar } from "./scroll-area"
 
 const meta: Meta<typeof ScrollArea> = {
   title: "Atoms/ScrollArea",
@@ -13,6 +14,16 @@ const meta: Meta<typeof ScrollArea> = {
 
 export default meta
 type Story = StoryObj<typeof ScrollArea>
+
+export const DesignSpec: Story = {
+  render: () => <ScrollAreaDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
 
 export const Default: Story = {
   render: () => (
@@ -34,8 +45,8 @@ export const Default: Story = {
 
 export const WithHorizontalScroll: Story = {
   render: () => (
-    <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
-      <div className="flex space-x-4">
+    <ScrollArea className="w-[350px] rounded-md border whitespace-nowrap">
+      <div className="flex w-max gap-4 p-4">
         <div className="min-w-[200px] space-y-4">
           <h4 className="text-sm font-medium leading-none">Horizontal Scroll</h4>
           <p className="text-sm text-muted-foreground">
@@ -49,6 +60,7 @@ export const WithHorizontalScroll: Story = {
           </p>
         </div>
       </div>
+      <ScrollBar orientation="horizontal" />
     </ScrollArea>
   )
 }

@@ -8,4 +8,4 @@ export {
   PaginationEllipsis
 } from "./pagination"
 
-export type { PaginationLinkProps } from "./pagination.types"
+export type { PaginationLinkProps, PaginationNavButtonProps } from "./pagination.types"

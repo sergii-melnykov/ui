@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { AlertCircle, CheckCircle, Info, XCircle } from "lucide-react"
+import { ArrowUpRight, BadgeCheck, Bookmark, Loader2 } from "lucide-react"
+
+import { BadgeDesignSpec } from "./badge-design-spec"
 import { Badge } from "./badge"
 
 const meta: Meta<typeof Badge> = {
@@ -9,27 +11,24 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["default", "secondary", "destructive", "outline", "success", "warning", "info"],
+      options: ["default", "secondary", "destructive", "outline", "ghost", "link"],
       description: "The visual style of the badge"
-    },
-    size: {
-      control: "select",
-      options: ["default", "sm", "lg"],
-      description: "The size of the badge"
-    },
-    icon: {
-      control: "boolean",
-      description: "Whether to show an icon before the badge content"
-    },
-    iconAfter: {
-      control: "boolean",
-      description: "Whether to show an icon after the badge content"
     }
   }
 }
 
 export default meta
 type Story = StoryObj<typeof Badge>
+
+export const DesignSpec: Story = {
+  render: () => <BadgeDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
 
 export const Default: Story = {
   args: {
@@ -39,44 +38,70 @@ export const Default: Story = {
 
 export const WithVariants: Story = {
   render: () => (
-    <div className="flex gap-2">
+    <div className="flex flex-wrap gap-2">
       <Badge variant="default">Default</Badge>
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="destructive">Destructive</Badge>
       <Badge variant="outline">Outline</Badge>
-      <Badge variant="success">Success</Badge>
-      <Badge variant="warning">Warning</Badge>
-      <Badge variant="info">Info</Badge>
+      <Badge variant="ghost">Ghost</Badge>
     </div>
   )
 }
 
-export const WithSizes: Story = {
+export const WithIcon: Story = {
+  name: "With icon",
   render: () => (
-    <div className="flex items-center gap-2">
-      <Badge size="sm">Small</Badge>
-      <Badge size="default">Default</Badge>
-      <Badge size="lg">Large</Badge>
+    <div className="flex flex-wrap gap-2">
+      <Badge variant="secondary">
+        <BadgeCheck data-icon="inline-start" />
+        Verified
+      </Badge>
+      <Badge variant="outline">
+        Bookmark
+        <Bookmark data-icon="inline-end" />
+      </Badge>
     </div>
   )
 }
 
-export const WithIcons: Story = {
+export const WithSpinner: Story = {
+  name: "With spinner",
   render: () => (
-    <div className="flex gap-2">
-      <Badge icon={<CheckCircle className="h-3 w-3" />}>Success</Badge>
-      <Badge icon={<AlertCircle className="h-3 w-3" />}>Warning</Badge>
-      <Badge icon={<Info className="h-3 w-3" />}>Info</Badge>
-      <Badge icon={<XCircle className="h-3 w-3" />}>Error</Badge>
+    <div className="flex flex-wrap gap-2">
+      <Badge variant="destructive">
+        <Loader2 className="animate-spin" data-icon="inline-start" />
+        Deleting
+      </Badge>
+      <Badge variant="secondary">
+        Generating
+        <Loader2 className="animate-spin" data-icon="inline-end" />
+      </Badge>
     </div>
   )
 }
 
-export const WithIconAfter: Story = {
+export const AsLink: Story = {
+  name: "As link",
   render: () => (
-    <div className="flex gap-2">
-      <Badge iconAfter={<Info className="h-3 w-3" />}>New</Badge>
-      <Badge iconAfter={<CheckCircle className="h-3 w-3" />}>Verified</Badge>
+    <Badge asChild>
+      <a href="https://ui.shadcn.com" target="_blank" rel="noreferrer">
+        Open link
+        <ArrowUpRight data-icon="inline-end" />
+      </a>
+    </Badge>
+  )
+}
+
+export const CustomColors: Story = {
+  name: "Custom colors",
+  render: () => (
+    <div className="flex flex-wrap gap-2">
+      <Badge className="border-transparent bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">
+        Blue
+      </Badge>
+      <Badge className="border-transparent bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">
+        Green
+      </Badge>
     </div>
   )
 }

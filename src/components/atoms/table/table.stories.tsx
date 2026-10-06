@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { TableDesignSpec } from "./table-design-spec"
 import {
   Table,
   TableHeader,
@@ -32,10 +33,19 @@ const meta: Meta<typeof Table> = {
 export default meta
 type Story = StoryObj<typeof Table>
 
+export const DesignSpec: Story = {
+  render: () => <TableDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
+
 export const Default: Story = {
   render: () => (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>Invoice</TableHead>
@@ -67,9 +77,10 @@ export const Default: Story = {
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$750.00</TableCell>
+          <TableCell className="text-right">$2,500.00</TableCell>
         </TableRow>
       </TableFooter>
+      <TableCaption>A list of your recent invoices.</TableCaption>
     </Table>
   )
 }

@@ -1,4 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+
+import { Button } from "@/components/atoms/button/button"
+
+import { DropdownMenuDesignSpec } from "./dropdown-menu-design-spec"
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -28,14 +32,31 @@ const meta: Meta<typeof DropdownMenu> = {
 export default meta
 type Story = StoryObj<typeof DropdownMenu>
 
+export const DesignSpec: Story = {
+  render: () => <DropdownMenuDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
+
 export const Default: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>Item 1</DropdownMenuItem>
-        <DropdownMenuItem>Item 2</DropdownMenuItem>
-        <DropdownMenuItem>Item 3</DropdownMenuItem>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-32">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Billing</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Github</DropdownMenuItem>
+        <DropdownMenuItem>Support</DropdownMenuItem>
+        <DropdownMenuItem disabled>API</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
@@ -44,10 +65,12 @@ export const Default: Story = {
 export const WithCheckbox: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
         <DropdownMenuCheckboxItem checked>Show Status Bar</DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem>Show Activity Bar</DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem checked>Show Activity Bar</DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem>Show Panel</DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -57,11 +80,15 @@ export const WithCheckbox: Story = {
 export const WithRadio: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuRadioGroup value="pedro">
-          <DropdownMenuRadioItem value="pedro">Pedro Duarte</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="colm">Colm Tuite</DropdownMenuRadioItem>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-32">
+        <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+        <DropdownMenuRadioGroup value="top">
+          <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -71,22 +98,28 @@ export const WithRadio: Story = {
 export const WithSubMenu: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>Back</DropdownMenuItem>
-        <DropdownMenuItem>Forward</DropdownMenuItem>
-        <DropdownMenuItem>Reload</DropdownMenuItem>
-        <DropdownMenuSeparator />
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-32">
+        <DropdownMenuItem>Team</DropdownMenuItem>
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger>More Tools</DropdownMenuSubTrigger>
+          <DropdownMenuSubTrigger>Invite Users</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
-            <DropdownMenuItem>Save Page As...</DropdownMenuItem>
-            <DropdownMenuItem>Create Shortcut...</DropdownMenuItem>
-            <DropdownMenuItem>Name Window...</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Developer Tools</DropdownMenuItem>
+            <DropdownMenuItem>Email</DropdownMenuItem>
+            <DropdownMenuItem>Message</DropdownMenuItem>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>More options</DropdownMenuSubTrigger>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>Advanced...</DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
           </DropdownMenuSubContent>
         </DropdownMenuSub>
+        <DropdownMenuItem>
+          New Team
+          <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
@@ -95,8 +128,10 @@ export const WithSubMenu: Story = {
 export const WithGroups: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-36">
         <DropdownMenuGroup>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -119,24 +154,27 @@ export const WithGroups: Story = {
 export const WithShortcuts: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-44">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuItem>
-          New Tab
-          <DropdownMenuShortcut>⌘T</DropdownMenuShortcut>
+          Profile
+          <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          New Window
-          <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
+          Billing
+          <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          New Incognito Window
-          <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
+          Settings
+          <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          Close Window
-          <DropdownMenuShortcut>⌘W</DropdownMenuShortcut>
+          Log out
+          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
@@ -146,8 +184,10 @@ export const WithShortcuts: Story = {
 export const WithDisabledItems: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger>Open Menu</DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-32">
         <DropdownMenuItem>Enabled Item</DropdownMenuItem>
         <DropdownMenuItem disabled>Disabled Item</DropdownMenuItem>
         <DropdownMenuItem disabled>Another Disabled Item</DropdownMenuItem>
@@ -157,16 +197,16 @@ export const WithDisabledItems: Story = {
   )
 }
 
-export const WithCustomTrigger: Story = {
+export const Destructive: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger className="rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90">
-        Custom Trigger
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>Item 1</DropdownMenuItem>
-        <DropdownMenuItem>Item 2</DropdownMenuItem>
-        <DropdownMenuItem>Item 3</DropdownMenuItem>
+      <DropdownMenuContent className="w-32">
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem variant="destructive">Delete Account</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

@@ -1,5 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "./tabs"
+import { AppWindow, Code } from "lucide-react"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from "@/components/molecules/card/card"
+
+import { TabsDesignSpec } from "./tabs-design-spec"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs"
 
 const meta = {
   title: "Molecules/Tabs",
@@ -12,136 +23,131 @@ const meta = {
       }
     }
   },
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  argTypes: {
+    orientation: {
+      control: "select",
+      options: ["horizontal", "vertical"]
+    },
+    dir: {
+      control: "select",
+      options: ["ltr", "rtl"]
+    }
+  }
 } satisfies Meta<typeof Tabs>
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+export const DesignSpec: Story = {
+  render: () => <TabsDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
 
 export const Default: Story = {
   args: {
     defaultValue: "account"
   },
   render: (args) => (
-    <Tabs {...args}>
+    <Tabs {...args} className="w-[400px]">
       <TabsList>
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
         <TabsTrigger value="settings">Settings</TabsTrigger>
       </TabsList>
       <TabsContent value="account">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">Account Settings</h3>
-          <p className="text-sm text-muted-foreground">
-            Manage your account settings and preferences.
-          </p>
-        </div>
+        <p className="text-sm text-muted-foreground">Make changes to your account here.</p>
       </TabsContent>
       <TabsContent value="password">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">Password Settings</h3>
-          <p className="text-sm text-muted-foreground">
-            Change your password and security settings.
-          </p>
-        </div>
+        <p className="text-sm text-muted-foreground">Change your password here.</p>
       </TabsContent>
       <TabsContent value="settings">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">General Settings</h3>
-          <p className="text-sm text-muted-foreground">Configure your application preferences.</p>
-        </div>
+        <p className="text-sm text-muted-foreground">Configure your application preferences.</p>
       </TabsContent>
+    </Tabs>
+  )
+}
+
+export const Line: Story = {
+  render: () => (
+    <Tabs defaultValue="overview">
+      <TabsList variant="line">
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        <TabsTrigger value="reports">Reports</TabsTrigger>
+      </TabsList>
+    </Tabs>
+  )
+}
+
+export const Vertical: Story = {
+  render: () => (
+    <Tabs defaultValue="account" orientation="vertical" className="w-[120px]">
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
+      </TabsList>
     </Tabs>
   )
 }
 
 export const Disabled: Story = {
-  args: {
-    defaultValue: "account"
-  },
-  render: (args) => (
-    <Tabs {...args}>
+  render: () => (
+    <Tabs defaultValue="home">
       <TabsList>
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password" disabled>
-          Password
+        <TabsTrigger value="home">Home</TabsTrigger>
+        <TabsTrigger value="disabled" disabled>
+          Disabled
         </TabsTrigger>
-        <TabsTrigger value="settings">Settings</TabsTrigger>
       </TabsList>
-      <TabsContent value="account">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">Account Settings</h3>
-          <p className="text-sm text-muted-foreground">
-            Manage your account settings and preferences.
-          </p>
-        </div>
-      </TabsContent>
-      <TabsContent value="password">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">Password Settings</h3>
-          <p className="text-sm text-muted-foreground">
-            Change your password and security settings.
-          </p>
-        </div>
-      </TabsContent>
-      <TabsContent value="settings">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">General Settings</h3>
-          <p className="text-sm text-muted-foreground">Configure your application preferences.</p>
-        </div>
-      </TabsContent>
     </Tabs>
   )
 }
 
-export const CustomStyling: Story = {
-  args: {
-    defaultValue: "account"
-  },
-  render: (args) => (
-    <Tabs {...args}>
-      <TabsList className="bg-primary/10">
-        <TabsTrigger
-          value="account"
-          className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-        >
-          Account
+export const WithIcons: Story = {
+  render: () => (
+    <Tabs defaultValue="preview">
+      <TabsList>
+        <TabsTrigger value="preview">
+          <AppWindow aria-hidden />
+          Preview
         </TabsTrigger>
-        <TabsTrigger
-          value="password"
-          className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-        >
-          Password
-        </TabsTrigger>
-        <TabsTrigger
-          value="settings"
-          className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-        >
-          Settings
+        <TabsTrigger value="code">
+          <Code aria-hidden />
+          Code
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="account">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">Account Settings</h3>
-          <p className="text-sm text-muted-foreground">
-            Manage your account settings and preferences.
-          </p>
-        </div>
-      </TabsContent>
-      <TabsContent value="password">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">Password Settings</h3>
-          <p className="text-sm text-muted-foreground">
-            Change your password and security settings.
-          </p>
-        </div>
-      </TabsContent>
-      <TabsContent value="settings">
-        <div className="p-4">
-          <h3 className="text-lg font-medium">General Settings</h3>
-          <p className="text-sm text-muted-foreground">Configure your application preferences.</p>
-        </div>
-      </TabsContent>
     </Tabs>
+  )
+}
+
+export const Rtl: Story = {
+  render: () => (
+    <div dir="rtl" className="w-[400px]">
+      <Tabs defaultValue="overview" dir="rtl">
+        <TabsList>
+          <TabsTrigger value="overview">نظرة عامة</TabsTrigger>
+          <TabsTrigger value="analytics">التحليلات</TabsTrigger>
+          <TabsTrigger value="reports">التقارير</TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview">
+          <Card>
+            <CardHeader className="items-end text-right">
+              <CardTitle>نظرة عامة</CardTitle>
+              <CardDescription>عرض مقاييسك الرئيسية وأنشطة المشروع الأخيرة.</CardDescription>
+            </CardHeader>
+            <CardContent className="text-right text-sm text-muted-foreground">
+              لديك ١٢ مشروعًا نشطًا و٣ مهام معلقة.
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
   )
 }

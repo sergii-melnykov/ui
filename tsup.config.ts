@@ -52,10 +52,10 @@ async function getComponentEntries() {
       // Add individual component entries
       components.forEach((component) => {
         const componentName = path.basename(path.dirname(component.replace("src/components", "")))
-        console.log(componentName)
-        // Use the full path structure for the entry key
+        const alias = dir === "rhf" ? `rhf/${componentName}` : componentName
+        console.log(alias)
         entries[`${dir}/${componentName}`] = {
-          alias: `${componentName}`,
+          alias,
           src: component,
           bundle: true
         }

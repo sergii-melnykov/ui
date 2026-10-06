@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import * as React from "react"
 import {
   Home,
   Settings,
@@ -10,6 +11,7 @@ import {
   ChevronDown
 } from "lucide-react"
 
+import { SidebarDesignSpec } from "./sidebar-design-spec"
 import {
   Sidebar,
   SidebarContent,
@@ -31,6 +33,23 @@ import {
   SidebarMenuSubItem
 } from "./sidebar"
 
+function SidebarStoryShell({ children }: { children: React.ReactNode }) {
+  return (
+    <SidebarProvider>
+      <div className="flex min-h-screen w-full">
+        {children}
+        <main className="flex-1 p-4">
+          <h1 className="text-2xl font-bold">Main Content</h1>
+          <p className="mt-4">
+            This is the main content area. The sidebar can be toggled using the trigger button or by
+            pressing Ctrl/Cmd + B.
+          </p>
+        </main>
+      </div>
+    </SidebarProvider>
+  )
+}
+
 /**
  * A flexible sidebar component that supports various layouts and configurations.
  * The sidebar can be positioned on either side of the screen and supports different
@@ -43,7 +62,7 @@ const meta = {
   component: Sidebar,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen",
+    layout: "centered",
     docs: {
       description: {
         component: `
@@ -97,35 +116,31 @@ visual styles and collapse behaviors.
         defaultValue: { summary: "offcanvas" }
       }
     }
-  },
-  decorators: [
-    (Story) => (
-      <SidebarProvider>
-        <div className="flex min-h-screen">
-          <Story />
-          <main className="flex-1 p-4">
-            <h1 className="text-2xl font-bold">Main Content</h1>
-            <p className="mt-4">
-              This is the main content area. The sidebar can be toggled using the trigger button or
-              by pressing Ctrl/Cmd + B.
-            </p>
-          </main>
-        </div>
-      </SidebarProvider>
-    )
-  ]
+  }
 } satisfies Meta<typeof Sidebar>
 
 export default meta
 type Story = StoryObj<typeof Sidebar>
+
+export const DesignSpec: Story = {
+  render: () => <SidebarDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
 
 /**
  * Default sidebar with basic navigation items.
  * Demonstrates the standard layout with header, content, and footer sections.
  */
 export const Default: Story = {
+  parameters: { layout: "fullscreen" },
   render: () => (
-    <Sidebar>
+    <SidebarStoryShell>
+      <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <SidebarTrigger />
@@ -192,7 +207,8 @@ export const Default: Story = {
           </div>
         </div>
       </SidebarFooter>
-    </Sidebar>
+      </Sidebar>
+    </SidebarStoryShell>
   )
 }
 
@@ -201,8 +217,10 @@ export const Default: Story = {
  * Demonstrates the floating style with rounded corners and shadow.
  */
 export const Floating: Story = {
+  parameters: { layout: "fullscreen" },
   render: () => (
-    <Sidebar variant="floating">
+    <SidebarStoryShell>
+      <Sidebar variant="floating">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <SidebarTrigger />
@@ -230,7 +248,8 @@ export const Floating: Story = {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>
+      </Sidebar>
+    </SidebarStoryShell>
   )
 }
 
@@ -239,8 +258,10 @@ export const Floating: Story = {
  * Demonstrates the inset style with a seamless connection to the content.
  */
 export const Inset: Story = {
+  parameters: { layout: "fullscreen" },
   render: () => (
-    <Sidebar variant="inset">
+    <SidebarStoryShell>
+      <Sidebar variant="inset">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <SidebarTrigger />
@@ -268,7 +289,8 @@ export const Inset: Story = {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>
+      </Sidebar>
+    </SidebarStoryShell>
   )
 }
 
@@ -277,8 +299,10 @@ export const Inset: Story = {
  * Demonstrates the sidebar positioned on the right side of the screen.
  */
 export const RightSide: Story = {
+  parameters: { layout: "fullscreen" },
   render: () => (
-    <Sidebar side="right">
+    <SidebarStoryShell>
+      <Sidebar side="right">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <h2 className="text-lg font-semibold">Notifications</h2>
@@ -306,7 +330,8 @@ export const RightSide: Story = {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>
+      </Sidebar>
+    </SidebarStoryShell>
   )
 }
 
@@ -315,8 +340,10 @@ export const RightSide: Story = {
  * Demonstrates the use of sub-menus for hierarchical navigation.
  */
 export const WithNestedNavigation: Story = {
+  parameters: { layout: "fullscreen" },
   render: () => (
-    <Sidebar>
+    <SidebarStoryShell>
+      <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <SidebarTrigger />
@@ -351,7 +378,8 @@ export const WithNestedNavigation: Story = {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>
+      </Sidebar>
+    </SidebarStoryShell>
   )
 }
 
@@ -360,8 +388,10 @@ export const WithNestedNavigation: Story = {
  * Demonstrates the use of action buttons in menu items.
  */
 export const WithActions: Story = {
+  parameters: { layout: "fullscreen" },
   render: () => (
-    <Sidebar>
+    <SidebarStoryShell>
+      <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <SidebarTrigger />
@@ -394,7 +424,8 @@ export const WithActions: Story = {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>
+      </Sidebar>
+    </SidebarStoryShell>
   )
 }
 
@@ -403,8 +434,10 @@ export const WithActions: Story = {
  * Demonstrates the icon-only collapse behavior.
  */
 export const IconOnly: Story = {
+  parameters: { layout: "fullscreen" },
   render: () => (
-    <Sidebar collapsible="icon">
+    <SidebarStoryShell>
+      <Sidebar collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <SidebarTrigger />
@@ -432,7 +465,8 @@ export const IconOnly: Story = {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>
+      </Sidebar>
+    </SidebarStoryShell>
   )
 }
 
@@ -441,8 +475,10 @@ export const IconOnly: Story = {
  * Demonstrates a fixed sidebar that cannot be collapsed.
  */
 export const NonCollapsible: Story = {
+  parameters: { layout: "fullscreen" },
   render: () => (
-    <Sidebar collapsible="none">
+    <SidebarStoryShell>
+      <Sidebar collapsible="none">
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <h2 className="text-lg font-semibold">Dashboard</h2>
@@ -469,6 +505,7 @@ export const NonCollapsible: Story = {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>
+      </Sidebar>
+    </SidebarStoryShell>
   )
 }

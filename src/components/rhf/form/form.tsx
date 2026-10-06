@@ -157,6 +157,28 @@ const FormMessage = React.forwardRef<
 })
 FormMessage.displayName = "FormMessage"
 
+function FormRootError({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
+  const {
+    formState: { errors }
+  } = useFormContext()
+
+  const root = errors.root
+  const message =
+    root && "serverError" in root && root.serverError.message
+      ? root.serverError.message
+      : root?.message
+
+  if (!message) {
+    return null
+  }
+
+  return (
+    <p role="alert" className={cn("text-sm font-medium text-destructive", className)} {...props}>
+      {message}
+    </p>
+  )
+}
+
 export {
   useFormField,
   Form,
@@ -165,5 +187,6 @@ export {
   FormControl,
   FormDescription,
   FormMessage,
-  FormField
+  FormField,
+  FormRootError
 }

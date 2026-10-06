@@ -26,6 +26,13 @@ const eslintConfig = defineConfig([
     }
   },
   {
+    files: ["src/**/*design-spec.tsx", "src/**/*.stories.tsx"],
+    rules: {
+      // Storybook (Vite) design specs use static /public assets, not next/image.
+      "@next/next/no-img-element": "off"
+    }
+  },
+  {
     files: ["**/*.mjs"],
     extends: [tseslint.configs.disableTypeChecked]
   },

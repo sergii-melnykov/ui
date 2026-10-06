@@ -22,8 +22,9 @@ export function getComponentEntries() {
 
     for (const component of components) {
       const componentName = path.basename(path.dirname(component))
+      const alias = dir === "rhf" ? `rhf/${componentName}` : componentName
       entries[`${dir}/${componentName}`] = {
-        alias: componentName,
+        alias,
         src: component
       }
     }

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Verify component"
+  short_description: "npm run verify + Storybook browser check, update pipeline handoff"

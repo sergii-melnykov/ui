@@ -8,6 +8,7 @@ export {
   FormControl,
   FormDescription,
   FormMessage,
+  FormRootError,
   useFormField
 } from "./form"
 

@@ -27,4 +27,14 @@ describe("Switch", () => {
     const switchElement = screen.getByRole("switch")
     expect(switchElement).toBeChecked()
   })
+
+  it("supports small size", () => {
+    render(<Switch size="sm" />)
+    expect(screen.getByRole("switch")).toHaveAttribute("data-slot", "switch")
+  })
+
+  it("supports invalid state", () => {
+    render(<Switch aria-invalid />)
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-invalid", "true")
+  })
 })

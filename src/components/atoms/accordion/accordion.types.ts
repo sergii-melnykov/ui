@@ -54,6 +54,8 @@ export interface AccordionTriggerProps extends React.ComponentPropsWithoutRef<
 > {
   /** The content of the accordion trigger */
   children: React.ReactNode
+  /** Visual tone for the trigger label and chevron */
+  variant?: "default" | "destructive"
 }
 
 /**

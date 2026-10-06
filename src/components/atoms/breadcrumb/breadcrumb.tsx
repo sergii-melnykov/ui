@@ -22,7 +22,7 @@
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { ChevronRight, MoreHorizontal } from "lucide-react"
+import { ChevronRight, Circle, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/utils/index"
 import {
@@ -45,7 +45,7 @@ const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(
     <ol
       ref={ref}
       className={cn(
-        "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
+        "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground",
         className
       )}
       {...props}
@@ -56,7 +56,7 @@ BreadcrumbList.displayName = "BreadcrumbList"
 
 const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
   ({ className, ...props }, ref) => (
-    <li ref={ref} className={cn("inline-flex items-center gap-1.5", className)} {...props} />
+    <li ref={ref} className={cn("inline-flex items-center gap-1", className)} {...props} />
   )
 )
 BreadcrumbItem.displayName = "BreadcrumbItem"
@@ -68,7 +68,10 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
     return (
       <Comp
         ref={ref}
-        className={cn("transition-colors hover:text-foreground", className)}
+        className={cn(
+          "transition-colors hover:text-foreground focus-visible:text-foreground",
+          className
+        )}
         {...props}
       />
     )
@@ -90,14 +93,24 @@ const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
 )
 BreadcrumbPage.displayName = "BreadcrumbPage"
 
-const BreadcrumbSeparator = ({ children, className, ...props }: BreadcrumbSeparatorProps) => (
+const BreadcrumbSeparator = ({
+  children,
+  className,
+  variant = "chevron",
+  ...props
+}: BreadcrumbSeparatorProps) => (
   <li
     role="presentation"
     aria-hidden="true"
-    className={cn("[&>svg]:w-3.5 [&>svg]:h-3.5", className)}
+    className={cn(
+      "flex size-3.5 items-center justify-center text-muted-foreground",
+      variant === "dot" && !children ? "[&>svg]:size-1" : "[&>svg]:size-3.5",
+      className
+    )}
     {...props}
   >
-    {children ?? <ChevronRight />}
+    {children ??
+      (variant === "dot" ? <Circle className="fill-current" strokeWidth={0} /> : <ChevronRight />)}
   </li>
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
@@ -106,10 +119,10 @@ const BreadcrumbEllipsis = ({ className, ...props }: BreadcrumbEllipsisProps) =>
   <span
     role="presentation"
     aria-hidden="true"
-    className={cn("flex h-9 w-9 items-center justify-center", className)}
+    className={cn("flex size-3.5 items-center justify-center", className)}
     {...props}
   >
-    <MoreHorizontal className="h-4 w-4" />
+    <MoreHorizontal className="size-3.5" />
     <span className="sr-only">More</span>
   </span>
 )

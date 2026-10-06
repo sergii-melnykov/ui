@@ -14,6 +14,8 @@ export interface BreadcrumbLinkProps extends React.ComponentPropsWithoutRef<"a">
 
 export type BreadcrumbPageProps = React.ComponentPropsWithoutRef<"span">
 
-export type BreadcrumbSeparatorProps = React.ComponentProps<"li">
+export interface BreadcrumbSeparatorProps extends React.ComponentProps<"li"> {
+  variant?: "chevron" | "dot"
+}
 
 export type BreadcrumbEllipsisProps = React.ComponentProps<"span">

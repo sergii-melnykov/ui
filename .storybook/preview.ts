@@ -3,6 +3,15 @@ import type { Preview } from "@storybook/react-vite"
 
 const preview: Preview = {
   parameters: {
+    // Chromatic: publish Storybook + MCP only; do not bill visual snapshots.
+    chromatic: {
+      disableSnapshot: true
+    },
+    options: {
+      storySort: {
+        order: ["Pages", "Atoms", "Molecules", "Organisms", "Form"]
+      }
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

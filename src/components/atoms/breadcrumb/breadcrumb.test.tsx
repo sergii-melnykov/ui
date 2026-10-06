@@ -54,6 +54,24 @@ describe("Breadcrumb", () => {
     expect(screen.getByText("/")).toBeInTheDocument()
   })
 
+  it("renders dot separator variant", () => {
+    const { container } = render(
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator variant="dot" data-testid="dot-separator" />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Current Page</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+    )
+
+    expect(container.querySelector('[data-testid="dot-separator"] svg')).toBeInTheDocument()
+  })
+
   it("handles ellipsis", () => {
     render(
       <Breadcrumb>

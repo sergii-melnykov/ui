@@ -1,5 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { Typography } from "./typography"
+
+import {
+  Typography,
+  TypographyTable,
+  TypographyTableCell,
+  TypographyTableHead,
+  TypographyTableRow
+} from "./index"
 
 const meta: Meta<typeof Typography> = {
   title: "Atoms/Typography",
@@ -21,7 +28,8 @@ const meta: Meta<typeof Typography> = {
         "lead",
         "large",
         "small",
-        "muted"
+        "muted",
+        "inline-code"
       ]
     },
     align: {
@@ -116,6 +124,103 @@ export const Muted: Story = {
     children: "This is muted text",
     variant: "muted"
   }
+}
+
+export const InlineCode: Story = {
+  args: {
+    children: "@radix-ui/react-alert-dialog",
+    variant: "inline-code"
+  }
+}
+
+export const UnorderedList: Story = {
+  render: () => (
+    <Typography variant="list">
+      <li>1st level of puns: 5 gold coins</li>
+      <li>2nd level of jokes: 10 gold coins</li>
+      <li>3rd level of one-liners: 20 gold coins</li>
+    </Typography>
+  )
+}
+
+export const Table: Story = {
+  render: () => (
+    <TypographyTable>
+      <thead>
+        <TypographyTableRow>
+          <TypographyTableHead>King&apos;s Treasury</TypographyTableHead>
+          <TypographyTableHead>People&apos;s happiness</TypographyTableHead>
+        </TypographyTableRow>
+      </thead>
+      <tbody>
+        <TypographyTableRow>
+          <TypographyTableCell>Empty</TypographyTableCell>
+          <TypographyTableCell>Overflowing</TypographyTableCell>
+        </TypographyTableRow>
+        <TypographyTableRow>
+          <TypographyTableCell>Modest</TypographyTableCell>
+          <TypographyTableCell>Satisfied</TypographyTableCell>
+        </TypographyTableRow>
+      </tbody>
+    </TypographyTable>
+  )
+}
+
+export const Demo: Story = {
+  render: () => (
+    <div>
+      <Typography variant="h1">Taxing Laughter: The Joke Tax Chronicles</Typography>
+      <Typography variant="lead">
+        Once upon a time, in a far-off land, there was a very lazy king who spent all day lounging
+        on his throne. One day, his advisors came to him with a problem: the kingdom was running
+        out of money.
+      </Typography>
+      <Typography variant="h2">The King&apos;s Plan</Typography>
+      <Typography variant="p">
+        The king thought long and hard, and finally came up with{" "}
+        <a href="#" className="font-medium text-primary underline underline-offset-4">
+          a brilliant plan
+        </a>
+        : he would tax the jokes in the kingdom.
+      </Typography>
+      <Typography variant="blockquote">
+        &quot;After all,&quot; he said, &quot;everyone enjoys a good joke, so it&apos;s only fair
+        that they should pay for the privilege.&quot;
+      </Typography>
+      <Typography variant="h3">The Joke Tax</Typography>
+      <Typography variant="p">
+        The king&apos;s subjects were not amused. They grumbled and complained, but the king was
+        firm:
+      </Typography>
+      <Typography variant="list">
+        <li>1st level of puns: 5 gold coins</li>
+        <li>2nd level of jokes: 10 gold coins</li>
+        <li>3rd level of one-liners: 20 gold coins</li>
+      </Typography>
+      <TypographyTable>
+        <thead>
+          <TypographyTableRow>
+            <TypographyTableHead>King&apos;s Treasury</TypographyTableHead>
+            <TypographyTableHead>People&apos;s happiness</TypographyTableHead>
+          </TypographyTableRow>
+        </thead>
+        <tbody>
+          <TypographyTableRow>
+            <TypographyTableCell>Empty</TypographyTableCell>
+            <TypographyTableCell>Overflowing</TypographyTableCell>
+          </TypographyTableRow>
+          <TypographyTableRow>
+            <TypographyTableCell>Full</TypographyTableCell>
+            <TypographyTableCell>Ecstatic</TypographyTableCell>
+          </TypographyTableRow>
+        </tbody>
+      </TypographyTable>
+      <Typography variant="p">
+        The moral of the story is: never underestimate the power of a good laugh and always be
+        careful of bad ideas.
+      </Typography>
+    </div>
+  )
 }
 
 export const Centered: Story = {

@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react"
+import { BadgeCheck } from "lucide-react"
+
 import { Badge } from "./badge"
 
 describe("Badge", () => {
@@ -7,31 +9,32 @@ describe("Badge", () => {
     expect(screen.getByText("Test Badge")).toBeInTheDocument()
   })
 
-  it("applies variant classes", () => {
-    render(<Badge variant="success">Success</Badge>)
-    const badge = screen.getByText("Success")
-    expect(badge).toHaveClass("bg-green-500")
+  it("applies destructive variant classes", () => {
+    render(<Badge variant="destructive">Destructive</Badge>)
+    const badge = screen.getByText("Destructive")
+    expect(badge).toHaveClass("bg-destructive/10")
+    expect(badge).toHaveClass("text-destructive")
   })
 
-  it("applies size classes", () => {
-    render(<Badge size="lg">Large</Badge>)
-    const badge = screen.getByText("Large")
-    expect(badge).toHaveClass("h-6")
-    expect(badge).toHaveClass("text-sm")
-  })
-
-  it("renders with icon", () => {
-    const Icon = () => <span data-testid="icon">🚀</span>
-    render(<Badge icon={<Icon />}>With Icon</Badge>)
+  it("renders with child icon", () => {
+    render(
+      <Badge variant="secondary">
+        <BadgeCheck data-icon="inline-start" data-testid="icon" />
+        Verified
+      </Badge>
+    )
     expect(screen.getByTestId("icon")).toBeInTheDocument()
-    expect(screen.getByText("With Icon")).toBeInTheDocument()
+    expect(screen.getByText("Verified")).toBeInTheDocument()
   })
 
-  it("renders with icon after", () => {
-    const Icon = () => <span data-testid="icon">→</span>
-    render(<Badge iconAfter={<Icon />}>With Icon After</Badge>)
-    expect(screen.getByTestId("icon")).toBeInTheDocument()
-    expect(screen.getByText("With Icon After")).toBeInTheDocument()
+  it("renders as child link", () => {
+    render(
+      <Badge asChild>
+        <a href="https://example.com">Open link</a>
+      </Badge>
+    )
+    const link = screen.getByRole("link", { name: "Open link" })
+    expect(link).toHaveAttribute("href", "https://example.com")
   })
 
   it("applies custom className", () => {

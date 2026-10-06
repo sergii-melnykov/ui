@@ -1,9 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+
+import { SeparatorDesignSpec } from "./separator-design-spec"
 import { Separator } from "./separator"
 
 const meta: Meta<typeof Separator> = {
   title: "Atoms/Separator",
   component: Separator,
+  parameters: {
+    layout: "centered"
+  },
   tags: ["autodocs"],
   argTypes: {
     orientation: {
@@ -18,6 +23,14 @@ const meta: Meta<typeof Separator> = {
 
 export default meta
 type Story = StoryObj<typeof Separator>
+
+export const DesignSpec: Story = {
+  render: () => <SeparatorDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: { disable: true }
+  }
+}
 
 export const Default: Story = {
   render: () => (
@@ -44,12 +57,12 @@ export const WithText: Story = {
     <div className="space-y-4">
       <div className="space-y-1">
         <h4 className="text-sm font-medium">Section Title</h4>
-        <p className="text-sm text-gray-500">Section description goes here.</p>
+        <p className="text-sm text-muted-foreground">Section description goes here.</p>
       </div>
       <Separator />
       <div className="space-y-1">
         <h4 className="text-sm font-medium">Another Section</h4>
-        <p className="text-sm text-gray-500">Another section description.</p>
+        <p className="text-sm text-muted-foreground">Another section description.</p>
       </div>
     </div>
   )

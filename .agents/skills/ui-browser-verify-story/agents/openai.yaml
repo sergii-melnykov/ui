@@ -1,0 +1,3 @@
+interface:
+  display_name: "Browser verify story"
+  short_description: "Storybook smoke test in Cursor built-in browser"

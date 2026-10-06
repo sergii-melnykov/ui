@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+
+import { AccordionDesignSpec } from "./accordion-design-spec"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./accordion"
 
 /**
@@ -48,6 +50,16 @@ Built on top of Radix UI's Accordion primitive.
 export default meta
 
 type Story = StoryObj<typeof Accordion>
+
+export const DesignSpec: Story = {
+  render: () => <AccordionDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
 
 export const Default: Story = {
   render: () => (

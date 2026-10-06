@@ -33,6 +33,11 @@ export interface TabsListProps extends React.ComponentPropsWithoutRef<typeof Tab
    * Additional CSS class names to apply to the tabs list.
    */
   className?: string
+  /**
+   * Visual style of the tab list.
+   * @default "default"
+   */
+  variant?: "default" | "line"
 }
 
 export interface TabsTriggerProps extends React.ComponentPropsWithoutRef<

@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { Menu } from "lucide-react"
+
+import { NavigationMenuDesignSpec } from "./navigation-menu-design-spec"
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -7,7 +10,8 @@ import {
   NavigationMenuTrigger,
   NavigationMenuLink
 } from "./navigation-menu"
-import { Menu } from "lucide-react"
+import { navigationMenuTriggerStyle } from "./navigation-menu.variants"
+import { cn } from "@/utils/index"
 
 const meta: Meta<typeof NavigationMenu> = {
   title: "Organisms/NavigationMenu",
@@ -24,36 +28,53 @@ const meta: Meta<typeof NavigationMenu> = {
 export default meta
 type Story = StoryObj<typeof NavigationMenu>
 
+const menuLinkClass =
+  "block select-none space-y-1 rounded-md px-4 py-2 leading-none no-underline outline-none transition-colors hover:bg-muted focus:bg-muted"
+
+export const DesignSpec: Story = {
+  render: () => <NavigationMenuDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
+
 export const Default: Story = {
   render: () => (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px]">
-              <li className="row-span-3">
+            <ul className="grid w-[392px] gap-1">
+              <li>
                 <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
-                  >
-                    <div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
-                    <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components built with Radix UI and Tailwind CSS.
+                  <a className={menuLinkClass} href="/docs">
+                    <div className="text-sm font-medium leading-none">Introduction</div>
+                    <p className="text-sm leading-5 text-muted-foreground">
+                      Re-usable components built with Tailwind CSS.
                     </p>
                   </a>
                 </NavigationMenuLink>
               </li>
               <li>
                 <NavigationMenuLink asChild>
-                  <a
-                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                    href="/docs"
-                  >
-                    <div className="text-sm font-medium leading-none">Documentation</div>
-                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                      Learn how to use and customize our components.
+                  <a className={menuLinkClass} href="/docs/installation">
+                    <div className="text-sm font-medium leading-none">Installation</div>
+                    <p className="text-sm leading-5 text-muted-foreground">
+                      How to install dependencies and structure your app.
+                    </p>
+                  </a>
+                </NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink asChild>
+                  <a className={menuLinkClass} href="/docs/primitives/typography">
+                    <div className="text-sm font-medium leading-none">Typography</div>
+                    <p className="text-sm leading-5 text-muted-foreground">
+                      Styles for headings, paragraphs, lists...etc
                     </p>
                   </a>
                 </NavigationMenuLink>
@@ -64,16 +85,16 @@ export const Default: Story = {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {["Button", "Card", "Dialog", "Dropdown"].map((component) => (
+            <ul className="grid w-[400px] gap-1 md:grid-cols-2">
+              {["Alert Dialog", "Hover Card", "Progress", "Scroll Area"].map((component) => (
                 <li key={component}>
                   <NavigationMenuLink asChild>
                     <a
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      href={`/components/${component.toLowerCase()}`}
+                      className={menuLinkClass}
+                      href={`/docs/primitives/${component.toLowerCase().replace(/\s+/g, "-")}`}
                     >
                       <div className="text-sm font-medium leading-none">{component}</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      <p className="line-clamp-2 text-sm leading-5 text-muted-foreground">
                         A reusable {component.toLowerCase()} component.
                       </p>
                     </a>
@@ -84,8 +105,10 @@ export const Default: Story = {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink className="font-medium" href="https://github.com/shadcn/ui">
-            GitHub
+          <NavigationMenuLink asChild>
+            <a className={cn(navigationMenuTriggerStyle(), "bg-transparent")} href="/docs">
+              Docs
+            </a>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
@@ -98,18 +121,24 @@ export const Simple: Story = {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink className="font-medium" href="/">
-            Home
+          <NavigationMenuLink asChild>
+            <a className={navigationMenuTriggerStyle()} href="/">
+              Home
+            </a>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink className="font-medium" href="/about">
-            About
+          <NavigationMenuLink asChild>
+            <a className={navigationMenuTriggerStyle()} href="/about">
+              About
+            </a>
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink className="font-medium" href="/contact">
-            Contact
+          <NavigationMenuLink asChild>
+            <a className={navigationMenuTriggerStyle()} href="/contact">
+              Contact
+            </a>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
@@ -119,7 +148,7 @@ export const Simple: Story = {
 
 export const Mobile: Story = {
   render: () => (
-    <div className="w-[320px] border border-border rounded-lg p-4">
+    <div className="w-[320px] rounded-lg border border-border p-4">
       <NavigationMenu>
         <NavigationMenuList className="flex flex-col space-y-1">
           <NavigationMenuItem>
@@ -128,15 +157,12 @@ export const Mobile: Story = {
               <Menu className="h-4 w-4" />
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-3 p-4">
+              <ul className="grid gap-1">
                 <li>
                   <NavigationMenuLink asChild>
-                    <a
-                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                      href="/docs"
-                    >
+                    <a className={menuLinkClass} href="/docs">
                       <div className="text-sm font-medium leading-none">Documentation</div>
-                      <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                      <p className="line-clamp-2 text-sm leading-5 text-muted-foreground">
                         Learn how to use and customize our components.
                       </p>
                     </a>
@@ -151,12 +177,12 @@ export const Mobile: Story = {
               <Menu className="h-4 w-4" />
             </NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid gap-3 p-4">
+              <ul className="grid gap-1">
                 {["Button", "Card", "Dialog", "Dropdown"].map((component) => (
                   <li key={component}>
                     <NavigationMenuLink asChild>
                       <a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        className={menuLinkClass}
                         href={`/components/${component.toLowerCase()}`}
                       >
                         <div className="text-sm font-medium leading-none">{component}</div>

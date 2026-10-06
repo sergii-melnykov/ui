@@ -38,7 +38,7 @@ This skill describes the `@me1a/ui` library project — a Next.js UI component l
 | Next.js 16 cache components, PPR, `use cache` directive, cacheLife, cacheTag                                                         | `next-cache-components`       | Cache Components and Partial Prerendering                                                          |
 | Component architecture, compound components, React 19 APIs, refactoring boolean props                                                | `vercel-composition-patterns` | Composition patterns for flexible component APIs                                                   |
 | React/Next.js performance, bundle optimization, re-render optimization, server-side performance, waterfall elimination               | `vercel-react-best-practices` | 70 performance rules from Vercel Engineering                                                       |
-| Verifying UI in the browser, Storybook interactions, DOM/layout checks, visual parity after Figma                                    | `vercel-react-best-practices` | Built-in browser MCP workflow (`rules/browser-built-in-dom.md`)                                    |
+| Verifying UI in the browser, Storybook interactions, DOM/layout checks, visual parity after Figma                                    | `ui-browser-verify-story`     | Storybook on :6006 via `cursor-ide-browser` MCP (pipeline phase 5 / after stories)                 |
 | Creating or modifying skills in this project                                                                                         | `skill-creator`               | Skill creation and iteration workflow                                                              |
 
 ### How to Route
@@ -58,7 +58,7 @@ This skill describes the `@me1a/ui` library project — a Next.js UI component l
 │   ├── components/
 │   │   ├── atoms/       → Atomic design: basic components (Button, Input, Dialog, Table, etc.)
 │   │   ├── organisms/   → Complex composed components (Sidebar, Drawer, DropdownMenu)
-│   │   └── rhf/         → React Hook Form wrappers (Form, RHFCheckbox, RHFTextField, etc.)
+│   │   └── rhf/         → React Hook Form wrappers (Form shell + FormInput, FormCheckbox, …; mirrors atom names)
 │   ├── hooks/           → Custom hooks (useMobile, useToast)
 │   ├── utils/           → Utilities (cn helper)
 │   ├── types/           → Shared TypeScript types
@@ -88,7 +88,7 @@ This project follows **atomic design** principles:
 
 - **`atoms/`** — Basic, reusable components that can't be broken down further. Examples: `Button`, `Input`, `Dialog`, `Table`, `Checkbox`, `Switch`, `Select`, `Label`, `Breadcrumb`, `Pagination`, `Separator`, `Skeleton`, `Tooltip`, `Toast`, `Command`, `Collapsible`, `Popover`, `Resizable`, `ScrollArea`, `Textarea`, `Container`, `Stack`, `Typography`, `PageLoader`, `DndInput`, `Sheet`.
 - **`organisms/`** — Complex composites of atoms and molecules. Examples: `Sidebar`, `Drawer`, `DropdownMenu`.
-- **`rhf/`** — Specialized React Hook Form wrappers that bridge shadcn/ui components with `useController`. Examples: `Form`, `RHFCheckbox`, `RHFTextField`, `RHFTextarea`, `RHFSelect`, `RHFMultiSelect`, `RHFSwitch`, `RHFRadioGroup`, `RHFRadioButtonGroup`, `RHF DndInput`.
+- **`rhf/`** — React Hook Form field wrappers named after the underlying atom (`FormInput`, `FormCheckbox`, …). Package subpaths: `@me1a/ui/rhf/input`, `@me1a/ui/rhf/select`, etc. Shell: `Form`, `FormField`, … in `@me1a/ui/rhf/form`.
 
 #### Rules for Atomic Design
 
@@ -136,9 +136,11 @@ npm run build        # tsup — bundle the library
 npm run dev          # tsup --watch — dev mode
 npm run test         # vitest — run unit tests
 npm run storybook    # Storybook dev server on port 6006
+npm run verify       # lint + format + typecheck:all (preferred before PR / at end of task)
 npm run lint         # ESLint with max-warnings 0
-npm run typecheck    # tsc --noEmit
 npm run format       # prettier --check
+npm run typecheck    # tsc --noEmit
+npm run typecheck:all # tsc + native tsc (TS7 migration)
 ```
 
 ---
@@ -156,7 +158,7 @@ npm run format       # prettier --check
 ### Building a Form
 
 1. Load the `shadcn` skill — use `FieldGroup`/`Field`/`InputGroup` for form layout.
-2. For form data/validation logic, use existing RHF wrappers in `src/components/rhf/` (e.g., `RHFTextField`, `RHFCheckbox`, `RHFSelect`).
+2. For form data/validation logic, use existing wrappers in `src/components/rhf/` (e.g., `FormInput`, `FormCheckbox`, `FormSelect`).
 3. For wiring forms with validation, load `react-hook-form` skill.
 4. For complex validation, use Zod schemas with `@hookform/resolvers/zod`.
 
@@ -166,7 +168,7 @@ npm run format       # prettier --check
 2. Run `npx shadcn@latest docs <component>` and fetch the docs to verify correct API usage.
 3. Load `react-testing` and check `test.tsx` files for test patterns.
 4. Run `npm run test` to see if existing tests pass.
-5. For visual or interaction bugs, load `vercel-react-best-practices` and verify in Cursor's built-in browser against Storybook (`npm run storybook` → `http://localhost:6006`): snapshot, reproduce, screenshot.
+5. For visual or interaction bugs, load **`ui-browser-verify-story`** and verify in Cursor's built-in browser against Storybook (`npm run storybook` → `http://localhost:6006`): snapshot, reproduce, screenshot.
 
 ### Styling Changes
 
@@ -207,30 +209,52 @@ Fix violations in `src/`, stories, tests, and other linted sources. If a rule bl
 4. **Respect atomic design boundaries.** Don't import organisms into atoms, or rhf into organisms.
 5. **One component per directory** with the standard file structure (tsx, types.ts, test.tsx, stories.tsx, index.ts).
 6. **No raw color values.** Always use semantic Tailwind tokens or CSS variables.
-7. **Run `npm run typecheck`** (and lint/format as needed) before considering a task complete. **Vitest is paused** during the per-component redesign — do not block work on `*.test.tsx` until a component is redesigned and tests are rewritten.
+7. **Do not run lint/format/typecheck during multi-phase work** unless debugging a specific failure or using **Verify component** / pipeline phase 5. **Vitest is paused** during the per-component redesign — do not block work on `*.test.tsx` until a component is redesigned and tests are rewritten.
 8. **Do not rewrite lint or Prettier configs or ignore files** — see [Lint & Prettier tooling](#lint--prettier-tooling-do-not-rewrite) above.
 
 ### Tests (paused during redesign)
 
-Existing `*.test.tsx` files may be out of date. CI and the agent stop-hook verify chain **do not run `npm test`** until coverage is restored component-by-component. Use Storybook for visual checks; run `npm test` locally only when working on a redesigned component’s tests.
+Existing `*.test.tsx` files may be out of date. CI **does not run `npm test`** until coverage is restored component-by-component. Use Storybook for visual checks; run **Run tests** or `npm test` only when the user asks.
+
+### Finish protocol (verify)
+
+When an agent should confirm the repo is clean (pipeline phase 5, **Verify component**, or user request), from repo root run **`npm run verify` once**. When the component has **`*.stories.tsx`**, also run **`ui-browser-verify-story`** (Storybook + built-in browser smoke test). Fix failures in **source only** — do not rewrite ESLint/Prettier config or ignore files unless the user asked. Do not re-run lint, format, or typecheck separately if verify already passed. Do not run vitest unless the user asked. **Pre-PR (optional):** CI also runs `validate:tokens`, `build`, and `build-storybook`.
+
+Run verify/lint/test **in the foreground** (no `| tail` / `| head`, no trailing `&`). Project [`.cursor/hooks.json`](../../../.cursor/hooks.json) blocks risky agent shell patterns and cleans up orphan lint processes on agent **stop** / **sessionEnd**.
 
 ## Project agents (invokable)
 
-These agents live under `.agents/skills/ui-*` with `disable-model-invocation: true` — pick them from the Cursor agent list when you want an explicit workflow. They load the skills below as needed.
+These agents use `disable-model-invocation: true` — pick them from the Cursor agent list for an explicit workflow. They load the skills below as needed.
 
-| Agent | Use when |
-| ----- | -------- |
-| **Create component** (`ui-create-component`) | Adding or scaffolding a component (shadcn + atomic folder layout) |
-| **Create story** (`ui-create-story`) | Adding or updating `*.stories.tsx` |
-| **Create tests** (`ui-create-tests`) | Adding or updating `*.test.tsx` |
-| **Run lint** (`ui-run-lint`) | ESLint only |
-| **Run prettier** (`ui-run-prettier`) | Format fix + check |
-| **Run typecheck** (`ui-run-typecheck`) | `tsc` + native typecheck |
-| **Run tests** (`ui-run-tests`) | Vitest |
+| Agent | Skill path | Use when |
+| ----- | ---------- | -------- |
+| **Component pipeline (full)** | `.cursor/skills/ui-component-pipeline` | One component end-to-end: research → build → tests → story → verify |
+| **Research component (shadcn + Figma)** | `ui-research-shadcn-figma` | Phase 1 or standalone registry + Figma research |
+| **Create component** | `ui-create-component` | Phase 2 or standalone scaffold/implement |
+| **Create tests** | `ui-create-tests` | Phase 3 or standalone `*.test.tsx` (author only; vitest when user asks) |
+| **Create story** | `ui-create-story` | Phase 4 or standalone stories + optional design-spec |
+| **Verify component** | `ui-verify-component` | Phase 5 or standalone `npm run verify` + Storybook browser check + fix loop |
+| **Browser verify story** | `ui-browser-verify-story` | Storybook smoke test in built-in browser (also embedded in Verify component) |
+| **Run lint** | `ui-run-lint` | ESLint only |
+| **Run prettier** | `ui-run-prettier` | Format fix + check |
+| **Run typecheck** | `ui-run-typecheck` | `typecheck:all` (or individual tsc scripts when debugging) |
+| **Run tests** | `ui-run-tests` | Vitest (only when user wants tests executed) |
 
 For day-to-day chat, skills such as `shadcn`, `storybook`, and `react-testing` still auto-trigger from descriptions. Use agents when the task should follow one fixed playbook end-to-end.
 
-A **`stop` hook** (`.cursor/hooks.json`) may append a follow-up to run lint, format check, and typecheck after an agent turn — see hook script for the exact command order (tests omitted while redesign is in progress).
+### Per-component pipeline
+
+**Orchestrator:** **Component pipeline (full)** — one component per run.
+
+**Order:** Research → Create component → Create tests → Create story → Verify component.
+
+**Handoff file (single source of truth):**
+
+`src/components/{atoms|organisms|rhf}/<component-name>/<component-name>.pipeline.md`
+
+Sections: **Inputs**, **Research**, **Implementation**, **Tests**, **Story**, **Verify**. Each phase agent updates its section; phase 5 runs **`npm run verify` once** and **`ui-browser-verify-story`** when stories exist ([Finish protocol](#finish-protocol-verify)). Do not run vitest in the pipeline unless the user explicitly asks.
+
+**When to use:** Full redesign or new component with Figma/shadcn parity. For a single step, pick the matching specialist instead of the orchestrator. Ad-hoc edits outside the pipeline: run **Verify component** or ask the agent to verify before finishing — there is no automatic verify hook on every turn.
 
 ## Related Skills
 
@@ -244,3 +268,4 @@ A **`stop` hook** (`.cursor/hooks.json`) may append a follow-up to run lint, for
 - **[vercel-composition-patterns](./vercel-composition-patterns/SKILL.md)** — Component architecture, compound components.
 - **[vercel-react-best-practices](./vercel-react-best-practices/SKILL.md)** — React/Next.js performance optimization.
 - **[skill-creator](./skill-creator/SKILL.md)** — Create and iterate on new skills.
+- **[ui-browser-verify-story](./ui-browser-verify-story/SKILL.md)** — Storybook verification in Cursor's built-in browser.

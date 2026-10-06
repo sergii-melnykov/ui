@@ -1,3 +1,5 @@
+"use client"
+
 /**
  * Tabs component provides a way to organize content into separate views where only one view is visible at a time.
  * It follows the WAI-ARIA Tabs Pattern for accessibility.
@@ -22,23 +24,39 @@
  */
 import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
-import { cn } from "@/utils"
-import { TabsListProps, TabsTriggerProps, TabsContentProps } from "./tabs.types"
+import { type VariantProps } from "class-variance-authority"
 
-const Tabs = TabsPrimitive.Root
+import { cn } from "@/utils/index"
 
-const TabsList = React.forwardRef<React.ComponentRef<typeof TabsPrimitive.List>, TabsListProps>(
-  ({ className, ...props }, ref) => (
-    <TabsPrimitive.List
+import { TabsContentProps, TabsListProps, TabsProps, TabsTriggerProps } from "./tabs.types"
+import { tabsListVariants, tabsTriggerVariants } from "./tabs.variants"
+
+const Tabs = React.forwardRef<React.ComponentRef<typeof TabsPrimitive.Root>, TabsProps>(
+  ({ className, orientation = "horizontal", ...props }, ref) => (
+    <TabsPrimitive.Root
       ref={ref}
-      className={cn(
-        "inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground",
-        className
-      )}
+      data-slot="tabs"
+      data-orientation={orientation}
+      orientation={orientation}
+      className={cn("group/tabs flex gap-2 data-[orientation=horizontal]:flex-col", className)}
       {...props}
     />
   )
 )
+Tabs.displayName = TabsPrimitive.Root.displayName
+
+const TabsList = React.forwardRef<
+  React.ComponentRef<typeof TabsPrimitive.List>,
+  TabsListProps & VariantProps<typeof tabsListVariants>
+>(({ className, variant = "default", ...props }, ref) => (
+  <TabsPrimitive.List
+    ref={ref}
+    data-slot="tabs-list"
+    data-variant={variant}
+    className={cn(tabsListVariants({ variant }), className)}
+    {...props}
+  />
+))
 TabsList.displayName = TabsPrimitive.List.displayName
 
 const TabsTrigger = React.forwardRef<
@@ -47,10 +65,8 @@ const TabsTrigger = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
-    className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",
-      className
-    )}
+    data-slot="tabs-trigger"
+    className={cn(tabsTriggerVariants(), className)}
     {...props}
   />
 ))
@@ -62,13 +78,11 @@ const TabsContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}
-    className={cn(
-      "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-      className
-    )}
+    data-slot="tabs-content"
+    className={cn("mt-2 flex-1 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2", className)}
     {...props}
   />
 ))
 TabsContent.displayName = TabsPrimitive.Content.displayName
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants, tabsTriggerVariants }

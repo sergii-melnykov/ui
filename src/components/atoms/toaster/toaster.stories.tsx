@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import { CircleCheck } from "lucide-react"
+
 import { useToast } from "@/hooks/use-toast"
 import { Toaster } from "."
 import { Button } from "../button/button"
@@ -21,8 +23,8 @@ function ToastDemo() {
       <Button
         onClick={() => {
           toast({
-            title: "Success",
-            description: "Your changes have been saved.",
+            icon: <CircleCheck />,
+            description: "Event has been created",
             action: <ToastAction altText="Undo">Undo</ToastAction>
           })
         }}

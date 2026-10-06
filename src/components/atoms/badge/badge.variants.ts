@@ -1,32 +1,25 @@
 import { cva } from "class-variance-authority"
 
 export const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex h-[22px] w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs leading-4 font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [&>svg]:pointer-events-none [&>svg]:size-3",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        default: "bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
+        secondary: "bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
         destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        outline: "text-foreground",
-        success: "border-transparent bg-green-500 text-white hover:bg-green-500/80",
-        warning: "border-transparent bg-yellow-500 text-white hover:bg-yellow-500/80",
-        info: "border-transparent bg-blue-500 text-white hover:bg-blue-500/80"
-      },
-      size: {
-        default: "h-5",
-        sm: "h-4 text-[10px]",
-        lg: "h-6 text-sm"
+          "border-transparent bg-destructive/10 text-destructive [a&]:hover:bg-destructive/15",
+        outline:
+          "border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        ghost:
+          "border-transparent text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
+        link: "border-transparent text-primary underline-offset-4 [a&]:hover:underline"
       }
     },
     defaultVariants: {
-      variant: "default",
-      size: "default"
+      variant: "default"
     }
   }
 )
 
 export type BadgeVariant = NonNullable<Parameters<typeof badgeVariants>[0]>["variant"]
-export type BadgeSize = NonNullable<Parameters<typeof badgeVariants>[0]>["size"]

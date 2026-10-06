@@ -1,0 +1,3 @@
+interface:
+  display_name: "Component pipeline (full)"
+  short_description: "Research → build → tests → story → verify + browser Storybook"

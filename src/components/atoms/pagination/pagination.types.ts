@@ -5,3 +5,7 @@ export type PaginationLinkProps = {
   isActive?: boolean
 } & Pick<ButtonProps, "size"> &
   React.ComponentProps<"a">
+
+export type PaginationNavButtonProps = PaginationLinkProps & {
+  showIcon?: boolean
+}

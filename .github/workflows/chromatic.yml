@@ -1,0 +1,43 @@
+# Publish Storybook to Chromatic for remote MCP (/mcp). No visual snapshots.
+# Secret: CHROMATIC_PROJECT_TOKEN (chromatic.com → Project → Manage → Configure).
+# Also disable UI Test + UI Review in Chromatic Manage so builds stay publish-only.
+name: Chromatic
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chromatic-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  chromatic:
+    name: Publish Storybook (MCP)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          exitOnceUploaded: true

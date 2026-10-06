@@ -1,7 +1,20 @@
 import * as React from "react"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
+
 import { cn } from "@/utils/index"
-import type { AvatarProps, AvatarImageProps, AvatarFallbackProps } from "./avatar.types"
+
+import type {
+  AvatarBadgeProps,
+  AvatarFallbackProps,
+  AvatarGroupCountProps,
+  AvatarImageProps,
+  AvatarProps
+} from "./avatar.types"
+import {
+  avatarBadgeVariants,
+  avatarGroupCountVariants,
+  avatarVariants
+} from "./avatar.variants"
 
 /**
  * Avatar component that displays a user's profile picture or fallback.
@@ -18,10 +31,11 @@ import type { AvatarProps, AvatarImageProps, AvatarFallbackProps } from "./avata
  * ```
  */
 const Avatar = React.forwardRef<React.ComponentRef<typeof AvatarPrimitive.Root>, AvatarProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, size, ...props }, ref) => (
     <AvatarPrimitive.Root
       ref={ref}
-      className={cn("relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full", className)}
+      data-slot="avatar"
+      className={cn(avatarVariants({ size }), className)}
       {...props}
     />
   )
@@ -38,7 +52,7 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
-    className={cn("aspect-square h-full w-full", className)}
+    className={cn("aspect-square h-full w-full object-cover", className)}
     {...props}
   />
 ))
@@ -63,4 +77,37 @@ const AvatarFallback = React.forwardRef<
 ))
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
 
-export { Avatar, AvatarImage, AvatarFallback }
+function AvatarBadge({ className, variant, size, ...props }: AvatarBadgeProps) {
+  return (
+    <span
+      data-slot="avatar-badge"
+      className={cn(avatarBadgeVariants({ variant, size }), className)}
+      {...props}
+    />
+  )
+}
+
+function AvatarGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="avatar-group"
+      className={cn(
+        "flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar-group-count]:ring-2 *:data-[slot=avatar-group-count]:ring-background",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AvatarGroupCount({ className, size, ...props }: AvatarGroupCountProps) {
+  return (
+    <div
+      data-slot="avatar-group-count"
+      className={cn(avatarGroupCountVariants({ size }), className)}
+      {...props}
+    />
+  )
+}
+
+export { Avatar, AvatarBadge, AvatarFallback, AvatarGroup, AvatarGroupCount, AvatarImage }

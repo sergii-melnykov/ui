@@ -15,7 +15,7 @@ Storybook 10 with `@storybook/react-vite`. Stories are colocated with components
 Follow [`src/components/atoms/button/button.stories.tsx`](../../../src/components/atoms/button/button.stories.tsx):
 
 - Import `Meta` and `StoryObj` from `@storybook/react-vite`
-- `title` uses atomic prefix: `Atoms/`, `Organisms/`, or `RHF/` matching folder under `src/components/`
+- `title` uses layer prefix: `Atoms/`, `Organisms/`, or `Form/` for `src/components/rhf/` (component name matches the atom, e.g. `Form/Input`)
 - `parameters.layout: "centered"` for single controls; use `"fullscreen"` or `"padded"` when the component needs it
 - `tags: ["autodocs"]` for generated docs
 - `argTypes` with `control: "select"` (or appropriate control) for enum-like props
@@ -36,7 +36,7 @@ Do not create stories in unrelated directories. One stories file per component f
 |--------|------------------------|
 | `src/components/atoms/` | `Atoms/ComponentName` |
 | `src/components/organisms/` | `Organisms/ComponentName` |
-| `src/components/rhf/` | `RHF/ComponentName` |
+| `src/components/rhf/` | `Form/ComponentName` (e.g. `Form/Input`, `Form/Select`) |
 
 Use PascalCase in the title segment after the prefix (e.g. `Atoms/Button`).
 

@@ -1,8 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { RadioGroup, RadioGroupItem } from "@/components/atoms/radio-group"
-import { Button } from "@/components/atoms/button"
 import React from "react"
-import { RadioItemLabel, RadioItemContainer } from "./radio-group"
+
+import { Button } from "@/components/atoms/button"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+  FieldTitle
+} from "@/components/atoms/field/field"
+
+import { RadioGroupDesignSpec } from "./radio-group-design-spec"
+import { RadioGroup, RadioGroupItem, RadioItemContainer, RadioItemLabel } from "./radio-group"
 
 const meta: Meta<typeof RadioGroup> = {
   title: "Atoms/RadioGroup",
@@ -27,6 +39,16 @@ const meta: Meta<typeof RadioGroup> = {
 export default meta
 type Story = StoryObj<typeof RadioGroup>
 
+export const DesignSpec: Story = {
+  render: () => <RadioGroupDesignSpec />,
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      disable: true
+    }
+  }
+}
+
 export const Default: Story = {
   args: {
     defaultValue: "option-1"
@@ -49,6 +71,27 @@ export const Default: Story = {
   )
 }
 
+export const WithDescription: Story = {
+  render: () => (
+    <RadioGroup defaultValue="default" className="max-w-xs gap-2">
+      <Field orientation="horizontal" className="items-start gap-2">
+        <RadioGroupItem value="default" id="story-default" className="mt-0.5" />
+        <FieldContent className="gap-0.5">
+          <FieldLabel htmlFor="story-default">Default</FieldLabel>
+          <FieldDescription>Standard spacing for most use cases.</FieldDescription>
+        </FieldContent>
+      </Field>
+      <Field orientation="horizontal" className="items-start gap-2">
+        <RadioGroupItem value="comfortable" id="story-comfortable" className="mt-0.5" />
+        <FieldContent className="gap-0.5">
+          <FieldLabel htmlFor="story-comfortable">Comfortable</FieldLabel>
+          <FieldDescription>More space between elements.</FieldDescription>
+        </FieldContent>
+      </Field>
+    </RadioGroup>
+  )
+}
+
 export const Disabled: Story = {
   args: {
     defaultValue: "option-1"
@@ -67,6 +110,62 @@ export const Disabled: Story = {
   )
 }
 
+export const ChoiceCard: Story = {
+  render: () => (
+    <RadioGroup defaultValue="plus" className="max-w-sm gap-5">
+      <FieldLabel
+        htmlFor="story-plus"
+        className="has-data-[state=checked]:bg-accent has-[>[data-slot=field]]:rounded-lg [&>*]:data-[slot=field]:gap-2 [&>*]:data-[slot=field]:p-2.5"
+      >
+        <Field orientation="horizontal" className="items-start">
+          <FieldContent className="gap-0.5">
+            <FieldTitle>Plus</FieldTitle>
+            <FieldDescription>For individuals and small teams.</FieldDescription>
+          </FieldContent>
+          <RadioGroupItem value="plus" id="story-plus" className="mt-0.5 shrink-0" />
+        </Field>
+      </FieldLabel>
+      <FieldLabel
+        htmlFor="story-pro"
+        className="has-data-[state=checked]:bg-accent has-[>[data-slot=field]]:rounded-lg [&>*]:data-[slot=field]:gap-2 [&>*]:data-[slot=field]:p-2.5"
+      >
+        <Field orientation="horizontal" className="items-start">
+          <FieldContent className="gap-0.5">
+            <FieldTitle>Pro</FieldTitle>
+            <FieldDescription>For growing businesses.</FieldDescription>
+          </FieldContent>
+          <RadioGroupItem value="pro" id="story-pro" className="mt-0.5 shrink-0" />
+        </Field>
+      </FieldLabel>
+    </RadioGroup>
+  )
+}
+
+export const Fieldset: Story = {
+  render: () => (
+    <FieldGroup className="max-w-xs">
+      <FieldSet>
+        <FieldLegend variant="label">Subscription Plan</FieldLegend>
+        <FieldDescription>Yearly and lifetime plans offer significant savings.</FieldDescription>
+        <RadioGroup defaultValue="yearly" className="gap-3">
+          <Field orientation="horizontal" className="gap-2">
+            <RadioGroupItem value="monthly" id="story-monthly" />
+            <FieldLabel htmlFor="story-monthly" className="font-normal">
+              Monthly ($9.99/month)
+            </FieldLabel>
+          </Field>
+          <Field orientation="horizontal" className="gap-2">
+            <RadioGroupItem value="yearly" id="story-yearly" />
+            <FieldLabel htmlFor="story-yearly" className="font-normal">
+              Yearly ($99.99/year)
+            </FieldLabel>
+          </Field>
+        </RadioGroup>
+      </FieldSet>
+    </FieldGroup>
+  )
+}
+
 interface RadioGroupButtonStyleProps {
   defaultValue?: string
 }
@@ -78,7 +177,7 @@ const RadioGroupButtonStyle = ({ defaultValue }: RadioGroupButtonStyleProps) => 
     <RadioGroup
       value={value}
       onValueChange={setValue}
-      className="flex gap-2 p-2 border border-gray-200 rounded-md w-fit"
+      className="flex w-fit gap-2 rounded-md border border-border p-2"
     >
       <Button
         size="sm"

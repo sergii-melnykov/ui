@@ -1,13 +1,20 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import {
   Sheet,
+  SheetBody,
+  SheetClose,
+  SheetCloseButton,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger
 } from "./sheet"
+import { SheetDesignSpec } from "./sheet-design-spec"
 import { Button } from "../button/button"
+import { Input } from "../input/input"
+import { Label } from "../label/label"
 
 const meta: Meta<typeof Sheet> = {
   title: "Atoms/Sheet",
@@ -23,20 +30,27 @@ const meta: Meta<typeof Sheet> = {
 export default meta
 type Story = StoryObj<typeof Sheet>
 
+export const DesignSpec: Story = {
+  render: () => <SheetDesignSpec />
+}
+
 export const Default: Story = {
   render: () => (
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="outline">Open Sheet</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent showCloseButton={false}>
         <SheetHeader>
-          <SheetTitle>Sheet Title</SheetTitle>
+          <div className="flex items-start justify-between gap-2">
+            <SheetTitle className="flex-1">Sheet Title</SheetTitle>
+            <SheetCloseButton />
+          </div>
           <SheetDescription>This is a description of the sheet content.</SheetDescription>
         </SheetHeader>
-        <div className="py-4">
+        <SheetBody>
           <p>Sheet content goes here.</p>
-        </div>
+        </SheetBody>
       </SheetContent>
     </Sheet>
   )
@@ -48,14 +62,17 @@ export const RightSide: Story = {
       <SheetTrigger asChild>
         <Button variant="outline">Open Right Sheet</Button>
       </SheetTrigger>
-      <SheetContent side="right">
+      <SheetContent side="right" showCloseButton={false}>
         <SheetHeader>
-          <SheetTitle>Right Sheet</SheetTitle>
+          <div className="flex items-start justify-between gap-2">
+            <SheetTitle className="flex-1">Right Sheet</SheetTitle>
+            <SheetCloseButton />
+          </div>
           <SheetDescription>This sheet appears from the right side.</SheetDescription>
         </SheetHeader>
-        <div className="py-4">
+        <SheetBody>
           <p>Sheet content goes here.</p>
-        </div>
+        </SheetBody>
       </SheetContent>
     </Sheet>
   )
@@ -67,41 +84,41 @@ export const WithForm: Story = {
       <SheetTrigger asChild>
         <Button variant="outline">Open Form Sheet</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent showCloseButton={false}>
         <SheetHeader>
-          <SheetTitle>Form Sheet</SheetTitle>
+          <div className="flex items-start justify-between gap-2">
+            <SheetTitle className="flex-1">Form Sheet</SheetTitle>
+            <SheetCloseButton />
+          </div>
           <SheetDescription>Fill out the form below to submit your information.</SheetDescription>
         </SheetHeader>
-        <form className="space-y-4 py-4">
-          <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium">
-              Name
-            </label>
-            <input
-              id="name"
-              type="text"
-              className="w-full rounded-md border p-2"
-              placeholder="Enter your name"
-            />
-          </div>
-          <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              className="w-full rounded-md border p-2"
-              placeholder="Enter your email"
-            />
-          </div>
-          <div className="flex justify-end space-x-2">
-            <SheetTrigger asChild>
-              <Button variant="outline">Cancel</Button>
-            </SheetTrigger>
-            <Button type="submit">Submit</Button>
-          </div>
-        </form>
+        <SheetBody>
+          <form className="flex flex-col gap-4 pb-4">
+            <div className="grid gap-2">
+              <Label htmlFor="sheet-form-name">Name</Label>
+              <Input id="sheet-form-name" placeholder="Enter your name" className="h-8" />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="sheet-form-email">Email</Label>
+              <Input
+                id="sheet-form-email"
+                type="email"
+                placeholder="Enter your email"
+                className="h-8"
+              />
+            </div>
+          </form>
+        </SheetBody>
+        <SheetFooter>
+          <Button size="sm" className="w-full" type="submit">
+            Submit
+          </Button>
+          <SheetClose asChild>
+            <Button size="sm" variant="outline" className="w-full">
+              Cancel
+            </Button>
+          </SheetClose>
+        </SheetFooter>
       </SheetContent>
     </Sheet>
   )
@@ -113,12 +130,16 @@ export const WithNavigation: Story = {
       <SheetTrigger asChild>
         <Button variant="outline">Open Navigation</Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent showCloseButton={false}>
         <SheetHeader>
-          <SheetTitle>Navigation</SheetTitle>
+          <div className="flex items-start justify-between gap-2">
+            <SheetTitle className="flex-1">Navigation</SheetTitle>
+            <SheetCloseButton />
+          </div>
           <SheetDescription>Browse through the available options.</SheetDescription>
         </SheetHeader>
-        <nav className="py-4">
+        <SheetBody>
+        <nav>
           <ul className="space-y-2">
             <li>
               <a
@@ -154,6 +175,7 @@ export const WithNavigation: Story = {
             </li>
           </ul>
         </nav>
+        </SheetBody>
       </SheetContent>
     </Sheet>
   )

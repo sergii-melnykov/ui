@@ -17,7 +17,7 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toHaveClass("bg-destructive")
 
     rerender(<Button variant="outline">Outline</Button>)
-    expect(screen.getByRole("button")).toHaveClass("border-input")
+    expect(screen.getByRole("button")).toHaveClass("border-border")
 
     rerender(<Button variant="secondary">Secondary</Button>)
     expect(screen.getByRole("button")).toHaveClass("bg-secondary")
@@ -31,16 +31,19 @@ describe("Button", () => {
 
   it("applies size classes correctly", () => {
     const { rerender } = render(<Button size="default">Default</Button>)
-    expect(screen.getByRole("button")).toHaveClass("h-9")
-
-    rerender(<Button size="sm">Small</Button>)
     expect(screen.getByRole("button")).toHaveClass("h-8")
 
+    rerender(<Button size="xs">Extra small</Button>)
+    expect(screen.getByRole("button")).toHaveClass("h-6")
+
+    rerender(<Button size="sm">Small</Button>)
+    expect(screen.getByRole("button")).toHaveClass("h-7")
+
     rerender(<Button size="lg">Large</Button>)
-    expect(screen.getByRole("button")).toHaveClass("h-10")
+    expect(screen.getByRole("button")).toHaveClass("h-9")
 
     rerender(<Button size="icon">Icon</Button>)
-    expect(screen.getByRole("button")).toHaveClass("h-9 w-9")
+    expect(screen.getByRole("button")).toHaveClass("size-8")
   })
 
   it("handles click events", async () => {

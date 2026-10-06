@@ -10,7 +10,13 @@ disable-model-invocation: true
 
 ## Commands
 
-From repository root, run both (matches CI):
+From repository root (matches CI typecheck steps inside `verify`):
+
+```bash
+npm run typecheck:all
+```
+
+Or individually when debugging:
 
 ```bash
 npm run typecheck       # tsc --noEmit
@@ -19,9 +25,8 @@ npm run typecheck:fast  # native tsc --noEmit -p tsconfig.native.json
 
 ## Workflow
 
-1. Run **typecheck**; fix reported errors in scope of the task.
-2. Run **typecheck:fast**; fix any additional native-check failures.
-3. Re-run until both pass.
+1. Run **typecheck:all**; fix reported errors in scope of the task.
+2. Re-run until it passes.
 
 ## Notes
 

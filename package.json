@@ -40,6 +40,14 @@
       "types": "./dist/tooltip/index.d.mts",
       "import": "./dist/tooltip/index.mjs"
     },
+    "./toggle-group": {
+      "types": "./dist/toggle-group/index.d.mts",
+      "import": "./dist/toggle-group/index.mjs"
+    },
+    "./toggle": {
+      "types": "./dist/toggle/index.d.mts",
+      "import": "./dist/toggle/index.mjs"
+    },
     "./toaster": {
       "types": "./dist/toaster/index.d.mts",
       "import": "./dist/toaster/index.mjs"
@@ -52,10 +60,6 @@
       "types": "./dist/textarea/index.d.mts",
       "import": "./dist/textarea/index.mjs"
     },
-    "./text-field": {
-      "types": "./dist/text-field/index.d.mts",
-      "import": "./dist/text-field/index.mjs"
-    },
     "./table": {
       "types": "./dist/table/index.d.mts",
       "import": "./dist/table/index.mjs"
@@ -67,6 +71,14 @@
     "./stack": {
       "types": "./dist/stack/index.d.mts",
       "import": "./dist/stack/index.mjs"
+    },
+    "./spinner": {
+      "types": "./dist/spinner/index.d.mts",
+      "import": "./dist/spinner/index.mjs"
+    },
+    "./slider": {
+      "types": "./dist/slider/index.d.mts",
+      "import": "./dist/slider/index.mjs"
     },
     "./skeleton": {
       "types": "./dist/skeleton/index.d.mts",
@@ -96,6 +108,14 @@
       "types": "./dist/radio-group/index.d.mts",
       "import": "./dist/radio-group/index.mjs"
     },
+    "./questionnaire": {
+      "types": "./dist/questionnaire/index.d.mts",
+      "import": "./dist/questionnaire/index.mjs"
+    },
+    "./progress": {
+      "types": "./dist/progress/index.d.mts",
+      "import": "./dist/progress/index.mjs"
+    },
     "./popover": {
       "types": "./dist/popover/index.d.mts",
       "import": "./dist/popover/index.mjs"
@@ -108,13 +128,57 @@
       "types": "./dist/page-loader/index.d.mts",
       "import": "./dist/page-loader/index.mjs"
     },
+    "./native-select": {
+      "types": "./dist/native-select/index.d.mts",
+      "import": "./dist/native-select/index.mjs"
+    },
+    "./message-scroller": {
+      "types": "./dist/message-scroller/index.d.mts",
+      "import": "./dist/message-scroller/index.mjs"
+    },
+    "./message": {
+      "types": "./dist/message/index.d.mts",
+      "import": "./dist/message/index.mjs"
+    },
+    "./marker": {
+      "types": "./dist/marker/index.d.mts",
+      "import": "./dist/marker/index.mjs"
+    },
     "./label": {
       "types": "./dist/label/index.d.mts",
       "import": "./dist/label/index.mjs"
     },
+    "./kbd": {
+      "types": "./dist/kbd/index.d.mts",
+      "import": "./dist/kbd/index.mjs"
+    },
+    "./item": {
+      "types": "./dist/item/index.d.mts",
+      "import": "./dist/item/index.mjs"
+    },
+    "./input-otp": {
+      "types": "./dist/input-otp/index.d.mts",
+      "import": "./dist/input-otp/index.mjs"
+    },
+    "./input-group": {
+      "types": "./dist/input-group/index.d.mts",
+      "import": "./dist/input-group/index.mjs"
+    },
     "./input": {
       "types": "./dist/input/index.d.mts",
       "import": "./dist/input/index.mjs"
+    },
+    "./hover-card": {
+      "types": "./dist/hover-card/index.d.mts",
+      "import": "./dist/hover-card/index.mjs"
+    },
+    "./field": {
+      "types": "./dist/field/index.d.mts",
+      "import": "./dist/field/index.mjs"
+    },
+    "./empty": {
+      "types": "./dist/empty/index.d.mts",
+      "import": "./dist/empty/index.mjs"
     },
     "./dnd-input": {
       "types": "./dist/dnd-input/index.d.mts",
@@ -124,6 +188,14 @@
       "types": "./dist/dialog/index.d.mts",
       "import": "./dist/dialog/index.mjs"
     },
+    "./date-picker": {
+      "types": "./dist/date-picker/index.d.mts",
+      "import": "./dist/date-picker/index.mjs"
+    },
+    "./data-table": {
+      "types": "./dist/data-table/index.d.mts",
+      "import": "./dist/data-table/index.mjs"
+    },
     "./container": {
       "types": "./dist/container/index.d.mts",
       "import": "./dist/container/index.mjs"
@@ -131,6 +203,10 @@
     "./command": {
       "types": "./dist/command/index.d.mts",
       "import": "./dist/command/index.mjs"
+    },
+    "./combobox": {
+      "types": "./dist/combobox/index.d.mts",
+      "import": "./dist/combobox/index.mjs"
     },
     "./collapsible": {
       "types": "./dist/collapsible/index.d.mts",
@@ -140,9 +216,29 @@
       "types": "./dist/checkbox/index.d.mts",
       "import": "./dist/checkbox/index.mjs"
     },
+    "./chart": {
+      "types": "./dist/chart/index.d.mts",
+      "import": "./dist/chart/index.mjs"
+    },
+    "./carousel": {
+      "types": "./dist/carousel/index.d.mts",
+      "import": "./dist/carousel/index.mjs"
+    },
+    "./calendar": {
+      "types": "./dist/calendar/index.d.mts",
+      "import": "./dist/calendar/index.mjs"
+    },
+    "./button-group": {
+      "types": "./dist/button-group/index.d.mts",
+      "import": "./dist/button-group/index.mjs"
+    },
     "./button": {
       "types": "./dist/button/index.d.mts",
       "import": "./dist/button/index.mjs"
+    },
+    "./bubble": {
+      "types": "./dist/bubble/index.d.mts",
+      "import": "./dist/bubble/index.mjs"
     },
     "./breadcrumb": {
       "types": "./dist/breadcrumb/index.d.mts",
@@ -159,6 +255,22 @@
     "./avatar": {
       "types": "./dist/avatar/index.d.mts",
       "import": "./dist/avatar/index.mjs"
+    },
+    "./attachment": {
+      "types": "./dist/attachment/index.d.mts",
+      "import": "./dist/attachment/index.mjs"
+    },
+    "./aspect-ratio": {
+      "types": "./dist/aspect-ratio/index.d.mts",
+      "import": "./dist/aspect-ratio/index.mjs"
+    },
+    "./alert-dialog": {
+      "types": "./dist/alert-dialog/index.d.mts",
+      "import": "./dist/alert-dialog/index.mjs"
+    },
+    "./alert": {
+      "types": "./dist/alert/index.d.mts",
+      "import": "./dist/alert/index.mjs"
     },
     "./accordion": {
       "types": "./dist/accordion/index.d.mts",
@@ -180,6 +292,10 @@
       "types": "./dist/sidebar/index.d.mts",
       "import": "./dist/sidebar/index.mjs"
     },
+    "./menubar": {
+      "types": "./dist/menubar/index.d.mts",
+      "import": "./dist/menubar/index.mjs"
+    },
     "./dropdown-menu": {
       "types": "./dist/dropdown-menu/index.d.mts",
       "import": "./dist/dropdown-menu/index.mjs"
@@ -188,45 +304,77 @@
       "types": "./dist/drawer/index.d.mts",
       "import": "./dist/drawer/index.mjs"
     },
-    "./rhf-textarea": {
-      "types": "./dist/rhf-textarea/index.d.mts",
-      "import": "./dist/rhf-textarea/index.mjs"
+    "./context-menu": {
+      "types": "./dist/context-menu/index.d.mts",
+      "import": "./dist/context-menu/index.mjs"
     },
-    "./rhf-text-field": {
-      "types": "./dist/rhf-text-field/index.d.mts",
-      "import": "./dist/rhf-text-field/index.mjs"
+    "./rhf/toggle-group": {
+      "types": "./dist/rhf/toggle-group/index.d.mts",
+      "import": "./dist/rhf/toggle-group/index.mjs"
     },
-    "./rhf-switch": {
-      "types": "./dist/rhf-switch/index.d.mts",
-      "import": "./dist/rhf-switch/index.mjs"
+    "./rhf/toggle": {
+      "types": "./dist/rhf/toggle/index.d.mts",
+      "import": "./dist/rhf/toggle/index.mjs"
     },
-    "./rhf-select": {
-      "types": "./dist/rhf-select/index.d.mts",
-      "import": "./dist/rhf-select/index.mjs"
+    "./rhf/textarea": {
+      "types": "./dist/rhf/textarea/index.d.mts",
+      "import": "./dist/rhf/textarea/index.mjs"
     },
-    "./rhf-radio-group": {
-      "types": "./dist/rhf-radio-group/index.d.mts",
-      "import": "./dist/rhf-radio-group/index.mjs"
+    "./rhf/switch": {
+      "types": "./dist/rhf/switch/index.d.mts",
+      "import": "./dist/rhf/switch/index.mjs"
     },
-    "./rhf-radio-button-group": {
-      "types": "./dist/rhf-radio-button-group/index.d.mts",
-      "import": "./dist/rhf-radio-button-group/index.mjs"
+    "./rhf/slider": {
+      "types": "./dist/rhf/slider/index.d.mts",
+      "import": "./dist/rhf/slider/index.mjs"
     },
-    "./rhf-multi-select": {
-      "types": "./dist/rhf-multi-select/index.d.mts",
-      "import": "./dist/rhf-multi-select/index.mjs"
+    "./rhf/select": {
+      "types": "./dist/rhf/select/index.d.mts",
+      "import": "./dist/rhf/select/index.mjs"
     },
-    "./rhf-dnd-input": {
-      "types": "./dist/rhf-dnd-input/index.d.mts",
-      "import": "./dist/rhf-dnd-input/index.mjs"
+    "./rhf/radio-group": {
+      "types": "./dist/rhf/radio-group/index.d.mts",
+      "import": "./dist/rhf/radio-group/index.mjs"
     },
-    "./rhf-checkbox": {
-      "types": "./dist/rhf-checkbox/index.d.mts",
-      "import": "./dist/rhf-checkbox/index.mjs"
+    "./rhf/radio-button-group": {
+      "types": "./dist/rhf/radio-button-group/index.d.mts",
+      "import": "./dist/rhf/radio-button-group/index.mjs"
     },
-    "./form": {
-      "types": "./dist/form/index.d.mts",
-      "import": "./dist/form/index.mjs"
+    "./rhf/native-select": {
+      "types": "./dist/rhf/native-select/index.d.mts",
+      "import": "./dist/rhf/native-select/index.mjs"
+    },
+    "./rhf/multi-select": {
+      "types": "./dist/rhf/multi-select/index.d.mts",
+      "import": "./dist/rhf/multi-select/index.mjs"
+    },
+    "./rhf/input-otp": {
+      "types": "./dist/rhf/input-otp/index.d.mts",
+      "import": "./dist/rhf/input-otp/index.mjs"
+    },
+    "./rhf/input": {
+      "types": "./dist/rhf/input/index.d.mts",
+      "import": "./dist/rhf/input/index.mjs"
+    },
+    "./rhf/form": {
+      "types": "./dist/rhf/form/index.d.mts",
+      "import": "./dist/rhf/form/index.mjs"
+    },
+    "./rhf/dnd-input": {
+      "types": "./dist/rhf/dnd-input/index.d.mts",
+      "import": "./dist/rhf/dnd-input/index.mjs"
+    },
+    "./rhf/date-picker": {
+      "types": "./dist/rhf/date-picker/index.d.mts",
+      "import": "./dist/rhf/date-picker/index.mjs"
+    },
+    "./rhf/combobox": {
+      "types": "./dist/rhf/combobox/index.d.mts",
+      "import": "./dist/rhf/combobox/index.mjs"
+    },
+    "./rhf/checkbox": {
+      "types": "./dist/rhf/checkbox/index.d.mts",
+      "import": "./dist/rhf/checkbox/index.mjs"
     }
   },
   "sideEffects": false,
@@ -244,10 +392,17 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "typecheck:fast": "node ./node_modules/typescript-native/bin/tsc --noEmit -p tsconfig.native.json",
+    "typecheck:all": "npm run typecheck && npm run typecheck:fast",
+    "verify": "npm run lint && npm run format && npm run typecheck:all",
     "storybook": "storybook dev -p 6006",
+    "storybook:catalog": "storybook dev -p 6006 --initial-path=/story/pages-components-catalog--design-spec",
+    "build:catalog": "node scripts/build-components-catalog.mjs --sync-names",
+    "validate:catalog": "node scripts/build-components-catalog.mjs --check",
+    "sync:exports": "node scripts/sync-package-exports.mjs",
     "sync:tokens": "node scripts/sync-figma-tokens.mjs",
     "validate:tokens": "node scripts/sync-figma-tokens.mjs --dry-run",
     "build-storybook": "storybook build",
+    "chromatic": "chromatic --build-script-name build-storybook --exit-once-uploaded",
     "serve-storybook": "npx serve storybook-static"
   },
   "peerDependencies": {
@@ -262,7 +417,7 @@
   "devDependencies": {
     "@storybook/addon-a11y": "10.6.1",
     "@storybook/addon-docs": "10.6.1",
-    "@storybook/addon-onboarding": "10.6.1",
+    "@storybook/addon-mcp": "^10.6.1",
     "@storybook/react-vite": "10.6.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/jest-dom": "^7.0.1",
@@ -272,6 +427,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^6.1.0",
+    "chromatic": "^18.11.0",
     "culori": "^4.0.2",
     "eslint": "^9.39.0",
     "eslint-config-next": "^16.3.8",
@@ -295,33 +451,50 @@
     "zod": "^4.6.5"
   },
   "dependencies": {
+    "@base-ui/react": "^1.8.0",
     "@hookform/resolvers": "^5.2.0",
     "@radix-ui/react-accordion": "^1.2.11",
+    "@radix-ui/react-alert-dialog": "^1.1.23",
+    "@radix-ui/react-aspect-ratio": "^1.1.15",
     "@radix-ui/react-avatar": "^1.1.9",
     "@radix-ui/react-checkbox": "^1.3.2",
     "@radix-ui/react-collapsible": "^1.1.11",
+    "@radix-ui/react-context-menu": "^2.3.7",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-dropdown-menu": "^2.1.14",
+    "@radix-ui/react-hover-card": "^1.1.23",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-label": "^2.1.6",
+    "@radix-ui/react-menubar": "^1.1.24",
     "@radix-ui/react-navigation-menu": "^1.2.12",
     "@radix-ui/react-popover": "^1.1.14",
+    "@radix-ui/react-progress": "^1.1.16",
     "@radix-ui/react-radio-group": "^1.3.7",
     "@radix-ui/react-scroll-area": "^1.2.9",
     "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-separator": "^1.1.6",
+    "@radix-ui/react-slider": "^1.4.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-switch": "^1.2.5",
     "@radix-ui/react-tabs": "^1.1.12",
     "@radix-ui/react-toast": "^1.2.13",
+    "@radix-ui/react-toggle": "^1.1.18",
+    "@radix-ui/react-toggle-group": "^1.1.19",
     "@radix-ui/react-tooltip": "^1.2.6",
+    "@shadcn/react": "^0.3.1",
     "@tanstack/react-table": "^9.2.6",
+    "@typescript/typescript-linux-x64": "^7.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "date-fns": "^4.4.0",
+    "embla-carousel-react": "^8.6.0",
+    "input-otp": "^1.5.0",
     "lucide-react": "^1.52.0",
+    "react-day-picker": "^10.0.2",
     "react-dropzone": "^20.1.2",
     "react-resizable-panels": "^4.14.2",
+    "recharts": "^3.8.0",
     "vaul": "^1.1.2"
   },
   "publishConfig": {

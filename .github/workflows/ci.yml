@@ -29,17 +29,8 @@ jobs:
       - name: Validate design tokens
         run: npm run validate:tokens
 
-      - name: Lint
-        run: npm run lint
-
-      - name: Format
-        run: npm run format
-
-      - name: Typecheck (TypeScript 6)
-        run: npm run typecheck
-
-      - name: Typecheck (TypeScript 7 native)
-        run: npm run typecheck:fast
+      - name: Verify (lint, format, typecheck)
+        run: npm run verify
 
       # Vitest paused while components are redesigned one-by-one; re-enable before shipping test coverage.
       # - name: Test
