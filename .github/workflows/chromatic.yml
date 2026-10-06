@@ -6,8 +6,8 @@ name: Chromatic
 on:
   pull_request:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
 
 permissions:
   contents: read

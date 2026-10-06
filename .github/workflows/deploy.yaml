@@ -2,8 +2,8 @@ name: deploy-package
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*"
 
 # Explicit permissions following principle of least privilege
 permissions:
