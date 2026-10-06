@@ -8,7 +8,7 @@ import {
   type StoryIndexSnapshot
 } from "./components-catalog-story-index"
 
-const generatedSnapshot = parseStoryIndex(generatedIndex as StorybookIndexFile)
+const generatedSnapshot = parseStoryIndex(generatedIndex)
 
 export function useStorybookIndex(): {
   snapshot: StoryIndexSnapshot | null

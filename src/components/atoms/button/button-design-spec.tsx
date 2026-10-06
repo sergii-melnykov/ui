@@ -67,7 +67,7 @@ function specButtonStateClassName(
   const resolvedVariant = variant ?? "default"
   const hoverClass =
     state === "hover"
-      ? HOVER_BY_VARIANT[resolvedVariant as keyof typeof HOVER_BY_VARIANT]
+      ? HOVER_BY_VARIANT[resolvedVariant]
       : undefined
   const focusClass =
     state === "focus" ? "border-ring ring-[3px] ring-ring/50" : undefined
