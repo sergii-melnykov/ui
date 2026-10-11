@@ -27,4 +27,4 @@ npm run format       # prettier --check . --ignore-path .gitignore
 ## Notes
 
 - **Do not modify Prettier tooling:** `.prettierrc`, `.prettierignore`. Run Prettier on source files; do not relax ignores or options to make check pass.
-- CI does not currently run Prettier; local check still keeps the tree consistent before PR.
+- CI runs Prettier via `npm run verify` in [`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml). Cursor hooks also auto-run Prettier on agent-edited files when the agent stops.

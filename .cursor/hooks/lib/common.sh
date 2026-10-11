@@ -18,6 +18,59 @@ registry_file() {
   printf '%s/shell-registry-%s.jsonl' "$(state_dir "$1")" "$SESSION_ID"
 }
 
+edited_files_list() {
+  printf '%s/edited-files-%s.lst' "$(state_dir "$1")" "$SESSION_ID"
+}
+
+should_skip_auto_fix_path() {
+  local rel="$1"
+  [[ -z "$rel" ]] && return 0
+  [[ "$rel" == node_modules/* ]] && return 0
+  [[ "$rel" == dist/* ]] && return 0
+  [[ "$rel" == .cursor/hooks/state/* ]] && return 0
+  [[ "$rel" == "package-lock.json" ]] && return 0
+  return 1
+}
+
+record_edited_file() {
+  local root="$1"
+  local rel="$2"
+  should_skip_auto_fix_path "$rel" && return 0
+  ensure_state_dir "$root"
+  local list
+  list="$(edited_files_list "$root")"
+  if [[ -f "$list" ]] && grep -Fxq "$rel" "$list" 2>/dev/null; then
+    return 0
+  fi
+  printf '%s\n' "$rel" >>"$list"
+}
+
+resolve_path_under_root() {
+  local file_path="$1"
+  local root="$2"
+  local rel=""
+
+  if [[ "$file_path" == "$root"/* ]]; then
+    rel="${file_path#"$root"/}"
+  elif [[ "$file_path" == "$root" ]]; then
+    rel=""
+  elif [[ "$file_path" != /* ]]; then
+    rel="$file_path"
+  fi
+
+  printf '%s' "$rel"
+}
+
+is_eslint_fix_target() {
+  local rel="$1"
+  [[ "$rel" =~ \.(cjs|js|jsx|mjs|ts|tsx)$ ]]
+}
+
+is_prettier_fix_target() {
+  local rel="$1"
+  [[ "$rel" =~ \.(cjs|css|html|js|json|jsx|md|mdx|mjs|ts|tsx|yaml|yml)$ ]]
+}
+
 ensure_state_dir() {
   mkdir -p "$(state_dir "$1")"
 }

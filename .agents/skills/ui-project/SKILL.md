@@ -138,7 +138,9 @@ npm run test         # vitest — run unit tests
 npm run storybook    # Storybook dev server on port 6006
 npm run verify       # lint + format + typecheck:all (preferred before PR / at end of task)
 npm run lint         # ESLint with max-warnings 0
+npm run lint:fix     # ESLint --fix (also runs via Cursor hook on agent-edited files)
 npm run format       # prettier --check
+npm run format:fix   # prettier --write (also runs via Cursor hook on agent-edited files)
 npm run typecheck    # tsc --noEmit
 npm run typecheck:all # tsc + native tsc (TS7 migration)
 ```
@@ -209,7 +211,7 @@ Fix violations in `src/`, stories, tests, and other linted sources. If a rule bl
 4. **Respect atomic design boundaries.** Don't import organisms into atoms, or rhf into organisms.
 5. **One component per directory** with the standard file structure (tsx, types.ts, test.tsx, stories.tsx, index.ts).
 6. **No raw color values.** Always use semantic Tailwind tokens or CSS variables.
-7. **Do not run lint/format/typecheck during multi-phase work** unless debugging a specific failure or using **Verify component** / pipeline phase 5. **Vitest is paused** during the per-component redesign — do not block work on `*.test.tsx` until a component is redesigned and tests are rewritten.
+7. **Lint/format auto-fix on edited files:** [`.cursor/hooks.json`](../../../.cursor/hooks.json) tracks agent file edits and runs **Prettier** + **ESLint `--fix`** on those paths when the agent **stops** (or the session ends). During **component pipeline phases 1–4**, still do **not** run `npm run verify` or typecheck unless debugging. For ad-hoc work, hooks handle auto-fixable style/lint issues; run **`npm run verify`** or **Verify component** before a PR when you need full CI parity. **Vitest is paused** during the per-component redesign — do not block work on `*.test.tsx` until a component is redesigned and tests are rewritten.
 8. **Do not rewrite lint or Prettier configs or ignore files** — see [Lint & Prettier tooling](#lint--prettier-tooling-do-not-rewrite) above.
 
 ### Tests (paused during redesign)
@@ -220,7 +222,7 @@ Existing `*.test.tsx` files may be out of date. CI **does not run `npm test`** u
 
 When an agent should confirm the repo is clean (pipeline phase 5, **Verify component**, or user request), from repo root run **`npm run verify` once**. When the component has **`*.stories.tsx`**, also run **`ui-browser-verify-story`** (Storybook + built-in browser smoke test). Fix failures in **source only** — do not rewrite ESLint/Prettier config or ignore files unless the user asked. Do not re-run lint, format, or typecheck separately if verify already passed. Do not run vitest unless the user asked. **Pre-PR (optional):** CI also runs `validate:tokens`, `build`, and `build-storybook`.
 
-Run verify/lint/test **in the foreground** (no `| tail` / `| head`, no trailing `&`). Project [`.cursor/hooks.json`](../../../.cursor/hooks.json) blocks risky agent shell patterns and cleans up orphan lint processes on agent **stop** / **sessionEnd**.
+Run verify/lint/test **in the foreground** (no `| tail` / `| head`, no trailing `&`). Project [`.cursor/hooks.json`](../../../.cursor/hooks.json) auto-fixes Prettier/ESLint on agent-edited files on **stop** / **sessionEnd**, blocks risky agent shell patterns, and cleans up orphan lint processes.
 
 ## Project agents (invokable)
 
@@ -254,7 +256,7 @@ For day-to-day chat, skills such as `shadcn`, `storybook`, and `react-testing` s
 
 Sections: **Inputs**, **Research**, **Implementation**, **Tests**, **Story**, **Verify**. Each phase agent updates its section; phase 5 runs **`npm run verify` once** and **`ui-browser-verify-story`** when stories exist ([Finish protocol](#finish-protocol-verify)). Do not run vitest in the pipeline unless the user explicitly asks.
 
-**When to use:** Full redesign or new component with Figma/shadcn parity. For a single step, pick the matching specialist instead of the orchestrator. Ad-hoc edits outside the pipeline: run **Verify component** or ask the agent to verify before finishing — there is no automatic verify hook on every turn.
+**When to use:** Full redesign or new component with Figma/shadcn parity. For a single step, pick the matching specialist instead of the orchestrator. Ad-hoc edits outside the pipeline: Prettier/ESLint auto-fix runs via hooks when the agent stops; run **Verify component** or **`npm run verify`** before a PR for full CI checks.
 
 ## Related Skills
 

@@ -8,9 +8,9 @@ const { values, positionals } = parseArgs({
   args: process.argv.slice(2),
   options: {
     "no-push": { type: "boolean", default: false },
-    "dry-run": { type: "boolean", default: false },
+    "dry-run": { type: "boolean", default: false }
   },
-  allowPositionals: true,
+  allowPositionals: true
 })
 
 const bump = positionals[0]
@@ -19,7 +19,9 @@ if (!bump || !BUMPS.has(bump)) {
   console.error("Usage: npm run release -- patch|minor|major [--no-push]")
   console.error("   or: npm run release:patch | release:minor | release:major")
   console.error("")
-  console.error("Bumps version, commits, tags v{version}, and pushes main + tags (use --no-push to skip push).")
+  console.error(
+    "Bumps version, commits, tags v{version}, and pushes main + tags (use --no-push to skip push)."
+  )
   process.exit(1)
 }
 
@@ -30,13 +32,13 @@ function run(command, { dry = false, capture = false } = {}) {
   }
   return execSync(command, {
     encoding: "utf8",
-    stdio: capture ? "pipe" : "inherit",
+    stdio: capture ? "pipe" : "inherit"
   })
 }
 
 const dirty = run("git status --porcelain", {
   dry: values["dry-run"],
-  capture: true,
+  capture: true
 }).trim()
 if (!values["dry-run"] && dirty) {
   console.error("Working tree must be clean before release. Uncommitted changes:")
@@ -46,10 +48,12 @@ if (!values["dry-run"] && dirty) {
 
 const branch = run("git branch --show-current", {
   dry: values["dry-run"],
-  capture: true,
+  capture: true
 }).trim()
 if (!values["dry-run"] && branch !== "main") {
-  console.warn(`Warning: you are on "${branch}", not main. Release tags are usually pushed from main.`)
+  console.warn(
+    `Warning: you are on "${branch}", not main. Release tags are usually pushed from main.`
+  )
 }
 
 const versionCmd = `npm version ${bump} -m "Release %s"`

@@ -11,13 +11,26 @@
         "command": ".cursor/hooks/after-shell-audit.sh"
       }
     ],
+    "afterFileEdit": [
+      {
+        "command": ".cursor/hooks/track-agent-file-edit.sh"
+      }
+    ],
     "stop": [
+      {
+        "command": ".cursor/hooks/auto-fix-on-agent-stop.sh",
+        "timeout": 120
+      },
       {
         "command": ".cursor/hooks/cleanup-orphan-shells.sh",
         "timeout": 15
       }
     ],
     "sessionEnd": [
+      {
+        "command": ".cursor/hooks/auto-fix-on-agent-stop.sh",
+        "timeout": 120
+      },
       {
         "command": ".cursor/hooks/cleanup-orphan-shells.sh",
         "timeout": 15
