@@ -45,6 +45,9 @@ export function generatePackageExports(entries) {
     },
     "./styles/globals.css": {
       default: "./dist/styles/globals.css"
+    },
+    "./tokens/theme-contract.json": {
+      default: "./dist/tokens/theme-contract.json"
     }
   }
 
@@ -65,6 +68,13 @@ export function postBuild(entries) {
   fs.copyFileSync(
     path.join(root, "src", "styles", "globals.css"),
     path.join(stylesDir, "globals.css")
+  )
+
+  const tokensDir = path.join(root, "dist", "tokens")
+  fs.mkdirSync(tokensDir, { recursive: true })
+  fs.copyFileSync(
+    path.join(root, "tokens", "theme-contract.json"),
+    path.join(tokensDir, "theme-contract.json")
   )
 
   generatePackageExports(entries)

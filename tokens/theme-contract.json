@@ -1,0 +1,433 @@
+{
+  "$schema": "./theme-contract.schema.json",
+  "meta": {
+    "generatedFrom": "tokens/figma-mode.json",
+    "syncedAt": "2026-10-05",
+    "cssVariablesBlock": "@layer base :root and .dark"
+  },
+  "overridableVariables": [
+    {
+      "name": "background",
+      "cssVariable": "--background",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "foreground",
+      "cssVariable": "--foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "card",
+      "cssVariable": "--card",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "card-foreground",
+      "cssVariable": "--card-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "popover",
+      "cssVariable": "--popover",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "popover-foreground",
+      "cssVariable": "--popover-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "primary",
+      "cssVariable": "--primary",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "primary-foreground",
+      "cssVariable": "--primary-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "secondary",
+      "cssVariable": "--secondary",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "secondary-foreground",
+      "cssVariable": "--secondary-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "muted",
+      "cssVariable": "--muted",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "muted-foreground",
+      "cssVariable": "--muted-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "accent",
+      "cssVariable": "--accent",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "accent-foreground",
+      "cssVariable": "--accent-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "destructive",
+      "cssVariable": "--destructive",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "destructive-foreground",
+      "cssVariable": "--destructive-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "warning",
+      "cssVariable": "--warning",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "warning-foreground",
+      "cssVariable": "--warning-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "border",
+      "cssVariable": "--border",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "input",
+      "cssVariable": "--input",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "ring",
+      "cssVariable": "--ring",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "radius",
+      "cssVariable": "--radius",
+      "scopes": [
+        ":root"
+      ]
+    },
+    {
+      "name": "chart-1",
+      "cssVariable": "--chart-1",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "chart-2",
+      "cssVariable": "--chart-2",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "chart-3",
+      "cssVariable": "--chart-3",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "chart-4",
+      "cssVariable": "--chart-4",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "chart-5",
+      "cssVariable": "--chart-5",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "cssVariable": "--sidebar",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "sidebar-foreground",
+      "cssVariable": "--sidebar-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "sidebar-primary",
+      "cssVariable": "--sidebar-primary",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "sidebar-primary-foreground",
+      "cssVariable": "--sidebar-primary-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "sidebar-accent",
+      "cssVariable": "--sidebar-accent",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "sidebar-accent-foreground",
+      "cssVariable": "--sidebar-accent-foreground",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "sidebar-border",
+      "cssVariable": "--sidebar-border",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    },
+    {
+      "name": "sidebar-ring",
+      "cssVariable": "--sidebar-ring",
+      "scopes": [
+        ":root",
+        ".dark"
+      ]
+    }
+  ],
+  "tailwindThemeBridge": [
+    "--color-border",
+    "--color-input",
+    "--color-ring",
+    "--color-background",
+    "--color-foreground",
+    "--color-primary",
+    "--color-primary-foreground",
+    "--color-secondary",
+    "--color-secondary-foreground",
+    "--color-destructive",
+    "--color-destructive-foreground",
+    "--color-warning",
+    "--color-warning-foreground",
+    "--color-muted",
+    "--color-muted-foreground",
+    "--color-accent",
+    "--color-accent-foreground",
+    "--color-popover",
+    "--color-popover-foreground",
+    "--color-card",
+    "--color-card-foreground",
+    "--color-chart-1",
+    "--color-chart-2",
+    "--color-chart-3",
+    "--color-chart-4",
+    "--color-chart-5",
+    "--color-sidebar",
+    "--color-sidebar-foreground",
+    "--color-sidebar-primary",
+    "--color-sidebar-primary-foreground",
+    "--color-sidebar-accent",
+    "--color-sidebar-accent-foreground",
+    "--color-sidebar-border",
+    "--color-sidebar-ring",
+    "--radius-sm",
+    "--radius-md",
+    "--radius-lg",
+    "--radius-xl",
+    "--radius-2xl",
+    "--radius-3xl",
+    "--radius-4xl",
+    "--animate-accordion-down",
+    "--animate-accordion-up",
+    "--animate-shimmer"
+  ],
+  "consumerPattern": {
+    "npmStyles": "@me1a/ui/styles/globals.css",
+    "npmContract": "@me1a/ui/tokens/theme-contract.json",
+    "darkMode": "class .dark on html or ancestor (next-themes)",
+    "overrideSurface": "In app globals.css, set semantic variables inside @layer base :root and .dark only",
+    "keepInApp": [
+      "@import tailwindcss",
+      "@source for app components and @me1a/ui/dist for class scanning",
+      "Optional: duplicate @theme inline only if you fork the full Tailwind bridge"
+    ],
+    "avoid": [
+      "Raw palette utilities (bg-blue-500) in product UI",
+      "Editing @me1a/ui component source for brand colors",
+      "Renaming semantic tokens without updating @theme inline"
+    ],
+    "preferredUtilities": [
+      "bg-background",
+      "text-foreground",
+      "bg-primary",
+      "text-muted-foreground",
+      "border-border"
+    ]
+  },
+  "defaults": {
+    "light": {
+      "background": "oklch(1 0 none)",
+      "foreground": "oklch(0.145 0 none)",
+      "card": "oklch(1 0 none)",
+      "card-foreground": "oklch(0.145 0 none)",
+      "popover": "oklch(1 0 none)",
+      "popover-foreground": "oklch(0.145 0 none)",
+      "primary": "oklch(0.204 0 none)",
+      "primary-foreground": "oklch(0.985 0 none)",
+      "secondary": "oklch(0.97 0 none)",
+      "secondary-foreground": "oklch(0.204 0 none)",
+      "muted": "oklch(0.97 0 none)",
+      "muted-foreground": "oklch(0.556 0 none)",
+      "accent": "oklch(0.97 0 none)",
+      "accent-foreground": "oklch(0.204 0 none)",
+      "destructive": "oklch(0.583 0.239 28.5)",
+      "destructive-foreground": "oklch(0.985 0 none)",
+      "warning": "oklch(0.84 0.16 84)",
+      "warning-foreground": "oklch(0.28 0.07 46)",
+      "border": "oklch(0.922 0 none)",
+      "input": "oklch(0.922 0 none)",
+      "ring": "oklch(0.556 0 none)",
+      "radius": "0.5rem",
+      "chart-1": "oklch(0.733 0.121 243.2)",
+      "chart-2": "oklch(0.649 0.193 251.8)",
+      "chart-3": "oklch(0.622 0.183 251.8)",
+      "chart-4": "oklch(0.555 0.162 252.2)",
+      "chart-5": "oklch(0.324 0.096 258.8)",
+      "sidebar": "oklch(0.985 0 none)",
+      "sidebar-foreground": "oklch(0.145 0 none)",
+      "sidebar-primary": "oklch(0.204 0 none)",
+      "sidebar-primary-foreground": "oklch(0.985 0 none)",
+      "sidebar-accent": "oklch(0.97 0 none)",
+      "sidebar-accent-foreground": "oklch(0.204 0 none)",
+      "sidebar-border": "oklch(0.922 0 none)",
+      "sidebar-ring": "oklch(0.556 0 none)"
+    },
+    "dark": {
+      "background": "oklch(0.145 0 none)",
+      "foreground": "oklch(0.985 0 none)",
+      "card": "oklch(0.204 0 none)",
+      "card-foreground": "oklch(0.985 0 none)",
+      "popover": "oklch(0.269 0 none)",
+      "popover-foreground": "oklch(0.985 0 none)",
+      "primary": "oklch(0.922 0 none)",
+      "primary-foreground": "oklch(0.204 0 none)",
+      "secondary": "oklch(0.269 0 none)",
+      "secondary-foreground": "oklch(0.985 0 none)",
+      "muted": "oklch(0.269 0 none)",
+      "muted-foreground": "oklch(0.715 0 none)",
+      "accent": "oklch(0.372 0 none)",
+      "accent-foreground": "oklch(0.985 0 none)",
+      "destructive": "oklch(0.74 0.159 29.2)",
+      "destructive-foreground": "oklch(0.985 0 none)",
+      "warning": "oklch(0.41 0.11 46)",
+      "warning-foreground": "oklch(0.99 0.02 95)",
+      "border": "oklch(0.372 0 none)",
+      "input": "oklch(0.204 0 none)",
+      "ring": "oklch(0.556 0 none)",
+      "chart-1": "oklch(0.733 0.121 243.2)",
+      "chart-2": "oklch(0.649 0.193 251.8)",
+      "chart-3": "oklch(0.622 0.183 251.8)",
+      "chart-4": "oklch(0.555 0.162 252.2)",
+      "chart-5": "oklch(0.324 0.096 258.8)",
+      "sidebar": "oklch(0.204 0 none)",
+      "sidebar-foreground": "oklch(0.985 0 none)",
+      "sidebar-primary": "oklch(0.622 0.183 251.8)",
+      "sidebar-primary-foreground": "oklch(0.985 0 none)",
+      "sidebar-accent": "oklch(0.269 0 none)",
+      "sidebar-accent-foreground": "oklch(0.985 0 none)",
+      "sidebar-border": "oklch(0.372 0 none)",
+      "sidebar-ring": "oklch(0.556 0 none)"
+    }
+  }
+}

@@ -20,6 +20,9 @@
     "./styles/globals.css": {
       "default": "./dist/styles/globals.css"
     },
+    "./tokens/theme-contract.json": {
+      "default": "./dist/tokens/theme-contract.json"
+    },
     "./hooks": {
       "types": "./dist/hooks/index.d.mts",
       "import": "./dist/hooks/index.mjs"

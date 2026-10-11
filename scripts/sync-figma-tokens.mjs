@@ -11,6 +11,7 @@ import { formatCss, parse, converter } from "culori"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.join(__dirname, "..")
 const tokensPath = path.join(root, "tokens", "figma-mode.json")
+const contractPath = path.join(root, "tokens", "theme-contract.json")
 const cssPath = path.join(root, "src", "styles", "globals.css")
 
 const toOklch = converter("oklch")
@@ -152,6 +153,107 @@ function validateTokenFile() {
   return tokens
 }
 
+const TAILWIND_THEME_BRIDGE_RE =
+  /@theme inline \{([\s\S]*?)\n\}/
+
+function extractTailwindThemeBridge(css) {
+  const match = TAILWIND_THEME_BRIDGE_RE.exec(css)
+  if (!match) {
+    throw new Error("Could not find @theme inline block in globals.css")
+  }
+  const names = []
+  for (const line of match[1].split("\n")) {
+    const tokenMatch = /^\s*(--[\w-]+):/.exec(line)
+    if (tokenMatch) {
+      names.push(tokenMatch[1])
+    }
+  }
+  return names
+}
+
+function defaultsFromModes(light, dark) {
+  const lightNorm = normalizeModeValues(light)
+  const darkNorm = normalizeModeValues(dark)
+  /** @type {Record<string, string>} */
+  const lightOut = {}
+  /** @type {Record<string, string>} */
+  const darkOut = {}
+  for (const key of TOKEN_ORDER) {
+    lightOut[key] = cssValueForToken(key, lightNorm[key])
+    if (key !== "radius") {
+      darkOut[key] = cssValueForToken(key, darkNorm[key])
+    }
+  }
+  return { light: lightOut, dark: darkOut }
+}
+
+export function buildThemeContract(tokens, css) {
+  const light = normalizeModeValues(tokens.light)
+  const dark = normalizeModeValues(tokens.dark)
+  validateModes(light, dark)
+
+  return {
+    $schema: "./theme-contract.schema.json",
+    meta: {
+      generatedFrom: "tokens/figma-mode.json",
+      syncedAt: tokens.meta?.syncedAt ?? null,
+      cssVariablesBlock: "@layer base :root and .dark"
+    },
+    overridableVariables: TOKEN_ORDER.map((name) => ({
+      name,
+      cssVariable: `--${name}`,
+      scopes: name === "radius" ? [":root"] : [":root", ".dark"]
+    })),
+    tailwindThemeBridge: extractTailwindThemeBridge(css),
+    consumerPattern: {
+      npmStyles: "@me1a/ui/styles/globals.css",
+      npmContract: "@me1a/ui/tokens/theme-contract.json",
+      darkMode: "class .dark on html or ancestor (next-themes)",
+      overrideSurface:
+        "In app globals.css, set semantic variables inside @layer base :root and .dark only",
+      keepInApp: [
+        "@import tailwindcss",
+        "@source for app components and @me1a/ui/dist for class scanning",
+        "Optional: duplicate @theme inline only if you fork the full Tailwind bridge"
+      ],
+      avoid: [
+        "Raw palette utilities (bg-blue-500) in product UI",
+        "Editing @me1a/ui component source for brand colors",
+        "Renaming semantic tokens without updating @theme inline"
+      ],
+      preferredUtilities: [
+        "bg-background",
+        "text-foreground",
+        "bg-primary",
+        "text-muted-foreground",
+        "border-border"
+      ]
+    },
+    defaults: defaultsFromModes(light, dark)
+  }
+}
+
+function serializeContract(contract) {
+  return `${JSON.stringify(contract, null, 2)}\n`
+}
+
+export function syncThemeContract({ dryRun = false } = {}) {
+  const tokens = validateTokenFile()
+  const css = fs.readFileSync(cssPath, "utf8")
+  const next = serializeContract(buildThemeContract(tokens, css))
+
+  if (dryRun) {
+    if (!fs.existsSync(contractPath)) {
+      return true
+    }
+    const current = fs.readFileSync(contractPath, "utf8")
+    return current !== next
+  }
+
+  fs.writeFileSync(contractPath, next)
+  console.log(`Updated ${path.relative(root, contractPath)}`)
+}
+
 export function syncTokensToCss({ dryRun = false } = {}) {
   const tokens = validateTokenFile()
   const css = fs.readFileSync(cssPath, "utf8")
@@ -176,6 +278,7 @@ export function syncTokensToCss({ dryRun = false } = {}) {
   }
   fs.writeFileSync(cssPath, next)
   console.log(`Updated ${path.relative(root, cssPath)} from ${path.relative(root, tokensPath)}`)
+  syncThemeContract()
 }
 
 const isMain = process.argv[1] === fileURLToPath(import.meta.url)
@@ -183,12 +286,17 @@ if (isMain) {
   const dryRun = process.argv.includes("--dry-run")
   try {
     if (dryRun) {
-      const changed = syncTokensToCss({ dryRun: true })
-      if (changed) {
+      const cssChanged = syncTokensToCss({ dryRun: true })
+      const contractChanged = syncThemeContract({ dryRun: true })
+      if (cssChanged) {
         console.error("globals.css is out of sync with tokens/figma-mode.json")
         process.exit(1)
       }
-      console.log("Token CSS blocks are in sync")
+      if (contractChanged) {
+        console.error("tokens/theme-contract.json is out of sync — run npm run sync:tokens")
+        process.exit(1)
+      }
+      console.log("Token CSS blocks and theme contract are in sync")
     } else {
       syncTokensToCss()
     }

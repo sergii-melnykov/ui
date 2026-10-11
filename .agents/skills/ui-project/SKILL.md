@@ -175,7 +175,7 @@ npm run typecheck:all # tsc + native tsc (TS7 migration)
 1. Load the `shadcn` skill — it contains project Tailwind/styling rules.
 2. For Tailwind v4 utilities, `@theme`, or migration questions, load `tailwind-4-docs` and `docs/V4_THEME.md`.
 3. Check `rules/styling.md` for semantic colors, spacing conventions, and dark mode.
-4. Edit `src/styles/globals.css` for CSS variable changes (never create new CSS files).
+4. Edit `src/styles/globals.css` for CSS variable changes (never create new CSS files). Document the consumer contract in Storybook **Foundations/Theming and tokens** (`npm run sync:tokens` updates `tokens/theme-contract.json`).
 
 ### Performance Optimization
 
