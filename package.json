@@ -406,6 +406,7 @@
     "validate:tokens": "node scripts/sync-figma-tokens.mjs --dry-run",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --build-script-name build-storybook --exit-once-uploaded",
+    "release": "node scripts/release.mjs",
     "serve-storybook": "npx serve storybook-static"
   },
   "peerDependencies": {
