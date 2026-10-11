@@ -1,12 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  ArrowUp,
-  MessageCircleDashed,
-  Plus,
-  RotateCcw
-} from "lucide-react"
+import { ArrowUp, MessageCircleDashed, Plus, RotateCcw } from "lucide-react"
 
 import { Bubble, BubbleContent } from "@/components/atoms/bubble/bubble"
 import { Button } from "@/components/atoms/button/button"
@@ -179,9 +174,7 @@ function Transcript({
                 key={row.id}
                 messageId={row.id}
                 scrollAnchor={
-                  row.role === "marker"
-                    ? anchorRole === "marker"
-                    : row.role === anchorRole
+                  row.role === "marker" ? anchorRole === "marker" : row.role === anchorRole
                 }
               >
                 <MessageRow row={row} />
@@ -449,9 +442,7 @@ export function AutoScrollDemo() {
     streamRef.current = window.setInterval(() => {
       index += 3
       setRows((current) =>
-        current.map((row) =>
-          row.id === id ? { ...row, text: full.slice(0, index) } : row
-        )
+        current.map((row) => (row.id === id ? { ...row, text: full.slice(0, index) } : row))
       )
       if (index >= full.length) {
         if (streamRef.current) window.clearInterval(streamRef.current)
@@ -613,12 +604,7 @@ export function PrependHistoryDemo() {
           </div>
         }
       >
-        <Transcript
-          rows={rows}
-          anchorRole="user"
-          emptyTitle="No messages"
-          emptyDescription=""
-        />
+        <Transcript rows={rows} anchorRole="user" emptyTitle="No messages" emptyDescription="" />
       </DemoCard>
     </MessageScrollerProvider>
   )
@@ -783,12 +769,7 @@ export function VisibilityOutlineDemo() {
           description="Track the current anchored turn with useMessageScrollerVisibility."
         >
           <OutlineMenu />
-          <Transcript
-            rows={rows}
-            anchorRole="user"
-            emptyTitle="No messages"
-            emptyDescription=""
-          />
+          <Transcript rows={rows} anchorRole="user" emptyTitle="No messages" emptyDescription="" />
         </DemoCard>
       </div>
     </MessageScrollerProvider>

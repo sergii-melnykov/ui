@@ -129,29 +129,29 @@ export function MessageScrollerDesignSpec() {
           <div className="h-64 w-full max-w-sm">
             <MessageScrollerProvider>
               <MessageScroller>
-              <MessageScrollerViewport>
-                <MessageScrollerContent>
-                  <MessageScrollerItem messageId="demo-1" scrollAnchor>
-                    <Message align="end" className="px-5">
-                      <MessageContent className="max-w-[85%]">
-                        <Bubble variant="secondary" align="end">
-                          <BubbleContent>User turn anchor</BubbleContent>
-                        </Bubble>
-                      </MessageContent>
-                    </Message>
-                  </MessageScrollerItem>
-                  <MessageScrollerItem messageId="demo-2">
-                    <Message align="start" className="px-5">
-                      <MessageContent className="max-w-[85%]">
-                        <Bubble variant="secondary" align="start">
-                          <BubbleContent>Assistant reply streams here</BubbleContent>
-                        </Bubble>
-                      </MessageContent>
-                    </Message>
-                  </MessageScrollerItem>
-                </MessageScrollerContent>
-              </MessageScrollerViewport>
-              <MessageScrollerButton />
+                <MessageScrollerViewport>
+                  <MessageScrollerContent>
+                    <MessageScrollerItem messageId="demo-1" scrollAnchor>
+                      <Message align="end" className="px-5">
+                        <MessageContent className="max-w-[85%]">
+                          <Bubble variant="secondary" align="end">
+                            <BubbleContent>User turn anchor</BubbleContent>
+                          </Bubble>
+                        </MessageContent>
+                      </Message>
+                    </MessageScrollerItem>
+                    <MessageScrollerItem messageId="demo-2">
+                      <Message align="start" className="px-5">
+                        <MessageContent className="max-w-[85%]">
+                          <Bubble variant="secondary" align="start">
+                            <BubbleContent>Assistant reply streams here</BubbleContent>
+                          </Bubble>
+                        </MessageContent>
+                      </Message>
+                    </MessageScrollerItem>
+                  </MessageScrollerContent>
+                </MessageScrollerViewport>
+                <MessageScrollerButton />
               </MessageScroller>
             </MessageScrollerProvider>
           </div>
@@ -167,8 +167,8 @@ export function MessageScrollerDesignSpec() {
             <>
               <p>
                 A turn is the part of the conversation that starts a new exchange. Mark the row that
-                should anchor the viewport with <code className="text-foreground">scrollAnchor</code>
-                .
+                should anchor the viewport with{" "}
+                <code className="text-foreground">scrollAnchor</code>.
               </p>
               <p>
                 Scroll anchors are not tied to message role — you can anchor a user message, a
@@ -190,7 +190,10 @@ export function MessageScrollerDesignSpec() {
                 In a group chat, the turn boundary is often the message that asks the model to
                 respond, or a marker like &quot;Marcus joined the chat&quot;.
               </p>
-              <p>Because anchoring is role-independent, you can anchor a marker just as easily as a message.</p>
+              <p>
+                Because anchoring is role-independent, you can anchor a marker just as easily as a
+                message.
+              </p>
             </>
           }
         >
@@ -248,8 +251,8 @@ export function MessageScrollerDesignSpec() {
           title="Loading Earlier Messages"
           description={
             <p>
-              When older rows prepend above the transcript, the viewport preserves the visible row so
-              the reader stays in place.
+              When older rows prepend above the transcript, the viewport preserves the visible row
+              so the reader stays in place.
             </p>
           }
         >
@@ -273,12 +276,13 @@ export function MessageScrollerDesignSpec() {
         </ExampleBlock>
 
         <ExampleBlock
-          title="Tracking the Reader&apos;s Position"
+          title="Tracking the Reader's Position"
           description={
             <p>
               <code className="text-foreground">useMessageScrollerVisibility()</code> exposes{" "}
               <code className="text-foreground">currentAnchorId</code> and{" "}
-              <code className="text-foreground">visibleMessageIds</code> for outlines and jump menus.
+              <code className="text-foreground">visibleMessageIds</code> for outlines and jump
+              menus.
             </p>
           }
         >

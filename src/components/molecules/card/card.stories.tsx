@@ -79,8 +79,8 @@ export const Small: Story = {
       </CardHeader>
       <CardContent>
         <p className="text-sm text-card-foreground">
-          The card component supports a size prop that can be set to &quot;sm&quot; for a more compact
-          appearance.
+          The card component supports a size prop that can be set to &quot;sm&quot; for a more
+          compact appearance.
         </p>
       </CardContent>
       <CardFooter>

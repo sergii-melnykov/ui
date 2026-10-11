@@ -108,12 +108,4 @@ function CardFooter({ className, ...props }: CardFooterProps) {
   )
 }
 
-export {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle
-}
+export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

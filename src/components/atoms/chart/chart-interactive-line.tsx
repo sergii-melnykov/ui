@@ -5,12 +5,7 @@ import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 import { cn } from "@/utils/index"
 
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig
-} from "./chart"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "./chart"
 import { chartDemoData } from "./chart-demo-data"
 import { ChartLineExampleBody, ChartLineShell } from "./chart-line-shell"
 

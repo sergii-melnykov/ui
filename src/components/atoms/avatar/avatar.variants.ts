@@ -53,4 +53,6 @@ export const avatarGroupCountVariants = cva(
 export type AvatarSize = NonNullable<Parameters<typeof avatarVariants>[0]>["size"]
 export type AvatarBadgeVariant = NonNullable<Parameters<typeof avatarBadgeVariants>[0]>["variant"]
 export type AvatarBadgeSize = NonNullable<Parameters<typeof avatarBadgeVariants>[0]>["size"]
-export type AvatarGroupCountSize = NonNullable<Parameters<typeof avatarGroupCountVariants>[0]>["size"]
+export type AvatarGroupCountSize = NonNullable<
+  Parameters<typeof avatarGroupCountVariants>[0]
+>["size"]

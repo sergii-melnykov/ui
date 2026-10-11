@@ -7,12 +7,7 @@ import { Bar, BarChart, XAxis } from "recharts"
 import { Card } from "@/components/molecules/card/card"
 import { cn } from "@/utils/index"
 
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig
-} from "./chart"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "./chart"
 import {
   formatTooltipLongDate,
   formatTooltipWeekdayTick,
@@ -46,10 +41,7 @@ type RunningSwimmingPayload = {
 
 function isRunningSwimmingPayload(payload: unknown): payload is RunningSwimmingPayload {
   return (
-    typeof payload === "object" &&
-    payload !== null &&
-    "running" in payload &&
-    "swimming" in payload
+    typeof payload === "object" && payload !== null && "running" in payload && "swimming" in payload
   )
 }
 
@@ -98,18 +90,8 @@ function TooltipStackedBarChart({
           axisLine={false}
           tickFormatter={formatTooltipWeekdayTick}
         />
-        <Bar
-          dataKey="running"
-          stackId="a"
-          fill="var(--color-running)"
-          radius={[0, 0, 4, 4]}
-        />
-        <Bar
-          dataKey="swimming"
-          stackId="a"
-          fill="var(--color-swimming)"
-          radius={[4, 4, 0, 0]}
-        />
+        <Bar dataKey="running" stackId="a" fill="var(--color-running)" radius={[0, 0, 4, 4]} />
+        <Bar dataKey="swimming" stackId="a" fill="var(--color-swimming)" radius={[4, 4, 0, 0]} />
         <ChartTooltip content={tooltipContent} cursor={false} defaultIndex={1} />
       </BarChart>
     </ChartContainer>
@@ -132,10 +114,7 @@ export function ChartTooltipDefaultExample() {
 
 export function ChartTooltipLineIndicatorExample() {
   return (
-    <TooltipExampleCard
-      title="Tooltip - Line Indicator"
-      description="Tooltip with line indicator."
-    >
+    <TooltipExampleCard title="Tooltip - Line Indicator" description="Tooltip with line indicator.">
       <TooltipStackedBarChart
         config={tooltipRunningSwimmingChartConfig}
         tooltipContent={<ChartTooltipContent indicator="line" />}
@@ -198,10 +177,7 @@ export function ChartTooltipNoLabelExample() {
 
 export function ChartTooltipFormatterExample() {
   return (
-    <TooltipExampleCard
-      title="Tooltip - Formatter"
-      description="Tooltip with custom formatter ."
-    >
+    <TooltipExampleCard title="Tooltip - Formatter" description="Tooltip with custom formatter .">
       <TooltipStackedBarChart
         config={tooltipRunningSwimmingChartConfig}
         tooltipContent={

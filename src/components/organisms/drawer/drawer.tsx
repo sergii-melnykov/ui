@@ -120,10 +120,7 @@ function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 /** Accessible drawer title. */
-function DrawerTitle({
-  className,
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Title>) {
+function DrawerTitle({ className, ...props }: React.ComponentProps<typeof DrawerPrimitive.Title>) {
   return (
     <DrawerPrimitive.Title
       data-slot="drawer-title"

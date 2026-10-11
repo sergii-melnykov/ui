@@ -2,12 +2,7 @@
 
 import * as React from "react"
 import { Hexagon, TrendingUp } from "lucide-react"
-import {
-  PolarAngleAxis,
-  PolarGrid,
-  Radar,
-  RadarChart
-} from "recharts"
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
 
 import { Card } from "@/components/molecules/card/card"
 import { cn } from "@/utils/index"
@@ -81,11 +76,7 @@ export function ChartRadarDefaultExample() {
           <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
           <PolarAngleAxis dataKey="month" />
           <PolarGrid />
-          <Radar
-            dataKey="desktop"
-            fill="var(--color-desktop)"
-            fillOpacity={0.6}
-          />
+          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
         </RadarChart>
       </ChartContainer>
     </RadarExampleCard>
@@ -126,10 +117,7 @@ export function ChartRadarLinesOnlyExample() {
         className="mx-auto aspect-square max-h-[250px]"
       >
         <RadarChart data={[...radarChartDataLinesOnly]}>
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent indicator="line" />}
-          />
+          <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
           <PolarAngleAxis dataKey="month" />
           <PolarGrid radialLines={false} />
           <Radar
@@ -168,10 +156,7 @@ export function ChartRadarLabelCustomExample() {
             left: 10
           }}
         >
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent indicator="line" />}
-          />
+          <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
           <PolarAngleAxis
             dataKey="month"
             tick={({ x, y, textAnchor, index, ...props }) => {
@@ -198,11 +183,7 @@ export function ChartRadarLabelCustomExample() {
             }}
           />
           <PolarGrid />
-          <Radar
-            dataKey="desktop"
-            fill="var(--color-desktop)"
-            fillOpacity={0.6}
-          />
+          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
           <Radar dataKey="mobile" fill="var(--color-mobile)" />
         </RadarChart>
       </ChartContainer>
@@ -221,11 +202,7 @@ export function ChartRadarGridCustomExample() {
           <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
           <PolarGrid radialLines={false} polarRadius={[90]} strokeWidth={1} />
           <PolarAngleAxis dataKey="month" />
-          <Radar
-            dataKey="desktop"
-            fill="var(--color-desktop)"
-            fillOpacity={0.6}
-          />
+          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
         </RadarChart>
       </ChartContainer>
     </RadarExampleCard>
@@ -318,16 +295,9 @@ export function ChartRadarGridCircleFillExample() {
       >
         <RadarChart data={[...radarChartDataGridFill]}>
           <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-          <PolarGrid
-            className="fill-(--color-desktop) opacity-20"
-            gridType="circle"
-          />
+          <PolarGrid className="fill-(--color-desktop) opacity-20" gridType="circle" />
           <PolarAngleAxis dataKey="month" />
-          <Radar
-            dataKey="desktop"
-            fill="var(--color-desktop)"
-            fillOpacity={0.5}
-          />
+          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.5} />
         </RadarChart>
       </ChartContainer>
     </RadarExampleCard>
@@ -345,11 +315,7 @@ export function ChartRadarGridFillExample() {
           <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
           <PolarGrid className="fill-(--color-desktop) opacity-20" />
           <PolarAngleAxis dataKey="month" />
-          <Radar
-            dataKey="desktop"
-            fill="var(--color-desktop)"
-            fillOpacity={0.5}
-          />
+          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.5} />
         </RadarChart>
       </ChartContainer>
     </RadarExampleCard>
@@ -364,17 +330,10 @@ export function ChartRadarMultipleExample() {
         className="mx-auto aspect-square max-h-[250px]"
       >
         <RadarChart data={[...radarChartDataDual]}>
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent indicator="line" />}
-          />
+          <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
           <PolarAngleAxis dataKey="month" />
           <PolarGrid />
-          <Radar
-            dataKey="desktop"
-            fill="var(--color-desktop)"
-            fillOpacity={0.6}
-          />
+          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
           <Radar dataKey="mobile" fill="var(--color-mobile)" />
         </RadarChart>
       </ChartContainer>
@@ -398,17 +357,10 @@ export function ChartRadarLegendExample() {
             right: 0
           }}
         >
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent indicator="line" />}
-          />
+          <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
           <PolarAngleAxis dataKey="month" />
           <PolarGrid />
-          <Radar
-            dataKey="desktop"
-            fill="var(--color-desktop)"
-            fillOpacity={0.6}
-          />
+          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
           <Radar dataKey="mobile" fill="var(--color-mobile)" />
           <ChartLegend className="mt-8" content={<ChartLegendContent />} />
         </RadarChart>

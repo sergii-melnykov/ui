@@ -29,25 +29,13 @@ import {
 
 import { ButtonGroup, ButtonGroupText } from "@/components/atoms/button-group/button-group"
 import { Button } from "@/components/atoms/button/button"
-import {
-  Field,
-  FieldDescription,
-  FieldLabel
-} from "@/components/atoms/field/field"
+import { Field, FieldDescription, FieldLabel } from "@/components/atoms/field/field"
 import { Kbd } from "@/components/atoms/kbd/kbd"
 import { Label } from "@/components/atoms/label/label"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from "@/components/atoms/popover/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/atoms/popover/popover"
 import { Separator } from "@/components/atoms/separator/separator"
 import { Spinner } from "@/components/atoms/spinner/spinner"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger
-} from "@/components/atoms/tooltip/tooltip"
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/atoms/tooltip/tooltip"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -139,7 +127,9 @@ function MatrixColumnHeaders({ columns }: { columns: string[] }) {
     <div className="grid grid-cols-2 gap-6">
       {columns.map((label) => (
         <div key={label} className="flex flex-col items-center gap-6">
-          <span className="text-sm font-medium whitespace-nowrap text-muted-foreground">{label}</span>
+          <span className="text-sm font-medium whitespace-nowrap text-muted-foreground">
+            {label}
+          </span>
           <div className="h-3 w-full border-b border-foreground" aria-hidden />
         </div>
       ))}
@@ -237,7 +227,11 @@ function CopyUrlExample() {
 
   return (
     <InputGroup>
-      <InputGroupInput placeholder="https://x.com/shadcn" readOnly defaultValue="https://x.com/shadcn" />
+      <InputGroupInput
+        placeholder="https://x.com/shadcn"
+        readOnly
+        defaultValue="https://x.com/shadcn"
+      />
       <InputGroupAddon align="inline-end">
         <InputGroupButton
           aria-label="Copy"
@@ -393,8 +387,8 @@ export function InputGroupDesignSpec() {
           title="inline-end"
           description={
             <>
-              Use <code className="text-sm">align=&quot;inline-end&quot;</code> to position the addon
-              at the end of the input.
+              Use <code className="text-sm">align=&quot;inline-end&quot;</code> to position the
+              addon at the end of the input.
             </>
           }
         >
@@ -414,8 +408,8 @@ export function InputGroupDesignSpec() {
           title="block-start"
           description={
             <>
-              Use <code className="text-sm">align=&quot;block-start&quot;</code> to position the addon
-              above the input.
+              Use <code className="text-sm">align=&quot;block-start&quot;</code> to position the
+              addon above the input.
             </>
           }
         >
@@ -473,7 +467,10 @@ export function InputGroupDesignSpec() {
             <div className="grid w-full max-w-sm gap-6">
               <AlignFieldExample id={`${blockLabelId}-block-end`}>
                 <InputGroup>
-                  <InputGroupInput id={`${blockLabelId}-block-end`} placeholder="shadcn@vercel.com" />
+                  <InputGroupInput
+                    id={`${blockLabelId}-block-end`}
+                    placeholder="shadcn@vercel.com"
+                  />
                   <InputGroupAddon align="block-end" className="border-t">
                     <InputGroupText className="text-xs text-muted-foreground">
                       We&apos;ll never share your email with anyone else.
@@ -563,10 +560,7 @@ export function InputGroupDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Label"
-          description="Place labels in inline or block-start addons."
-        >
+        <ExampleBlock title="Label" description="Place labels in inline or block-start addons.">
           <PreviewBox>
             <div className="grid w-full max-w-sm gap-4">
               <InputGroup>
@@ -788,7 +782,12 @@ export function InputGroupDesignSpec() {
                 </DropdownMenu>
                 <InputGroupText className="ml-auto">52% used</InputGroupText>
                 <Separator orientation="vertical" className="h-4!" />
-                <InputGroupButton variant="default" className="rounded-full" size="icon-xs" disabled>
+                <InputGroupButton
+                  variant="default"
+                  className="rounded-full"
+                  size="icon-xs"
+                  disabled
+                >
                   <ArrowUp />
                   <span className="sr-only">Send</span>
                 </InputGroupButton>
@@ -797,10 +796,7 @@ export function InputGroupDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Keyboard"
-          description="Display keyboard hints in inline-end addons."
-        >
+        <ExampleBlock title="Keyboard" description="Display keyboard hints in inline-end addons.">
           <PreviewBox>
             <InputGroup className="w-full max-w-xs">
               <InputGroupInput placeholder="Search..." />
@@ -819,8 +815,8 @@ export function InputGroupDesignSpec() {
           title="RTL"
           description={
             <>
-              Set <code className="text-sm">dir=&quot;rtl&quot;</code> on InputGroup for right-to-left
-              layouts. See the{" "}
+              Set <code className="text-sm">dir=&quot;rtl&quot;</code> on InputGroup for
+              right-to-left layouts. See the{" "}
               <a
                 href="https://ui.shadcn.com/docs/rtl"
                 className="underline"

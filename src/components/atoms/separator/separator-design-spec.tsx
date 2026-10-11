@@ -103,7 +103,11 @@ export function SeparatorDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-          <a href="https://ui.shadcn.com/docs/components/separator" target="_blank" rel="noreferrer">
+          <a
+            href="https://ui.shadcn.com/docs/components/separator"
+            target="_blank"
+            rel="noreferrer"
+          >
             View in Shadcn
             <ArrowUpRight className="size-4" />
           </a>
@@ -220,9 +224,7 @@ export function SeparatorDesignSpec() {
             <div dir="rtl" className="flex w-96 max-w-full flex-col gap-4">
               <div className="flex flex-col items-end gap-1 text-right">
                 <span className="text-sm font-medium">shadcn/ui</span>
-                <span className="text-xs text-muted-foreground">
-                  الأساس لنظام التصميم الخاص بك
-                </span>
+                <span className="text-xs text-muted-foreground">الأساس لنظام التصميم الخاص بك</span>
               </div>
               <Separator />
               <p className="text-right text-sm text-foreground">

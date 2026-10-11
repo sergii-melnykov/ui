@@ -99,7 +99,9 @@ function MatrixColumnHeaders({ columns }: { columns: string[] }) {
     <div className={cn("grid gap-6", columns.length === 4 ? "grid-cols-4" : "grid-cols-2")}>
       {columns.map((label) => (
         <div key={label} className="flex flex-col items-center gap-6">
-          <span className="text-sm font-medium whitespace-nowrap text-muted-foreground">{label}</span>
+          <span className="text-sm font-medium whitespace-nowrap text-muted-foreground">
+            {label}
+          </span>
           <div className="h-3 w-full border-b border-foreground" aria-hidden />
         </div>
       ))}
@@ -198,8 +200,8 @@ export function SwitchDesignSpec() {
           title="Choice Card"
           description={
             <>
-              Card-style selection where <code>FieldLabel</code> wraps the entire{" "}
-              <code>Field</code> for a clickable card pattern.
+              Card-style selection where <code>FieldLabel</code> wraps the entire <code>Field</code>{" "}
+              for a clickable card pattern.
             </>
           }
         >

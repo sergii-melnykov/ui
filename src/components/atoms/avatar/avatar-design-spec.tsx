@@ -101,7 +101,11 @@ function MatrixLabels({ rows, rowClassName }: { rows: string[]; rowClassName?: s
 function ColumnHeaders({ labels }: { labels: readonly string[] }) {
   return (
     <div
-      className={cn("grid gap-6", labels.length === 2 && "grid-cols-2", labels.length === 3 && "grid-cols-3")}
+      className={cn(
+        "grid gap-6",
+        labels.length === 2 && "grid-cols-2",
+        labels.length === 3 && "grid-cols-3"
+      )}
     >
       {labels.map((label) => (
         <div key={label} className="flex flex-col items-center gap-2.5">
@@ -136,20 +140,12 @@ function DemoAvatar({
     <Avatar className={className} size={size} dir={dir}>
       <AvatarImage src={src} alt="User" />
       <AvatarFallback>CN</AvatarFallback>
-      {badge ? (
-        <AvatarBadge variant="status" size={badgeSizeForAvatar(size ?? "default")} />
-      ) : null}
+      {badge ? <AvatarBadge variant="status" size={badgeSizeForAvatar(size ?? "default")} /> : null}
     </Avatar>
   )
 }
 
-function AvatarBadgeSpec({
-  variant,
-  size
-}: {
-  variant: "icon" | "status"
-  size: AvatarBadgeSize
-}) {
+function AvatarBadgeSpec({ variant, size }: { variant: "icon" | "status"; size: AvatarBadgeSize }) {
   return (
     <AvatarBadge variant={variant} size={size}>
       {variant === "icon" ? <Plus aria-hidden /> : null}
@@ -159,7 +155,10 @@ function AvatarBadgeSpec({
 
 function AvatarGroupDemo({ dir, count = true }: { dir?: "ltr" | "rtl"; count?: boolean }) {
   return (
-    <AvatarGroup dir={dir} className={dir === "rtl" ? "flex-row-reverse space-x-reverse" : undefined}>
+    <AvatarGroup
+      dir={dir}
+      className={dir === "rtl" ? "flex-row-reverse space-x-reverse" : undefined}
+    >
       <DemoAvatar />
       <DemoAvatar src={AVATAR_SRC_ALT} />
       <DemoAvatar src="https://avatars.githubusercontent.com/u/69631?v=4" />
@@ -307,7 +306,10 @@ export function AvatarDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock title="Avatar Group" description="Use the AvatarGroup component to add a group of avatars.">
+        <ExampleBlock
+          title="Avatar Group"
+          description="Use the AvatarGroup component to add a group of avatars."
+        >
           <PreviewBox>
             <AvatarGroupDemo count={false} />
           </PreviewBox>
@@ -338,7 +340,10 @@ export function AvatarDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock title="Sizes" description="Use the size prop to change the size of the avatar.">
+        <ExampleBlock
+          title="Sizes"
+          description="Use the size prop to change the size of the avatar."
+        >
           <PreviewBox>
             <div className="flex items-center gap-2">
               <DemoAvatar size="sm" />

@@ -2,10 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite"
 import { ChevronRight } from "lucide-react"
 
 import { Label } from "@/components/atoms/label/label"
-import {
-  NativeSelect,
-  NativeSelectOption
-} from "@/components/atoms/native-select/native-select"
+import { NativeSelect, NativeSelectOption } from "@/components/atoms/native-select/native-select"
 
 import { PaginationDesignSpec } from "./pagination-design-spec"
 import {

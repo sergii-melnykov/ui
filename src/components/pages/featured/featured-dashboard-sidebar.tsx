@@ -44,11 +44,7 @@ import {
   useSidebar
 } from "@/components/organisms/sidebar/sidebar"
 
-function NavDocuments({
-  items
-}: {
-  items: { name: string; url: string; icon: LucideIcon }[]
-}) {
+function NavDocuments({ items }: { items: { name: string; url: string; icon: LucideIcon }[] }) {
   const { isMobile } = useSidebar()
 
   return (

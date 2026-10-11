@@ -1,12 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import * as React from "react"
 
-import {
-  DatePicker,
-  DatePickerButton,
-  DatePickerContent,
-  DatePickerTrigger
-} from "./date-picker"
+import { DatePicker, DatePickerButton, DatePickerContent, DatePickerTrigger } from "./date-picker"
 
 describe("DatePicker", () => {
   it("renders trigger with placeholder when empty", () => {
@@ -25,9 +20,7 @@ describe("DatePicker", () => {
   })
 
   it("renders formatted date on the trigger button", () => {
-    render(
-      <DatePickerButton date={new Date(2026, 0, 20)} dateFormat="LLL dd, y" />
-    )
+    render(<DatePickerButton date={new Date(2026, 0, 20)} dateFormat="LLL dd, y" />)
 
     expect(screen.getByRole("button", { name: /jan 20, 2026/i })).toBeInTheDocument()
   })

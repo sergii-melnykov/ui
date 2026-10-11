@@ -185,7 +185,11 @@ export function DocsSidebarNavTree({ activeItem = "Data Fetching" }: { activeIte
   )
 }
 
-export function DocsSidebarNavCollapsible({ activeItem = "Data Fetching" }: { activeItem?: string }) {
+export function DocsSidebarNavCollapsible({
+  activeItem = "Data Fetching"
+}: {
+  activeItem?: string
+}) {
   return (
     <>
       {DOC_NAV_SECTIONS.map((section) => (

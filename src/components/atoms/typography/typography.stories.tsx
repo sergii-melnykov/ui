@@ -172,8 +172,8 @@ export const Demo: Story = {
       <Typography variant="h1">Taxing Laughter: The Joke Tax Chronicles</Typography>
       <Typography variant="lead">
         Once upon a time, in a far-off land, there was a very lazy king who spent all day lounging
-        on his throne. One day, his advisors came to him with a problem: the kingdom was running
-        out of money.
+        on his throne. One day, his advisors came to him with a problem: the kingdom was running out
+        of money.
       </Typography>
       <Typography variant="h2">The King&apos;s Plan</Typography>
       <Typography variant="p">

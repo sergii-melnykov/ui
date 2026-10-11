@@ -71,24 +71,24 @@ export const Multiple: Story = {
     return (
       <div className="w-[320px]">
         <Combobox items={FRAMEWORKS} multiple value={value} onValueChange={setValue}>
-        <ComboboxChips>
-          <ComboboxValue>
-            {value.map((item) => (
-              <ComboboxChip key={item}>{item}</ComboboxChip>
-            ))}
-          </ComboboxValue>
-          <ComboboxChipsInput placeholder="Add framework" />
-        </ComboboxChips>
-        <ComboboxContent>
-          <ComboboxEmpty>No items found.</ComboboxEmpty>
-          <ComboboxList>
-            {(item: string) => (
-              <ComboboxItem key={item} value={item}>
-                {item}
-              </ComboboxItem>
-            )}
-          </ComboboxList>
-        </ComboboxContent>
+          <ComboboxChips>
+            <ComboboxValue>
+              {value.map((item) => (
+                <ComboboxChip key={item}>{item}</ComboboxChip>
+              ))}
+            </ComboboxValue>
+            <ComboboxChipsInput placeholder="Add framework" />
+          </ComboboxChips>
+          <ComboboxContent>
+            <ComboboxEmpty>No items found.</ComboboxEmpty>
+            <ComboboxList>
+              {(item: string) => (
+                <ComboboxItem key={item} value={item}>
+                  {item}
+                </ComboboxItem>
+              )}
+            </ComboboxList>
+          </ComboboxContent>
         </Combobox>
       </div>
     )

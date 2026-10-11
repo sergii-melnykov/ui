@@ -3,13 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Card, CardContent } from "@/components/molecules/card/card"
 
 import { CarouselDesignSpec } from "./carousel-design-spec"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
-} from "./carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "./carousel"
 
 const meta: Meta<typeof Carousel> = {
   title: "Atoms/Carousel",

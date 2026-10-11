@@ -139,42 +139,42 @@ export const WithNavigation: Story = {
           <SheetDescription>Browse through the available options.</SheetDescription>
         </SheetHeader>
         <SheetBody>
-        <nav>
-          <ul className="space-y-2">
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-              >
-                Dashboard
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-              >
-                Profile
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-              >
-                Settings
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
-              >
-                Help
-              </a>
-            </li>
-          </ul>
-        </nav>
+          <nav>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+                >
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+                >
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+                >
+                  Settings
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md"
+                >
+                  Help
+                </a>
+              </li>
+            </ul>
+          </nav>
         </SheetBody>
       </SheetContent>
     </Sheet>

@@ -14,10 +14,7 @@
 import fs from "node:fs"
 import path from "node:path"
 
-import {
-  parseStoryIndex,
-  storyTitleSegmentToLabel
-} from "./lib/components-catalog-index.mjs"
+import { parseStoryIndex, storyTitleSegmentToLabel } from "./lib/components-catalog-index.mjs"
 
 const root = path.join(import.meta.dirname, "..")
 const generatedIndexPath = path.join(

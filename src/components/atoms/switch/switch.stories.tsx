@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldLabel
-} from "@/components/atoms/field/field"
+import { Field, FieldContent, FieldDescription, FieldLabel } from "@/components/atoms/field/field"
 
 import { SwitchDesignSpec } from "./switch-design-spec"
 import { Switch } from "./switch"

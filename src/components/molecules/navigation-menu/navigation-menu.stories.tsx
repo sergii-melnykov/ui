@@ -181,10 +181,7 @@ export const Mobile: Story = {
                 {["Button", "Card", "Dialog", "Dropdown"].map((component) => (
                   <li key={component}>
                     <NavigationMenuLink asChild>
-                      <a
-                        className={menuLinkClass}
-                        href={`/components/${component.toLowerCase()}`}
-                      >
+                      <a className={menuLinkClass} href={`/components/${component.toLowerCase()}`}>
                         <div className="text-sm font-medium leading-none">{component}</div>
                       </a>
                     </NavigationMenuLink>

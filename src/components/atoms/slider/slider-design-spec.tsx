@@ -93,7 +93,11 @@ function SpecSliderThumb({ hover }: { hover?: boolean }) {
   )
 }
 
-function SpecSliderTrack({ orientation = "horizontal" }: { orientation?: "horizontal" | "vertical" }) {
+function SpecSliderTrack({
+  orientation = "horizontal"
+}: {
+  orientation?: "horizontal" | "vertical"
+}) {
   return (
     <div
       className={cn(
@@ -105,7 +109,11 @@ function SpecSliderTrack({ orientation = "horizontal" }: { orientation?: "horizo
   )
 }
 
-function SpecSliderRange({ orientation = "horizontal" }: { orientation?: "horizontal" | "vertical" }) {
+function SpecSliderRange({
+  orientation = "horizontal"
+}: {
+  orientation?: "horizontal" | "vertical"
+}) {
   return (
     <div
       className={cn(
@@ -208,10 +216,7 @@ export function SliderDesignSpec() {
       <div className="flex flex-col gap-10">
         <h2 className="text-xl font-semibold text-foreground">Examples</h2>
 
-        <ExampleBlock
-          title="Range"
-          description="Use an array with two values for a range slider."
-        >
+        <ExampleBlock title="Range" description="Use an array with two values for a range slider.">
           <PreviewBox>
             <Slider className={sliderWidthClass} defaultValue={[37, 62]} max={100} step={1} />
           </PreviewBox>

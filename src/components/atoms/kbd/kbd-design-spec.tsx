@@ -32,13 +32,7 @@ function PreviewBox({ children }: { children: React.ReactNode }) {
   )
 }
 
-function ExampleIntro({
-  title,
-  description
-}: {
-  title: string
-  description: React.ReactNode
-}) {
+function ExampleIntro({ title, description }: { title: string; description: React.ReactNode }) {
   return (
     <div className="flex w-full flex-col items-center justify-center">
       <h4 className="w-full text-lg font-semibold text-foreground">{title}</h4>
@@ -58,11 +52,7 @@ export function KbdDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="h-8 shrink-0 rounded-xl px-3 shadow-xs" asChild>
-          <a
-            href="https://ui.shadcn.com/docs/components/kbd"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://ui.shadcn.com/docs/components/kbd" target="_blank" rel="noreferrer">
             View in Shadcn
             <ArrowUpRight className="size-4" />
           </a>

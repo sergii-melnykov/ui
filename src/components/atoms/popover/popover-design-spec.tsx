@@ -126,11 +126,7 @@ function PopoverPanel({
 
 function PopoverHeaderExample({ dir }: { dir: "ltr" | "rtl" }) {
   return (
-    <PopoverPanel
-      dir={dir}
-      title="Dimensions"
-      description="Set the dimensions for the layer."
-    />
+    <PopoverPanel dir={dir} title="Dimensions" description="Set the dimensions for the layer." />
   )
 }
 
@@ -164,7 +160,11 @@ function WithFormExample() {
   return (
     <div className="flex flex-col items-start gap-1">
       <SpecTrigger>Open Popover</SpecTrigger>
-      <PopoverPanel title="Dimensions" description="Set the dimensions for the layer." className="w-64">
+      <PopoverPanel
+        title="Dimensions"
+        description="Set the dimensions for the layer."
+        className="w-64"
+      >
         <div className="flex w-full flex-col gap-4">
           <div className="flex items-center gap-2">
             <Label htmlFor="popover-spec-width" className="shrink-0">
@@ -193,21 +193,13 @@ function RtlSideExample({
 }) {
   const isHorizontal = side === "left" || side === "right"
   const panel = (
-    <PopoverPanel
-      dir="rtl"
-      title="الأبعاد"
-      description="تعيين الأبعاد للطبقة."
-      className="w-40"
-    />
+    <PopoverPanel dir="rtl" title="الأبعاد" description="تعيين الأبعاد للطبقة." className="w-40" />
   )
   const trigger = <SpecTrigger>{label}</SpecTrigger>
 
   return (
     <div
-      className={cn(
-        "flex gap-1",
-        isHorizontal ? "flex-row items-center" : "flex-col items-center"
-      )}
+      className={cn("flex gap-1", isHorizontal ? "flex-row items-center" : "flex-col items-center")}
     >
       {side === "left" || side === "top" ? (
         <>

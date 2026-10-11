@@ -87,12 +87,7 @@ export const ALL_COMPONENTS = [
 ] as const
 
 /** Library-only components with no matching shadcn/ui docs page. */
-export const NO_SHADCN_DOCS = new Set<string>([
-  "Attachment",
-  "Bubble",
-  "Marker",
-  "Questionnaire"
-])
+export const NO_SHADCN_DOCS = new Set<string>(["Attachment", "Bubble", "Marker", "Questionnaire"])
 
 /** Docs paths that differ from the default slug (e.g. radix primitives). */
 export const SHADCN_DOCS_HREF_OVERRIDES: Partial<Record<string, string>> = {
@@ -111,10 +106,7 @@ export function getShadcnDocsHref(name: string): string | null {
   return `https://ui.shadcn.com/docs/components/${shadcnDocsSlug(name)}`
 }
 
-export function getStorybookHref(
-  name: string,
-  snapshot: StoryIndexSnapshot | null
-): string | null {
+export function getStorybookHref(name: string, snapshot: StoryIndexSnapshot | null): string | null {
   return getComponentHrefFromIndex(name, snapshot)?.href ?? null
 }
 

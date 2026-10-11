@@ -11,11 +11,7 @@ import { Button } from "@/components/atoms/button/button"
 import { Separator } from "@/components/atoms/separator/separator"
 import { cn } from "@/utils/index"
 
-import {
-  ShadcnSidebarExamplePair,
-  SIDEBAR_SPEC_USER,
-  SidebarSpecLeadingIcon
-} from "./sidebar-demo"
+import { ShadcnSidebarExamplePair, SIDEBAR_SPEC_USER, SidebarSpecLeadingIcon } from "./sidebar-demo"
 import {
   SidebarGroupLabel,
   SidebarMenuButton,
@@ -70,10 +66,7 @@ function SpecSection({
 function VariantGrid({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={cn(
-        "overflow-x-auto rounded-xl border border-dashed border-border p-5",
-        className
-      )}
+      className={cn("overflow-x-auto rounded-xl border border-dashed border-border p-5", className)}
     >
       {children}
     </div>
@@ -122,13 +115,7 @@ function MatrixColumnHeaders({ columns }: { columns: string[] }) {
   )
 }
 
-function SpecMenuButton({
-  collapsed,
-  state
-}: {
-  collapsed: boolean
-  state: SpecState
-}) {
+function SpecMenuButton({ collapsed, state }: { collapsed: boolean; state: SpecState }) {
   const disabled = state === "disabled"
 
   if (collapsed) {
@@ -154,11 +141,7 @@ function SpecMenuButton({
       type="button"
       tabIndex={-1}
       disabled={disabled}
-      className={cn(
-        sidebarMenuButtonVariants(),
-        "w-[239px]",
-        menuButtonStateClassName(state)
-      )}
+      className={cn(sidebarMenuButtonVariants(), "w-[239px]", menuButtonStateClassName(state))}
     >
       <Terminal />
       <span className="flex-1 truncate">Playground</span>
@@ -167,13 +150,7 @@ function SpecMenuButton({
   )
 }
 
-function SpecHeaderCell({
-  collapsed,
-  state
-}: {
-  collapsed: boolean
-  state: "default" | "hover"
-}) {
+function SpecHeaderCell({ collapsed, state }: { collapsed: boolean; state: "default" | "hover" }) {
   if (collapsed) {
     return (
       <div className="flex h-[68px] items-center p-2">

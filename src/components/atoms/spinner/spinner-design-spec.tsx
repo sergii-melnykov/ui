@@ -116,11 +116,7 @@ export function SpinnerDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="h-8 shrink-0 rounded-xl px-3 shadow-xs" asChild>
-          <a
-            href="https://ui.shadcn.com/docs/components/spinner"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://ui.shadcn.com/docs/components/spinner" target="_blank" rel="noreferrer">
             View in Shadcn
             <ArrowUpRight className="size-4" />
           </a>
@@ -175,8 +171,8 @@ export function SpinnerDesignSpec() {
           description={
             <>
               Add a spinner to a button to indicate a loading state. Remember to use the{" "}
-              <code>data-icon=&quot;inline-start&quot;</code> prop to add the spinner to the start of
-              the button and the <code>data-icon=&quot;inline-end&quot;</code> prop to add the
+              <code>data-icon=&quot;inline-start&quot;</code> prop to add the spinner to the start
+              of the button and the <code>data-icon=&quot;inline-end&quot;</code> prop to add the
               spinner to the end of the button.
             </>
           }
@@ -204,9 +200,9 @@ export function SpinnerDesignSpec() {
           description={
             <>
               Add a spinner to a badge to indicate a loading state. Remember to use the{" "}
-              <code>data-icon=&quot;inline-start&quot;</code> prop to add the spinner to the start of
-              the badge and the <code>data-icon=&quot;inline-end&quot;</code> prop to add the spinner
-              to the end of the badge.
+              <code>data-icon=&quot;inline-start&quot;</code> prop to add the spinner to the start
+              of the badge and the <code>data-icon=&quot;inline-end&quot;</code> prop to add the
+              spinner to the end of the badge.
             </>
           }
         >
@@ -257,7 +253,10 @@ export function SpinnerDesignSpec() {
           <PreviewBox>
             <Empty className="h-[216px] w-full max-w-sm gap-4 border border-solid p-6 md:p-6">
               <EmptyHeader className="max-w-sm gap-2">
-                <EmptyMedia variant="icon" className="mb-0 size-8 [&_svg:not([class*='size-'])]:size-4">
+                <EmptyMedia
+                  variant="icon"
+                  className="mb-0 size-8 [&_svg:not([class*='size-'])]:size-4"
+                >
                   <Spinner />
                 </EmptyMedia>
                 <EmptyTitle>Processing your request</EmptyTitle>
@@ -294,7 +293,9 @@ export function SpinnerDesignSpec() {
           <PreviewBox>
             <Item dir="rtl" variant="muted" className="w-full max-w-xs">
               <ItemContent>
-                <ItemTitle className="w-full justify-end text-right">جاري معالجة الدفع...</ItemTitle>
+                <ItemTitle className="w-full justify-end text-right">
+                  جاري معالجة الدفع...
+                </ItemTitle>
               </ItemContent>
               <ItemMedia>
                 <Spinner className="size-5" />

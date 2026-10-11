@@ -3,12 +3,7 @@ import * as React from "react"
 import { REGEXP_ONLY_DIGITS } from "input-otp"
 
 import { InputOtpDesignSpec } from "./input-otp-design-spec"
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot
-} from "./input-otp"
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "./input-otp"
 
 const meta: Meta<typeof InputOTP> = {
   title: "Atoms/InputOtp",

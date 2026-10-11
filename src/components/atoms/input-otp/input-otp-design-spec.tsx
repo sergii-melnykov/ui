@@ -22,12 +22,7 @@ import {
 } from "@/components/molecules/card/card"
 import { cn } from "@/utils/index"
 
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot
-} from "./input-otp"
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "./input-otp"
 
 function SpecSection({
   title,
@@ -273,7 +268,11 @@ export function InputOtpDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-          <a href="https://ui.shadcn.com/docs/components/input-otp" target="_blank" rel="noreferrer">
+          <a
+            href="https://ui.shadcn.com/docs/components/input-otp"
+            target="_blank"
+            rel="noreferrer"
+          >
             View in Shadcn
             <ArrowUpRight className="size-4" />
           </a>
@@ -311,10 +310,7 @@ export function InputOtpDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Disabled"
-          description="Use the disabled prop to disable the input."
-        >
+        <ExampleBlock title="Disabled" description="Use the disabled prop to disable the input.">
           <PreviewBox>
             <OtpGrouped groupSizes={[3, 3]} defaultValue="123456" disabled />
           </PreviewBox>
@@ -343,7 +339,10 @@ export function InputOtpDesignSpec() {
           description={
             <>
               A common pattern for PIN codes. This uses the{" "}
-              <code className="text-sm">pattern={"{"}REGEXP_ONLY_DIGITS{"}"}</code> prop.
+              <code className="text-sm">
+                pattern={"{"}REGEXP_ONLY_DIGITS{"}"}
+              </code>{" "}
+              prop.
             </>
           }
         >

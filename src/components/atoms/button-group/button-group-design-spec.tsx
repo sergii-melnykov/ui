@@ -35,11 +35,7 @@ import {
   InputGroupButton,
   InputGroupInput
 } from "@/components/atoms/input-group/input-group"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from "@/components/atoms/popover/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/atoms/popover/popover"
 import {
   Select,
   SelectContent,
@@ -59,11 +55,7 @@ import {
 } from "@/components/organisms/dropdown-menu/dropdown-menu"
 import { cn } from "@/utils/index"
 
-import {
-  ButtonGroup,
-  ButtonGroupSeparator,
-  ButtonGroupText
-} from "./button-group"
+import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from "./button-group"
 
 const SPEC_STATES = ["Default", "Hover", "Focus", "Disabled"] as const
 const SPEC_SIZES = [
@@ -96,10 +88,7 @@ function SpecSection({
 function VariantGrid({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={cn(
-        "overflow-x-auto rounded-xl border border-dashed border-border p-5",
-        className
-      )}
+      className={cn("overflow-x-auto rounded-xl border border-dashed border-border p-5", className)}
     >
       {children}
     </div>
@@ -150,10 +139,7 @@ function MatrixColumnHeaders() {
           <div className="h-3 w-full border-b border-foreground" aria-hidden />
           <div className="grid w-full grid-cols-4 gap-2">
             {SPEC_STATES.map((state) => (
-              <span
-                key={state}
-                className="text-center text-xs font-medium text-muted-foreground"
-              >
+              <span key={state} className="text-center text-xs font-medium text-muted-foreground">
                 {state}
               </span>
             ))}
@@ -296,15 +282,15 @@ function TextButtonVariantBlock({
       <div className="min-w-[960px] flex-1">
         <MatrixColumnHeaders />
         {positions.map((position) => (
-          <div
-            key={position}
-            className="grid h-[94px] grid-cols-12 items-center gap-x-4"
-          >
+          <div key={position} className="grid h-[94px] grid-cols-12 items-center gap-x-4">
             {SPEC_SIZES.flatMap((sizeCol) =>
               SPEC_STATES.map((stateLabel) => {
                 const state = stateLabel.toLowerCase() as SpecState
                 return (
-                  <div key={`${position}-${sizeCol.label}-${stateLabel}`} className="flex justify-center">
+                  <div
+                    key={`${position}-${sizeCol.label}-${stateLabel}`}
+                    className="flex justify-center"
+                  >
                     <SpecGroupTextButton
                       variant={variant}
                       size={sizeCol.text}
@@ -342,15 +328,15 @@ function IconButtonVariantBlock({
       <div className="min-w-[960px] flex-1">
         <MatrixColumnHeaders />
         {positions.map((position) => (
-          <div
-            key={position}
-            className="grid h-[94px] grid-cols-12 items-center gap-x-4"
-          >
+          <div key={position} className="grid h-[94px] grid-cols-12 items-center gap-x-4">
             {SPEC_SIZES.flatMap((sizeCol) =>
               SPEC_STATES.map((stateLabel) => {
                 const state = stateLabel.toLowerCase() as SpecState
                 return (
-                  <div key={`${position}-${sizeCol.label}-${stateLabel}`} className="flex justify-center">
+                  <div
+                    key={`${position}-${sizeCol.label}-${stateLabel}`}
+                    className="flex justify-center"
+                  >
                     <SpecGroupIconButton
                       variant={variant}
                       size={sizeCol.icon}
@@ -368,13 +354,7 @@ function IconButtonVariantBlock({
   )
 }
 
-const TEXT_POSITIONS_FULL: TextPosition[] = [
-  "single-rounded",
-  "single",
-  "left",
-  "right",
-  "middle"
-]
+const TEXT_POSITIONS_FULL: TextPosition[] = ["single-rounded", "single", "left", "right", "middle"]
 const TEXT_POSITIONS_GHOST: TextPosition[] = ["single-rounded", "single"]
 const ICON_POSITIONS_FULL: IconPosition[] = [
   "single-rounded",
@@ -589,12 +569,18 @@ export function ButtonGroupDesignSpec() {
         >
           <PreviewBox>
             <div className="flex flex-col items-center gap-8">
-              <SizeExampleRow size={{ text: "sm", icon: "icon-sm" }} labels={["Small", "Button", "Group"]} />
+              <SizeExampleRow
+                size={{ text: "sm", icon: "icon-sm" }}
+                labels={["Small", "Button", "Group"]}
+              />
               <SizeExampleRow
                 size={{ text: "default", icon: "icon" }}
                 labels={["Default", "Button", "Group"]}
               />
-              <SizeExampleRow size={{ text: "lg", icon: "icon-lg" }} labels={["Large", "Button", "Group"]} />
+              <SizeExampleRow
+                size={{ text: "lg", icon: "icon-lg" }}
+                labels={["Large", "Button", "Group"]}
+              />
             </div>
           </PreviewBox>
         </ExampleBlock>

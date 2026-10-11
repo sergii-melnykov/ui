@@ -146,10 +146,7 @@ function ComponentGrid({ entries }: { entries: readonly CatalogCardEntry[] }) {
 }
 
 function CatalogByLayer({ snapshot }: { snapshot: StoryIndexSnapshot }) {
-  const entries = React.useMemo(
-    () => buildCatalogCardEntries(snapshot, ALL_COMPONENTS),
-    [snapshot]
-  )
+  const entries = React.useMemo(() => buildCatalogCardEntries(snapshot, ALL_COMPONENTS), [snapshot])
 
   const byLayer = React.useMemo(() => {
     const map = new Map<string, CatalogCardEntry[]>()

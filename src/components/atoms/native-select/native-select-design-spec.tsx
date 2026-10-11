@@ -12,11 +12,7 @@ import { Button } from "@/components/atoms/button/button"
 import { Separator } from "@/components/atoms/separator/separator"
 import { cn } from "@/utils/index"
 
-import {
-  NativeSelect,
-  NativeSelectOptGroup,
-  NativeSelectOption
-} from "./native-select"
+import { NativeSelect, NativeSelectOptGroup, NativeSelectOption } from "./native-select"
 
 function SpecSection({
   title,
@@ -89,7 +85,9 @@ function MatrixColumnHeaders({ columns }: { columns: string[] }) {
     <div className="grid grid-cols-2 gap-6">
       {columns.map((label) => (
         <div key={label} className="flex flex-col items-center gap-6">
-          <span className="text-sm font-medium whitespace-nowrap text-muted-foreground">{label}</span>
+          <span className="text-sm font-medium whitespace-nowrap text-muted-foreground">
+            {label}
+          </span>
           <div className="h-3 w-full border-b border-foreground" aria-hidden />
         </div>
       ))}
@@ -263,11 +261,7 @@ function GroupsExample() {
 function InvalidExample() {
   return (
     <div className="flex flex-col items-start">
-      <NativeSelect
-        aria-invalid
-        defaultValue="error"
-        className="relative z-10 w-[114px]"
-      >
+      <NativeSelect aria-invalid defaultValue="error" className="relative z-10 w-[114px]">
         <NativeSelectOption value="error">Error state</NativeSelectOption>
         <NativeSelectOption value="apple">Apple</NativeSelectOption>
         <NativeSelectOption value="banana">Banana</NativeSelectOption>

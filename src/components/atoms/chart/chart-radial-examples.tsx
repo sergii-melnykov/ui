@@ -1,19 +1,8 @@
 "use client"
 
-import {
-  Label,
-  LabelList,
-  PolarGrid,
-  PolarRadiusAxis,
-  RadialBar,
-  RadialBarChart
-} from "recharts"
+import { Label, LabelList, PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts"
 
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent
-} from "./chart"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "./chart"
 import {
   radialBrowserChartConfig,
   radialBrowserChartData,
@@ -126,11 +115,7 @@ export function ChartRadialTextExample() {
                       >
                         {radialSafariTextChartData[0].visitors.toLocaleString()}
                       </tspan>
-                      <tspan
-                        x={viewBox.cx}
-                        y={viewBox.cy + 24}
-                        className="fill-muted-foreground"
-                      >
+                      <tspan x={viewBox.cx} y={viewBox.cy + 24} className="fill-muted-foreground">
                         Visitors
                       </tspan>
                     </text>
@@ -182,11 +167,7 @@ export function ChartRadialShapeExample() {
                       >
                         {radialSafariShapeChartData[0].visitors.toLocaleString()}
                       </tspan>
-                      <tspan
-                        x={viewBox.cx}
-                        y={viewBox.cy + 24}
-                        className="fill-muted-foreground"
-                      >
+                      <tspan x={viewBox.cx} y={viewBox.cy + 24} className="fill-muted-foreground">
                         Visitors
                       </tspan>
                     </text>
@@ -203,8 +184,7 @@ export function ChartRadialShapeExample() {
 }
 
 export function ChartRadialStackedExample() {
-  const totalVisitors =
-    radialStackedChartData[0].desktop + radialStackedChartData[0].mobile
+  const totalVisitors = radialStackedChartData[0].desktop + radialStackedChartData[0].mobile
 
   return (
     <RadialChartVariantLayout title="Radial Chart - Stacked">
@@ -229,11 +209,7 @@ export function ChartRadialStackedExample() {
                       >
                         {totalVisitors.toLocaleString()}
                       </tspan>
-                      <tspan
-                        x={viewBox.cx}
-                        y={viewBox.cy + 4}
-                        className="fill-muted-foreground"
-                      >
+                      <tspan x={viewBox.cx} y={viewBox.cy + 4} className="fill-muted-foreground">
                         Visitors
                       </tspan>
                     </text>

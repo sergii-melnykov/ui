@@ -10,12 +10,7 @@ import { ArrowUpRight, ChevronDown, Search } from "lucide-react"
 
 import { Button } from "@/components/atoms/button/button"
 import { ButtonGroup, ButtonGroupText } from "@/components/atoms/button-group/button-group"
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel
-} from "@/components/atoms/field/field"
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/atoms/field/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -248,10 +243,7 @@ export function InputDesignSpec() {
           <h4 className="text-lg font-semibold text-foreground">Field label</h4>
           <VariantGrid className="mt-4 max-w-fit">
             <div className="flex gap-4">
-              <MatrixRowLabels
-                rows={["Default", "Destructive", "Disabled"]}
-                rowHeight="h-[44px]"
-              />
+              <MatrixRowLabels rows={["Default", "Destructive", "Disabled"]} rowHeight="h-[44px]" />
               <div className="flex flex-col gap-4 pt-14">
                 <div className="grid grid-cols-2 gap-16">
                   <span className="text-center text-sm font-medium text-muted-foreground">LTR</span>
@@ -288,10 +280,7 @@ export function InputDesignSpec() {
       <div className="flex flex-col gap-10">
         <h2 className="text-xl font-semibold text-foreground">Examples</h2>
 
-        <ExampleBlock
-          title="Basic"
-          description="Use Input for a single-line text field."
-        >
+        <ExampleBlock title="Basic" description="Use Input for a single-line text field.">
           <PreviewBox>
             <Input className="w-[320px]" placeholder="Enter text" />
           </PreviewBox>
@@ -310,10 +299,7 @@ export function InputDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Form"
-          description="Compose multiple fields with actions."
-        >
+        <ExampleBlock title="Form" description="Compose multiple fields with actions.">
           <PreviewBox>
             <FieldGroup className="w-[320px] gap-5">
               <Field className="gap-2">
@@ -350,10 +336,7 @@ export function InputDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Disabled"
-          description="Disable the input to prevent edits."
-        >
+        <ExampleBlock title="Disabled" description="Disable the input to prevent edits.">
           <PreviewBox>
             <Field className="w-[320px] gap-2 opacity-50" data-disabled>
               <FieldLabel htmlFor="spec-disabled">Email</FieldLabel>
@@ -363,10 +346,7 @@ export function InputDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="File"
-          description="Use type=&quot;file&quot; for file uploads."
-        >
+        <ExampleBlock title="File" description='Use type="file" for file uploads.'>
           <PreviewBox>
             <Field className="w-[320px] gap-2">
               <FieldLabel htmlFor="spec-file">Picture</FieldLabel>
@@ -454,9 +434,7 @@ export function InputDesignSpec() {
               <Field className="gap-2">
                 <FieldLabel htmlFor="spec-ext-email">Email</FieldLabel>
                 <Input id="spec-ext-email" type="email" placeholder="john@example.com" />
-                <FieldDescription>
-                  We&apos;ll never share your email with anyone.
-                </FieldDescription>
+                <FieldDescription>We&apos;ll never share your email with anyone.</FieldDescription>
               </Field>
               <div className="grid grid-cols-2 gap-4">
                 <Field className="gap-2">
@@ -492,7 +470,7 @@ export function InputDesignSpec() {
 
         <ExampleBlock
           title="RTL"
-          description="Set dir=&quot;rtl&quot; on inputs and fields for right-to-left layouts."
+          description='Set dir="rtl" on inputs and fields for right-to-left layouts.'
         >
           <PreviewBox>
             <FieldGroup dir="rtl" className="w-[320px] gap-2">

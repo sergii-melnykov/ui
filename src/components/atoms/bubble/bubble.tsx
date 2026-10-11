@@ -63,10 +63,7 @@ function Bubble({ className, variant, align = "start", ...props }: BubbleProps) 
     <div
       data-slot="bubble-align"
       data-align={align}
-      className={cn(
-        "flex w-full",
-        align === "end" ? "justify-end" : "justify-start"
-      )}
+      className={cn("flex w-full", align === "end" ? "justify-end" : "justify-start")}
     >
       {bubble}
     </div>

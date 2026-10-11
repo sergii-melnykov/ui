@@ -22,12 +22,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/atoms/toggle-group/to
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/utils/index"
 
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig
-} from "./chart"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "./chart"
 import { chartDemoData } from "./chart-demo-data"
 
 const chartConfig = {

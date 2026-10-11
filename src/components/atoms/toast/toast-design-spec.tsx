@@ -4,26 +4,13 @@
  */
 
 import * as React from "react"
-import {
-  ArrowUpRight,
-  CircleCheck,
-  Info,
-  Loader2,
-  OctagonX,
-  TriangleAlert
-} from "lucide-react"
+import { ArrowUpRight, CircleCheck, Info, Loader2, OctagonX, TriangleAlert } from "lucide-react"
 
 import { Button } from "@/components/atoms/button/button"
 import { Separator } from "@/components/atoms/separator/separator"
 import { cn } from "@/utils/index"
 
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle
-} from "./toast"
+import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle } from "./toast"
 
 function SpecSection({
   title,
@@ -50,13 +37,7 @@ function PreviewBox({ children }: { children: React.ReactNode }) {
   )
 }
 
-function StaticToast({
-  children,
-  className
-}: {
-  children: React.ReactNode
-  className?: string
-}) {
+function StaticToast({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <Toast open onOpenChange={() => {}} className={cn("w-[382px]", className)}>
       {children}
@@ -64,13 +45,7 @@ function StaticToast({
   )
 }
 
-function ToastContent({
-  title,
-  description
-}: {
-  title?: string
-  description: React.ReactNode
-}) {
+function ToastContent({ title, description }: { title?: string; description: React.ReactNode }) {
   return (
     <div className="flex min-w-0 flex-1 flex-col gap-1">
       {title ? <ToastTitle>{title}</ToastTitle> : null}
@@ -123,11 +98,7 @@ export function ToastDesignSpec() {
             </p>
           </div>
           <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-            <a
-              href="https://ui.shadcn.com/docs/components/sonner"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://ui.shadcn.com/docs/components/sonner" target="_blank" rel="noreferrer">
               View in Shadcn
               <ArrowUpRight className="size-4" />
             </a>

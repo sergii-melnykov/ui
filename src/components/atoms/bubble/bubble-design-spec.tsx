@@ -13,11 +13,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger
 } from "@/components/atoms/collapsible/collapsible"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from "@/components/atoms/popover/popover"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/atoms/popover/popover"
 import { Separator } from "@/components/atoms/separator/separator"
 import {
   Tooltip,
@@ -77,10 +73,7 @@ function MatrixLabels({ rows }: { rows: { label: string; className?: string }[] 
   return (
     <div className="flex flex-col gap-6">
       {rows.map(({ label, className }) => (
-        <div
-          key={label}
-          className={cn("flex h-10 items-center gap-2.5", className)}
-        >
+        <div key={label} className={cn("flex h-10 items-center gap-2.5", className)}>
           <span className="w-[78px] shrink-0 text-sm font-medium text-muted-foreground">
             {label}
           </span>

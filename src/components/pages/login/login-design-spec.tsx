@@ -107,7 +107,13 @@ function OrContinueWith({ className }: { className?: string }) {
   )
 }
 
-function SignUpText({ className, tone = "muted" }: { className?: string; tone?: "muted" | "foreground" }) {
+function SignUpText({
+  className,
+  tone = "muted"
+}: {
+  className?: string
+  tone?: "muted" | "foreground"
+}) {
   return (
     <p
       className={cn(
@@ -126,7 +132,9 @@ function SignUpText({ className, tone = "muted" }: { className?: string; tone?: 
 
 function TermsFooter({ className }: { className?: string }) {
   return (
-    <p className={cn("max-w-[229px] text-center text-xs leading-4 text-muted-foreground", className)}>
+    <p
+      className={cn("max-w-[229px] text-center text-xs leading-4 text-muted-foreground", className)}
+    >
       By clicking continue, you agree to our{" "}
       <a href="https://ui.shadcn.com/terms" className="underline underline-offset-4">
         Terms of Service
@@ -144,11 +152,7 @@ function ImagePlaceholder({ size = "lg" }: { size?: "lg" | "sm" }) {
   const dimension = size === "lg" ? "size-[min(400px,50vw)]" : "size-[150px]"
   return (
     <div className={cn("relative shrink-0", dimension)}>
-      <img
-        src={placeholderImage}
-        alt=""
-        className="pointer-events-none size-full object-cover"
-      />
+      <img src={placeholderImage} alt="" className="pointer-events-none size-full object-cover" />
     </div>
   )
 }
@@ -258,7 +262,9 @@ function FormWithImageCardBlock() {
           <Card className="flex w-full flex-col overflow-hidden lg:flex-row lg:items-stretch">
             <CardContent className="flex flex-1 flex-col gap-6 px-6 py-6">
               <div className="flex flex-col gap-2 text-center">
-                <h2 className="text-2xl font-medium leading-8 text-card-foreground">Welcome back</h2>
+                <h2 className="text-2xl font-medium leading-8 text-card-foreground">
+                  Welcome back
+                </h2>
                 <p className="text-base text-muted-foreground">
                   Login with your Apple or Google account
                 </p>

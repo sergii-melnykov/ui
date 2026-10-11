@@ -53,10 +53,7 @@ function SpecSection({
 function VariantGrid({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={cn(
-        "overflow-x-auto rounded-xl border border-dashed border-border p-5",
-        className
-      )}
+      className={cn("overflow-x-auto rounded-xl border border-dashed border-border p-5", className)}
     >
       {children}
     </div>
@@ -83,9 +80,7 @@ function ExampleBlock({
   return (
     <div className="flex w-full flex-col">
       <h4 className="text-lg font-semibold text-foreground">{title}</h4>
-      {description ? (
-        <p className="pt-4 text-base text-muted-foreground">{description}</p>
-      ) : null}
+      {description ? <p className="pt-4 text-base text-muted-foreground">{description}</p> : null}
       <div className={cn(description ? "pt-6" : "pt-4")}>{children}</div>
     </div>
   )
@@ -191,10 +186,7 @@ function TabsComponentMatrix() {
             <VariantBlockLabel label={label} />
             <div className="flex flex-col gap-6">
               {PREVIEW_STATES.map((state) => (
-                <StateRowLabel
-                  key={state}
-                  label={state.charAt(0).toUpperCase() + state.slice(1)}
-                />
+                <StateRowLabel key={state} label={state.charAt(0).toUpperCase() + state.slice(1)} />
               ))}
             </div>
           </div>
@@ -204,10 +196,7 @@ function TabsComponentMatrix() {
       <div className="flex min-w-0 flex-1 flex-col gap-4">
         <div className="grid grid-cols-4 gap-6">
           {(["LTR", "LTR", "RTL", "RTL"] as const).map((group, index) => (
-            <div
-              key={`${group}-${String(index)}`}
-              className="flex flex-col items-center gap-6"
-            >
+            <div key={`${group}-${String(index)}`} className="flex flex-col items-center gap-6">
               <span className="text-sm font-medium text-muted-foreground">{group}</span>
               <div className="h-3 w-full border-b border-foreground" aria-hidden />
             </div>
@@ -219,10 +208,7 @@ function TabsComponentMatrix() {
             {PREVIEW_STATES.map((state) => (
               <div key={state} className="grid grid-cols-4 items-center gap-6">
                 {MATRIX_COLUMNS.map((column, columnIndex) => (
-                  <div
-                    key={`${state}-${String(columnIndex)}`}
-                    className="flex justify-center"
-                  >
+                  <div key={`${state}-${String(columnIndex)}`} className="flex justify-center">
                     <TabPreviewCell
                       listVariant={listVariant}
                       selected={column.selected}

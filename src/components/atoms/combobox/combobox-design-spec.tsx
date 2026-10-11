@@ -142,11 +142,7 @@ function ComboboxLabelSpec({ dir = "ltr" }: { dir?: "ltr" | "rtl" }) {
   )
 }
 
-function ComboboxItemSpec({
-  state = "default"
-}: {
-  state?: "default" | "hover" | "disabled"
-}) {
+function ComboboxItemSpec({ state = "default" }: { state?: "default" | "hover" | "disabled" }) {
   return (
     <div
       className={cn(
@@ -217,16 +213,16 @@ function BasicComboboxDemo({ className }: { className?: string }) {
     <div className={cn("w-[215px]", className)}>
       <Combobox items={FRAMEWORKS}>
         <ComboboxInput placeholder="Select a framework" />
-      <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item: string) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item: string) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
       </Combobox>
     </div>
   )
@@ -238,24 +234,24 @@ function MultipleComboboxDemo({ className }: { className?: string }) {
   return (
     <div className={cn("w-full max-w-xs", className)}>
       <Combobox items={FRAMEWORKS} multiple value={value} onValueChange={setValue}>
-      <ComboboxChips>
-        <ComboboxValue>
-          {value.map((item) => (
-            <ComboboxChip key={item}>{item}</ComboboxChip>
-          ))}
-        </ComboboxValue>
-        <ComboboxChipsInput placeholder="Add framework" />
-      </ComboboxChips>
-      <ComboboxContent>
-        <ComboboxEmpty>No items found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item: string) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
+        <ComboboxChips>
+          <ComboboxValue>
+            {value.map((item) => (
+              <ComboboxChip key={item}>{item}</ComboboxChip>
+            ))}
+          </ComboboxValue>
+          <ComboboxChipsInput placeholder="Add framework" />
+        </ComboboxChips>
+        <ComboboxContent>
+          <ComboboxEmpty>No items found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item: string) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
       </Combobox>
     </div>
   )
@@ -299,11 +295,7 @@ export function ComboboxDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-          <a
-            href="https://ui.shadcn.com/docs/components/combobox"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://ui.shadcn.com/docs/components/combobox" target="_blank" rel="noreferrer">
             View in Shadcn
             <ArrowUpRight className="size-4" />
           </a>
@@ -408,16 +400,16 @@ export function ComboboxDesignSpec() {
             <div className="w-[215px]">
               <Combobox items={FRAMEWORKS}>
                 <ComboboxInput placeholder="Select a framework" showClear />
-              <ComboboxContent>
-                <ComboboxEmpty>No items found.</ComboboxEmpty>
-                <ComboboxList>
-                  {(item: string) => (
-                    <ComboboxItem key={item} value={item}>
-                      {item}
-                    </ComboboxItem>
-                  )}
-                </ComboboxList>
-              </ComboboxContent>
+                <ComboboxContent>
+                  <ComboboxEmpty>No items found.</ComboboxEmpty>
+                  <ComboboxList>
+                    {(item: string) => (
+                      <ComboboxItem key={item} value={item}>
+                        {item}
+                      </ComboboxItem>
+                    )}
+                  </ComboboxList>
+                </ComboboxContent>
               </Combobox>
             </div>
           </PreviewBox>
@@ -435,19 +427,19 @@ export function ComboboxDesignSpec() {
                   <ComboboxEmpty>No items found.</ComboboxEmpty>
                   <ComboboxList>
                     {FRAMEWORK_GROUPS.map((group, index) => (
-                    <React.Fragment key={group.label}>
-                      {index > 0 ? <ComboboxSeparator /> : null}
-                      <ComboboxGroup items={group.items}>
-                        <ComboboxLabel>{group.label}</ComboboxLabel>
-                        <ComboboxCollection>
-                          {(item: string) => (
-                            <ComboboxItem key={item} value={item}>
-                              {item}
-                            </ComboboxItem>
-                          )}
-                        </ComboboxCollection>
-                      </ComboboxGroup>
-                    </React.Fragment>
+                      <React.Fragment key={group.label}>
+                        {index > 0 ? <ComboboxSeparator /> : null}
+                        <ComboboxGroup items={group.items}>
+                          <ComboboxLabel>{group.label}</ComboboxLabel>
+                          <ComboboxCollection>
+                            {(item: string) => (
+                              <ComboboxItem key={item} value={item}>
+                                {item}
+                              </ComboboxItem>
+                            )}
+                          </ComboboxCollection>
+                        </ComboboxGroup>
+                      </React.Fragment>
                     ))}
                   </ComboboxList>
                 </ComboboxContent>
@@ -464,11 +456,11 @@ export function ComboboxDesignSpec() {
             <div className="w-[240px]">
               <Combobox items={FRAMEWORKS}>
                 <ComboboxInput placeholder="Select a framework">
-                <InputGroupAddon align="inline-start">
-                  <InputGroupText>
-                    <Globe className="size-4" />
-                  </InputGroupText>
-                </InputGroupAddon>
+                  <InputGroupAddon align="inline-start">
+                    <InputGroupText>
+                      <Globe className="size-4" />
+                    </InputGroupText>
+                  </InputGroupAddon>
                 </ComboboxInput>
                 <ComboboxContent>
                   <ComboboxEmpty>No items found.</ComboboxEmpty>
@@ -514,8 +506,8 @@ export function ComboboxDesignSpec() {
           title="RTL"
           description={
             <>
-              Set <code>dir=&quot;rtl&quot;</code> on the combobox root for right-to-left layouts. See
-              the{" "}
+              Set <code>dir=&quot;rtl&quot;</code> on the combobox root for right-to-left layouts.
+              See the{" "}
               <a
                 href="https://ui.shadcn.com/docs/rtl"
                 className="underline"

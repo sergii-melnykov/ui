@@ -303,7 +303,9 @@ export function FieldDesignSpec() {
           <PreviewBox>
             <FieldSet className="w-full max-w-xs">
               <FieldLegend variant="label">Subscription Plan</FieldLegend>
-              <FieldDescription>Yearly and lifetime plans offer significant savings.</FieldDescription>
+              <FieldDescription>
+                Yearly and lifetime plans offer significant savings.
+              </FieldDescription>
               <RadioGroup defaultValue="yearly" className="gap-3">
                 {[
                   { id: "spec-plan-monthly", value: "monthly", label: "Monthly ($9.99/month)" },
@@ -369,9 +371,7 @@ export function FieldDesignSpec() {
         <ExampleBlock
           title="Field Group"
           description={
-            <>
-              Stack Field components with FieldGroup. Add FieldSeparator to divide them.
-            </>
+            <>Stack Field components with FieldGroup. Add FieldSeparator to divide them.</>
           }
         >
           <PreviewBox>
@@ -444,8 +444,8 @@ export function FieldDesignSpec() {
                 for mobile-first layouts.
               </li>
               <li>
-                Horizontal fields: Set orientation=&quot;horizontal&quot; on Field to align the label
-                and control side-by-side. Pair with FieldContent to keep descriptions aligned.
+                Horizontal fields: Set orientation=&quot;horizontal&quot; on Field to align the
+                label and control side-by-side. Pair with FieldContent to keep descriptions aligned.
               </li>
               <li>
                 Responsive fields: Set orientation=&quot;responsive&quot; for automatic column
@@ -465,7 +465,11 @@ export function FieldDesignSpec() {
                     <FieldLabel htmlFor="spec-profile-username">Username</FieldLabel>
                     <FieldDescription>Choose a unique username for your account.</FieldDescription>
                   </FieldContent>
-                  <Input id="spec-profile-username" defaultValue="Evil Rabbit" className="min-w-0 flex-1" />
+                  <Input
+                    id="spec-profile-username"
+                    defaultValue="Evil Rabbit"
+                    className="min-w-0 flex-1"
+                  />
                 </Field>
                 <div className="flex gap-2">
                   <Button type="button">Submit</Button>

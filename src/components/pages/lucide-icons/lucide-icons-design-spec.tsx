@@ -16,10 +16,7 @@ const sortedIcons = Object.entries(icons).sort(([a], [b]) => a.localeCompare(b))
 
 function IconCell({ name, Icon }: { name: string; Icon: LucideIcon }) {
   return (
-    <div
-      className="flex size-6 shrink-0 items-center justify-center text-foreground"
-      title={name}
-    >
+    <div className="flex size-6 shrink-0 items-center justify-center text-foreground" title={name}>
       <Icon className="size-6" strokeWidth={1.5} aria-hidden />
     </div>
   )
@@ -39,10 +36,7 @@ export function LucideIconsDesignSpec() {
       </header>
 
       <div
-        className={cn(
-          "flex w-full flex-wrap content-start",
-          "gap-x-[25.76px] gap-y-[26.93px]"
-        )}
+        className={cn("flex w-full flex-wrap content-start", "gap-x-[25.76px] gap-y-[26.93px]")}
         aria-label="Lucide icon set"
       >
         {sortedIcons.map(([name, Icon]) => (

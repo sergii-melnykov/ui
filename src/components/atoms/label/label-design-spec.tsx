@@ -68,13 +68,7 @@ function ExampleBlock({
   )
 }
 
-function SelectTriggerLike({
-  id,
-  placeholder
-}: {
-  id: string
-  placeholder?: string
-}) {
+function SelectTriggerLike({ id, placeholder }: { id: string; placeholder?: string }) {
   return (
     <InputGroup>
       <InputGroupInput
@@ -132,8 +126,12 @@ function LabelInFieldPreview() {
 
       <FieldSet className="gap-4">
         <div className="flex flex-col gap-1.5">
-          <FieldLegend className="mb-0 text-base font-medium leading-6">Billing Address</FieldLegend>
-          <FieldDescription>The billing address associated with your payment method</FieldDescription>
+          <FieldLegend className="mb-0 text-base font-medium leading-6">
+            Billing Address
+          </FieldLegend>
+          <FieldDescription>
+            The billing address associated with your payment method
+          </FieldDescription>
         </div>
         <Field orientation="horizontal" className="gap-2">
           <Checkbox id="label-spec-billing-same" defaultChecked />

@@ -253,8 +253,8 @@ export function SheetDesignSpec() {
         <div className="flex flex-col gap-2">
           <h1 className="text-3xl font-semibold leading-9 text-foreground">Sheet</h1>
           <p className="text-base text-muted-foreground">
-            Extends the Dialog component to display content that complements the main content of
-            the screen.
+            Extends the Dialog component to display content that complements the main content of the
+            screen.
           </p>
         </div>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>

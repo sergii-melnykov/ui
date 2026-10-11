@@ -17,10 +17,7 @@ function TypographyTable({
   )
 }
 
-function TypographyTableRow({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLTableRowElement>) {
+function TypographyTableRow({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) {
   return <tr className={cn(typographyTableClasses.row, className)} {...props} />
 }
 

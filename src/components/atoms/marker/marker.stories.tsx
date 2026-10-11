@@ -1,10 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import {
-  BookOpenCheck,
-  GitBranch,
-  RotateCcw,
-  Search
-} from "lucide-react"
+import { BookOpenCheck, GitBranch, RotateCcw, Search } from "lucide-react"
 
 import { Spinner } from "@/components/atoms/spinner/spinner"
 
@@ -101,7 +96,11 @@ export const AsLink: Story = {
         <GitBranch />
       </MarkerIcon>
       <MarkerContent>
-        <a href="https://ui.shadcn.com/docs/components/radix/marker" target="_blank" rel="noreferrer">
+        <a
+          href="https://ui.shadcn.com/docs/components/radix/marker"
+          target="_blank"
+          rel="noreferrer"
+        >
           View the pull request
         </a>
       </MarkerContent>

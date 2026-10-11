@@ -18,17 +18,8 @@ import type {
 
 const DatePicker = Popover
 
-function DatePickerTrigger({
-  className,
-  ...props
-}: React.ComponentProps<typeof PopoverTrigger>) {
-  return (
-    <PopoverTrigger
-      data-slot="date-picker-trigger"
-      className={cn(className)}
-      {...props}
-    />
-  )
+function DatePickerTrigger({ className, ...props }: React.ComponentProps<typeof PopoverTrigger>) {
+  return <PopoverTrigger data-slot="date-picker-trigger" className={cn(className)} {...props} />
 }
 
 function DatePickerContent({
@@ -49,9 +40,7 @@ function DatePickerContent({
 }
 
 function DatePickerCalendar({ className, ...props }: DatePickerCalendarProps) {
-  return (
-    <Calendar data-slot="date-picker-calendar" className={className} {...props} />
-  )
+  return <Calendar data-slot="date-picker-calendar" className={className} {...props} />
 }
 
 function DatePickerButton({

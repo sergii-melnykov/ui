@@ -76,9 +76,7 @@ function ExampleBlock({
   return (
     <div className="flex w-full flex-col">
       <h4 className="text-lg font-semibold text-foreground">{title}</h4>
-      {description ? (
-        <p className="pt-4 text-base text-muted-foreground">{description}</p>
-      ) : null}
+      {description ? <p className="pt-4 text-base text-muted-foreground">{description}</p> : null}
       <div className="pt-6">{children}</div>
     </div>
   )
@@ -90,10 +88,7 @@ function MatrixLabels({ rows }: { rows: string[] }) {
       {rows.map((row) => (
         <div
           key={row}
-          className={cn(
-            "flex items-center gap-2.5",
-            row === "Title-description" ? "h-14" : "h-9"
-          )}
+          className={cn("flex items-center gap-2.5", row === "Title-description" ? "h-14" : "h-9")}
         >
           <span className="w-[78px] shrink-0 text-sm font-medium text-muted-foreground">{row}</span>
           <div className="h-full w-3 border-l border-foreground" aria-hidden />
@@ -119,10 +114,7 @@ function ColumnHeaders() {
 function CollapsibleTriggerSpec({ dir = "ltr" }: { dir?: "ltr" | "rtl" }) {
   const header = (
     <span
-      className={cn(
-        "flex-1 text-sm font-semibold text-foreground",
-        dir === "rtl" && "text-right"
-      )}
+      className={cn("flex-1 text-sm font-semibold text-foreground", dir === "rtl" && "text-right")}
     >
       Header
     </span>
@@ -440,10 +432,7 @@ export function CollapsibleDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="File Tree"
-          description="Use nested collapsibles to build a file tree."
-        >
+        <ExampleBlock title="File Tree" description="Use nested collapsibles to build a file tree.">
           <PreviewBox>
             <FileTreeExample />
           </PreviewBox>

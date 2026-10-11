@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 import { NativeSelectDesignSpec } from "./native-select-design-spec"
-import {
-  NativeSelect,
-  NativeSelectOptGroup,
-  NativeSelectOption
-} from "./native-select"
+import { NativeSelect, NativeSelectOptGroup, NativeSelectOption } from "./native-select"
 
 const meta: Meta<typeof NativeSelect> = {
   title: "Atoms/NativeSelect",

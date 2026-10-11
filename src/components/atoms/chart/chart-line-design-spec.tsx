@@ -26,11 +26,7 @@ export function ChartLineDesignSpec() {
       <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-4xl font-semibold leading-10 text-foreground">Line Chart</h1>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-          <a
-            href="https://ui.shadcn.com/charts/line#charts"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://ui.shadcn.com/charts/line#charts" target="_blank" rel="noreferrer">
             View in Shadcn
             <ArrowUpRight data-icon="inline-end" />
           </a>

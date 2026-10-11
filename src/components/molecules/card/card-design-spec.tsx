@@ -200,8 +200,8 @@ function SmallCardExample() {
       </CardHeader>
       <CardContent>
         <p className="text-sm text-card-foreground">
-          The card component supports a size prop that can be set to &quot;sm&quot; for a more compact
-          appearance.
+          The card component supports a size prop that can be set to &quot;sm&quot; for a more
+          compact appearance.
         </p>
       </CardContent>
       <CardFooter>
@@ -216,11 +216,7 @@ function SmallCardExample() {
 function ImageCardExample() {
   return (
     <Card className="w-full max-w-sm overflow-hidden pt-0">
-      <img
-        src="/card/meetup-header.png"
-        alt=""
-        className="h-[216px] w-full object-cover"
-      />
+      <img src="/card/meetup-header.png" alt="" className="h-[216px] w-full object-cover" />
       <CardHeader className="pt-4">
         <CardTitle>Design systems meetup</CardTitle>
         <CardDescription>
@@ -266,11 +262,7 @@ function RtlLoginCardExample() {
           </Field>
           <Field>
             <div className="flex w-full items-center justify-end gap-2">
-              <Button
-                variant="link"
-                size="sm"
-                className="h-auto flex-1 justify-end px-0 text-sm"
-              >
+              <Button variant="link" size="sm" className="h-auto flex-1 justify-end px-0 text-sm">
                 نسيت كلمة المرور؟
               </Button>
               <FieldLabel htmlFor="card-spec-rtl-password" className="shrink-0">
@@ -313,7 +305,11 @@ export function CardDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-          <a href="https://ui.shadcn.com/docs/components/radix/card" target="_blank" rel="noreferrer">
+          <a
+            href="https://ui.shadcn.com/docs/components/radix/card"
+            target="_blank"
+            rel="noreferrer"
+          >
             View in Shadcn
             <ArrowUpRight data-icon="inline-end" />
           </a>
@@ -383,8 +379,8 @@ export function CardDesignSpec() {
           title="Size"
           description={
             <>
-              Use the <code className="text-foreground">size=&quot;sm&quot;</code> prop to set the size of
-              the card to small. The small size variant uses smaller spacing.
+              Use the <code className="text-foreground">size=&quot;sm&quot;</code> prop to set the
+              size of the card to small. The small size variant uses smaller spacing.
             </>
           }
         >
@@ -423,7 +419,6 @@ export function CardDesignSpec() {
             <RtlLoginCardExample />
           </PreviewBox>
         </ExampleBlock>
-
       </div>
     </div>
   )

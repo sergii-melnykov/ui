@@ -58,15 +58,23 @@ function StaticMenuItem({
   )
 }
 
-function StaticMenuShortcut({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <span className={cn("ml-auto text-xs text-muted-foreground", className)}>
-      {children}
-    </span>
-  )
+function StaticMenuShortcut({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
+  return <span className={cn("ml-auto text-xs text-muted-foreground", className)}>{children}</span>
 }
 
-function StaticMenuLabel({ children, className }: { children: React.ReactNode; className?: string }) {
+function StaticMenuLabel({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   return <div className={cn(menuLabelClass, className)}>{children}</div>
 }
 
@@ -74,7 +82,13 @@ function StaticMenuSeparator() {
   return <div className={menuSeparatorClass} role="separator" />
 }
 
-function StaticSubTrigger({ children, className }: { children: React.ReactNode; className?: string }) {
+function StaticSubTrigger({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   return (
     <div className={cn(subTriggerClass, className)}>
       {children}
@@ -213,12 +227,8 @@ function SpecContextMenuItem({
     isDestructive && "[&_svg]:text-destructive!"
   )
 
-  const label = (
-    <span className={cn("truncate", isRtl && "text-right")}>Label</span>
-  )
-  const shortcut = (
-    <span className="text-xs text-muted-foreground">⌘L</span>
-  )
+  const label = <span className={cn("truncate", isRtl && "text-right")}>Label</span>
+  const shortcut = <span className="text-xs text-muted-foreground">⌘L</span>
   const leftIcon = <Check className="shrink-0" aria-hidden />
   const rightIcon = <ChevronRight className="ml-auto shrink-0" aria-hidden />
 
@@ -564,10 +574,7 @@ export function ContextMenuDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Submenu"
-          description="Use ContextMenuSub to nest secondary actions."
-        >
+        <ExampleBlock title="Submenu" description="Use ContextMenuSub to nest secondary actions.">
           <PreviewBox>
             <SubmenuContextMenuExample />
           </PreviewBox>
@@ -597,19 +604,13 @@ export function ContextMenuDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Checkboxes"
-          description="Use ContextMenuCheckboxItem for toggles."
-        >
+        <ExampleBlock title="Checkboxes" description="Use ContextMenuCheckboxItem for toggles.">
           <PreviewBox>
             <CheckboxesContextMenuExample />
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Radio"
-          description="Use ContextMenuRadioItem for exclusive choices."
-        >
+        <ExampleBlock title="Radio" description="Use ContextMenuRadioItem for exclusive choices.">
           <PreviewBox>
             <RadioContextMenuExample />
           </PreviewBox>

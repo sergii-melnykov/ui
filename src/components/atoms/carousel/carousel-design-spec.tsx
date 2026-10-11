@@ -222,11 +222,7 @@ export function CarouselDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-          <a
-            href="https://ui.shadcn.com/docs/components/carousel"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://ui.shadcn.com/docs/components/carousel" target="_blank" rel="noreferrer">
             View in Shadcn
             <ArrowUpRight data-icon="inline-end" />
           </a>

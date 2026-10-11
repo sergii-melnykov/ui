@@ -91,11 +91,7 @@ export function SkeletonDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-          <a
-            href="https://ui.shadcn.com/docs/components/skeleton"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://ui.shadcn.com/docs/components/skeleton" target="_blank" rel="noreferrer">
             View in Shadcn
             <ArrowUpRight className="size-4" />
           </a>

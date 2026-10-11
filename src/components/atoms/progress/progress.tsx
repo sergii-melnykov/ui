@@ -21,10 +21,7 @@ function Progress({
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
-        className={cn(
-          "block h-full bg-primary transition-all",
-          dir === "rtl" && "ms-auto"
-        )}
+        className={cn("block h-full bg-primary transition-all", dir === "rtl" && "ms-auto")}
         style={{ width: `${String(progress)}%` }}
       />
     </ProgressPrimitive.Root>

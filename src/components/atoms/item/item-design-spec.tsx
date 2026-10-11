@@ -14,11 +14,7 @@ import {
   ShieldAlertIcon
 } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage
-} from "@/components/atoms/avatar/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/atoms/avatar/avatar"
 import { Button } from "@/components/atoms/button/button"
 import { Separator } from "@/components/atoms/separator/separator"
 import { cn } from "@/utils/index"
@@ -144,13 +140,7 @@ function ExampleBlock({
   )
 }
 
-function MatrixRowLabel({
-  label,
-  className
-}: {
-  label: string
-  className?: string
-}) {
+function MatrixRowLabel({ label, className }: { label: string; className?: string }) {
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
       <span className="w-[78px] shrink-0 text-sm font-medium text-muted-foreground">{label}</span>
@@ -391,19 +381,14 @@ export function ItemDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Link"
-          description="Render the item as a link using asChild."
-        >
+        <ExampleBlock title="Link" description="Render the item as a link using asChild.">
           <PreviewBox>
             <div className="flex w-full max-w-md flex-col gap-4">
               <Item asChild className="w-full">
                 <a href="#variants">
                   <ItemContent>
                     <ItemTitle>Visit our documentation</ItemTitle>
-                    <ItemDescription>
-                      Learn how to get started with our components.
-                    </ItemDescription>
+                    <ItemDescription>Learn how to get started with our components.</ItemDescription>
                   </ItemContent>
                   <ItemActions>
                     <ChevronRightIcon className="size-4" />
@@ -414,9 +399,7 @@ export function ItemDesignSpec() {
                 <a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer">
                   <ItemContent>
                     <ItemTitle>External resource</ItemTitle>
-                    <ItemDescription>
-                      Opens in a new tab with security attributes.
-                    </ItemDescription>
+                    <ItemDescription>Opens in a new tab with security attributes.</ItemDescription>
                   </ItemContent>
                   <ItemActions>
                     <ExternalLinkIcon className="size-4" />
@@ -445,8 +428,7 @@ export function ItemDesignSpec() {
                     </ItemMedia>
                     <ItemContent>
                       <ItemTitle className="line-clamp-1">
-                        {song.title} —{" "}
-                        <span className="text-muted-foreground">{song.album}</span>
+                        {song.title} — <span className="text-muted-foreground">{song.album}</span>
                       </ItemTitle>
                       <ItemDescription>{song.artist}</ItemDescription>
                     </ItemContent>
@@ -477,7 +459,12 @@ export function ItemDesignSpec() {
                 <ItemDescription>Last seen 5 months ago</ItemDescription>
               </ItemContent>
               <ItemActions>
-                <Button size="icon-sm" variant="outline" className="rounded-full" aria-label="Invite">
+                <Button
+                  size="icon-sm"
+                  variant="outline"
+                  className="rounded-full"
+                  aria-label="Invite"
+                >
                   <Plus />
                 </Button>
               </ItemActions>

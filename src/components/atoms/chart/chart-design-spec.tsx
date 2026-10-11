@@ -32,7 +32,9 @@ function ChartPreviewFrame({
   className?: string
 }) {
   return (
-    <div className={cn("overflow-hidden rounded-xl border border-border bg-card shadow-xs", className)}>
+    <div
+      className={cn("overflow-hidden rounded-xl border border-border bg-card shadow-xs", className)}
+    >
       <div className="flex h-10 items-center gap-2 border-b border-border px-3">
         <ChartBarBig className="size-3.5 text-muted-foreground" aria-hidden />
         <span className="text-sm font-medium leading-5 text-foreground">{title}</span>

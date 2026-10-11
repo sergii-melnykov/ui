@@ -14,7 +14,12 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/atoms/alert/al
 import { AspectRatio } from "@/components/atoms/aspect-ratio/aspect-ratio"
 import { Avatar, AvatarFallback } from "@/components/atoms/avatar/avatar"
 import { Badge } from "@/components/atoms/badge/badge"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/atoms/breadcrumb/breadcrumb"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage
+} from "@/components/atoms/breadcrumb/breadcrumb"
 import { Bubble } from "@/components/atoms/bubble/bubble"
 import { Button } from "@/components/atoms/button/button"
 import { Checkbox } from "@/components/atoms/checkbox/checkbox"
@@ -35,11 +40,7 @@ import { Switch } from "@/components/atoms/switch/switch"
 import { Textarea } from "@/components/atoms/textarea/textarea"
 import { Typography } from "@/components/atoms/typography"
 import { Toggle } from "@/components/atoms/toggle/toggle"
-import {
-  Menubar,
-  MenubarMenu,
-  MenubarTrigger
-} from "@/components/organisms/menubar/menubar"
+import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/organisms/menubar/menubar"
 import { cn } from "@/utils/index"
 
 import type { ALL_COMPONENTS } from "./components-catalog-data"
@@ -47,9 +48,7 @@ import type { ALL_COMPONENTS } from "./components-catalog-data"
 type CatalogComponent = (typeof ALL_COMPONENTS)[number]
 
 function PreviewPlaceholder({ name }: { name: string }) {
-  return (
-    <span className="text-center text-sm font-medium text-muted-foreground">{name}</span>
-  )
+  return <span className="text-center text-sm font-medium text-muted-foreground">{name}</span>
 }
 
 const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
@@ -69,8 +68,13 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
   ),
   "Alert Dialog": <Button size="sm">Open alert dialog</Button>,
   "Aspect Ratio": (
-    <AspectRatio ratio={16 / 9} className="w-full max-w-[12rem] overflow-hidden rounded-md bg-muted">
-      <div className="flex size-full items-center justify-center text-xs text-muted-foreground">16:9</div>
+    <AspectRatio
+      ratio={16 / 9}
+      className="w-full max-w-[12rem] overflow-hidden rounded-md bg-muted"
+    >
+      <div className="flex size-full items-center justify-center text-xs text-muted-foreground">
+        16:9
+      </div>
     </AspectRatio>
   ),
   Avatar: (
@@ -104,18 +108,30 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
       </Button>
     </div>
   ),
-  Calendar: <Button size="sm" variant="outline">Pick a date</Button>,
+  Calendar: (
+    <Button size="sm" variant="outline">
+      Pick a date
+    </Button>
+  ),
   Card: (
     <div className="w-full max-w-xs rounded-xl border border-border bg-card p-4 text-sm shadow-xs">
       <p className="font-medium">Card title</p>
       <p className="text-xs text-muted-foreground">Card description</p>
     </div>
   ),
-  Carousel: <Button size="sm" variant="ghost">‹ Slide ›</Button>,
+  Carousel: (
+    <Button size="sm" variant="ghost">
+      ‹ Slide ›
+    </Button>
+  ),
   Chart: (
     <div className="flex h-16 w-28 items-end gap-1">
       {[40, 65, 35, 80, 55].map((h, i) => (
-        <div key={i} className="flex-1 rounded-sm bg-primary/80" style={{ height: `${String(h)}%` }} />
+        <div
+          key={i}
+          className="flex-1 rounded-sm bg-primary/80"
+          style={{ height: `${String(h)}%` }}
+        />
       ))}
     </div>
   ),
@@ -127,10 +143,18 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
       </Label>
     </div>
   ),
-  Collapsible: <Button size="sm" variant="outline">Toggle section</Button>,
+  Collapsible: (
+    <Button size="sm" variant="outline">
+      Toggle section
+    </Button>
+  ),
   Combobox: <Input className="max-w-xs" placeholder="Search…" readOnly />,
   Command: <Input className="max-w-xs font-mono text-xs" placeholder="Type a command…" readOnly />,
-  "Context Menu": <Button size="sm" variant="secondary">Right click</Button>,
+  "Context Menu": (
+    <Button size="sm" variant="secondary">
+      Right click
+    </Button>
+  ),
   "Data Table": (
     <div className="w-full max-w-xs overflow-hidden rounded-md border text-xs">
       <div className="grid grid-cols-2 gap-2 border-b bg-muted/50 px-3 py-2 font-medium">
@@ -143,10 +167,22 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
       </div>
     </div>
   ),
-  "Date Picker": <Button size="sm" variant="outline">Jan 1, 2026</Button>,
+  "Date Picker": (
+    <Button size="sm" variant="outline">
+      Jan 1, 2026
+    </Button>
+  ),
   Dialog: <Button size="sm">Open dialog</Button>,
-  Drawer: <Button size="sm" variant="outline">Open drawer</Button>,
-  "Dropdown Menu": <Button size="sm" variant="outline">Menu ▾</Button>,
+  Drawer: (
+    <Button size="sm" variant="outline">
+      Open drawer
+    </Button>
+  ),
+  "Dropdown Menu": (
+    <Button size="sm" variant="outline">
+      Menu ▾
+    </Button>
+  ),
   Empty: (
     <Empty className="max-w-xs border-none p-0">
       <EmptyTitle className="text-sm">No items</EmptyTitle>
@@ -159,11 +195,17 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
       <Input type="email" placeholder="you@example.com" readOnly />
     </div>
   ),
-  "Hover Card": <Button size="sm" variant="link">Hover me</Button>,
+  "Hover Card": (
+    <Button size="sm" variant="link">
+      Hover me
+    </Button>
+  ),
   Input: <Input className="max-w-xs" placeholder="Email" readOnly />,
   "Input Group": (
     <div className="flex max-w-xs overflow-hidden rounded-md border shadow-xs">
-      <span className="flex items-center bg-muted px-3 text-xs text-muted-foreground">https://</span>
+      <span className="flex items-center bg-muted px-3 text-xs text-muted-foreground">
+        https://
+      </span>
       <Input className="border-0 shadow-none" placeholder="site.com" readOnly />
     </div>
   ),
@@ -240,7 +282,11 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
       </Button>
     </div>
   ),
-  Popover: <Button size="sm" variant="outline">Open popover</Button>,
+  Popover: (
+    <Button size="sm" variant="outline">
+      Open popover
+    </Button>
+  ),
   Progress: <Progress value={45} className="w-full max-w-[12rem]" />,
   "Radio Group": (
     <RadioGroup defaultValue="a" className="flex gap-4">
@@ -261,7 +307,11 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
       ))}
     </div>
   ),
-  Select: <Button size="sm" variant="outline" className="min-w-[8rem] justify-between">Select ▾</Button>,
+  Select: (
+    <Button size="sm" variant="outline" className="min-w-[8rem] justify-between">
+      Select ▾
+    </Button>
+  ),
   Separator: (
     <div className="flex w-full max-w-xs items-center gap-3 text-xs text-muted-foreground">
       <span>Left</span>
@@ -269,7 +319,11 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
       <span>Right</span>
     </div>
   ),
-  Sheet: <Button size="sm" variant="outline">Open sheet</Button>,
+  Sheet: (
+    <Button size="sm" variant="outline">
+      Open sheet
+    </Button>
+  ),
   Sidebar: (
     <div className="flex h-20 w-full max-w-[10rem] flex-col gap-1 rounded-md border bg-sidebar p-2 text-xs">
       <span className="font-medium">App</span>
@@ -278,7 +332,11 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
   ),
   Skeleton: <Skeleton className="h-8 w-full max-w-[10rem]" />,
   Slider: <Slider defaultValue={[40]} max={100} step={1} className="w-full max-w-[12rem]" />,
-  Sonner: <Button size="sm" variant="secondary">Show toast</Button>,
+  Sonner: (
+    <Button size="sm" variant="secondary">
+      Show toast
+    </Button>
+  ),
   Spinner: <Spinner className="size-8" />,
   Switch: <Switch defaultChecked aria-label="Preview switch" />,
   Table: (
@@ -306,7 +364,11 @@ const PREVIEWS: Partial<Record<CatalogComponent, React.ReactNode>> = {
     </div>
   ),
   Textarea: <Textarea className="max-w-xs resize-none" rows={2} placeholder="Notes…" readOnly />,
-  Toggle: <Toggle size="sm" aria-label="Preview toggle">B</Toggle>,
+  Toggle: (
+    <Toggle size="sm" aria-label="Preview toggle">
+      B
+    </Toggle>
+  ),
   "Toggle Group": (
     <div className="inline-flex rounded-md border p-0.5">
       <Toggle size="sm" pressed aria-label="Left">
@@ -347,7 +409,11 @@ const PREVIEWS_BY_STORY_TITLE: Record<string, React.ReactNode> = {
       Drop files here
     </div>
   ),
-  "Form/MultiSelect": <Button size="sm" variant="outline">Multi select ▾</Button>,
+  "Form/MultiSelect": (
+    <Button size="sm" variant="outline">
+      Multi select ▾
+    </Button>
+  ),
   "Atoms/PageLoader": <Spinner className="size-8" />,
   "Atoms/Resizable": (
     <div className="flex h-14 w-full max-w-xs overflow-hidden rounded-md border">
@@ -356,7 +422,11 @@ const PREVIEWS_BY_STORY_TITLE: Record<string, React.ReactNode> = {
       <div className="flex flex-1 items-center justify-center text-xs">B</div>
     </div>
   ),
-  "Atoms/Toaster": <Button size="sm" variant="secondary">Toaster</Button>,
+  "Atoms/Toaster": (
+    <Button size="sm" variant="secondary">
+      Toaster
+    </Button>
+  ),
   "Atoms/Typography": (
     <div className="flex flex-col gap-0.5 text-center">
       <Typography variant="large">Heading</Typography>

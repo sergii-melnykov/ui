@@ -10,7 +10,6 @@ import { Button } from "@/components/atoms/button/button"
 import { Separator } from "@/components/atoms/separator/separator"
 import { cn } from "@/utils/index"
 
-
 function SpecSection({
   title,
   children,
@@ -128,9 +127,7 @@ function SpecHoverCard({
   description?: string
   metadata?: string
 }) {
-  return (
-    <HoverCardPanel dir={dir} title={title} description={description} metadata={metadata} />
-  )
+  return <HoverCardPanel dir={dir} title={title} description={description} metadata={metadata} />
 }
 
 function BasicHoverCardExample() {
@@ -159,10 +156,7 @@ function SidePlacementPreview({
 
   return (
     <div
-      className={cn(
-        "flex gap-1",
-        isHorizontal ? "flex-row items-center" : "flex-col items-center"
-      )}
+      className={cn("flex gap-1", isHorizontal ? "flex-row items-center" : "flex-col items-center")}
     >
       {side === "left" || side === "top" ? (
         <>
@@ -200,9 +194,7 @@ function SideHoverCardExample({
     <SidePlacementPreview
       side={side}
       trigger={<SideTrigger>{label}</SideTrigger>}
-      panel={
-        <HoverCardPanel className="w-64" title="Hover card" description={description} />
-      }
+      panel={<HoverCardPanel className="w-64" title="Hover card" description={description} />}
     />
   )
 }
@@ -215,12 +207,7 @@ function RtlSideExample({
   label: string
 }) {
   const panel = (
-    <HoverCardPanel
-      dir="rtl"
-      description="سماعات لاسلكية"
-      metadata="$ ٩٩.٩٩"
-      className="w-64"
-    />
+    <HoverCardPanel dir="rtl" description="سماعات لاسلكية" metadata="$ ٩٩.٩٩" className="w-64" />
   )
 
   return (

@@ -9,12 +9,7 @@ import * as React from "react"
 import { ArrowUpRight, X } from "lucide-react"
 
 import { Button } from "@/components/atoms/button/button"
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader
-} from "@/components/molecules/card/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/molecules/card/card"
 import {
   Dialog,
   DialogContent,
@@ -154,7 +149,11 @@ export function QuestionnaireDesignSpec() {
             <p className="text-center text-sm font-medium text-foreground">LTR</p>
             <p className="text-center text-sm font-medium text-foreground">RTL</p>
             <p className="self-center text-sm text-muted-foreground">Default</p>
-            <StaticChoice label="Questionnaire choice label" description="Questionnaire choice label" shortcut="A" />
+            <StaticChoice
+              label="Questionnaire choice label"
+              description="Questionnaire choice label"
+              shortcut="A"
+            />
             <StaticChoice
               label="Questionnaire choice label"
               description="Questionnaire choice label"
@@ -162,7 +161,12 @@ export function QuestionnaireDesignSpec() {
               dir="rtl"
             />
             <p className="self-center text-sm text-muted-foreground">Hover</p>
-            <StaticChoice label="Questionnaire choice label" description="Questionnaire choice label" shortcut="A" state="hover" />
+            <StaticChoice
+              label="Questionnaire choice label"
+              description="Questionnaire choice label"
+              shortcut="A"
+              state="hover"
+            />
             <StaticChoice
               label="Questionnaire choice label"
               description="Questionnaire choice label"
@@ -171,7 +175,12 @@ export function QuestionnaireDesignSpec() {
               dir="rtl"
             />
             <p className="self-center text-sm text-muted-foreground">Checked</p>
-            <StaticChoice label="Questionnaire choice label" description="Questionnaire choice label" shortcut="A" state="checked" />
+            <StaticChoice
+              label="Questionnaire choice label"
+              description="Questionnaire choice label"
+              shortcut="A"
+              state="checked"
+            />
             <StaticChoice
               label="Questionnaire choice label"
               description="Questionnaire choice label"
@@ -249,11 +258,7 @@ export function QuestionnaireDesignSpec() {
                 {
                   name: "approach",
                   required: true,
-                  choices: [
-                    { value: "minimal" },
-                    { value: "full" },
-                    { value: "tests" }
-                  ]
+                  choices: [{ value: "minimal" }, { value: "full" }, { value: "tests" }]
                 }
               ]}
               shortcuts="letters"
@@ -262,7 +267,9 @@ export function QuestionnaireDesignSpec() {
               }}
             >
               <QuestionnaireItem name="approach" required>
-                <QuestionnaireTitle>How should the agent approach this refactor?</QuestionnaireTitle>
+                <QuestionnaireTitle>
+                  How should the agent approach this refactor?
+                </QuestionnaireTitle>
                 <QuestionnaireDescription>
                   Choose a strategy or write a more specific instruction.
                 </QuestionnaireDescription>
@@ -301,11 +308,7 @@ export function QuestionnaireDesignSpec() {
                 {
                   name: "category",
                   required: true,
-                  choices: [
-                    { value: "feature" },
-                    { value: "fix" },
-                    { value: "refactor" }
-                  ]
+                  choices: [{ value: "feature" }, { value: "fix" }, { value: "refactor" }]
                 }
               ]}
               onSubmit={(event) => {
@@ -423,17 +426,13 @@ export function QuestionnaireDesignSpec() {
                   {
                     name: "next",
                     required: true,
-                    choices: [
-                      { value: "research" },
-                      { value: "implement" },
-                      { value: "verify" }
-                    ]
+                    choices: [{ value: "research" }, { value: "implement" }, { value: "verify" }]
                   }
                 ]}
                 shortcuts="letters"
                 onSubmit={(event) => {
-                event.preventDefault()
-              }}
+                  event.preventDefault()
+                }}
               >
                 <QuestionnaireItem name="next" required>
                   <QuestionnaireTitle>What should the agent do next?</QuestionnaireTitle>
@@ -473,15 +472,12 @@ export function QuestionnaireDesignSpec() {
                   {
                     name: "detail",
                     required: true,
-                    choices: [
-                      { value: "concise" },
-                      { value: "complete" }
-                    ]
+                    choices: [{ value: "concise" }, { value: "complete" }]
                   }
                 ]}
                 onSubmit={(event) => {
-                event.preventDefault()
-              }}
+                  event.preventDefault()
+                }}
               >
                 <QuestionnaireItem name="detail" required className="gap-4">
                   <CardHeader className="border-b-0 pb-0">
@@ -539,16 +535,12 @@ export function QuestionnaireDesignSpec() {
                   {
                     name: "scope",
                     required: true,
-                    choices: [
-                      { value: "component" },
-                      { value: "feature" },
-                      { value: "area" }
-                    ]
+                    choices: [{ value: "component" }, { value: "feature" }, { value: "area" }]
                   }
                 ]}
                 onSubmit={(event) => {
-                event.preventDefault()
-              }}
+                  event.preventDefault()
+                }}
               >
                 <QuestionnaireProgress />
                 <QuestionnaireItem name="scope" required>
@@ -798,11 +790,7 @@ export function QuestionnaireDesignSpec() {
                 {
                   name: "size",
                   required: true,
-                  choices: [
-                    { value: "small" },
-                    { value: "medium" },
-                    { value: "large" }
-                  ]
+                  choices: [{ value: "small" }, { value: "medium" }, { value: "large" }]
                 }
               ]}
               onSubmit={(event) => {
@@ -1042,8 +1030,8 @@ export function QuestionnaireDesignSpec() {
                     }
                   ]}
                   onSubmit={(event) => {
-                event.preventDefault()
-              }}
+                    event.preventDefault()
+                  }}
                 >
                   <div className="flex flex-col gap-4 p-4">
                     <QuestionnaireItem name="scope" required className="gap-4">
@@ -1077,9 +1065,7 @@ export function QuestionnaireDesignSpec() {
                   </div>
                   <DialogFooter className="border-t bg-muted/50 p-4 sm:justify-between">
                     <QuestionnaireActions className="justify-between">
-                      <QuestionnairePrevious variant="outline">
-                        Cancel
-                      </QuestionnairePrevious>
+                      <QuestionnairePrevious variant="outline">Cancel</QuestionnairePrevious>
                       <QuestionnaireNext />
                     </QuestionnaireActions>
                   </DialogFooter>

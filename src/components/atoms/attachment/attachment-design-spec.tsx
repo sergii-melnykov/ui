@@ -97,13 +97,7 @@ function ExampleBlock({
   )
 }
 
-function MatrixLabels({
-  rows,
-  rowClassName = "h-10"
-}: {
-  rows: string[]
-  rowClassName?: string
-}) {
+function MatrixLabels({ rows, rowClassName = "h-10" }: { rows: string[]; rowClassName?: string }) {
   return (
     <div className="flex min-w-[280px] flex-col gap-6 pt-14">
       {rows.map((row) => (
@@ -318,9 +312,9 @@ export function AttachmentDesignSpec() {
           title="Image"
           description={
             <>
-              Set <code>variant=&quot;image&quot;</code> on <code>AttachmentMedia</code> and render an{" "}
-              <code>&lt;img&gt;</code> inside it. Use <code>orientation=&quot;vertical&quot;</code> to stack
-              the media above the content.
+              Set <code>variant=&quot;image&quot;</code> on <code>AttachmentMedia</code> and render
+              an <code>&lt;img&gt;</code> inside it. Use{" "}
+              <code>orientation=&quot;vertical&quot;</code> to stack the media above the content.
             </>
           }
         >
@@ -362,8 +356,8 @@ export function AttachmentDesignSpec() {
           description={
             <>
               Set <code>state</code> to reflect the upload lifecycle. <code>uploading</code> and{" "}
-              <code>processing</code> shimmer the title, and <code>error</code> switches to a destructive
-              treatment.
+              <code>processing</code> shimmer the title, and <code>error</code> switches to a
+              destructive treatment.
             </>
           }
         >
@@ -537,8 +531,8 @@ export function AttachmentDesignSpec() {
           title="Trigger"
           description={
             <>
-              Add an <code>AttachmentTrigger</code> to make the whole card open a link or dialog. It fills
-              the card behind the actions, so the actions stay clickable.
+              Add an <code>AttachmentTrigger</code> to make the whole card open a link or dialog. It
+              fills the card behind the actions, so the actions stay clickable.
             </>
           }
         >

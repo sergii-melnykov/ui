@@ -36,7 +36,9 @@ export const Default: Story = {
           <MessageScrollerViewport>
             <MessageScrollerContent>
               <MessageScrollerItem messageId="1" scrollAnchor>
-                <div className="rounded-3xl bg-secondary px-3 py-2 text-sm">First anchored turn</div>
+                <div className="rounded-3xl bg-secondary px-3 py-2 text-sm">
+                  First anchored turn
+                </div>
               </MessageScrollerItem>
               <MessageScrollerItem messageId="2">
                 <div className="rounded-3xl bg-primary px-3 py-2 text-sm text-primary-foreground">

@@ -43,11 +43,7 @@ export function ChartRadarDesignSpec() {
       <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-4xl font-semibold leading-10 text-foreground">Radar Chart</h1>
         <Button variant="outline" className="h-8 shrink-0 rounded-xl px-3 shadow-xs" asChild>
-          <a
-            href="https://ui.shadcn.com/charts/radar#charts"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://ui.shadcn.com/charts/radar#charts" target="_blank" rel="noreferrer">
             View in Shadcn
             <ArrowUpRight data-icon="inline-end" className="size-4" />
           </a>

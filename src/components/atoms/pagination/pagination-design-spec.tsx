@@ -8,10 +8,7 @@ import { ArrowUpRight, ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/atoms/button/button"
 import { Label } from "@/components/atoms/label/label"
-import {
-  NativeSelect,
-  NativeSelectOption
-} from "@/components/atoms/native-select/native-select"
+import { NativeSelect, NativeSelectOption } from "@/components/atoms/native-select/native-select"
 import {
   Pagination,
   PaginationContent,
@@ -69,7 +66,12 @@ function IconsOnlyPaginationExample() {
     <div className="flex flex-wrap items-center justify-center gap-4">
       <div className="flex items-center gap-2">
         <Label htmlFor="rows-per-page-icons">Rows per page</Label>
-        <NativeSelect id="rows-per-page-icons" size="sm" className="w-20 rounded-lg" defaultValue="25">
+        <NativeSelect
+          id="rows-per-page-icons"
+          size="sm"
+          className="w-20 rounded-lg"
+          defaultValue="25"
+        >
           <NativeSelectOption value="10">10</NativeSelectOption>
           <NativeSelectOption value="25">25</NativeSelectOption>
           <NativeSelectOption value="50">50</NativeSelectOption>
@@ -153,10 +155,7 @@ export function PaginationDesignSpec() {
       <div className="flex flex-col gap-10">
         <h2 className="text-xl font-semibold text-foreground">Examples</h2>
 
-        <ExampleBlock
-          title="Simple"
-          description="A simple pagination with only page numbers."
-        >
+        <ExampleBlock title="Simple" description="A simple pagination with only page numbers.">
           <PreviewBox>
             <SimplePaginationExample />
           </PreviewBox>

@@ -1,11 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import {
-  CircleCheck,
-  Info as InfoIcon,
-  Loader2,
-  OctagonX,
-  TriangleAlert
-} from "lucide-react"
+import { CircleCheck, Info as InfoIcon, Loader2, OctagonX, TriangleAlert } from "lucide-react"
 
 import { Button } from "@/components/atoms/button/button"
 
@@ -164,8 +158,8 @@ export const WithLongContent: Story = {
       <div className="flex min-w-0 flex-1 flex-col gap-1">
         <ToastTitle>Important update</ToastTitle>
         <ToastDescription>
-          This is a longer description that might contain important information about the update.
-          It can span multiple lines and provide more context to the user.
+          This is a longer description that might contain important information about the update. It
+          can span multiple lines and provide more context to the user.
         </ToastDescription>
       </div>
       <ToastAction altText="Learn more">

@@ -151,8 +151,7 @@ function StatusBadge({ status }: { status: DocumentRow["status"] }) {
 function DocumentsTableBody() {
   const [selected, setSelected] = React.useState<Record<number, boolean>>({})
 
-  const allSelected =
-    documentRows.length > 0 && documentRows.every((row) => selected[row.id])
+  const allSelected = documentRows.length > 0 && documentRows.every((row) => selected[row.id])
 
   return (
     <>

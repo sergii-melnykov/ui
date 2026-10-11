@@ -144,9 +144,7 @@ export function MessageDesignSpec() {
                 </MessageAvatar>
                 <MessageContent>
                   <Bubble variant="secondary">
-                    <BubbleContent>
-                      The build failed during dependency installation.
-                    </BubbleContent>
+                    <BubbleContent>The build failed during dependency installation.</BubbleContent>
                   </Bubble>
                 </MessageContent>
               </Message>
@@ -302,7 +300,10 @@ export function MessageDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock title="Attachment" description="Combine bubbles with file and image attachments.">
+        <ExampleBlock
+          title="Attachment"
+          description="Combine bubbles with file and image attachments."
+        >
           <PreviewBox>
             <MessageGroup className="w-full gap-8">
               <Message align="end">

@@ -39,12 +39,7 @@ const contextItems = [
   {
     name: "context",
     required: true,
-    choices: [
-      { value: "files" },
-      { value: "tests" },
-      { value: "docs" },
-      { value: "history" }
-    ]
+    choices: [{ value: "files" }, { value: "tests" }, { value: "docs" }, { value: "history" }]
   }
 ] as const
 
@@ -95,11 +90,7 @@ export const WithFreeformInput: Story = {
         {
           name: "approach",
           required: true,
-          choices: [
-            { value: "minimal" },
-            { value: "full" },
-            { value: "tests" }
-          ]
+          choices: [{ value: "minimal" }, { value: "full" }, { value: "tests" }]
         }
       ]}
       shortcuts="letters"
@@ -144,20 +135,12 @@ export const MultiStep: Story = {
         {
           name: "category",
           required: true,
-          choices: [
-            { value: "feature" },
-            { value: "fix" },
-            { value: "refactor" }
-          ]
+          choices: [{ value: "feature" }, { value: "fix" }, { value: "refactor" }]
         },
         {
           name: "verify",
           required: true,
-          choices: [
-            { value: "unit" },
-            { value: "e2e" },
-            { value: "manual" }
-          ]
+          choices: [{ value: "unit" }, { value: "e2e" }, { value: "manual" }]
         }
       ]}
       onSubmit={(event) => {

@@ -184,8 +184,11 @@ function QuestionnairePrevious({
   return (
     <QuestionnairePrimitive.Previous
       render={(buttonProps, state) => {
-        const { children: primitiveChildren, className: primitiveClassName, ...buttonRest } =
-          buttonProps
+        const {
+          children: primitiveChildren,
+          className: primitiveClassName,
+          ...buttonRest
+        } = buttonProps
 
         return (
           <Button
@@ -218,8 +221,11 @@ function QuestionnaireSkip({
   return (
     <QuestionnairePrimitive.Skip
       render={(buttonProps, state) => {
-        const { children: primitiveChildren, className: primitiveClassName, ...buttonRest } =
-          buttonProps
+        const {
+          children: primitiveChildren,
+          className: primitiveClassName,
+          ...buttonRest
+        } = buttonProps
 
         return (
           <Button
@@ -252,8 +258,11 @@ function QuestionnaireNext({
   return (
     <QuestionnairePrimitive.Next
       render={(buttonProps, state) => {
-        const { children: primitiveChildren, className: primitiveClassName, ...buttonRest } =
-          buttonProps
+        const {
+          children: primitiveChildren,
+          className: primitiveClassName,
+          ...buttonRest
+        } = buttonProps
 
         return (
           <Button
@@ -287,8 +296,11 @@ function QuestionnaireSubmit({
   return (
     <QuestionnairePrimitive.Submit
       render={(buttonProps, state) => {
-        const { children: primitiveChildren, className: primitiveClassName, ...buttonRest } =
-          buttonProps
+        const {
+          children: primitiveChildren,
+          className: primitiveClassName,
+          ...buttonRest
+        } = buttonProps
 
         return (
           <Button

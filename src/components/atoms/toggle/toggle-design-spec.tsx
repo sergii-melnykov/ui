@@ -18,10 +18,7 @@ import {
 
 import { Button } from "@/components/atoms/button/button"
 import { Separator } from "@/components/atoms/separator/separator"
-import {
-  ToggleGroup,
-  ToggleGroupItem
-} from "@/components/atoms/toggle-group/toggle-group"
+import { ToggleGroup, ToggleGroupItem } from "@/components/atoms/toggle-group/toggle-group"
 import { cn } from "@/utils/index"
 
 import { Toggle } from "./toggle"
@@ -281,11 +278,7 @@ function SpecToggleGroupCell({
 
   const values = ["a", "b", "c"] as const
   const activeValue =
-    position === "left" || position === "top"
-      ? "a"
-      : position === "middle"
-        ? "b"
-        : "c"
+    position === "left" || position === "top" ? "a" : position === "middle" ? "b" : "c"
 
   return (
     <ToggleGroup
@@ -371,7 +364,9 @@ export function ToggleDesignSpec() {
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 rounded-xl border border-border bg-background p-14">
       <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-semibold leading-9 text-foreground">Toggle & Toggle Group</h1>
+          <h1 className="text-3xl font-semibold leading-9 text-foreground">
+            Toggle & Toggle Group
+          </h1>
           <p className="text-base text-muted-foreground">
             A two-state button that can be on or off, plus grouped toggles for related options.
           </p>
@@ -508,12 +503,7 @@ export function ToggleDesignSpec() {
 
         <ExampleBlock title="Vertical" description="Stack toggle group items vertically.">
           <PreviewBox>
-            <ToggleGroup
-              type="single"
-              variant="outline"
-              orientation="vertical"
-              defaultValue="bold"
-            >
+            <ToggleGroup type="single" variant="outline" orientation="vertical" defaultValue="bold">
               <ToggleGroupItem value="bold" aria-label="Bold">
                 <Bold />
               </ToggleGroupItem>
@@ -543,7 +533,10 @@ export function ToggleDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock title="Single" description="Single-selection toggle group for segmented controls.">
+        <ExampleBlock
+          title="Single"
+          description="Single-selection toggle group for segmented controls."
+        >
           <PreviewBox>
             <ToggleGroup type="single" variant="outline" defaultValue="all">
               <ToggleGroupItem value="all">All</ToggleGroupItem>

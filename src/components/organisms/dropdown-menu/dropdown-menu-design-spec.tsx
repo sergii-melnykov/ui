@@ -72,7 +72,13 @@ function StaticMenuItem({
   )
 }
 
-function StaticMenuShortcut({ children, className }: { children: React.ReactNode; className?: string }) {
+function StaticMenuShortcut({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   return (
     <span className={cn("ml-auto text-xs tracking-widest text-muted-foreground", className)}>
       {children}
@@ -80,7 +86,13 @@ function StaticMenuShortcut({ children, className }: { children: React.ReactNode
   )
 }
 
-function StaticMenuLabel({ children, className }: { children: React.ReactNode; className?: string }) {
+function StaticMenuLabel({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   return <div className={cn(menuLabelClass, className)}>{children}</div>
 }
 
@@ -88,7 +100,13 @@ function StaticMenuSeparator() {
   return <div className={menuSeparatorClass} role="separator" />
 }
 
-function StaticSubTrigger({ children, className }: { children: React.ReactNode; className?: string }) {
+function StaticSubTrigger({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   return (
     <div className={cn(subTriggerClass, className)}>
       {children}
@@ -124,9 +142,7 @@ function StaticRadioItem({
   return (
     <div className={radioItemClass}>
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-        {selected ? (
-          <span className="size-2 rounded-full bg-current" aria-hidden />
-        ) : null}
+        {selected ? <span className="size-2 rounded-full bg-current" aria-hidden /> : null}
       </span>
       {children}
     </div>
@@ -677,12 +693,16 @@ export function DropdownMenuDesignSpec() {
                   <SpecDropdownMenuItem
                     key={`${state}-ltr`}
                     dir="ltr"
-                    state={state === "Default" ? "default" : state === "Hover" ? "hover" : "disabled"}
+                    state={
+                      state === "Default" ? "default" : state === "Hover" ? "hover" : "disabled"
+                    }
                   />,
                   <SpecDropdownMenuItem
                     key={`${state}-rtl`}
                     dir="rtl"
-                    state={state === "Default" ? "default" : state === "Hover" ? "hover" : "disabled"}
+                    state={
+                      state === "Default" ? "default" : state === "Hover" ? "hover" : "disabled"
+                    }
                   />
                 ])}
               </div>
@@ -715,10 +735,7 @@ export function DropdownMenuDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Submenu"
-          description="Use DropdownMenuSub to nest secondary actions."
-        >
+        <ExampleBlock title="Submenu" description="Use DropdownMenuSub to nest secondary actions.">
           <PreviewBox>
             <SubmenuDropdownExample />
           </PreviewBox>
@@ -739,10 +756,7 @@ export function DropdownMenuDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Checkboxes"
-          description="Use DropdownMenuCheckboxItem for toggles."
-        >
+        <ExampleBlock title="Checkboxes" description="Use DropdownMenuCheckboxItem for toggles.">
           <PreviewBox>
             <AppearanceCheckboxesExample />
           </PreviewBox>

@@ -2,23 +2,11 @@
 
 import * as React from "react"
 import { GitCommitVertical } from "lucide-react"
-import {
-  CartesianGrid,
-  Dot,
-  LabelList,
-  Line,
-  LineChart,
-  XAxis
-} from "recharts"
+import { CartesianGrid, Dot, LabelList, Line, LineChart, XAxis } from "recharts"
 
 import { cn } from "@/utils/index"
 
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig
-} from "./chart"
+import { ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig } from "./chart"
 import { chartLineBrowserData, chartLineMonthlyData } from "./chart-line-data"
 import {
   ChartLineExampleBody,
@@ -287,7 +275,15 @@ export function ChartLineDotsCustom({ className }: { className?: string }) {
             type="natural"
             stroke="var(--color-desktop)"
             strokeWidth={2}
-            dot={({ cx, cy, payload }: { cx?: number; cy?: number; payload: MonthSeriesPayload }) => {
+            dot={({
+              cx,
+              cy,
+              payload
+            }: {
+              cx?: number
+              cy?: number
+              payload: MonthSeriesPayload
+            }) => {
               if (cx == null || cy == null) {
                 return null
               }
@@ -329,9 +325,7 @@ export function ChartLineDotsColors({ className }: { className?: string }) {
           <CartesianGrid vertical={false} />
           <ChartTooltip
             cursor={false}
-            content={
-              <ChartTooltipContent indicator="line" nameKey="visitors" hideLabel />
-            }
+            content={<ChartTooltipContent indicator="line" nameKey="visitors" hideLabel />}
           />
           <Line
             dataKey="visitors"
@@ -422,9 +416,7 @@ export function ChartLineLabelCustom({ className }: { className?: string }) {
           <CartesianGrid vertical={false} />
           <ChartTooltip
             cursor={false}
-            content={
-              <ChartTooltipContent indicator="line" nameKey="visitors" hideLabel />
-            }
+            content={<ChartTooltipContent indicator="line" nameKey="visitors" hideLabel />}
           />
           <Line
             dataKey="visitors"

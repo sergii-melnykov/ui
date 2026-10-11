@@ -70,8 +70,10 @@ export function AspectRatioDesignSpec() {
           description={
             <>
               A square aspect ratio component using the{" "}
-              <code className="text-foreground">ratio={"{"}1 / 1{"}"}</code> prop. This is useful
-              for displaying images in a square format.
+              <code className="text-foreground">
+                ratio={"{"}1 / 1{"}"}
+              </code>{" "}
+              prop. This is useful for displaying images in a square format.
             </>
           }
         />
@@ -88,8 +90,10 @@ export function AspectRatioDesignSpec() {
         description={
           <>
             A portrait aspect ratio component using the{" "}
-            <code className="text-foreground">ratio={"{"}9 / 16{"}"}</code> prop. This is useful for
-            displaying images in a portrait format.
+            <code className="text-foreground">
+              ratio={"{"}9 / 16{"}"}
+            </code>{" "}
+            prop. This is useful for displaying images in a portrait format.
           </>
         }
       />
@@ -123,10 +127,7 @@ export function AspectRatioDesignSpec() {
           <AspectRatio ratio={16 / 9} className="w-full">
             <RatioPlaceholder />
           </AspectRatio>
-          <p
-            dir="rtl"
-            className="w-full pt-2 text-center text-sm leading-5 text-muted-foreground"
-          >
+          <p dir="rtl" className="w-full pt-2 text-center text-sm leading-5 text-muted-foreground">
             منظر طبيعي جميل
           </p>
         </div>

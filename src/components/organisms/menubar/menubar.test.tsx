@@ -1,13 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarTrigger
-} from "./menubar"
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "./menubar"
 
 describe("Menubar", () => {
   it("renders triggers", () => {

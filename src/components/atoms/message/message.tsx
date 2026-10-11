@@ -80,11 +80,4 @@ function MessageFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-export {
-  Message,
-  MessageAvatar,
-  MessageContent,
-  MessageFooter,
-  MessageGroup,
-  MessageHeader
-}
+export { Message, MessageAvatar, MessageContent, MessageFooter, MessageGroup, MessageHeader }

@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
-import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldLabel
-} from "@/components/atoms/field/field"
+import { Field, FieldContent, FieldDescription, FieldLabel } from "@/components/atoms/field/field"
 
 import { CheckboxDesignSpec } from "./checkbox-design-spec"
 import { Checkbox } from "./checkbox"

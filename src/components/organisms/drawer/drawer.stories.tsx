@@ -156,10 +156,7 @@ export const Sides: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
       {DRAWER_SIDES.map((side) => (
-        <Drawer
-          key={side}
-          direction={side === "bottom" ? undefined : side}
-        >
+        <Drawer key={side} direction={side === "bottom" ? undefined : side}>
           <DrawerTrigger asChild>
             <Button variant="outline" className="capitalize">
               {side}

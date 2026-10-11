@@ -162,7 +162,10 @@ function AlertDialogFooterSpec({ layout }: { layout: "none" | "ltr" | "rtl" }) {
           </>
         ) : (
           <>
-            <Button variant="outline" className={layout === "none" ? "flex-1 sm:flex-none" : undefined}>
+            <Button
+              variant="outline"
+              className={layout === "none" ? "flex-1 sm:flex-none" : undefined}
+            >
               Don&apos;t allow
             </Button>
             <Button className={layout === "none" ? "flex-1 sm:flex-none" : undefined}>Allow</Button>
@@ -199,13 +202,7 @@ function StaticAlertDialog({
   )
 }
 
-function SpecFooter({
-  children,
-  className
-}: {
-  children: React.ReactNode
-  className?: string
-}) {
+function SpecFooter({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <AlertDialogFooter className={cn("border-t bg-muted/50 p-4 sm:justify-end", className)}>
       {children}

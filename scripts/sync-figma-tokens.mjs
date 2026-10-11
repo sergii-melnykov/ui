@@ -153,8 +153,7 @@ function validateTokenFile() {
   return tokens
 }
 
-const TAILWIND_THEME_BRIDGE_RE =
-  /@theme inline \{([\s\S]*?)\n\}/
+const TAILWIND_THEME_BRIDGE_RE = /@theme inline \{([\s\S]*?)\n\}/
 
 function extractTailwindThemeBridge(css) {
   const match = TAILWIND_THEME_BRIDGE_RE.exec(css)

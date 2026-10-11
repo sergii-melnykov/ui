@@ -38,9 +38,9 @@ describe("Calendar", () => {
     const day15 = screen.getByRole("button", { name: "Sunday, March 15th, 2026" })
     await user.click(day15)
     await waitFor(() => {
-      expect(
-        screen.getByRole("button", { name: /Sunday, March 15th, 2026/ })
-      ).toHaveAttribute("data-selected-single")
+      expect(screen.getByRole("button", { name: /Sunday, March 15th, 2026/ })).toHaveAttribute(
+        "data-selected-single"
+      )
     })
   })
 })

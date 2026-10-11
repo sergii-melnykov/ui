@@ -30,12 +30,7 @@ export type CalendarSize = NonNullable<VariantProps<typeof calendarVariants>["si
 export const calendarCellBoxClass = "size-(--cell-size) shrink-0"
 
 export type CalendarDateSpecState =
-  | "default"
-  | "hover"
-  | "selected"
-  | "focus"
-  | "disabled"
-  | "booked"
+  "default" | "hover" | "selected" | "focus" | "disabled" | "booked"
 
 export type CalendarDateSpecPosition = "single" | "left" | "right" | "middle"
 

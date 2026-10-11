@@ -320,13 +320,7 @@ function RtlExamples() {
 }
 
 export function RadioGroupDesignSpec() {
-  const controlColumns: ControlColumn[] = [
-    "Default",
-    "Focus",
-    "Disabled",
-    "Error",
-    "Error dis."
-  ]
+  const controlColumns: ControlColumn[] = ["Default", "Focus", "Disabled", "Error", "Error dis."]
 
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-12 rounded-xl border border-border bg-background p-14">
@@ -360,10 +354,7 @@ export function RadioGroupDesignSpec() {
               <MatrixColumnHeaders columns={controlColumns} />
               <div className="grid grid-cols-5 gap-6">
                 {controlColumns.flatMap((column) => [
-                  <div
-                    key={`${column}-unchecked`}
-                    className="flex h-8 items-center justify-center"
-                  >
+                  <div key={`${column}-unchecked`} className="flex h-8 items-center justify-center">
                     <SpecRadioControl column={column} />
                   </div>,
                   <div key={`${column}-checked`} className="flex h-8 items-center justify-center">

@@ -13,12 +13,7 @@ import { Input } from "@/components/atoms/input/input"
 import { Separator } from "@/components/atoms/separator/separator"
 import { cn } from "@/utils/index"
 
-import {
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle
-} from "./drawer"
+import { DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle } from "./drawer"
 
 const LOREM =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -82,8 +77,7 @@ function ExampleBlock({
   )
 }
 
-const drawerPanelShadow =
-  "shadow-[0px_10px_7.5px_rgba(0,0,0,0.1),0px_4px_3px_rgba(0,0,0,0.1)]"
+const drawerPanelShadow = "shadow-[0px_10px_7.5px_rgba(0,0,0,0.1),0px_4px_3px_rgba(0,0,0,0.1)]"
 
 function StaticDrawerShell({
   children,
@@ -195,11 +189,7 @@ function HeaderAlignmentMatrix() {
 
 function RtlMoveGoalPreview() {
   return (
-    <StaticDrawerShell
-      className="max-w-none rounded-t-xl"
-      showHandle
-      surface="background"
-    >
+    <StaticDrawerShell className="max-w-none rounded-t-xl" showHandle surface="background">
       <DrawerHeader className="items-center text-center">
         <DrawerTitle>نقل الهدف</DrawerTitle>
         <DrawerDescription>حدد هدف نشاطك اليومي.</DrawerDescription>
@@ -222,11 +212,7 @@ function RtlMoveGoalPreview() {
         <div className="mt-4 h-[120px] w-full max-w-[352px]">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={RTL_GOAL_CHART_DATA}>
-              <Bar
-                dataKey="goal"
-                style={{ fill: "var(--color-chart-1)" }}
-                radius={[2, 2, 0, 0]}
-              />
+              <Bar dataKey="goal" style={{ fill: "var(--color-chart-1)" }} radius={[2, 2, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -252,9 +238,7 @@ function ResponsiveDialogPreview() {
             <X className="size-4" />
           </button>
         </div>
-        <DrawerDescription>
-          Anyone who has this link will be able to view this.
-        </DrawerDescription>
+        <DrawerDescription>Anyone who has this link will be able to view this.</DrawerDescription>
       </div>
       <FieldGroup className="gap-6">
         <Field>
@@ -327,10 +311,7 @@ export function DrawerDesignSpec() {
             <div>
               <p className="mb-4 text-lg font-semibold text-foreground">Top</p>
               <PreviewBox>
-                <StaticDrawerShell
-                  className="max-w-none rounded-b-xl"
-                  surface="background"
-                >
+                <StaticDrawerShell className="max-w-none rounded-b-xl" surface="background">
                   <MoveGoalHeader className="items-center text-center" />
                   <MoveGoalBody />
                   <MoveGoalFooter />

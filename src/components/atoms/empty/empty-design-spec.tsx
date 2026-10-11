@@ -15,12 +15,7 @@ import {
   Search
 } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarGroup,
-  AvatarImage
-} from "@/components/atoms/avatar/avatar"
+import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "@/components/atoms/avatar/avatar"
 import { Button } from "@/components/atoms/button/button"
 import {
   InputGroup,
@@ -29,20 +24,9 @@ import {
 } from "@/components/atoms/input-group/input-group"
 import { Kbd } from "@/components/atoms/kbd/kbd"
 
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle
-} from "./empty"
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "./empty"
 
-const AVATAR_IMAGES = [
-  "/empty/avatar-1.png",
-  "/empty/avatar-2.png",
-  "/empty/avatar-3.png"
-] as const
+const AVATAR_IMAGES = ["/empty/avatar-1.png", "/empty/avatar-2.png", "/empty/avatar-3.png"] as const
 
 function PreviewBox({ children }: { children: React.ReactNode }) {
   return (
@@ -98,7 +82,10 @@ export function EmptyDesignSpec() {
           <PreviewBox>
             <Empty className="w-full max-w-[558px] gap-4 border border-dashed p-6 md:p-6">
               <EmptyHeader className="max-w-sm gap-2">
-                <EmptyMedia variant="icon" className="mb-0 size-8 [&_svg:not([class*='size-'])]:size-4">
+                <EmptyMedia
+                  variant="icon"
+                  className="mb-0 size-8 [&_svg:not([class*='size-'])]:size-4"
+                >
                   <Cloud />
                 </EmptyMedia>
                 <EmptyTitle>Cloud Storage Empty</EmptyTitle>
@@ -154,8 +141,7 @@ export function EmptyDesignSpec() {
                 <EmptyTitle>User Offline</EmptyTitle>
                 <EmptyDescription>
                   This user is currently offline. You can leave
-                  <br />
-                  a message to notify them or try again later.
+                  <br />a message to notify them or try again later.
                 </EmptyDescription>
               </EmptyHeader>
               <Button size="sm" className="h-7 text-xs">
@@ -183,7 +169,9 @@ export function EmptyDesignSpec() {
                   </AvatarGroup>
                 </EmptyMedia>
                 <EmptyTitle>No Team Members</EmptyTitle>
-                <EmptyDescription>Invite your team to collaborate on this project.</EmptyDescription>
+                <EmptyDescription>
+                  Invite your team to collaborate on this project.
+                </EmptyDescription>
               </EmptyHeader>
               <Button size="sm" className="h-7 text-xs">
                 <Plus />
@@ -219,7 +207,11 @@ export function EmptyDesignSpec() {
                 </InputGroup>
                 <EmptyDescription>
                   Need help?{" "}
-                  <a href="https://ui.shadcn.com/docs/components/empty" target="_blank" rel="noreferrer">
+                  <a
+                    href="https://ui.shadcn.com/docs/components/empty"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Contact support
                   </a>
                 </EmptyDescription>
@@ -246,12 +238,12 @@ export function EmptyDesignSpec() {
           }
         >
           <PreviewBox>
-            <Empty
-              dir="rtl"
-              className="w-full max-w-[558px] gap-4 border border-dashed p-6 md:p-6"
-            >
+            <Empty dir="rtl" className="w-full max-w-[558px] gap-4 border border-dashed p-6 md:p-6">
               <EmptyHeader className="max-w-sm gap-2">
-                <EmptyMedia variant="icon" className="mb-0 size-8 [&_svg:not([class*='size-'])]:size-4">
+                <EmptyMedia
+                  variant="icon"
+                  className="mb-0 size-8 [&_svg:not([class*='size-'])]:size-4"
+                >
                   <FolderCode />
                 </EmptyMedia>
                 <EmptyTitle dir="auto">لا توجد مشاريع بعد</EmptyTitle>

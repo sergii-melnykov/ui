@@ -3,13 +3,7 @@ import { ArrowRight, Minus, Plus, Search } from "lucide-react"
 
 import { Button } from "../button/button"
 import { Input } from "../input/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from "../select/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select"
 
 import { ButtonGroupDesignSpec } from "./button-group-design-spec"
 import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from "./button-group"

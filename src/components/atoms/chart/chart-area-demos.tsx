@@ -1,12 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  Activity,
-  AreaChart as AreaChartIcon,
-  TrendingDown,
-  TrendingUp
-} from "lucide-react"
+import { Activity, AreaChart as AreaChartIcon, TrendingDown, TrendingUp } from "lucide-react"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import {

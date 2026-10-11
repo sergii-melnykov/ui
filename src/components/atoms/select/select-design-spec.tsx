@@ -13,12 +13,7 @@ import { Field, FieldDescription, FieldLabel, FieldTitle } from "@/components/at
 import { Switch } from "@/components/atoms/switch/switch"
 import { cn } from "@/utils/index"
 
-import {
-  FRUIT_GROUPS,
-  FRUITS,
-  RTL_FRUIT_GROUPS,
-  TIMEZONE_GROUPS
-} from "./select-shared"
+import { FRUIT_GROUPS, FRUITS, RTL_FRUIT_GROUPS, TIMEZONE_GROUPS } from "./select-shared"
 import {
   Select,
   SelectContent,
@@ -86,12 +81,7 @@ function MockSelectLabel({
   children: React.ReactNode
 }) {
   return (
-    <div
-      className={cn(
-        "px-2 py-1.5 text-xs text-muted-foreground",
-        dir === "rtl" && "text-right"
-      )}
-    >
+    <div className={cn("px-2 py-1.5 text-xs text-muted-foreground", dir === "rtl" && "text-right")}>
       {children}
     </div>
   )
@@ -115,13 +105,9 @@ function MockSelectItem({
         isRtl ? "flex-row-reverse pr-1.5 pl-2 text-right" : "pl-1.5 pr-2"
       )}
     >
-      {isRtl && selected ? (
-        <Check className="size-4 shrink-0" aria-hidden />
-      ) : null}
+      {isRtl && selected ? <Check className="size-4 shrink-0" aria-hidden /> : null}
       <span className="min-w-0 flex-1 truncate">{children}</span>
-      {!isRtl && selected ? (
-        <Check className="size-4 shrink-0" aria-hidden />
-      ) : null}
+      {!isRtl && selected ? <Check className="size-4 shrink-0" aria-hidden /> : null}
     </div>
   )
 }
@@ -183,10 +169,7 @@ function GroupsExample() {
         ))}
       </MockSelectPanel>
       <Select defaultValue="banana">
-        <SelectTrigger
-          size="sm"
-          className={cn("relative z-10 w-full", selectTriggerSpecClassName)}
-        >
+        <SelectTrigger size="sm" className={cn("relative z-10 w-full", selectTriggerSpecClassName)}>
           <SelectValue />
         </SelectTrigger>
         <SelectContent className="hidden">
@@ -280,10 +263,7 @@ function RtlExample() {
         ))}
       </MockSelectPanel>
       <Select defaultValue="moz">
-        <SelectTrigger
-          size="sm"
-          className={cn("relative z-10 w-full", selectTriggerSpecClassName)}
-        >
+        <SelectTrigger size="sm" className={cn("relative z-10 w-full", selectTriggerSpecClassName)}>
           <SelectValue />
         </SelectTrigger>
         <SelectContent className="hidden">
@@ -305,11 +285,7 @@ export function SelectDesignSpec() {
           </p>
         </div>
         <Button variant="outline" className="shrink-0 shadow-xs" asChild>
-          <a
-            href="https://ui.shadcn.com/docs/components/select"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="https://ui.shadcn.com/docs/components/select" target="_blank" rel="noreferrer">
             View in Shadcn
             <ArrowUpRight className="size-4" />
           </a>
@@ -325,8 +301,8 @@ export function SelectDesignSpec() {
             <>
               Use the <code className="text-sm">position</code> prop on{" "}
               <code className="text-sm">SelectContent</code> to control alignment. When{" "}
-              <code className="text-sm">position=&quot;item-aligned&quot;</code> (default), the popup
-              positions so the selected item appears over the trigger. When{" "}
+              <code className="text-sm">position=&quot;item-aligned&quot;</code> (default), the
+              popup positions so the selected item appears over the trigger. When{" "}
               <code className="text-sm">position=&quot;popper&quot;</code>, the popup aligns to the
               trigger edge.
             </>
@@ -352,10 +328,7 @@ export function SelectDesignSpec() {
           </PreviewBox>
         </ExampleBlock>
 
-        <ExampleBlock
-          title="Scrollable"
-          description="A select with many items that scrolls."
-        >
+        <ExampleBlock title="Scrollable" description="A select with many items that scrolls.">
           <PreviewBox>
             <ScrollableExample />
           </PreviewBox>

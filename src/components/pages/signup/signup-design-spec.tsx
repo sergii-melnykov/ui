@@ -33,8 +33,7 @@ const iconGoogle = "/login-blocks/icon-google.svg"
 const iconGoogleSm = "/login-blocks/icon-google-sm.svg"
 const iconMeta = "/login-blocks/icon-meta.svg"
 
-const EMAIL_HELPER =
-  "We'll use this to contact you. We will not share your email with anyone else."
+const EMAIL_HELPER = "We'll use this to contact you. We will not share your email with anyone else."
 const PASSWORD_HELPER = "Must be at least 8 characters long."
 
 function BlockPreview({
@@ -82,7 +81,13 @@ function OrContinueWith({ className }: { className?: string }) {
   )
 }
 
-function SignInText({ className, tone = "muted" }: { className?: string; tone?: "muted" | "foreground" }) {
+function SignInText({
+  className,
+  tone = "muted"
+}: {
+  className?: string
+  tone?: "muted" | "foreground"
+}) {
   return (
     <p
       className={cn(
@@ -101,7 +106,9 @@ function SignInText({ className, tone = "muted" }: { className?: string; tone?: 
 
 function TermsFooter({ className }: { className?: string }) {
   return (
-    <p className={cn("max-w-[229px] text-center text-xs leading-4 text-muted-foreground", className)}>
+    <p
+      className={cn("max-w-[229px] text-center text-xs leading-4 text-muted-foreground", className)}
+    >
       By clicking continue, you agree to our{" "}
       <a href="https://ui.shadcn.com/terms" className="underline underline-offset-4">
         Terms of Service
@@ -119,11 +126,7 @@ function ImagePlaceholder({ size = "lg" }: { size?: "lg" | "sm" }) {
   const dimension = size === "lg" ? "size-[min(400px,50vw)]" : "size-[150px]"
   return (
     <div className={cn("relative shrink-0", dimension)}>
-      <img
-        src={placeholderImage}
-        alt=""
-        className="pointer-events-none size-full object-cover"
-      />
+      <img src={placeholderImage} alt="" className="pointer-events-none size-full object-cover" />
     </div>
   )
 }
@@ -170,9 +173,7 @@ function FullSignupFields({
               type="password"
               className={cn("w-full", inputClassName)}
             />
-            {showPasswordHelpers ? (
-              <FieldDescription>{PASSWORD_HELPER}</FieldDescription>
-            ) : null}
+            {showPasswordHelpers ? <FieldDescription>{PASSWORD_HELPER}</FieldDescription> : null}
           </Field>
           <Field>
             <FieldLabel htmlFor={`${idPrefix}-confirm`}>Confirm Password</FieldLabel>
@@ -181,9 +182,7 @@ function FullSignupFields({
               type="password"
               className={cn("w-full", inputClassName)}
             />
-            {showPasswordHelpers ? (
-              <FieldDescription>{PASSWORD_HELPER}</FieldDescription>
-            ) : null}
+            {showPasswordHelpers ? <FieldDescription>{PASSWORD_HELPER}</FieldDescription> : null}
           </Field>
         </>
       ) : (
@@ -191,16 +190,22 @@ function FullSignupFields({
           <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2">
             <Field>
               <FieldLabel htmlFor={`${idPrefix}-password`}>Password</FieldLabel>
-              <Input id={`${idPrefix}-password`} type="password" className={cn("w-full", inputClassName)} />
+              <Input
+                id={`${idPrefix}-password`}
+                type="password"
+                className={cn("w-full", inputClassName)}
+              />
             </Field>
             <Field>
               <FieldLabel htmlFor={`${idPrefix}-confirm`}>Confirm Password</FieldLabel>
-              <Input id={`${idPrefix}-confirm`} type="password" className={cn("w-full", inputClassName)} />
+              <Input
+                id={`${idPrefix}-confirm`}
+                type="password"
+                className={cn("w-full", inputClassName)}
+              />
             </Field>
           </div>
-          {showPasswordHelpers ? (
-            <FieldDescription>{PASSWORD_HELPER}</FieldDescription>
-          ) : null}
+          {showPasswordHelpers ? <FieldDescription>{PASSWORD_HELPER}</FieldDescription> : null}
         </div>
       )}
     </FieldGroup>
@@ -240,7 +245,9 @@ function SplitSignupWithCoverBlock() {
           <AcmeBrand />
           <div className="flex flex-1 flex-col items-center justify-center gap-7">
             <div className="flex w-full max-w-[320px] flex-col gap-2 text-center">
-              <h2 className="text-2xl font-bold leading-8 text-card-foreground">Create an account</h2>
+              <h2 className="text-2xl font-bold leading-8 text-card-foreground">
+                Create an account
+              </h2>
               <p className="text-sm text-muted-foreground">
                 Fill in the form below to create your account.
               </p>

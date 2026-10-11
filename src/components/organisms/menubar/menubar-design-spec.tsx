@@ -4,15 +4,7 @@
  */
 
 import * as React from "react"
-import {
-  ArrowUpRight,
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  File,
-  Folder,
-  Save
-} from "lucide-react"
+import { ArrowUpRight, Check, ChevronLeft, ChevronRight, File, Folder, Save } from "lucide-react"
 
 import { Button } from "@/components/atoms/button/button"
 import { Separator } from "@/components/atoms/separator/separator"
@@ -47,17 +39,27 @@ function StaticMenuItem({
   )
 }
 
-function StaticMenuShortcut({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <span className={cn("ml-auto text-xs text-muted-foreground", className)}>{children}</span>
-  )
+function StaticMenuShortcut({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
+  return <span className={cn("ml-auto text-xs text-muted-foreground", className)}>{children}</span>
 }
 
 function StaticMenuSeparator() {
   return <div className={menuSeparatorClass} role="separator" />
 }
 
-function StaticSubTrigger({ children, className }: { children: React.ReactNode; className?: string }) {
+function StaticSubTrigger({
+  children,
+  className
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
   return (
     <div className={cn(subTriggerClass, className)}>
       {children}
@@ -152,9 +154,7 @@ function ExampleBlock({
   return (
     <div className="flex w-full flex-col">
       <h4 className="text-lg font-semibold text-foreground">{title}</h4>
-      {description ? (
-        <p className="pt-4 text-base text-muted-foreground">{description}</p>
-      ) : null}
+      {description ? <p className="pt-4 text-base text-muted-foreground">{description}</p> : null}
       <div className={cn(description ? "pt-6" : "pt-4")}>{children}</div>
     </div>
   )

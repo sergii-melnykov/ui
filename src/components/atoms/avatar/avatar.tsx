@@ -10,11 +10,7 @@ import type {
   AvatarImageProps,
   AvatarProps
 } from "./avatar.types"
-import {
-  avatarBadgeVariants,
-  avatarGroupCountVariants,
-  avatarVariants
-} from "./avatar.variants"
+import { avatarBadgeVariants, avatarGroupCountVariants, avatarVariants } from "./avatar.variants"
 
 /**
  * Avatar component that displays a user's profile picture or fallback.

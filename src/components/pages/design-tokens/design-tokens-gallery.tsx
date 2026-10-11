@@ -15,7 +15,13 @@ export function DesignTokensGallery() {
   const isDark = mode === "dark"
 
   return (
-    <div className={isDark ? "dark min-h-screen bg-background text-foreground" : "min-h-screen bg-background text-foreground"}>
+    <div
+      className={
+        isDark
+          ? "dark min-h-screen bg-background text-foreground"
+          : "min-h-screen bg-background text-foreground"
+      }
+    >
       <div className="border-b border-border px-6 py-4">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4">
           <div>
@@ -28,7 +34,9 @@ export function DesignTokensGallery() {
             type="button"
             variant="outline"
             size="sm"
-            onClick={() => setMode(isDark ? "light" : "dark")}
+            onClick={() => {
+              setMode(isDark ? "light" : "dark")
+            }}
           >
             {isDark ? "Light mode" : "Dark mode"}
           </Button>

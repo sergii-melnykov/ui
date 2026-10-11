@@ -13,11 +13,7 @@ import { Button } from "@/components/atoms/button/button"
 import { Field, FieldGroup, FieldLabel } from "@/components/atoms/field/field"
 import { Input } from "@/components/atoms/input/input"
 import { Separator } from "@/components/atoms/separator/separator"
-import {
-  Card,
-  CardContent,
-  CardFooter
-} from "@/components/molecules/card/card"
+import { Card, CardContent, CardFooter } from "@/components/molecules/card/card"
 import { cn } from "@/utils/index"
 
 import { Calendar, CalendarDayButton } from "./calendar"
@@ -187,7 +183,10 @@ function DateStateMatrix() {
       </div>
       <div className="grid min-w-[960px] grid-cols-3 gap-6">
         {DATE_SIZES.map(({ label, value }) => (
-          <div key={label} className={cn("flex flex-wrap gap-x-4 gap-y-1", DATE_SIZE_CELL_CLASS[value])}>
+          <div
+            key={label}
+            className={cn("flex flex-wrap gap-x-4 gap-y-1", DATE_SIZE_CELL_CLASS[value])}
+          >
             {DATE_STATES.map((state) => (
               <span
                 key={state}
@@ -333,11 +332,7 @@ export function CalendarDesignSpec() {
     from: new Date(2026, 2, 8),
     to: new Date(2026, 2, 14)
   })
-  const booked = [
-    new Date(2026, 2, 3),
-    new Date(2026, 2, 17),
-    new Date(2026, 2, 24)
-  ]
+  const booked = [new Date(2026, 2, 3), new Date(2026, 2, 17), new Date(2026, 2, 24)]
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 rounded-xl border border-border bg-background p-14">

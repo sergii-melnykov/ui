@@ -65,12 +65,8 @@ function specButtonStateClassName(
   roundness: ButtonRoundness
 ) {
   const resolvedVariant = variant ?? "default"
-  const hoverClass =
-    state === "hover"
-      ? HOVER_BY_VARIANT[resolvedVariant]
-      : undefined
-  const focusClass =
-    state === "focus" ? "border-ring ring-[3px] ring-ring/50" : undefined
+  const hoverClass = state === "hover" ? HOVER_BY_VARIANT[resolvedVariant] : undefined
+  const focusClass = state === "focus" ? "border-ring ring-[3px] ring-ring/50" : undefined
 
   return cn(roundness === "rounded" && "rounded-full", hoverClass, focusClass)
 }

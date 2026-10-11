@@ -167,10 +167,7 @@ function StaticNavMenuItem({
   return (
     <div
       dir={dir}
-      className={cn(
-        "flex flex-col gap-1 rounded-md px-4 py-2",
-        isRtl && "items-end text-right"
-      )}
+      className={cn("flex flex-col gap-1 rounded-md px-4 py-2", isRtl && "items-end text-right")}
     >
       <p className="w-full text-sm font-medium text-foreground">{title}</p>
       <p className="w-full text-sm leading-5 text-muted-foreground">{description}</p>

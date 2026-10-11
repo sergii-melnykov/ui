@@ -141,72 +141,72 @@ export const Default: Story = {
   render: () => (
     <SidebarStoryShell>
       <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2">
-          <SidebarTrigger />
-          <h2 className="text-lg font-semibold">Dashboard</h2>
-        </div>
-        <SidebarInput placeholder="Search..." />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton isActive tooltip="Home">
-                <Home />
-                <span>Home</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Messages">
-                <MessageSquare />
-                <span>Messages</span>
-                <SidebarMenuBadge>3</SidebarMenuBadge>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Documents">
-                <FileText />
-                <span>Documents</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Team">
-                <Users />
-                <span>Team</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-        <SidebarSeparator />
-        <SidebarGroup>
-          <SidebarGroupLabel>Settings</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Notifications">
-                <Bell />
-                <span>Notifications</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Settings">
-                <Settings />
-                <span>Settings</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
-      <SidebarFooter>
-        <div className="flex items-center gap-2 px-2">
-          <div className="h-8 w-8 rounded-full bg-primary" />
-          <div className="flex flex-col">
-            <span className="text-sm font-medium">John Doe</span>
-            <span className="text-xs text-muted-foreground">john@example.com</span>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2">
+            <SidebarTrigger />
+            <h2 className="text-lg font-semibold">Dashboard</h2>
           </div>
-        </div>
-      </SidebarFooter>
+          <SidebarInput placeholder="Search..." />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton isActive tooltip="Home">
+                  <Home />
+                  <span>Home</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Messages">
+                  <MessageSquare />
+                  <span>Messages</span>
+                  <SidebarMenuBadge>3</SidebarMenuBadge>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Documents">
+                  <FileText />
+                  <span>Documents</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Team">
+                  <Users />
+                  <span>Team</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+          <SidebarSeparator />
+          <SidebarGroup>
+            <SidebarGroupLabel>Settings</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Notifications">
+                  <Bell />
+                  <span>Notifications</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Settings">
+                  <Settings />
+                  <span>Settings</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+          <div className="flex items-center gap-2 px-2">
+            <div className="h-8 w-8 rounded-full bg-primary" />
+            <div className="flex flex-col">
+              <span className="text-sm font-medium">John Doe</span>
+              <span className="text-xs text-muted-foreground">john@example.com</span>
+            </div>
+          </div>
+        </SidebarFooter>
       </Sidebar>
     </SidebarStoryShell>
   )
@@ -221,33 +221,33 @@ export const Floating: Story = {
   render: () => (
     <SidebarStoryShell>
       <Sidebar variant="floating">
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2">
-          <SidebarTrigger />
-          <h2 className="text-lg font-semibold">Dashboard</h2>
-        </div>
-        <SidebarInput placeholder="Search..." />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton isActive tooltip="Home">
-                <Home />
-                <span>Home</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Messages">
-                <MessageSquare />
-                <span>Messages</span>
-                <SidebarMenuBadge>3</SidebarMenuBadge>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2">
+            <SidebarTrigger />
+            <h2 className="text-lg font-semibold">Dashboard</h2>
+          </div>
+          <SidebarInput placeholder="Search..." />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton isActive tooltip="Home">
+                  <Home />
+                  <span>Home</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Messages">
+                  <MessageSquare />
+                  <span>Messages</span>
+                  <SidebarMenuBadge>3</SidebarMenuBadge>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
       </Sidebar>
     </SidebarStoryShell>
   )
@@ -262,33 +262,33 @@ export const Inset: Story = {
   render: () => (
     <SidebarStoryShell>
       <Sidebar variant="inset">
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2">
-          <SidebarTrigger />
-          <h2 className="text-lg font-semibold">Dashboard</h2>
-        </div>
-        <SidebarInput placeholder="Search..." />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton isActive tooltip="Home">
-                <Home />
-                <span>Home</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Messages">
-                <MessageSquare />
-                <span>Messages</span>
-                <SidebarMenuBadge>3</SidebarMenuBadge>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2">
+            <SidebarTrigger />
+            <h2 className="text-lg font-semibold">Dashboard</h2>
+          </div>
+          <SidebarInput placeholder="Search..." />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton isActive tooltip="Home">
+                  <Home />
+                  <span>Home</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Messages">
+                  <MessageSquare />
+                  <span>Messages</span>
+                  <SidebarMenuBadge>3</SidebarMenuBadge>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
       </Sidebar>
     </SidebarStoryShell>
   )
@@ -303,33 +303,33 @@ export const RightSide: Story = {
   render: () => (
     <SidebarStoryShell>
       <Sidebar side="right">
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2">
-          <h2 className="text-lg font-semibold">Notifications</h2>
-          <SidebarTrigger />
-        </div>
-        <SidebarInput placeholder="Search..." />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Recent</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="New Message">
-                <MessageSquare />
-                <span>New Message</span>
-                <SidebarMenuBadge>New</SidebarMenuBadge>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="System Update">
-                <Settings />
-                <span>System Update</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2">
+            <h2 className="text-lg font-semibold">Notifications</h2>
+            <SidebarTrigger />
+          </div>
+          <SidebarInput placeholder="Search..." />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Recent</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="New Message">
+                  <MessageSquare />
+                  <span>New Message</span>
+                  <SidebarMenuBadge>New</SidebarMenuBadge>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="System Update">
+                  <Settings />
+                  <span>System Update</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
       </Sidebar>
     </SidebarStoryShell>
   )
@@ -344,40 +344,40 @@ export const WithNestedNavigation: Story = {
   render: () => (
     <SidebarStoryShell>
       <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2">
-          <SidebarTrigger />
-          <h2 className="text-lg font-semibold">Dashboard</h2>
-        </div>
-        <SidebarInput placeholder="Search..." />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton isActive tooltip="Home">
-                <Home />
-                <span>Home</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuSub>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2">
+            <SidebarTrigger />
+            <h2 className="text-lg font-semibold">Dashboard</h2>
+          </div>
+          <SidebarInput placeholder="Search..." />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Documents">
-                  <FileText />
-                  <span>Documents</span>
-                  <ChevronDown className="ml-auto h-4 w-4" />
+                <SidebarMenuButton isActive tooltip="Home">
+                  <Home />
+                  <span>Home</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              <SidebarMenuSubItem>
-                <SidebarMenuSubButton>Recent</SidebarMenuSubButton>
-                <SidebarMenuSubButton>Shared</SidebarMenuSubButton>
-                <SidebarMenuSubButton>Starred</SidebarMenuSubButton>
-              </SidebarMenuSubItem>
-            </SidebarMenuSub>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
+              <SidebarMenuSub>
+                <SidebarMenuItem>
+                  <SidebarMenuButton tooltip="Documents">
+                    <FileText />
+                    <span>Documents</span>
+                    <ChevronDown className="ml-auto h-4 w-4" />
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuSubItem>
+                  <SidebarMenuSubButton>Recent</SidebarMenuSubButton>
+                  <SidebarMenuSubButton>Shared</SidebarMenuSubButton>
+                  <SidebarMenuSubButton>Starred</SidebarMenuSubButton>
+                </SidebarMenuSubItem>
+              </SidebarMenuSub>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
       </Sidebar>
     </SidebarStoryShell>
   )
@@ -392,38 +392,38 @@ export const WithActions: Story = {
   render: () => (
     <SidebarStoryShell>
       <Sidebar>
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2">
-          <SidebarTrigger />
-          <h2 className="text-lg font-semibold">Dashboard</h2>
-        </div>
-        <SidebarInput placeholder="Search..." />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Project 1">
-                <FileText />
-                <span>Project 1</span>
-              </SidebarMenuButton>
-              <SidebarMenuAction tooltip="Add Task">
-                <Plus className="h-4 w-4" />
-              </SidebarMenuAction>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Project 2">
-                <FileText />
-                <span>Project 2</span>
-              </SidebarMenuButton>
-              <SidebarMenuAction tooltip="Add Task">
-                <Plus className="h-4 w-4" />
-              </SidebarMenuAction>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2">
+            <SidebarTrigger />
+            <h2 className="text-lg font-semibold">Dashboard</h2>
+          </div>
+          <SidebarInput placeholder="Search..." />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Projects</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Project 1">
+                  <FileText />
+                  <span>Project 1</span>
+                </SidebarMenuButton>
+                <SidebarMenuAction tooltip="Add Task">
+                  <Plus className="h-4 w-4" />
+                </SidebarMenuAction>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Project 2">
+                  <FileText />
+                  <span>Project 2</span>
+                </SidebarMenuButton>
+                <SidebarMenuAction tooltip="Add Task">
+                  <Plus className="h-4 w-4" />
+                </SidebarMenuAction>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
       </Sidebar>
     </SidebarStoryShell>
   )
@@ -438,33 +438,33 @@ export const IconOnly: Story = {
   render: () => (
     <SidebarStoryShell>
       <Sidebar collapsible="icon">
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2">
-          <SidebarTrigger />
-          <h2 className="text-lg font-semibold">Dashboard</h2>
-        </div>
-        <SidebarInput placeholder="Search..." />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton isActive tooltip="Home">
-                <Home />
-                <span>Home</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Messages">
-                <MessageSquare />
-                <span>Messages</span>
-                <SidebarMenuBadge>3</SidebarMenuBadge>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2">
+            <SidebarTrigger />
+            <h2 className="text-lg font-semibold">Dashboard</h2>
+          </div>
+          <SidebarInput placeholder="Search..." />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton isActive tooltip="Home">
+                  <Home />
+                  <span>Home</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Messages">
+                  <MessageSquare />
+                  <span>Messages</span>
+                  <SidebarMenuBadge>3</SidebarMenuBadge>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
       </Sidebar>
     </SidebarStoryShell>
   )
@@ -479,32 +479,32 @@ export const NonCollapsible: Story = {
   render: () => (
     <SidebarStoryShell>
       <Sidebar collapsible="none">
-      <SidebarHeader>
-        <div className="flex items-center gap-2 px-2">
-          <h2 className="text-lg font-semibold">Dashboard</h2>
-        </div>
-        <SidebarInput placeholder="Search..." />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton isActive tooltip="Home">
-                <Home />
-                <span>Home</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <SidebarMenuButton tooltip="Messages">
-                <MessageSquare />
-                <span>Messages</span>
-                <SidebarMenuBadge>3</SidebarMenuBadge>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-      </SidebarContent>
+        <SidebarHeader>
+          <div className="flex items-center gap-2 px-2">
+            <h2 className="text-lg font-semibold">Dashboard</h2>
+          </div>
+          <SidebarInput placeholder="Search..." />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton isActive tooltip="Home">
+                  <Home />
+                  <span>Home</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton tooltip="Messages">
+                  <MessageSquare />
+                  <span>Messages</span>
+                  <SidebarMenuBadge>3</SidebarMenuBadge>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+        </SidebarContent>
       </Sidebar>
     </SidebarStoryShell>
   )

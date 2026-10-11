@@ -19,14 +19,7 @@ import { typographyDefaultElement, typographyVariants } from "./typography.varia
  * <Typography variant="inline-code">npm install</Typography>
  * ```
  */
-function Typography({
-  ref,
-  className,
-  variant = "p",
-  align,
-  as,
-  ...props
-}: TypographyProps) {
+function Typography({ ref, className, variant = "p", align, as, ...props }: TypographyProps) {
   const resolvedVariant = variant ?? "p"
   const Component = as ?? typographyDefaultElement[resolvedVariant]
 

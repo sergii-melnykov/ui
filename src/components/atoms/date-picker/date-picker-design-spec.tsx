@@ -9,12 +9,7 @@ import { ArrowUpRight, CalendarIcon } from "lucide-react"
 import { type DateRange } from "react-day-picker"
 
 import { Button } from "@/components/atoms/button/button"
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel
-} from "@/components/atoms/field/field"
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/atoms/field/field"
 import {
   InputGroup,
   InputGroupAddon,
@@ -131,11 +126,7 @@ function DateOfBirthPickerDemo() {
       <FieldLabel>Date of birth</FieldLabel>
       <DatePicker defaultOpen>
         <DatePickerTrigger asChild>
-          <DatePickerButton
-            date={date}
-            placeholder="Select date"
-            className="w-full"
-          />
+          <DatePickerButton date={date} placeholder="Select date" className="w-full" />
         </DatePickerTrigger>
         <DatePickerContent>
           <DatePickerCalendar

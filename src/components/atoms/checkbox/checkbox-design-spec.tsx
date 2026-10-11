@@ -113,7 +113,9 @@ function MatrixColumnHeaders({ columns }: { columns: string[] }) {
     <div className={cn("grid gap-6", columns.length === 4 ? "grid-cols-4" : "grid-cols-2")}>
       {columns.map((label) => (
         <div key={label} className="flex flex-col items-center gap-6">
-          <span className="text-sm font-medium whitespace-nowrap text-muted-foreground">{label}</span>
+          <span className="text-sm font-medium whitespace-nowrap text-muted-foreground">
+            {label}
+          </span>
           <div className="h-3 w-full border-b border-foreground" aria-hidden />
         </div>
       ))}
@@ -304,10 +306,16 @@ export function CheckboxDesignSpec() {
               <MatrixColumnHeaders columns={controlColumns} />
               <div className="grid grid-cols-4 gap-6">
                 {controlColumns.flatMap((column) => [
-                  <div key={`${column}-unchecked`} className="flex h-[70px] items-center justify-center">
+                  <div
+                    key={`${column}-unchecked`}
+                    className="flex h-[70px] items-center justify-center"
+                  >
                     <SpecCheckboxControl column={column} />
                   </div>,
-                  <div key={`${column}-checked`} className="flex h-[70px] items-center justify-center">
+                  <div
+                    key={`${column}-checked`}
+                    className="flex h-[70px] items-center justify-center"
+                  >
                     <SpecCheckboxControl checked column={column} />
                   </div>
                 ])}
@@ -376,8 +384,8 @@ export function CheckboxDesignSpec() {
           title="Disabled"
           description={
             <>
-              Use the disabled prop to prevent interaction and add the data-disabled attribute to the{" "}
-              <code>Field</code> component for disabled styles.
+              Use the disabled prop to prevent interaction and add the data-disabled attribute to
+              the <code>Field</code> component for disabled styles.
             </>
           }
         >

@@ -4,13 +4,7 @@ import { Cloud } from "lucide-react"
 import { Button } from "@/components/atoms/button/button"
 
 import { EmptyDesignSpec } from "./empty-design-spec"
-import {
-  Empty,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle
-} from "./empty"
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "./empty"
 
 const meta: Meta<typeof Empty> = {
   title: "Atoms/Empty",
