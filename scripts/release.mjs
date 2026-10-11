@@ -17,8 +17,10 @@ const bump = positionals[0]
 
 if (!bump || !BUMPS.has(bump)) {
   console.error("Usage: npm run release -- patch|minor|major [--push]")
-  console.error("  Bumps package.json, commits, and creates git tag v{version}.")
-  console.error("  CI deploy workflows run when you push the tag (use --push or git push origin main --follow-tags).")
+  console.error("   or: npm run release:patch | release:minor | release:major")
+  console.error("")
+  console.error("Bumps package.json, commits, and creates git tag v{version}.")
+  console.error("Deploy workflows run on GitHub after: git push origin main --follow-tags")
   process.exit(1)
 }
 
@@ -38,7 +40,8 @@ const dirty = run("git status --porcelain", {
   capture: true,
 }).trim()
 if (!values["dry-run"] && dirty) {
-  console.error("Working tree must be clean. Commit or stash changes before releasing.")
+  console.error("Working tree must be clean before release. Uncommitted changes:")
+  console.error(dirty)
   process.exit(1)
 }
 
@@ -60,10 +63,21 @@ if (values["dry-run"]) {
 const version = JSON.parse(readFileSync("package.json", "utf8")).version
 const tag = `v${version}`
 
-console.log(`\nRelease ${tag} is ready locally.`)
-console.log(`  git push origin main --follow-tags`)
+let tagSha
+try {
+  tagSha = run(`git rev-parse --verify ${tag}^{commit}`, { capture: true }).trim()
+} catch {
+  console.error(`\nRelease commit was created but git tag "${tag}" is missing.`)
+  console.error("Check .npmrc for git-tag-version=false, then create the tag manually:")
+  console.error(`  git tag ${tag} HEAD`)
+  process.exit(1)
+}
+
+console.log(`\nCreated ${tag} → ${tagSha.slice(0, 7)} (package.json ${version})`)
+console.log("Push to trigger deploy workflows:")
+console.log("  git push origin main --follow-tags")
 
 if (values.push) {
   run("git push origin main --follow-tags")
-  console.log("Pushed commit and tag; CI + deploy workflows should start on GitHub.")
+  console.log("Pushed commit and tag.")
 }
