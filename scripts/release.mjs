@@ -7,7 +7,7 @@ const BUMPS = new Set(["patch", "minor", "major"])
 const { values, positionals } = parseArgs({
   args: process.argv.slice(2),
   options: {
-    push: { type: "boolean", default: false },
+    "no-push": { type: "boolean", default: false },
     "dry-run": { type: "boolean", default: false },
   },
   allowPositionals: true,
@@ -16,11 +16,10 @@ const { values, positionals } = parseArgs({
 const bump = positionals[0]
 
 if (!bump || !BUMPS.has(bump)) {
-  console.error("Usage: npm run release -- patch|minor|major [--push]")
+  console.error("Usage: npm run release -- patch|minor|major [--no-push]")
   console.error("   or: npm run release:patch | release:minor | release:major")
   console.error("")
-  console.error("Bumps package.json, commits, and creates git tag v{version}.")
-  console.error("Deploy workflows run on GitHub after: git push origin main --follow-tags")
+  console.error("Bumps version, commits, tags v{version}, and pushes main + tags (use --no-push to skip push).")
   process.exit(1)
 }
 
@@ -57,6 +56,9 @@ const versionCmd = `npm version ${bump} -m "Release %s"`
 run(versionCmd, { dry: values["dry-run"] })
 
 if (values["dry-run"]) {
+  if (!values["no-push"]) {
+    run("git push origin main --follow-tags", { dry: true })
+  }
   process.exit(0)
 }
 
@@ -74,10 +76,11 @@ try {
 }
 
 console.log(`\nCreated ${tag} → ${tagSha.slice(0, 7)} (package.json ${version})`)
-console.log("Push to trigger deploy workflows:")
-console.log("  git push origin main --follow-tags")
 
-if (values.push) {
-  run("git push origin main --follow-tags")
-  console.log("Pushed commit and tag.")
+if (values["no-push"]) {
+  console.log("Skipped push (--no-push). To publish:")
+  console.log("  git push origin main --follow-tags")
+} else {
+  run(`git push origin ${branch} --follow-tags`)
+  console.log("Pushed branch and tag; deploy workflows should start on GitHub.")
 }
